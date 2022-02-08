@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <!-- 
+    	auth : 컨테이너를 자원 관리자로 기술
+    	maxTotal : 커넥션 풀에서 생성되는 최대 커넥션 숫자
+    	maxIdle : 커넥션 풀 유지를 위해 최대 대기 커넥션 숫자
+     -->
+    <Resource name="jdbc/xe"
+              auth="Container"
+              type="javax.sql.DataSource"
+              username="scott"
+              password="tiger"
+              driverClassName="oracle.jdbc.OracleDriver"
+              url="jdbc:oracle:thin:@localhost:1521:xe"
+              maxTotal="20"
+              maxIdle="10" />
+</Context>
