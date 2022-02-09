@@ -1,4 +1,4 @@
-package kr.cart.vo;
+package kr.order.vo;
 
 public class CartVO {
 

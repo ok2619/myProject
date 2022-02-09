@@ -11,7 +11,7 @@
 <div class="page-main">
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div>
-		<h3>메인 화면(test2)</h3>
+		<h3>메인 화면(test3)</h3>
 	</div>
 	<input type="button" value="로그인" onclick="location.href='${pageContext.request.contextPath}/member/loginForm.do'">
 </div>
