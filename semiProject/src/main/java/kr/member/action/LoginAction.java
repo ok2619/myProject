@@ -37,7 +37,7 @@ public class LoginAction implements Action{
 			//세션객체 구하기(리퀘스트로부터 세션을 구해 세션객체생성을 한다.)
 			HttpSession session = request.getSession();
 			//세션에 로그인값(회원정보:회원번호,회원아이디,회원등급)저장
-			session.setAttribute("user_num",member.getUser_num());
+			session.setAttribute("user_number",member.getUser_num());
 			session.setAttribute("user_id",member.getId());
 			session.setAttribute("user_auth",member.getAuth());
 			
