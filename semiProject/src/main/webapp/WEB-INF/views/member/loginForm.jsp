@@ -11,7 +11,7 @@
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<form action="#" method="post">
+<form action="login.do" method="post">
 <div>
 <div class="input-group input-group-sm mb-3" style="width:80px">
  
