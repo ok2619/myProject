@@ -25,9 +25,9 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">login</a></li>
-					<li><a href="#">join</a></li>
+					<li><a href="${pageContext.request.contextPath}/main/main.do">Home</a></li>
+					<li><a href="${pageContext.request.contextPath}/member/loginForm.do">login</a></li>
+					<li><a href="${pageContext.request.contextPath}/member/signUpForm.do">join</a></li>
 					<li><a href="#">cart</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">my page</a>
