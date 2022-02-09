@@ -1,6 +1,6 @@
 /*회원관리*/
 create table qmember(
-    user_num number not null,
+	user_num number not null,
     id varchar2(10) unique not null,
     auth number(1) default 2 not null, /*회원등급:0탈퇴회원,1정지회원,2일반회원,3관리자*/
     constraint qmember_pk primary key (user_num)
@@ -28,70 +28,73 @@ create table qproduct(
     price number(10) not null, 
     image varchar2(100) not null,
     content clob,
-    preg_date date default sysdate not null,
+    reg_date date default sysdate not null, --상품등록일
     constraint qproduct_pk primary key (product_num)
  );
 create sequence qproduct_seq;
  
- create table qcart( 
+ create table qcart(
     cart_num number not null,
-    product_num number not null, --장바구니 담을 상품명
-    user_id number not null, --장바구니 이용 회원 아이디 
-    cart_count number not null, --담은 수량
-    cart_regdate date default sysdate not null, --담은 날짜
-    constraint 장바구니pk primary key (cart_num),
-    constraint 회원번호fk foreign key (user_id) references 회원관리(user_id)
+    product_num number not null, 
+    user_num number not null, 
+    cart_count number not null, --장바구니에 담은 수량
+    constraint qcart_pk primary key (cart_num),
+    constraint qcart_fk1 foreign key (user_num) references qmember (user_num),
+    constraint qcart_fk2 foreign key (product_num) references qmember (product_num)
  );
- --시퀀스
+create sequence qcart_seq;
  
  create table qorder(
     order_num number not null,
-    user_id number not null, --주문한 회원 아이디 
-    order_regdate date default sysdate not null,
-    constraint 주문pk primary key (order_num),
-    constraint 회원번호fk foreign key (user_id) references 회원관리(user_id)
+    user_num number not null,
+    item_name varchar2(600) not null, --주문상품명
+    order_total number(9) not null, --주문금액
+    payment number(1) not null, --주문방식(1.계좌이체, 2.카드결제)
+    shipping number default 1 not null, --배송상태(1.제품 준비중 2.제품 발송 3.배송완료)
+    reg_date date default sysdate not null, --주문날짜
+    constraint qorder_pk primary key (order_num),
+    constraint qorder_fk foreign key (user_num) references qmember (user_num)
  );
- --시퀀스
- create table qorder_detail		
-(
-    d_order_num number not null,
+create sequence qorder_seq;
+
+ create table qorder_detail(
+ 	orderdetail_num number not null,
     order_num number not null,
-    product_num number not null,
-    d_dorder_count number,
-    d_shipping number(1) default 1 not null, --배송전 1, 배송후 2
-    constraint 상세주문pk primary key (d_order_num),
-    constraint 주문번호fk foreign key (order_num) references 주문(order_num),
-    constraint 상품fk foreign key (product_num) references 주문(product_num)
+    product_num number not null, 
+    item_quantity number(9) default 1 not null, --1.제품 준비중 2.제품 발송 3.배송완료
+    constraint qorder_detail_pk primary key (orderdetail_num),
+    constraint qorder_detail_fk1 foreign key (order_num) references qorder (order_num),
+    constraint qorder_detail_fk2 foreign key (product_num) references qproduct (product_num)
  );
- --시퀀스
+create sequence qorder_detail_seq;
  
 /*게시판*/
-create table zboard(
+create table qboard(
  board_num number not null,
  title varchar2(150) not null,
- content clob not null,
+ b_content clob not null,
  hit number(5) default 0 not null,
  reg_date date default sysdate not null,
  modify_date date,
- filename varchar2(150),
+ filename varchar2(100),
  ip varchar2(40) not null,
- mem_num number not null,
- constraint zboard_pk primary key (board_num),
- constraint zboard_fk foreign key (mem_num) references zmember (mem_num)
+ user_num number not null,
+ constraint qboard_pk primary key (board_num),
+ constraint qboard_fk foreign key (user_num) references qmember (user_num)
 );
-create sequence zboard_seq;
+create sequence qboard_seq;
 
 /*댓글*/
-create table zboard_reply(
+create table qboard_reply(
  re_num number not null,
  re_content varchar2(900) not null,
  re_date date default sysdate not null,
  re_modifydate date,
  re_ip varchar2(40) not null,
- board_num number not null, /*부모글에 딸려있으니까 board_num 받아야됨*/
- mem_num number not null,
- constraint zreply_pk primary key (re_num),
- constraint zreply_fk1 foreign key (board_num) references zboard (board_num),
- constraint zreply_fk2 foreign key (mem_num) references zmember (mem_num)
+ board_num number not null, 
+ user_num number not null,
+ constraint qreply_pk primary key (re_num),
+ constraint qreply_fk1 foreign key (board_num) references qboard (board_num),
+ constraint qreply_fk2 foreign key (user_num) references qmember (user_num)
 );
-create sequence zreply_seq;
+create sequence qreply_seq;
