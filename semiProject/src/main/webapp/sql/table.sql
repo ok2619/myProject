@@ -40,7 +40,7 @@ create sequence qproduct_seq;
     cart_count number not null, --장바구니에 담은 수량
     constraint qcart_pk primary key (cart_num),
     constraint qcart_fk1 foreign key (user_num) references qmember (user_num),
-    constraint qcart_fk2 foreign key (product_num) references qmember (product_num)
+    constraint qcart_fk2 foreign key (product_num) references qproduct (product_num)
  );
 create sequence qcart_seq;
  
