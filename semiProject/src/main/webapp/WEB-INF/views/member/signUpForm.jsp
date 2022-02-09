@@ -152,7 +152,6 @@
     <button type="button" id="passwd_check" class="btn btn-primary">중복체크</button>
     <span id="message_passwd"></span>
     
-    <input type="password" class="form-control" id="cpasswd" name="cpasswd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
     <label for="NAME">이름</label><br>
   	<input type="text" class="form-control" id="name" name="name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
   	<label for="PHONE">연락처</label><br>
