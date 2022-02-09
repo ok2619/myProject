@@ -1,7 +1,7 @@
 /*회원관리*/
 create table qmember(
     user_num number not null,
-    user_id varchar2(10) unique not null,
+    id varchar2(10) unique not null,
     auth number(1) default 2 not null, /*회원등급:0탈퇴회원,1정지회원,2일반회원,3관리자*/
     constraint qmember_pk primary key (user_num)
 );

@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form id="signUp_form" action="SignUp.do" method="post">
+<form id="signUp_form" action="signUp.do" method="post">
 <div class="input-group input-group-sm mb-3" style="width:80px">
     <label for="ID">아이디</label><br>
   	<input type="text" class="form-control" id="id" name="id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
