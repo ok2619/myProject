@@ -92,7 +92,7 @@
 				$('#address2').val('').focus();
 				return false;
 			}
-			
+			 
 		});
 	});
 	

@@ -21,7 +21,7 @@ public class CheckIdAction implements Action{
 		request.setCharacterEncoding("utf-8");
 		
 		String id = request.getParameter("id");
-		
+		 
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberVO member = dao.checkMember(id);	
 		

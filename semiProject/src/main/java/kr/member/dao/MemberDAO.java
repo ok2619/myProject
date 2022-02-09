@@ -19,7 +19,7 @@ public class MemberDAO {
 	public void insertMember(MemberVO member)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		PreparedStatement pstmt2 = null;
+		PreparedStatement pstmt2 = null; 
 		PreparedStatement pstmt3 = null;
 		ResultSet rs = null;
 		String sql = null;

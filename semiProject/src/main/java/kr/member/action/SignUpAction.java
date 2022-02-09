@@ -17,7 +17,7 @@ public class SignUpAction implements Action{
 		MemberVO member = new MemberVO();
 		member.setId(request.getParameter("id"));
 		member.setName(request.getParameter("name"));
-		member.setPasswd(request.getParameter("passwd"));
+		member.setPasswd(request.getParameter("passwd")); 
 		member.setPhone(request.getParameter("phone"));
 		member.setZipcode(request.getParameter("zipcode"));
 		member.setAddress1(request.getParameter("address1"));
