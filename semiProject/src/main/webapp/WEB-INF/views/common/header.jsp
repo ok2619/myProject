@@ -1,31 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- header 시작 -->
-<h1 class="align-center"><a href="${pageContext.request.contextPath}/main/main.do">회원제 게시판</a></h1>
-<div class="align-right">
-	<c:if test="${!empty user_num && !empty user_photo }">
-		<img src="${pageContext.request.contextPath}/upload/${user_photo}" width="25" height="25" class="my-photo">
-	</c:if>
-	<c:if test="${!empty user_num && empty user_photo}">
-		<img src="${pageContext.request.contextPath}/images/face.png" width="25" height="25" class="my-photo">
-	</c:if>
-	<a href="${pageContext.request.contextPath}/board/list.do">게시판</a>
-	<c:if test="${!empty user_num}">
-		[<span>${user_id}</span>]
-		<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
-	</c:if>
-	<c:if test="${empty user_num}">
-		<a href="${pageContext.request.contextPath}/member/registerUserForm.do">회원가입</a>
-		<a href="${pageContext.request.contextPath}/member/loginForm.do">로그인</a>
-	</c:if>
-	<c:if test="${!empty user_num && user_auth == 2}">
-		<a href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a>
-	</c:if>
-	<c:if test="${!empty user_num && user_auth == 3}">
-		<a href="${pageContext.request.contextPath}/member/memberList.do">회원관리</a>
-	</c:if>
-</div>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial_scale=1.0"> <!-- ?? -->
+<title>bootstrap</title>
+<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+</head>
+<body>
+	<!-- 상단 고정 네이게이션 시작 -->
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Project World</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Home</a></li>
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- 상단 고정 네이게이션 끝 -->
+	<!-- 전체 화면 점보트론 시작 -->
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Hello, Bootstrap!</h1>
+			<p>부트스트랩을 이용해서 다양한 화면을 구성하고 반응형으로 문서를 작성할 수 있습니다. 부트스트랩은 주로 사용되는 버전이 3,4,5 버전이며 주기적으로 버전업이 되기 때문에 향상된 기능을 사용할 수 있습니다.</p>
+			<p>
+				<a class="btn btn-success btn-lg">Learn more</a>
+			</p>
+		</div>
+	</div>
+	<!-- 전체 화면 점보트론 끝 -->
+
+		<!-- footer시작 -->
+		<hr>
+		<div id="footer">
+			<p class="text-center">&copy; Project World</p>
+		</div>
+		<!-- footer끝 -->
+	</div>
+	<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script> <!-- 제이쿼리는 왜 넣지? -->
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+</body>
+</html>
 <!-- header 끝 -->
 
 
