@@ -11,7 +11,7 @@
 <div class="page-main">
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div>
-		<h3>메인 화면(수정1)</h3>
+		<h3>메인 화면(수정2)</h3>
 	</div>
 </div>
 </body>
