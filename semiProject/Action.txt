@@ -1,1 +1,1 @@
-MainAction - main.jsp로 경로 반환123   
+MainAction - main.jsp로 경로 반환   
