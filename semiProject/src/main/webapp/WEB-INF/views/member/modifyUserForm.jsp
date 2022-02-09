@@ -17,19 +17,7 @@
 				<label for="id" class="form-label mt-4">아이디</label>
 				<input type="text" id="id" readonly class="form-control-plaintext" value="뫄뫄${member.name}" maxlength="12" >
 			</div>
-			<div  class="form-group">
-				<label for="origin_passwd">현재 비밀번호</label>
-				<input type="password" name="origin_passwd" id="origin_passwd" maxlength="12">
-			</div>
-			<div  class="form-group">
-				<label for="passwd">새비밀번호</label>
-				<input type="password" name="passwd" id="passwd" maxlength="12">
-			</div>
-			<div  class="form-group">
-				<label for="cpasswd">새비밀번호 확인</label>
-				<input type="password" name="cpasswd" id="cpasswd" maxlength="12">
-				<span id="message_cpasswd"></span>
-			</div>
+			
 			<div  class="form-group">
 				<label for="name">이름</label>
 				<input type="text" name="name" id="name" maxlength="12">

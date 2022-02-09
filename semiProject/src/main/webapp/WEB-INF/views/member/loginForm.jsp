@@ -16,7 +16,7 @@
 <div class="input-group input-group-sm mb-3" style="width:80px">
  
     <label for="ID">아이디</label><br>
-  	<input type="text" class="form-control" id="user_id" name="user_id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+  	<input type="text" class="form-control" id="id" name="id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 
 	<label for="PASSWD">비밀번호</label><br>
     <input type="password" class="form-control" id="passwd" name="passwd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
