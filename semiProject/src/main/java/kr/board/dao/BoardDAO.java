@@ -8,7 +8,7 @@ public class BoardDAO {
 		return instance;
 	}
 	private BoardDAO() {}
-	
+	 
 	
 	//글등록
 	//총 레코드 수(검색 레코드 수)

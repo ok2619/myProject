@@ -33,7 +33,7 @@ create table qproduct(
  );
 create sequence qproduct_seq;
  
- create table qcart(
+ create table qcart( 
     cart_num number not null,
     product_num number not null, --장바구니 담을 상품명
     user_id number not null, --장바구니 이용 회원 아이디 
