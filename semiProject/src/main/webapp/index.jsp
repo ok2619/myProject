@@ -2,15 +2,4 @@
     pageEncoding="UTF-8"%>
 <%
 	response.sendRedirect(request.getContextPath()+"/main/main.do");
-<<<<<<< HEAD
-
-
-
-=======
-	
->>>>>>> branch 'main' of https://github.com/ok2619/myProject.git
-
-
-
-//test
 %>
