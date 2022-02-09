@@ -13,7 +13,6 @@
 	$(function(){
 		let idChecked = 0;
 		
-		//아이디 중복 체크
 		$('#id_check').click(function(){
 			if($('#id').val().trim()==''){
 				alert('아이디를 입력하세요!');
@@ -46,15 +45,13 @@
 					alert('네트워크 오류 발생');
 				}
 			});
-		});//end of click
+		});
 		
-		//아이디 중복 안내 메시지 초기화 및 아이디 중복 값 초기화
 		$('#signUp_form #id').keyup(function(){
 			idChecked = 0;
 			$('#message_id').text('');
 		});
 		
-		//회원 정보 등록 유효성 체크
 		$('#signUp_form').submit(function(){
 			if($('#id').val().trim()==''){
 				alert('아이디를 입력하세요');
@@ -96,7 +93,7 @@
 				return false;
 			}
 			
-		});//end of submit
+		});
 	});
 	
 </script>
@@ -107,7 +104,8 @@
 <div class="input-group input-group-sm mb-3" style="width:80px">
     <label for="ID">아이디</label><br>
   	<input type="text" class="form-control" id="id" name="id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-	<button type="button" id="#id_check" class="btn btn-primary">중복체크</button>
+	<button type="button" id="id_check" class="btn btn-primary">중복체크</button>
+	<span id="message_id"></span>
 	
 	<label for="PASSWD">비밀번호</label><br>
     <input type="password" class="form-control" id="passwd" name="passwd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
