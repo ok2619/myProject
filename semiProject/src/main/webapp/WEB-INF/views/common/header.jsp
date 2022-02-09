@@ -19,40 +19,42 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Project World</a>
+				<a class="navbar-brand" href="#">ABC shop</a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
 					<li><a href="#">Home</a></li>
-					<li><a href="#">Home</a></li>
-					
+					<li><a href="#">login</a></li>
+					<li><a href="#">join</a></li>
+					<li><a href="#">cart</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">my page</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">개인정보수정</a></li>
+							<li><a href="#">주문내역</a></li>
+							<li><a href="#">내가쓴글</a></li>
+						</ul>
+					</li>
+					<li><a href="#">review</a></li>
 				</ul>
+				<form class="navbar-form pull-right" role="search">
+            		<div class="input-group">
+               			<input type="text" class="form-control" placeholder="Search">
+               			<div class="input-group-btn">
+                  			<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+               			</div>
+            		</div>
+         		</form>
 			</div>
 		</div>
 	</div>
 	<!-- 상단 고정 네이게이션 끝 -->
-	<!-- 전체 화면 점보트론 시작 -->
-	<div class="jumbotron">
-		<div class="container">
-			<h1>Hello, Bootstrap!</h1>
-			<p>부트스트랩을 이용해서 다양한 화면을 구성하고 반응형으로 문서를 작성할 수 있습니다. 부트스트랩은 주로 사용되는 버전이 3,4,5 버전이며 주기적으로 버전업이 되기 때문에 향상된 기능을 사용할 수 있습니다.</p>
-			<p>
-				<a class="btn btn-success btn-lg">Learn more</a>
-			</p>
-		</div>
-	</div>
-	<!-- 전체 화면 점보트론 끝 -->
 
-		<!-- footer시작 -->
-		<hr>
-		<div id="footer">
-			<p class="text-center">&copy; Project World</p>
-		</div>
-		<!-- footer끝 -->
-	</div>
-	<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script> <!-- 제이쿼리는 왜 넣지? -->
+
+
+	<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 </body>
 </html>

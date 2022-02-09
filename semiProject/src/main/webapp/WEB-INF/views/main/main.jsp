@@ -4,16 +4,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+<meta name="viewport" content="width=device-width,initial_scale=1.0">
+<title>abc shop</title>
+<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
 </head>
 <body>
-<div class="page-main">
-    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div>
-		<h3>메인 화면(test4)</h3>
-	</div>
-	<input type="button" value="로그인" onclick="location.href='${pageContext.request.contextPath}/member/loginForm.do'">
-</div>
+    	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+		<div class="container-fluid">
+			<div class="container">
+				<h3>3개 컬럼</h3>
+				<div class="row">
+					<div class="col-md-3"><a href="#">outer</a></div>
+					<div class="col-md-3"><a href="#">top</a></div>
+					<div class="col-md-3"><a href="#">bottom</a></div>
+					<div class="col-md-3"><a href="#">ect</a></div>
+				</div>
+			</div>
+		</div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
 </body>
 </html>
