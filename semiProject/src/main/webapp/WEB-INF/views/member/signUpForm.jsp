@@ -62,18 +62,18 @@
 				alert('아이디 중복 체크 필수!');
 				return false;
 			}
-			if($('#name').val().trim()==''){
-				alert('이름을 입력하세요');
-				$('#name').val('').focus();
-				return false;
-			}
 			if($('#passwd').val().trim()==''){
 				alert('비밀번호를 입력하세요');
 				$('#passwd').val('').focus();
 				return false;
 			}
+			if($('#name').val().trim()==''){
+				alert('이름을 입력하세요');
+				$('#name').val('').focus();
+				return false;
+			}
 			if($('#phone').val().trim()==''){
-				alert('전화번호를 입력하세요');
+				alert('연락처를 입력하세요');
 				$('#phone').val('').focus();
 				return false;
 			}
@@ -88,7 +88,7 @@
 				return false;
 			}
 			if($('#address2').val().trim()==''){
-				alert('나머지 주소를 입력하세요');
+				alert('상세 주소를 입력하세요');
 				$('#address2').val('').focus();
 				return false;
 			}
