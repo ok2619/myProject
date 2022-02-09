@@ -1,6 +1,6 @@
 package kr.order.vo;
 
-public class QorderVO {
+public class OrderVO {
 
 }
  

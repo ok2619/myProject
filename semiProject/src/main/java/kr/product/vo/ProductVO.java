@@ -1,6 +1,6 @@
 package kr.product.vo;
 
-public class QproductVO {
+public class ProductVO {
 
 }
  
