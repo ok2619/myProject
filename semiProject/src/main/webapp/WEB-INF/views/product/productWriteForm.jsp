@@ -72,7 +72,7 @@ $(function(){
 				  <input type="file" class="form-control" name="image" id="image" accept="image/gif,image/png,image/jpeg">
 			</div>
             <input type="submit" value="등록">
-            <input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/product/productListForm.do'">
+            <input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/product/productListForm.jsp'">
         </form>
         
     </div>

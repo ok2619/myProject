@@ -46,7 +46,8 @@
 		</tr>
 		<c:forEach var="product" items="${list}">
 		<tr>
-			<td>${product.product_name}</td>
+			<%-- <td>${product.product_name}</td> --%>
+			<td><a href="productDetail.do?product_num=${product.product_num}">${product.product_name}</a></td>
 			<c:choose>
 			<c:when test="${product.image == null}">
 			<td><img src="../upload/NO.png" height="180" width="180"></td>
@@ -55,11 +56,12 @@
 			<td><img src="../upload/${product.image}" height="180" width="180"></td>
 			</c:when>
 			</c:choose>
-			<%-- <td><a href="boardListDetailForm.do?board_num=${product.board_num}">${board.title}</a></td> --%>
+			
 			<td>${product.sort}</td>
 			<td>${product.price}</td>
 			<td>${product.stock}</td>
 			<td>${product.reg_date}</td>
+			
 		</tr>	
 		</c:forEach>
 	</table>

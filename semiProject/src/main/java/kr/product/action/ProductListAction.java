@@ -31,7 +31,7 @@ public class ProductListAction implements Action{
 		//페이지 처리
 		//keyfield,keyword,currentPage,count,rowCount,pageCount,url
 		PagingUtil page = new PagingUtil(keyfield,keyword,
-				          Integer.parseInt(pageNum),count,5,10,"productList.do");
+				          Integer.parseInt(pageNum),count,3,10,"productList.do");
 		
 		List<ProductVO> list = null;
 		if(count > 0) {

@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.board.vo.BoardVO;
 import kr.product.vo.ProductVO;
 import kr.util.DBUtil;
 import kr.util.StringUtil;
@@ -103,7 +104,7 @@ public class ProductDAO {
 					 else if(keyfield.equals("2")) sub_sql = "WHERE sort LIKE ?";
 				 }
 				 
-				 sql = "select * from (select rownum rn, product_name,sort, stock, price,image,reg_date from "
+				 sql = "select * from (select rownum rn,product_num ,product_name,sort, stock, price,image,reg_date from "
 				 		+ "(select * from qproduct " 
 						+ sub_sql + " order by product_num desc)) where rn between ? and ?";
 				 
@@ -118,6 +119,7 @@ public class ProductDAO {
 				 list = new ArrayList<ProductVO>();
 				 while(rs.next()) {
 					 ProductVO product = new ProductVO();
+					 product.setProduct_num(rs.getInt("product_num"));
 					 product.setImage(rs.getString("image"));
 					 product.setProduct_name(rs.getString("Product_name"));
 					 product.setSort(rs.getString("sort"));
@@ -136,5 +138,79 @@ public class ProductDAO {
 			 }
 			 return list;
 		 }
+		
+		 //상품상세보기
+		 public ProductVO getProduct(int product_num) throws Exception{
+			 Connection conn = null;
+			 PreparedStatement pstmt = null;
+			 ResultSet rs = null;
+			 String sql = null;
+			 ProductVO product = null;
+			 
+			try {
+				conn = DBUtil.getConnection();
+				sql = "select * from qproduct where product_num=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, product_num);
+			    rs = pstmt.executeQuery();
+			    
+			    if(rs.next()) {
+			    	product = new ProductVO();
+			    	product.setProduct_num(rs.getInt("product_num"));
+			    	product.setStock(rs.getInt("stock"));
+			    	product.setProduct_name(rs.getString("product_name"));
+			    	product.setSort(rs.getString("sort"));
+			    	product.setPrice(rs.getInt("price"));
+			    	product.setImage(rs.getString("image"));
+			    	product.setContent(rs.getString("content"));
+			    	product.setReg_date(rs.getDate("reg_date"));
+			    }
+				 
+				 
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			 
+			 return product;	 
+		 }
+		 //상품 수정
+		 public void updateProduct(ProductVO product)throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				String sql = null;
+				String sub_sql = "";
+				int cnt = 0;
+
+				try {
+					conn = DBUtil.getConnection();
+					if(product.getImage()!=null) {
+						sub_sql = ",image=?";
+					}
+					sql ="update qproduct set product_name=?,price=?,sort=?,stock=?,content=?,reg_date=SYSDATE"   
+							+ sub_sql + "WHERE product_num=?";
+					
+					pstmt = conn.prepareStatement(sql); 
+					pstmt.setString(++cnt, product.getProduct_name());
+					pstmt.setInt(++cnt, product.getPrice());
+					pstmt.setString(++cnt, product.getSort());
+					pstmt.setInt(++cnt, product.getStock());
+					pstmt.setString(++cnt, product.getContent());
+					if(product.getImage()!=null) {
+						pstmt.setString(++cnt, product.getImage());
+					}
+					pstmt.setInt(++cnt, product.getProduct_num());
+					pstmt.executeUpdate();
+					
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					DBUtil.executeClose(null, pstmt, conn);
+				}
+			}
+		 
+		 
+		 
 	}
 
