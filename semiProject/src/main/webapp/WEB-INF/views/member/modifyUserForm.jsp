@@ -76,6 +76,7 @@
 			<div>
 			 <input type="submit" value="수정" class="btn btn-primary">
 			 <input type="button" value="회원탈퇴" class="btn btn-danger" onclick="location.href='#'">
+			 <button type="button" onclick="location.href='${pageContext.request.contextPath}/member/modifyPasswordForm.do'" class="btn btn-primary">비밀번호 변경</button>
 			</div>
 		</form>
 	</div>
