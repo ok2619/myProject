@@ -145,7 +145,59 @@ public class MemberDAO {
 	}
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ	
 	//회원정보수정
+	public void updateMember(MemberVO member)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			//커넥션 할당
+			conn = DBUtil.getConnection();
+			//SQL문
+			sql = "UPDATE qmember_detail SET name=?,phone=?,zipcode=?,address1=?,address2=? WHERE user_num=?";
+			//PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getName());
+			pstmt.setString(2, member.getPhone());
+			pstmt.setString(3, member.getZipcode());
+			pstmt.setString(4, member.getAddress1());
+			pstmt.setString(5, member.getAddress2());
+			pstmt.setInt(6, member.getUser_num());
+			//SQL실행
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
+	
 	//비밀번호수정
+	public void updatePassword(String passwd, int user_number)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "update qmember_detail set passwd=? where user_num=?";
+			
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, passwd);
+			pstmt.setInt(2, user_number);
+			
+			pstmt.executeUpdate();			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
+	
+	
 	//회원탈퇴(회원정보 삭제)
 	 
 	

@@ -4,27 +4,61 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial_scale=1.0">
 <title>회원정보수정</title>
+<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#modify_form').submit(function(){
+			if($('#name').val().trim()==''){
+				alert('이름을 입력하세요');
+				$('#name').val('').focus();
+				return false;
+			}
+			if($('#phone').val().trim()==''){
+				alert('연락처를 입력하세요');
+				$('#name').val('').focus();
+				return false;
+			}
+			if($('#zipcode').val().trim()==''){
+				alert('우편번호를 입력하세요');
+				$('#zipcode').val('').focus();
+				return false;
+			}
+			if($('#address1').val().trim()==''){
+				alert('주소를 입력하세요');
+				$('#address1').val('').focus();
+				return false;
+			}
+			if($('#address2').val().trim()==''){
+				alert('상세주소를 입력하세요');
+				$('#address2').val('').focus();
+				return false;
+			}
+		});
+	});
+</script>
 </head>
 <body>
 	<div class="container">
 	<h3>회원정보 수정</h3>
-		<form action="modifyUserForm.do" method="post" id="modify_form">
+		<form action="modifyUser.do" method="post" id="modify_form">
 			<div  class="form-group">
 				<label for="id" class="form-label mt-4">아이디</label>
-				<input type="text" id="id" readonly class="form-control-plaintext" value="뫄뫄${member.name}" maxlength="12" >
+				<input type="text" id="id" readonly class="form-control-plaintext" value="${member.id}" maxlength="12" >
 			</div>
 			
 			<div  class="form-group">
 				<label for="name">이름</label>
-				<input type="text" name="name" id="name" maxlength="12">
+				<input type="text" name="name" id="name" value="${member.name}" maxlength="12">
 			</div>
 			<div  class="form-group">
 				<label for="phone">연락처</label>
-				<input type="text" name="phone" id="phone" maxlength="15">
+				<input type="text" name="phone" id="phone" value="${member.phone}" maxlength="15">
 			</div>
 			<div  class="form-group">
 				<label for="zipcode">우편번호</label>
@@ -36,12 +70,13 @@
 					<input type="text" name="address1" id="address1" value="${member.address1}" maxlength="30">
 			</div>
 			<div  class="form-group">
-					<label for="address2">나머지 주소</label>
+					<label for="address2">상세주소</label>
 					<input type="text" name="address2" id="address2" value="${member.address2}" maxlength="30">
 			</div>
 			<div>
-			 <button type="submit" class="btn btn-primary">수정</button>
-			 <button type="submit" class="btn btn-danger">회원탈퇴</button>
+			 <input type="submit" value="수정" class="btn btn-primary">
+			 <input type="button" value="회원탈퇴" class="btn btn-danger" onclick="location.href='#'">
+			 <button type="button" onclick="location.href='${pageContext.request.contextPath}/member/modifyPasswordForm.do'" class="btn btn-primary">비밀번호 변경</button>
 			</div>
 		</form>
 	</div>
