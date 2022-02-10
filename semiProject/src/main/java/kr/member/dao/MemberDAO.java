@@ -199,7 +199,46 @@ public class MemberDAO {
 	
 	
 	//회원탈퇴(회원정보 삭제)
-	 
+	public void deleteMember(int user_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		String sql = null;
+		
+		try{
+			//커넥션 할당
+			conn = DBUtil.getConnection();
+			//오토커밋 해제
+			conn.setAutoCommit(false);
+			
+			//qmember auth값 변경
+			sql = "UPDATE qmember SET auth=0 WHERE user_num=?";
+			//PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, user_num);
+			//SQL 실행
+			pstmt.executeUpdate();
+			
+			//qmember_dtail 레코드 삭제
+			sql = "DELETE FROM qmember_detail WHERE user_num=?";
+			//PreparedStatement 객체 생성
+			pstmt2 = conn.prepareStatement(sql);
+			pstmt2.setInt(1, user_num);
+			//SQL 실행
+			pstmt2.executeUpdate();
+			
+			//sql문 모두 성공하면 커밋
+			conn.commit();
+		}catch(Exception e) {
+			//sql문 실패하면 롤백
+			conn.rollback();
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(null, pstmt2, null);
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	 }
 	
 	//관리자
 	//총 회원 수
