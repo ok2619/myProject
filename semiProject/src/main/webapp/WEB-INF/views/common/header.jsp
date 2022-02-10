@@ -33,15 +33,9 @@
 					<li><a href="${pageContext.request.contextPath}/member/signUpForm.do">join</a></li>
 					</c:if>
 					
-					<c:if test="${!empty user_number}">
-					<li><a href="${pageContext.request.contextPath}/member/logoutForm.do">logout</a></li>
-					</c:if>
-					
-					<c:if test="${!empty user_number}">
-					<li><a href="#">cart</a></li>
-					</c:if>
-					
 					<c:if test="${!empty user_number && user_auth == 2}">
+					<li><a href="#">cart</a></li>
+					<li><a href="${pageContext.request.contextPath}/member/logout.do">logout</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">my page</a>
 						<ul class="dropdown-menu">
@@ -55,6 +49,7 @@
 					<c:if test="${!empty user_number && user_auth == 3}">
 						<li><a href="${pageContext.request.contextPath}/member/memberList.do">회원관리</a></li>
 						<li><a href="#">상품등록</a></li>
+						<li><a href="${pageContext.request.contextPath}/member/logout.do">logout</a></li>
 					</c:if>
 										
 					<li><a href="#">review</a></li>
