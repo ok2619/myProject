@@ -53,6 +53,7 @@
 					</c:if>
 										
 					<li><a href="${pageContext.request.contextPath}/board/list.do">review</a></li>
+					<li><a href="${pageContext.request.contextPath}/product/productList.do">상품목록</a></li>
 				</ul>
 				<form class="navbar-form pull-right" role="search">
             		<div class="input-group">
