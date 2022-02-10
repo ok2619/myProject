@@ -3,6 +3,8 @@ package kr.member.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import kr.member.vo.MemberVO;
 import kr.util.DBUtil;
@@ -242,6 +244,107 @@ public class MemberDAO {
 	
 	//관리자
 	//총 회원 수
+		public int getMemberCountByAdmin(String keyfield, String keyword)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			String sub_sql = "";
+			int count = 0;
+
+			try {
+				//커넥션풀로부터 커넥션을 할당
+				conn = DBUtil.getConnection();
+				
+				if(keyword != null && !"".equals(keyword)) {
+				//검색글 처리
+				if(keyfield.equals("1")) sub_sql = "WHERE id LIKE ?";
+					else if(keyfield.equals("2")) sub_sql = "WHERE name LIKE";
+					else if(keyfield.equals("3")) sub_sql = "WHERE email LIKE";
+				}
+
+				//전체 또는 검색 레코드 갯수
+				sql = "SELECT COUNT(*) FROM qmember m "
+						+ "LEFT OUTER JOIN qmember_detail d USING(user_num)" + sub_sql;
+				//PreparedStatement 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				if(keyword != null && !"".equals(keyword)) {
+					pstmt.setString(1, "%" + keyword + "%");
+				}
+		
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					count = rs.getInt(1);
+					}
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					//자원정리
+					DBUtil.executeClose(rs, pstmt, conn);
+				}
+				return count;
+			}
+		//회원 목록
+		public List<MemberVO> getListMemberByAdmin(int startRow, int endRow,String keyfield, String keyword)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<MemberVO> list = null;
+			String sql = null;
+			String sub_sql = "";
+			int cnt = 0;
+
+			try {
+				//커넥션풀로부터 커넥션 할당
+				conn = DBUtil.getConnection();
+				
+				if(keyword != null && !"".equals(keyword)) {
+				if(keyfield.equals("1")) sub_sql = "WHERE id LIKE ?";
+					else if(keyfield.equals("2")) sub_sql = "WHERE name LIKE ?";
+					else if(keyfield.equals("3")) sub_sql = "WHERE email LIKE ?";
+				}
+
+			//SQL문 작성
+			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
+				+ "(SELECT * FROM qmember m LEFT OUTER JOIN qmember_detail d "
+				+ "USING(user_num) " + sub_sql + " ORDER BY reg_date DESC NULLS LAST)a) "
+				+ "WHERE rnum >= ? AND rnum <= ?";
+			//PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			if(keyword != null && !"".equals(keyword)) {
+				pstmt.setString(++cnt, "%" + keyword + "%");
+			}
+			pstmt.setInt(++cnt, startRow);
+			pstmt.setInt(++cnt, endRow);
+
+			//SQL문을 테이블에 반영하고 결과행들을 ResultSet에 담음
+			rs = pstmt.executeQuery();
+			list = new ArrayList<MemberVO>();
+			while(rs.next()) {
+				MemberVO member = new MemberVO();
+				member.setUser_num(rs.getInt("user_num"));
+				member.setId(rs.getString("id"));
+				member.setAuth(rs.getInt("auth"));
+				member.setPasswd(rs.getString("passwd"));
+				member.setName(rs.getString("name"));
+				member.setPhone(rs.getString("phone"));
+				member.setZipcode(rs.getString("zipcode"));
+				member.setAddress1(rs.getString("address1"));
+				member.setAddress2(rs.getString("address2"));
+				member.setReg_date(rs.getDate("reg_date"));
+
+				//자바빈(VO)를 리스트에 저장
+				list.add(member);
+			}
+
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return list;
+	}
 	//회원 목록
 	//회원 정보 수정
 }
