@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>회원가입</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -14,7 +15,7 @@
 		let idChecked = 0;
 		let pass = 0;
 
-///////////////////////////////////////////////////////////////////////////////////////
+//ㅡㅡㅡㅡㅡ비밀번호 확인ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 		$('#passwd_check').click(function(){
 			$.ajax({
 				url:'passwordCheck.do',
@@ -41,7 +42,8 @@
 				}
 			});
 		});
-///////////////////////////////////////////////////////////////////////////////////////
+		
+//ㅡㅡㅡㅡㅡ아이디 중복 확인ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 		$('#id_check').click(function(){
 			if($('#id').val().trim()==''){
 				alert('아이디를 입력하세요!');
@@ -75,7 +77,8 @@
 				}
 			});
 		});
-///////////////////////////////////////////////////////////////////////////////////////
+		
+//ㅡㅡㅡㅡㅡ회원가입 유효성 체크ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 		$('#signUp_form #id').keyup(function(){
 			idChecked = 0;
 			$('#message_id').text('');
@@ -137,39 +140,79 @@
 </script>
 </head>
 <body>
-
-<form id="signUp_form" action="signUp.do" method="post">
-<div class="input-group input-group-sm mb-3" style="width:80px">
-    <label for="ID">아이디</label><br>
-  	<input type="text" class="form-control" id="id" name="id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-	<button type="button" id="id_check" class="btn btn-primary">중복체크</button>
-	<span id="message_id"></span>
+<div class="page-main">
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<h2 id="sign_title" class="align-center">회원가입</h2>		
+	<form id="signUp_form" action="signUp.do" method="post" class="form-inline">
 	
-	<label for="PASSWD">비밀번호</label><br>
-    <input type="password" class="form-control" id="passwd" name="passwd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <label for="CPASSWD">비밀번호 확인</label><br>
-    <input type="password" class="form-control" id="cpasswd" name="cpasswd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <button type="button" id="passwd_check" class="btn btn-primary">중복체크</button>
-    <span id="message_passwd"></span>
-    
-    <input type="password" class="form-control" id="cpasswd" name="cpasswd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    <label for="NAME">이름</label><br>
-  	<input type="text" class="form-control" id="name" name="name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-  	<label for="PHONE">연락처</label><br>
-  	<input type="text" class="form-control" id="phone" name="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-  	
-  	<label for="zipcode">우편번호</label><br>
-  	<input type="text" class="form-control" id="zipcode" name="zipcode" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-  	<button type="button" onclick="sample2_execDaumPostcode()" class="btn btn-primary">우편번호 찾기</button>
-  	
-  	<label for="address1">주소</label><br>
-  	<input type="text" class="form-control" id="address1" name="address1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-  	<label for="address2">상세주소</label><br>
-  	<input type="text" class="form-control" id="address2" name="address2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-  	
-  	<input type="submit" value="가입">
+		<div class="form-group">
+			<label for="ID" class="col-lg-2 control-label">아이디</label>
+			<div class="col-lg-10">
+			<input type="text" class="form-control" id="id" name="id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
+			</div>       		
+		</div>
+			<button type="button" id="id_check" class="btn btn-danger btn-sm">중복체크</button>
+			<span id="message_id"></span>		
+		<p>		
+		<div class="form-group">
+			<label for="PASSWD" class="col-lg-2 control-label">비밀번호</label> 
+			<div class="col-lg-10">
+			<input type="password" class="form-control" id="passwd" name="passwd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
+			</div>       		
+		</div>
+		<p>				
+		<div class="form-group">
+			<label for="CPASSWD" class="col-lg-2 control-label">비밀번호 확인</label> 
+			<div class="col-lg-10">
+			<input type="password" class="form-control" id="cpasswd" name="cpasswd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
+			</div>       		
+		</div>	
+			<button type="button" id="passwd_check" class="btn btn-default btn-sm">확인</button>
+		    <span id="message_passwd"></span>	
+		<p>    
+	    <div class="form-group">
+			<label for="NAME" class="col-lg-2 control-label">이름</label>
+			<div class="col-lg-10">
+			<input type="text" class="form-control" id="name" name="name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
+			</div>       		
+		</div>
+		<p>    
+	    <div class="form-group">
+			<label for="phone" class="col-lg-2 control-label">연락처</label>
+			<div class="col-lg-10">
+			<input type="text" class="form-control" id="phone" name="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
+			</div>       		
+		</div>
+		<p>    
+	    <div class="form-group">
+			<label for="zipcode" class="col-lg-2 control-label">주소</label>
+			<div class="col-lg-10">
+			<input type="text" class="form-control" id="zipcode" name="zipcode" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
+			</div> 			        		
+		</div>
+			<button type="button" onclick="sample2_execDaumPostcode()" class="btn btn-default btn-xs">우편번호 〉</button>
+		<p> 
+		<div class="form-group">
+			<label for="address1" class="col-lg-2 control-label"></label>
+			<div class="col-lg-10">
+			<input type="text" class="form-control" id="address1" name="address1" placeholder="기본주소" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
+			</div>       		
+		</div>
+		<p>
+		<div class="form-group">
+			<label for="address2" class="col-lg-2 control-label"></label>
+			<div class="col-lg-10">
+			<input type="text" class="form-control" id="address2" name="address2" placeholder="상세주소" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
+			</div>       		
+		</div>		
+		
+	</form>	
+	<p><p><p>
+		<div class="align-center">
+			<input type="submit" class="btn btn-info btn-lg" value="회원가입" id="submit_btn">
+		</div>
 </div>
-</form>
+
 <!-- 우편번호 스크립트 시작 -->
 <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
 <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
@@ -268,5 +311,7 @@
     }
 </script>
 <!-- 우편번호 스크립트 끝 -->
+	<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 </body>
 </html>
