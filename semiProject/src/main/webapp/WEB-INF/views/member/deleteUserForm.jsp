@@ -34,21 +34,22 @@
 				alert('비밀번호 불일치');
 				$('#cpasswd').val('').focus();
 				return false;
-			}//submit끝
+			}
+		});//submit끝
+		
+		//비밀번호 확인 후 비밀번호를 재수정시 비밀번호 확인 및 메시지 초기화
+		$('#passwd').keyup(function(){
+			$('#cpasswd').val('');
+			$('#message_id').text('');
+		});
 			
-			//비밀번호 확인 후 비밀번호를 재수정시 비밀번호 확인 및 메시지 초기화
-			$('#passwd').keyup(function(){
-				$('#cpasswd').val('');
+		//비밀번호 일치 여부 확인
+		$('#cpasswd').keyup(function(){
+			if($('#passwd').val() == $('#cpasswd').val()){
+				$('#message_id').text('비밀번호 일치');
+			}else{
 				$('#message_id').text('');
-			});
-			
-			//비밀번호 일치 여부 확인
-			$('#cpasswd').keyup(function(){
-				if($('#passwd').val() == $('#cpasswd').val()){
-					$('#message_id').text('비밀번호 일치');
-				}else{
-					$('#message_id').text('');
-				}
+			}
 		});
 	});
 </script>
@@ -71,8 +72,8 @@
 				<span id="message_id"></span>
 			</div>
 			<div>
-			<input type="submit" value="회원탈퇴">
-			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+				<input type="submit" value="회원탈퇴">
+				<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 			</div>
 		</form>
 	</div>
