@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>회원가입</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function(){
 		let idChecked = 0;
@@ -203,12 +204,12 @@
 			<input type="text" class="form-control" id="address2" name="address2" placeholder="상세주소" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
 			</div>       		
 		</div>		
-		
-	</form>	
-	<p><p><p>
+			<p><p><p>
 		<div class="align-center">
 			<input type="submit" class="btn btn-info btn-lg" value="회원가입" id="submit_btn">
 		</div>
+	</form>	
+
 </div>
 
 <!-- 우편번호 스크립트 시작 -->
@@ -309,7 +310,5 @@
     }
 </script>
 <!-- 우편번호 스크립트 끝 -->
-	<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 </body>
 </html>
