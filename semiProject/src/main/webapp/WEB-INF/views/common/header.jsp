@@ -52,7 +52,7 @@
 						<li><a href="${pageContext.request.contextPath}/member/logout.do">logout</a></li>
 					</c:if>
 										
-					<li><a href="#">review</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/list.do">review</a></li>
 				</ul>
 				<form class="navbar-form pull-right" role="search">
             		<div class="input-group">
