@@ -15,9 +15,9 @@
 				$('#title').val('').focus();
 				return false;
 			}
-			if($('#content').val().trim()==''){
+			if($('#b_content').val().trim()==''){
 				alert('내용을 입력하세요');
-				$('#content').val('').focus();
+				$('#b_content').val('').focus();
 				return false;
 			}			
 		});
@@ -35,8 +35,8 @@
 				<input type="text" name="title" id="title" maxlength="50">
 			</li>		
 			<li>
-				<label for="content">내용</label>
-				<textarea rows="5" cols="30" name="content" id="content"></textarea>
+				<label for="b_content">내용</label>
+				<textarea rows="5" cols="30" name="b_content" id="b_content"></textarea>
 			</li>
 			<li>
 				<label for="filename">파일</label>
