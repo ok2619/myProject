@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- header 시작 -->
 <!DOCTYPE html>
 <html lang="ko">
@@ -26,9 +27,21 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="${pageContext.request.contextPath}/main/main.do">Home</a></li>
+					
+					<c:if test="${empty user_number}">
 					<li><a href="${pageContext.request.contextPath}/member/loginForm.do">login</a></li>
 					<li><a href="${pageContext.request.contextPath}/member/signUpForm.do">join</a></li>
+					</c:if>
+					
+					<c:if test="${!empty user_number}">
+					<li><a href="${pageContext.request.contextPath}/member/logoutForm.do">logout</a></li>
+					</c:if>
+					
+					<c:if test="${!empty user_number}">
 					<li><a href="#">cart</a></li>
+					</c:if>
+					
+					<c:if test="${!empty user_number && user_auth == 2}">
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">my page</a>
 						<ul class="dropdown-menu">
@@ -37,6 +50,13 @@
 							<li><a href="#">내가쓴글</a></li>
 						</ul>
 					</li>
+					</c:if>
+					
+					<c:if test="${!empty user_number && user_auth == 3}">
+						<li><a href="${pageContext.request.contextPath}/member/memberList.do">회원관리</a></li>
+						<li><a href="#">상품등록</a></li>
+					</c:if>
+										
 					<li><a href="#">review</a></li>
 				</ul>
 				<form class="navbar-form pull-right" role="search">
