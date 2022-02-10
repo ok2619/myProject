@@ -4,7 +4,7 @@
 <c:if test="${check}">  
 	<script type="text/javascript">
 		alert('회원탈퇴가 완료되었습니다.');
-		location.href='main.do'
+		location.href='${pageContext.request.contextPath}/main/main.do'
 	</script>
 </c:if>
 <c:if test="${!check}">
