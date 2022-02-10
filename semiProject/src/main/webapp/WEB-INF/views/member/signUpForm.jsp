@@ -213,7 +213,7 @@
 		</div>       		
 		<p><p><p>
 		<div class="align-center">
-			<input type="submit" class="btn btn-info btn-lg" value="회원가입" id="submit_btn">
+			<input type="submit" class="btn btn-info btn-lg" value="&nbsp;&nbsp;&nbsp;회원가입&nbsp;&nbsp;&nbsp;" id="submit_btn"> <!-- &nbsp; :공백 -->
 		</div>  
 	</form>	
 

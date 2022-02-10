@@ -23,30 +23,8 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>게시판 목록</h2>
-	<form id="search_form" action="list.do" method="get">
-		<ul class="search">
-			<li>
-				<select name="keyfield">
-					<option value="1">제목</option>
-					<option value="2">아이디</option>
-					<option value="3">내용</option>
-				</select>
-			</li>
-			<li>
-				<input type="search" size="16" name="keyword" id="keyword" 
-												value="${param.keyword}">
-			</li>
-			<li>
-				<input type="submit" value="검색">
-			</li>
-		</ul>
-	</form>
-	<div class="list-space align-right">
-		<input type="button" value="글쓰기" onclick="location.href='writeForm.do'" 
-		<c:if test="${empty user_number}">disabled="disabled"</c:if>> <!-- 로그인 안된상태-> 글쓰기버튼 비활성화 -->
-		<input type="button" value="목록" onclick="location.href='list.do'">		
-	</div>
+	<h2 class="align-center common_title">상품 후기</h2>
+		
 	<c:if test="${count == 0 }">
 	<div class="result-display">
 		표시할 게시물이 없습니다.
@@ -71,6 +49,33 @@
 		</tr>
 		</c:forEach>
 	</table>
+	<p><p>
+	<div class="list-space align-right">
+		<input type="button" value="글쓰기" onclick="location.href='writeForm.do'" 
+		<c:if test="${empty user_number}">disabled="disabled"</c:if>> <!-- 로그인 안된상태-> 글쓰기버튼 비활성화 -->
+		<input type="button" value="목록" onclick="location.href='list.do'">		
+	</div>
+	
+	<form id="search_form" action="list.do" method="get">
+		<ul class="search">
+			<li>
+				<select name="keyfield">
+					<option value="1">제목</option>
+					<option value="2">아이디</option>
+					<option value="3">내용</option>
+				</select>
+			</li>
+			<li>
+				<input type="search" size="16" name="keyword" id="keyword" 
+												value="${param.keyword}">
+			</li>
+			<li>
+				<input type="submit" value="검색">
+			</li>
+		</ul>
+	</form>
+	
+	
 	<div class="align-center">
 		${pagingHtml}
 	</div>	
