@@ -12,7 +12,7 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2 class="align-center common_title">로그인</h2>
+	<h3 class="align-center common_title">로그인</h3>
 	
 <%--로그인 화면 샘플 1 --%>	
 	<form action="login.do" method="post" class="form-horizontal" role="form"> 
