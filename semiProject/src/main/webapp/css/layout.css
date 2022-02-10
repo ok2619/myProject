@@ -42,14 +42,17 @@ a:hover{
 /*회원가입, 수정폼*/
 form{
 	width:600px;
-	margin:50 auto;
+	margin:50px auto;
 	padding:10px 10px 10px 80px;
-	/* border:1px solid #000;  */
+	/* border:1px solid #000;  */ 
 	
 }
-input[id="address1"],input[id="address2"]{
-	width:300px;
+form#signUp_form{ /*추가*/
+	width:800px;
+	margin:50px 100px 50px 150px;
+	padding:10px auto;	
 }
+
 ul{
 	list-style:none;
 }
@@ -66,15 +69,17 @@ input[type="text"],input[type="password"],input[type="email"]{
 input[id="zipcode"]{
 	width:95px;
 }
-
+input[id="address1"],input[id="address2"]{
+	width:300px;
+}
 .form-notice{
 	margin-left:130px;
 }
-#sign_title{
-	margin:140px auto;
+#sign_title{ /*추가*/
+	margin:140px auto 60px;
 }
-#submit_btn{
-	margin:110px auto 50px;
+#submit_btn{ /*추가*/
+	margin:50px 240px 50px 0;
 }
 
 

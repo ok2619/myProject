@@ -145,69 +145,76 @@
 	<form id="signUp_form" action="signUp.do" method="post" class="form-inline">
 	
 		<div class="form-group">
-			<label for="ID" class="col-lg-2 control-label">아이디</label>
-			<div class="col-lg-10">
+			<label for="ID" class="control-label">아이디</label>
+		</div>
+		<div class="form-group">
 			<input type="text" class="form-control" id="id" name="id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
-			</div>       		
+		</div>       		
+		<button type="button" id="id_check" class="btn btn-danger btn-sm">중복체크</button>
+		<span id="message_id"></span>	
+		 <p>	
+		 	
+		 <div class="form-group">
+			<label for="PASSWD" class="control-label">비밀번호</label> 
 		</div>
-			<button type="button" id="id_check" class="btn btn-danger btn-sm">중복체크</button>
-			<span id="message_id"></span>		
-		<p>		
 		<div class="form-group">
-			<label for="PASSWD" class="col-lg-2 control-label">비밀번호</label> 
-			<div class="col-lg-10">
 			<input type="password" class="form-control" id="passwd" name="passwd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
-			</div>       		
-		</div>
-		<p>				
+		</div>       		
+		<p>		
+				
 		<div class="form-group">
-			<label for="CPASSWD" class="col-lg-2 control-label">비밀번호 확인</label> 
-			<div class="col-lg-10">
+			<label for="CPASSWD" class="control-label">비밀번호 확인</label> 
+		</div>
+		<div class="form-group">
 			<input type="password" class="form-control" id="cpasswd" name="cpasswd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
-			</div>       		
-		</div>	
-			<button type="button" id="passwd_check" class="btn btn-default btn-sm">확인</button>
-		    <span id="message_passwd"></span>	
-		<p>    
-	    <div class="form-group">
-			<label for="NAME" class="col-lg-2 control-label">이름</label>
-			<div class="col-lg-10">
-			<input type="text" class="form-control" id="name" name="name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
-			</div>       		
+		</div>       				
+		<button type="button" id="passwd_check" class="btn btn-default btn-sm">확인</button>
+		<span id="message_passwd"></span>	
+		<p>   
+		
+		<div class="form-group">
+			<label for="NAME" class="control-label">이름</label>
 		</div>
-		<p>    
-	    <div class="form-group">
-			<label for="phone" class="col-lg-2 control-label">연락처</label>
-			<div class="col-lg-10">
+		<div class="form-group">
+			<input type="text" class="form-control" id="name" name="name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">						
+		</div>       		
+		 <p>
+		 
+		 <div class="form-group">
+			<label for="phone" class="control-label">연락처</label>
+		</div>
+		<div class="form-group">
 			<input type="text" class="form-control" id="phone" name="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
-			</div>       		
+		</div>       		
+		 <p>
+		 
+		 <div class="form-group">
+			<label for="zipcode" class="control-label">주소</label>
 		</div>
-		<p>    
-	    <div class="form-group">
-			<label for="zipcode" class="col-lg-2 control-label">주소</label>
-			<div class="col-lg-10">
+		<div class="form-group">
 			<input type="text" class="form-control" id="zipcode" name="zipcode" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
-			</div> 			        		
-		</div>
-			<button type="button" onclick="sample2_execDaumPostcode()" class="btn btn-default btn-xs">우편번호 〉</button>
-		<p> 
+		</div>  
+		<button type="button" onclick="sample2_execDaumPostcode()" class="btn btn-default btn-xs">우편번호 〉</button>     		
+		 <p>
+				
 		<div class="form-group">
-			<label for="address1" class="col-lg-2 control-label"></label>
-			<div class="col-lg-10">
+			<label for="address1" class="control-label"></label>
+		</div>
+		<div class="form-group">
 			<input type="text" class="form-control" id="address1" name="address1" placeholder="기본주소" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
-			</div>       		
-		</div>
-		<p>
+		</div>       		
+		 <p>
+		
 		<div class="form-group">
-			<label for="address2" class="col-lg-2 control-label"></label>
-			<div class="col-lg-10">
+			<label for="address2" class="control-label"></label>
+		</div>
+		<div class="form-group">
 			<input type="text" class="form-control" id="address2" name="address2" placeholder="상세주소" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
-			</div>       		
-		</div>		
-			<p><p><p>
+		</div>       		
+		<p><p><p>
 		<div class="align-center">
 			<input type="submit" class="btn btn-info btn-lg" value="회원가입" id="submit_btn">
-		</div>
+		</div>  
 	</form>	
 
 </div>
