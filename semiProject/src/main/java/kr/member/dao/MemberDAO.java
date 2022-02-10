@@ -175,6 +175,29 @@ public class MemberDAO {
 	}
 	
 	//비밀번호수정
+	public void updatePassword(String passwd, int user_number)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "update qmember_detail set passwd=? where user_num=?";
+			
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, passwd);
+			pstmt.setInt(2, user_number);
+			
+			pstmt.executeUpdate();			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
+	
+	
 	//회원탈퇴(회원정보 삭제)
 	 
 	
