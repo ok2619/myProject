@@ -141,7 +141,7 @@
 <body>
 <div class="page-main">
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2 id="sign_title" class="align-center">회원가입</h2>		
+	<h2 id="common_title" class="align-center">회원가입</h2>		
 	<form id="signUp_form" action="signUp.do" method="post" class="form-inline">
 	
 		<div class="form-group">

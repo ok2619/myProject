@@ -75,13 +75,14 @@ input[id="address1"],input[id="address2"]{
 .form-notice{
 	margin-left:130px;
 }
-#sign_title{ /*추가*/
-	margin:140px auto 60px;
-}
+
 #submit_btn{ /*추가*/
 	margin:50px 240px 50px 0;
 }
-
+/*페이지별 타이틀*/
+#common_title{ /*추가*/
+	margin:140px auto 60px;
+}
 
 /*목록*/
 form#search_form{
