@@ -83,6 +83,10 @@ input[id="address1"],input[id="address2"]{
 .common_title{ /*추가*/
 	margin:140px auto 60px;
 }
+/*로그인*/
+.login_btn{ /*추가*/
+	margin:0 -100px 0 160px;
+}
 
 /*목록*/
 form#search_form{
