@@ -156,8 +156,47 @@ public class BoardDAO {
 	}
 	
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ	
-	
 	//글상세
+	public BoardVO getBoard(int board_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		BoardVO board = null;
+
+		try {
+			//커넥션풀로부터 커넥션을 할당
+			conn = DBUtil.getConnection();
+			//SQL문 작성
+			sql ="SELECT * FROM qboard b JOIN qmember m "
+					+ "ON b.user_num=m.user_num WHERE b.board_num=?"; 
+			//preparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql); 
+			//?에 데이터 바인딩
+			pstmt.setInt(1, board_num);
+			//SQL문을 테이블에 반영해 결과행(1개)을 ResultSet에 담음
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {//하나의 레코드(데이터들)를 자바빈에 담는다.
+				board = new BoardVO(); 
+				board.setBoard_num(rs.getInt("board_num"));
+				board.setTitle(rs.getString("title"));
+				board.setB_content(rs.getString("b_content"));
+				board.setHit(rs.getInt("hit"));
+				board.setReg_date(rs.getDate("reg_date"));
+				board.setModify_date(rs.getDate("modify_date"));
+				board.setFilename(rs.getString("filename"));
+				board.setUser_num(rs.getInt("user_num"));
+				board.setId(rs.getString("id"));
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+
+		return board;
+	}
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	//조회수 증가
 	public void updateReadcount(int board_num)throws Exception{
