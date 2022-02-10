@@ -11,7 +11,6 @@ public class WriteFormAction implements Action{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// 글쓰기->회원제서비스
-		//세션객체 구하기
 		HttpSession session = request.getSession();
 		//회원번호(user_num)구하기. 세션저장명:"user_number"
 		Integer user_num = (Integer)session.getAttribute("user_number"); 

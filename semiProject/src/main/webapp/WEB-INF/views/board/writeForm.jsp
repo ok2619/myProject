@@ -42,7 +42,7 @@
 				<label for="filename">파일</label>
 				<input type="file" name="filename" id="filename" 
 						accept="image/gif,image/png,image/jpeg"> 
-			</li>	
+			</li>	 
 		</ul>
 		<div class="align-center">
 			<input type="submit" value="등록">
