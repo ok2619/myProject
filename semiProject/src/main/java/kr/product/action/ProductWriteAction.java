@@ -28,10 +28,11 @@ public class ProductWriteAction implements Action{
 		product.setSort(multi.getParameter("sort"));
 		product.setPrice(Integer.parseInt(multi.getParameter("price")));
 		product.setContent(multi.getParameter("content"));
+		product.setStock(Integer.parseInt(multi.getParameter("stock")));
 		product.setImage(multi.getFilesystemName("image"));
 		
 		ProductDAO dao = ProductDAO.getInstance();
-		dao.insertBoard(product);
+		dao.insertProduct(product);
 		
 		return "/WEB-INF/views/product/productWrite.jsp";
 	}

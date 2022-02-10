@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <script type="text/javascript">
 	alert('상품등록 완료');
-	location.href='list.do';
+	location.href='../product/productList.do';
 </script>
