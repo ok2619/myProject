@@ -27,7 +27,7 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2 class="align-center common_title">상품 후기</h2>	
+	<h3 class="align-center common_title"><a href="list.do">상품 후기</a></h3>	
 	<form id="write_form" action="write.do" method="post" enctype="multipart/form-data"> 
 		<ul>
 			<li>

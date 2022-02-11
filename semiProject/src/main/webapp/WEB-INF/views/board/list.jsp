@@ -24,7 +24,7 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h3 class="align-center common_title">상품 후기</h3>
+	<h3 class="align-center common_title"><a href="list.do">상품 후기</a></h3>
 		
 	<c:if test="${count == 0 }">
 	<table>
@@ -64,33 +64,44 @@
 		</tr>
 		</c:forEach>
 	</table>
-	<p>
 	</c:if>
 	<p>
-	<div class="list-space align-right">
+	
+	<!-- <p class="clear"></p> -->
+	
+	<!-- 검색창 -->
+	<div id="review_search">
+		<form id="review_search" action="list.do" method="get">
+			<ul class="review_search">
+				<li>
+					<select name="keyfield">
+						<option value="1">제목</option>
+						<option value="2">아이디</option>
+						<option value="3">내용</option>
+					</select>
+				</li>
+				<li>
+					<input type="search" size="16" name="keyword" id="keyword" 
+													value="${param.keyword}">
+				</li>
+				<li>
+					<input type="submit" value="검색" class="btn btn-default btn-sm">
+				</li>
+			</ul>
+		</form>
+	</div>
+	<!-- 검색창 끝 -->
+	
+	<!-- 글쓰기버튼 -->
+	<p>
+	<div class="align-right" id="write_btn">
 		<input type="button" value="글쓰기" onclick="location.href='writeForm.do'" class="btn btn-info"
 		<c:if test="${empty user_number}">disabled="disabled"</c:if>> <!-- 로그인 안된상태-> 글쓰기버튼 비활성화 -->		
 	</div>
+	<!-- 글쓰기버튼 끝-->
 	
-	<form id="search_form" action="list.do" method="get">
-		<ul class="search">
-			<li>
-				<select name="keyfield">
-					<option value="1">제목</option>
-					<option value="2">아이디</option>
-					<option value="3">내용</option>
-				</select>
-			</li>
-			<li>
-				<input type="search" size="16" name="keyword" id="keyword" 
-												value="${param.keyword}">
-			</li>
-			<li>
-				<input type="submit" value="검색" class="btn btn-default btn-sm">
-			</li>
-		</ul>
-	</form>
-	
+	<p class="clear"></p>
+	<p>
 	<div class="align-center">
 		${pagingHtml}
 	</div>	
