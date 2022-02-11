@@ -43,6 +43,7 @@
 </script>
 </head>
 <body>
+<div class="page-main">
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<h2 class="align-center common_title">회원정보 수정</h2>
 		<form action="modifyUser.do" method="post" id="modify_form" class="form-inline">
@@ -101,6 +102,7 @@
 				<input type="button" value="회원탈퇴" class="btn btn-danger" onclick="location.href='${pageContext.request.contextPath}/member/deleteUserForm.do'">
 			</div>
 		</form>
+</div>
 <!-- 우편번호 스크립트 시작 -->
 <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
 <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">

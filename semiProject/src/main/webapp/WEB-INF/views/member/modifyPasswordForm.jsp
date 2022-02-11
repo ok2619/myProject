@@ -56,6 +56,7 @@
 </script>
 </head>
 <body>
+<div class="page-main">
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<h2 class="align-center common_title">비밀번호수정</h2>
 	<form action="modifyPassword.do" method="post" id="password_form" class="form-inline">
@@ -63,7 +64,7 @@
 			<label for="id">아이디</label>
 		</div>
 		<div class="form-group">
-    		<input type="text" class="form-control" id="id" name="id" placeholder="Id"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+    		<input type="text" class="form-control" id="id" name="id" placeholder="id"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
     	</div>
     	<p>
     	
@@ -71,7 +72,7 @@
     		<label for="origin_passwd">현재비밀번호</label>
     	</div>
     	<div class="form-group">
-    		<input type="password" class="form-control" id="origin_passwd" name="origin_passwd" placeholder="Password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+    		<input type="password" class="form-control" id="origin_passwd" name="origin_passwd" placeholder="password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
     	</div>
     	<p>
     	
@@ -79,7 +80,7 @@
     		<label for="passwd">새비밀번호</label>
     	</div>
     	<div class="form-group">
-    		<input type="password" class="form-control" id="passwd" name="passwd" placeholder="New Password"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+    		<input type="password" class="form-control" id="passwd" name="passwd" placeholder="new password"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
     	</div>
     	<p>
     	
@@ -87,7 +88,7 @@
     		<label for="cpasswd">새비밀번호 확인</label>
     	</div>
     	<div class="form-group">
-    		<input type="password" class="form-control" id="cpasswd" name="cpasswd" placeholder="Check New Password"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+    		<input type="password" class="form-control" id="cpasswd" name="cpasswd" placeholder="confirm new password"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
     		<span id="message_cpasswd"></span>
 		</div>
 		<p>
@@ -98,6 +99,7 @@
 		</div>
 		
 	</form>
+</div>
 </body>
 </html>
 
