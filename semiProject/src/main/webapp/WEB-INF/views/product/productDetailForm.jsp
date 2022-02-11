@@ -59,7 +59,7 @@
           <input type="button" value="장바구니담기"><br>
           <c:if test="${!empty user_number && user_auth == 3}">
           <input type="button" value="상품수정" onclick="location.href='productUpdateForm.do?product_num=${product.product_num}'">
-          <input type="button" value="상품삭제">
+          <input type="button" value="상품삭제" onclick="location.href='productDelete.do?product_num=${product.product_num}'">
           </c:if>
           </th>
         </tr>
