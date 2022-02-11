@@ -265,7 +265,8 @@ public class ProductDAO {
 			 try {
 				 conn = DBUtil.getConnection();
 				 sql = "select a.*,b.cart_count from qproduct a, qcart b "
-				 		+ "where a.product_num = b.product_num and b.product_num = ANY(select product_num from qcart where user_num = ?)";
+				 		+ "where a.product_num = b.product_num and b.product_num = ANY(select product_num from qcart where user_num = ?)"
+				 		+ "order by a.product_num";
 				 pstmt = conn.prepareStatement(sql);
 				 pstmt.setInt(1, user_number);
 				 rs= pstmt.executeQuery();
@@ -277,6 +278,7 @@ public class ProductDAO {
 					 
 					 product.setProduct_num(rs.getInt("product_num"));
 					 product.setProduct_name(rs.getString("product_name"));
+					 product.setSort(rs.getString("sort"));
 					 product.setImage(rs.getString("image"));
 					 product.setPrice(rs.getInt("price"));
 					 product.setCart_count(rs.getInt("cart_count"));
