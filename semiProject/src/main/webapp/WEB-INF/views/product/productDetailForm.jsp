@@ -46,17 +46,18 @@
           상품명 : ${product.product_name}</br>
           상품종류 : ${product.sort}</br>
           판매가 : ${product.price}</br>
-          개수 : <input type="text"></br>
           
-          
+          <form action="#" method="post">
+          개수 : <input type="number" id="cart_count" name="cart_count"></br>
           <c:if test="${product.stock > 0 }">
           <input type="button" value="구매">
           </c:if>
           <c:if test="${product.stock <= 0 }">
           <span>품절</span>	
           </c:if>
+          <input type="submit" value="장바구니담기"><br>
+          </form>
           
-          <input type="button" value="장바구니담기"><br>
           <c:if test="${!empty user_number && user_auth == 3}">
           <input type="button" value="상품수정" onclick="location.href='productUpdateForm.do?product_num=${product.product_num}'">
           <input type="button" value="상품삭제" onclick="location.href='productDelete.do?product_num=${product.product_num}'">
