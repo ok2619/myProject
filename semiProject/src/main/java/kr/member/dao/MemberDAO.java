@@ -345,6 +345,52 @@ public class MemberDAO {
 		}
 		return list;
 	}
-	//회원 목록
 	//회원 정보 수정
+	public void updateMemberByAdmin(MemberVO member)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		String sql = null;
+		
+		try {
+			//커넥션 할당
+			conn = DBUtil.getConnection();
+			//오토커밋 해제
+			conn.setAutoCommit(false);
+			//SQL문
+			sql = "UPDATE qmember SET auth=? WHERE user_num=?";
+			//PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, member.getAuth());
+			pstmt.setInt(2, member.getUser_num());
+			//SQL실행
+			pstmt.executeUpdate();
+			
+			//SQL문
+			sql = "UPDATE qmember_detail SET name=?,phone=?,zipcode=?,address1=?,address2=? WHERE user_num=?";
+			//PreparedStatement 객체 생성
+			pstmt2 = conn.prepareStatement(sql);
+			pstmt2.setString(1, member.getName());
+			pstmt2.setString(2, member.getPhone());
+			pstmt2.setString(3, member.getZipcode());
+			pstmt2.setString(4, member.getAddress1());
+			pstmt2.setString(5, member.getAddress2());
+			pstmt2.setInt(6, member.getUser_num());
+			//SQL 실행
+			pstmt.executeUpdate();
+			
+			//SQL문 정상실행
+			conn.commit();
+		}catch(Exception e) {
+			//SQL문 오류발생
+			conn.rollback();
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(null, pstmt2, null);
+			DBUtil.executeClose(null, pstmt2, conn);
+		}
+	}
 }
+
+
