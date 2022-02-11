@@ -26,10 +26,24 @@
 	<h3 class="align-center common_title">상품 후기</h3>
 		
 	<c:if test="${count == 0 }">
-	<div class="result-display">
-		표시할 게시물이 없습니다.
-	</div>
+	<table>
+		<tr>
+			<th>글번호</th>
+			<th>제목</th>
+			<th>작성자</th>
+			<th>작성일</th>
+			<th>조회</th>
+		</tr>		
+		<tr>
+			<td colspan="5" class="align-center">			
+			<p>
+			표시할 게시물이 없습니다.		
+			<p>
+			</td>				
+		</tr>			
+	</table>	
 	</c:if>
+	
 	<c:if test="${count > 0 }">
 	<table>
 		<tr>
@@ -49,7 +63,9 @@
 		</tr>
 		</c:forEach>
 	</table>
-	<p><p>
+	<p>
+	</c:if>
+	<p>
 	<div class="list-space align-right">
 		<input type="button" value="글쓰기" onclick="location.href='writeForm.do'" 
 		<c:if test="${empty user_number}">disabled="disabled"</c:if>> <!-- 로그인 안된상태-> 글쓰기버튼 비활성화 -->
@@ -75,11 +91,10 @@
 		</ul>
 	</form>
 	
-	
 	<div class="align-center">
 		${pagingHtml}
 	</div>	
-	</c:if>
+	
 </div>
 </body>
 </html>
