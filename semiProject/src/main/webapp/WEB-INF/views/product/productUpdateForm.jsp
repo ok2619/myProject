@@ -11,7 +11,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<div class="col-md-12">
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<div class="col-md-12" style="padding-top:100px">
     <div class="col-md-4">
         <form id="write_form" action="productUpdate.do" method="post" enctype="multipart/form-data">
         <input type="hidden" name="product_num" value="${product.product_num}">
