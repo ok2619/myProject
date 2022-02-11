@@ -11,7 +11,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<div class="col-md-12">
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<div class="col-md-12" style="padding-top:100px">
     <div class="col-md-4">
         <form id="write_form" action="productUpdate.do" method="post" enctype="multipart/form-data">
         <input type="hidden" name="product_num" value="${product.product_num}">
@@ -37,7 +38,9 @@
 				  <input type="file" class="form-control"name="image" id="image" accept="image/gif,image/png,image/jpeg">
 			</div>
             <input type="submit" value="등록">
+            
             <input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/product/productListForm.do'">
+            <input type="button" value="삭제" onclick="location.href='productDelete.do?product_num=${product.product_num}'">
         </form>
     </div>
     </div>

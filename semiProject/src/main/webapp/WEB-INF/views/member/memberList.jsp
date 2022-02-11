@@ -7,7 +7,9 @@
 <meta charset="UTF-8">
 <title>회원목록</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function(){
 		$('#search_form').submit(function(){
@@ -23,7 +25,7 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>회원목록(관리자 전용)</h2>
+	<h2 class="align-center common_title">회원목록(관리자 전용)</h2>
 	<form id="search_form" action="memberList.do" method="get">
 		<ul class="search">
 			<li>

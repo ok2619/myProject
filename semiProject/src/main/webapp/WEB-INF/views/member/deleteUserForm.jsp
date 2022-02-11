@@ -6,11 +6,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial_scale=1.0">
 <title>회원탈퇴</title>
-<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function(){
 		//이벤트 연결
@@ -55,26 +54,40 @@
 </script>
 </head>
 <body>
-<div class="container">
-	<h3>회원탈퇴</h3>
-		<form action="deleteUser.do" method="post" id="delete_form">
-			<div  class="form-group">
-				<label for="id" class="form-label mt-4">아이디</label>
-				<input type="text" name="id" id="id" maxlength="12" >
+<div class="page-main">
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<h2 class="align-center common_title">회원탈퇴</h2>		
+		<form action="deleteUser.do" method="post" id="delete_form" class="form-inline">
+			<div class="form-group">
+				<label for="id">아이디</label>
 			</div>
-			<div  class="form-group">
-				<label for="passwd">비밀번호</label>
-				<input type="password" name="passwd" id="passwd" maxlength="12">
+			<div class="form-group">
+	    		<input type="text" class="form-control" id="id" name="id" placeholder="id"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	    	</div>
+	    	<p>
+		
+			<div class="form-group">
+    			<label for="passwd">비밀번호</label>
+	    	</div>
+	    	<div class="form-group">
+	    		<input type="password" class="form-control" id="passwd" name="passwd" placeholder="password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	    	</div>
+	    	<p>
+			
+			<div class="form-group">
+    			<label for="cpasswd">비밀번호 확인</label>
+	    	</div>
+	    	<div class="form-group">
+	    		<input type="password" class="form-control" id="cpasswd" name="cpasswd" placeholder="confirm new password"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+	    		<span id="message_cpasswd"></span>
 			</div>
-			<div  class="form-group">
-				<label for="cpasswd">비밀번호 확인</label>
-				<input type="password" name="cpasswd" id="cpasswd" maxlength="12">
-				<span id="message_id"></span>
+			<p>
+			
+			<div class="align-center">
+				<input type="submit" class="btn btn-danger" value="회원탈퇴">
+				<input type="button" class="btn btn-defualt" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 			</div>
-			<div>
-				<input type="submit" value="회원탈퇴">
-				<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
-			</div>
+			
 		</form>
 	</div>
 </body>

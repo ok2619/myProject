@@ -209,8 +209,26 @@ public class ProductDAO {
 					DBUtil.executeClose(null, pstmt, conn);
 				}
 			}
-		 
-		 
+		 //상품삭제
+		 public void deleteProduct(int product_num) throws Exception{
+			 Connection conn = null;
+			 PreparedStatement pstmt = null;
+			 String sql = null;
+			 
+			 try {
+				 conn = DBUtil.getConnection();
+				 sql = "delete from qproduct where product_num = ?";
+				 pstmt = conn.prepareStatement(sql);
+				 pstmt.setInt(1, product_num);
+				 pstmt.executeUpdate();
+				 
+			 }catch(Exception e) {
+				 throw new Exception(e);
+			 }finally {
+				 DBUtil.executeClose(null, pstmt, conn);
+			 }
+			 
+		 }
 		 
 	}
 

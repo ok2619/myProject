@@ -5,9 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호수정</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function(){
 		$('#password_form').submit(function(){
@@ -56,22 +57,47 @@
 </head>
 <body>
 <div class="page-main">
-	<h2>비밀번호수정</h2>
-	<form action="modifyPassword.do" method="post" id="password_form">
-		<div class="input-group input-group-sm mb-3" style="width:80px">
-		
-			<label for="ID">아이디</label><br>
-    		<input type="text" class="form-control" id="id" name="id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    		<label for="ORIGIN_PASSWD">현재비밀번호</label><br>
-    		<input type="password" class="form-control" id="origin_passwd" name="origin_passwd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    		<label for="PASSWD">새비밀번호</label><br>
-    		<input type="password" class="form-control" id="passwd" name="passwd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-    		<label for="CPASSWD">새비밀번호 확인</label><br>
-    		<input type="password" class="form-control" id="cpasswd" name="cpasswd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<h2 class="align-center common_title">비밀번호수정</h2>
+	<form action="modifyPassword.do" method="post" id="password_form" class="form-inline">
+		<div class="form-group">
+			<label for="id">아이디</label>
+		</div>
+		<div class="form-group">
+    		<input type="text" class="form-control" id="id" name="id" placeholder="id"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+    	</div>
+    	<p>
+    	
+    	<div class="form-group">
+    		<label for="origin_passwd">현재비밀번호</label>
+    	</div>
+    	<div class="form-group">
+    		<input type="password" class="form-control" id="origin_passwd" name="origin_passwd" placeholder="password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+    	</div>
+    	<p>
+    	
+    	<div class="form-group">
+    		<label for="passwd">새비밀번호</label>
+    	</div>
+    	<div class="form-group">
+    		<input type="password" class="form-control" id="passwd" name="passwd" placeholder="new password"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+    	</div>
+    	<p>
+    	
+    	<div class="form-group">
+    		<label for="cpasswd">새비밀번호 확인</label>
+    	</div>
+    	<div class="form-group">
+    		<input type="password" class="form-control" id="cpasswd" name="cpasswd" placeholder="confirm new password"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
     		<span id="message_cpasswd"></span>
 		</div>
-		<input type="submit" value="변경">
-		<input type="button" value="메인으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+		<p>
+		
+		<div class="align-center">
+			<input type="submit" class="btn btn-info" value="변경">
+			<input type="button" class="btn btn-defualt"value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+		</div>
+		
 	</form>
 </div>
 </body>
