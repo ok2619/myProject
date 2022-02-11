@@ -37,13 +37,14 @@
 	<table>
 		<tr>
 			<th>글번호</th>
+			<th>상품정보</th>
 			<th>제목</th>
 			<th>작성자</th>
 			<th>작성일</th>
 			<th>조회</th>
 		</tr>		
 		<tr>
-			<td colspan="5" class="align-center">			
+			<td colspan="6" class="align-center">			
 			<p>
 			표시할 게시물이 없습니다.		
 			<p>
@@ -55,7 +56,7 @@
 	<c:if test="${count > 0 }">
 	<table>
 		<tr>
-			<th>번호1</th>
+			<th>번호</th>
 			<th>상품정보</th>
 			<th>제목</th>
 			<th>작성자</th>
@@ -65,6 +66,13 @@
 		<c:forEach var="board" items="${list}">
 		<tr>
 			<td>${board.board_num}</td>			
+			<td>
+			<c:if test="${!empty board.filename}">
+			<div class="align-center">
+				<img src="${pageContext.request.contextPath}/upload/${board.filename}" class="list-img">
+			</div>
+			</c:if>
+			</td>
 			<td><a href="detail.do?board_num=${board.board_num}">${board.title}</a></td>
 			<td>${board.id}</td>
 			<td>${board.reg_date}</td>

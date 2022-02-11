@@ -143,6 +143,7 @@ public class BoardDAO {
 				board.setHit(rs.getInt("hit"));
 				board.setReg_date(rs.getDate("reg_date"));
 				board.setId(rs.getString("id"));
+				board.setFilename(rs.getString("filename"));
 				
 				//VO를 ArrayList에 등록(저장해줘야함)
 				list.add(board);
