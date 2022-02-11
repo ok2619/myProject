@@ -6,9 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>리뷰게시판 메인(글목록)</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/bootstrap/bootstrap-dropdown.js"></script>
+<script>
+     $(document).ready(function(){
+        $('.dropdown-toggle').dropdown()
+    });
+</script>
 <script type="text/javascript">
 	$(function(){
 		$('#search_form').submit(function(){
@@ -48,7 +55,8 @@
 	<c:if test="${count > 0 }">
 	<table>
 		<tr>
-			<th>글번호</th>
+			<th>번호1</th>
+			<th>상품정보</th>
 			<th>제목</th>
 			<th>작성자</th>
 			<th>작성일</th>
@@ -56,7 +64,7 @@
 		</tr>
 		<c:forEach var="board" items="${list}">
 		<tr>
-			<td>${board.board_num}</td>
+			<td>${board.board_num}</td>			
 			<td><a href="detail.do?board_num=${board.board_num}">${board.title}</a></td>
 			<td>${board.id}</td>
 			<td>${board.reg_date}</td>
@@ -107,7 +115,5 @@
 	</div>	
 	
 </div>
-<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 </body>
 </html>
