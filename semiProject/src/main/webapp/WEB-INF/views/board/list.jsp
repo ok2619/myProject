@@ -7,7 +7,8 @@
 <meta charset="UTF-8">
 <title>리뷰게시판 메인(글목록)</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script> 
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
 <script type="text/javascript">
 	$(function(){
 		$('#search_form').submit(function(){
@@ -67,9 +68,8 @@
 	</c:if>
 	<p>
 	<div class="list-space align-right">
-		<input type="button" value="글쓰기" onclick="location.href='writeForm.do'" 
-		<c:if test="${empty user_number}">disabled="disabled"</c:if>> <!-- 로그인 안된상태-> 글쓰기버튼 비활성화 -->
-		<input type="button" value="목록" onclick="location.href='list.do'">		
+		<input type="button" value="글쓰기" onclick="location.href='writeForm.do'" class="btn btn-info"
+		<c:if test="${empty user_number}">disabled="disabled"</c:if>> <!-- 로그인 안된상태-> 글쓰기버튼 비활성화 -->		
 	</div>
 	
 	<form id="search_form" action="list.do" method="get">
@@ -86,7 +86,7 @@
 												value="${param.keyword}">
 			</li>
 			<li>
-				<input type="submit" value="검색">
+				<input type="submit" value="검색" class="btn btn-default btn-sm">
 			</li>
 		</ul>
 	</form>
@@ -96,5 +96,7 @@
 	</div>	
 	
 </div>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 </body>
 </html>
