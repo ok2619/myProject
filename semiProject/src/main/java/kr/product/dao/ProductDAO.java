@@ -227,8 +227,34 @@ public class ProductDAO {
 			 }finally {
 				 DBUtil.executeClose(null, pstmt, conn);
 			 }
-			 
 		 }
+		 
+		 
+		 //카트담기
+		 public void cartInsert(int product_num,int user_number,int cart_count) throws Exception{
+			 Connection conn = null;
+			 PreparedStatement pstmt = null;
+			 ResultSet rs = null;
+			 String sql = null;
+			 
+			 try {
+				 conn = DBUtil.getConnection();
+				 sql = "insert into qcart(cart_num,product_num,user_num,cart_count) values (qcart_seq.nextval,?,?,?)";
+				 pstmt = conn.prepareStatement(sql);
+				 pstmt.setInt(1, product_num);
+				 pstmt.setInt(2, user_number);
+				 pstmt.setInt(3, cart_count);
+				 pstmt.executeUpdate();
+				 
+			 }catch(Exception e) {
+				 throw new Exception(e);
+			 }finally {
+				 DBUtil.executeClose(rs, pstmt, conn);
+			 }
+		 }
+		 
+		 
+		 
 		 
 	}
 

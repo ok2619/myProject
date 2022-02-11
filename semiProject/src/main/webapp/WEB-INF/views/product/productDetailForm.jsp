@@ -47,7 +47,8 @@
           상품종류 : ${product.sort}</br>
           판매가 : ${product.price}</br>
           
-          <form action="#" method="post">
+          <form action="cartInsert.do" method="post">
+          <input type="hidden" id="product_num" name="product_num" value="${product.product_num}">
           개수 : <input type="number" id="cart_count" name="cart_count"></br>
           <c:if test="${product.stock > 0 }">
           <input type="button" value="구매">
@@ -57,6 +58,8 @@
           </c:if>
           <input type="submit" value="장바구니담기"><br>
           </form>
+          
+          
           
           <c:if test="${!empty user_number && user_auth == 3}">
           <input type="button" value="상품수정" onclick="location.href='productUpdateForm.do?product_num=${product.product_num}'">
