@@ -44,7 +44,7 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h3 class="align-center common_title">회원정보 수정</h3>
+	<h2 class="align-center common_title">회원정보 수정</h2>
 		<form action="modifyUser.do" method="post" id="modify_form" class="form-inline">
 		
 			<div class="form-group">
