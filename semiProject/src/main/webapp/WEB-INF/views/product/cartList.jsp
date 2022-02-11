@@ -18,6 +18,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<table class="table">
 		<tr>
 			<th>번호</th>
