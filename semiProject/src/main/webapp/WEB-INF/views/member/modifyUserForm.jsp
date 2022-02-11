@@ -6,11 +6,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial_scale=1.0">
 <title>회원정보수정</title>
-<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function(){
 		$('#modify_form').submit(function(){
@@ -44,42 +43,64 @@
 </script>
 </head>
 <body>
-	<div class="container">
-	<h3>회원정보 수정</h3>
-		<form action="modifyUser.do" method="post" id="modify_form">
-			<div  class="form-group">
-				<label for="id" class="form-label mt-4">아이디</label>
-				<input type="text" id="id" readonly class="form-control-plaintext" value="${member.id}" maxlength="12" >
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<h3 class="align-center common_title">회원정보 수정</h3>
+		<form action="modifyUser.do" method="post" id="modify_form" class="form-inline">
+		
+			<div class="form-group">
+				<label for="id" class="control-label">아이디</label>
 			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" id="id" name="id" value="${member.id}" aria-describedby="inputGroup-sizing-sm" aria-label="Disabled input example" disabled readonly>			
+			</div>       	
+			<p>
+			
+			<div class="form-group">
+				<label for="name" class="control-label">이름</label>
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" id="name" name="name" value="${member.name}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">						
+			</div>       		
+		 	<p>
+			
+			<div class="form-group">
+				<label for="phone" class="control-label">연락처</label>
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" id="phone" name="phone" value="${member.phone}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
+			</div>       		
+			 <p>
+			
+			<div class="form-group">
+				<label for="zipcode" class="control-label">우편번호</label>
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" id="zipcode" name="zipcode" value="${member.zipcode}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
+			</div>  
+			<button type="button" onclick="sample2_execDaumPostcode()" class="btn btn-default btn-xs">우편번호 〉</button>     		
+		 	<p>
+		 	
+			<div  class="form-group">
+				<label for="address1" class="control-label">주소</label>
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" id="address1" name="address1" value="${member.address1}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+			</div>
+			<p>
 			
 			<div  class="form-group">
-				<label for="name">이름</label>
-				<input type="text" name="name" id="name" value="${member.name}" maxlength="12">
+				<label for="address2" class="control-label">상세주소</label>
 			</div>
-			<div  class="form-group">
-				<label for="phone">연락처</label>
-				<input type="text" name="phone" id="phone" value="${member.phone}" maxlength="15">
+			<div class="form-group">
+				<input type="text" name="address2" id="address2" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="${member.address2}">
 			</div>
-			<div  class="form-group">
-				<label for="zipcode">우편번호</label>
-				<input type="text" name="zipcode" id="zipcode" value="${member.zipcode}" maxlength="5">
-				<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기">                  
-			</div>
-			<div  class="form-group">
-					<label for="address1">주소</label>
-					<input type="text" name="address1" id="address1" value="${member.address1}" maxlength="30">
-			</div>
-			<div  class="form-group">
-					<label for="address2">상세주소</label>
-					<input type="text" name="address2" id="address2" value="${member.address2}" maxlength="30">
-			</div>
-			<div>
-			 <input type="submit" value="수정" class="btn btn-primary">
-			 <input type="button" value="회원탈퇴" class="btn btn-danger" onclick="location.href='${pageContext.request.contextPath}/member/deleteUserForm.do'">
-			 <button type="button" onclick="location.href='${pageContext.request.contextPath}/member/modifyPasswordForm.do'" class="btn btn-primary">비밀번호 변경</button>
+			<p><p>
+			<div class="align-center">
+			 	<input type="submit" value="수정" class="btn btn-primary">
+				<button type="button" onclick="location.href='${pageContext.request.contextPath}/member/modifyPasswordForm.do'" class="btn btn-primary">비밀번호 변경</button>
+				<input type="button" value="회원탈퇴" class="btn btn-danger" onclick="location.href='${pageContext.request.contextPath}/member/deleteUserForm.do'">
 			</div>
 		</form>
-	</div>
 <!-- 우편번호 스크립트 시작 -->
 <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
 <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
