@@ -18,7 +18,6 @@
 </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<table class="table">
 		<tr>
 			<th>번호</th>
@@ -41,7 +40,7 @@
 			<td>${product.price}</td>
 			<td>${product.cart_count}</td>
 		</tr>
-		<c:set var="totalPrice" value="${totalPrice + product.price}"/>
+		<c:set var="totalPrice" value="${totalPrice + product.price * product.cart_count}"/>
 		<c:set var="totalCount" value="${totalCount + product.cart_count}"/>
 		</c:forEach>
 		
