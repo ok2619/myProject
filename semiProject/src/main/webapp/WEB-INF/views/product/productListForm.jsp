@@ -7,11 +7,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
-<form id="search_form" action="productList.do" method="get">
+	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<form id="search_form" action="productList.do" method="get" style="padding-top:100px">
 		<ul class="search">
 			<li>
 				<select name="keyfield">
