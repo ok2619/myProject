@@ -26,7 +26,7 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="${pageContext.request.contextPath}/main/main.do">Home</a></li>
+					<li><a href="${pageContext.request.contextPath}/main/main.do">Home</a></li>  
 					
 					<c:if test="${empty user_number}">
 					<li><a href="${pageContext.request.contextPath}/member/loginForm.do">login</a></li>
