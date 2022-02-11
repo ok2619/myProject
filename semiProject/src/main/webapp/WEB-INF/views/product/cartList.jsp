@@ -26,6 +26,7 @@
 			<th>상품종류</th>
 			<th>판매가</th>
 			<th>수량</th>
+			<th></th>
 		</tr>
 		
 		
@@ -39,6 +40,7 @@
 			<td>${product.sort}</td>
 			<td>${product.price}</td>
 			<td>${product.cart_count}</td>
+			<td><input type="button" value="삭제" onclick="location.href='cartDelete.do?product_num=${product.product_num}'">
 		</tr>
 		<c:set var="totalPrice" value="${totalPrice + product.price * product.cart_count}"/>
 		<c:set var="totalCount" value="${totalCount + product.cart_count}"/>

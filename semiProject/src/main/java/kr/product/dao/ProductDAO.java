@@ -294,6 +294,82 @@ public class ProductDAO {
 			 return list;
 		 }
 		 
+		 //카트삭제
+		 public void cartDelete(int product_num) throws Exception{
+			 Connection conn = null;
+			 PreparedStatement pstmt = null;
+			 String sql = null;
+			 
+			 try {
+				conn = DBUtil.getConnection();
+				sql = "delete from qcart where product_num = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, product_num);
+				pstmt.executeUpdate();
+				
+				
+			 }catch(Exception e) {
+				throw new Exception(e); 
+			 }finally {
+				 DBUtil.executeClose(null, pstmt, conn);
+			 }
+		 }
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
 		 
 	}
 
