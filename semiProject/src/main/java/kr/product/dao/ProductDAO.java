@@ -6,10 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import kr.board.vo.BoardVO;
 import kr.product.vo.ProductVO;
 import kr.util.DBUtil;
-import kr.util.StringUtil;
 
 public class ProductDAO {
 	private static ProductDAO instance = new ProductDAO();
@@ -253,7 +251,46 @@ public class ProductDAO {
 			 }
 		 }
 		 
-		 
+		 //카트 리스트
+		 //카트에서 회원번호에 해당하는 컬럼을 모두 구한다음에
+		 //프로덕트에서 모든컬럼 조회
+		 public List<ProductVO> cartList(int user_number) throws Exception{
+			 Connection conn = null;
+			 PreparedStatement pstmt = null;
+			 ResultSet rs = null;
+			 String sql = null;
+			 ProductVO product = null;
+			 List<ProductVO> list = null;
+			 
+			 try {
+				 conn = DBUtil.getConnection();
+				 sql = "select a.*,b.cart_count from qproduct a, qcart b "
+				 		+ "where a.product_num = b.product_num and b.product_num = ANY(select product_num from qcart where user_num = ?)";
+				 pstmt = conn.prepareStatement(sql);
+				 pstmt.setInt(1, user_number);
+				 rs= pstmt.executeQuery();
+				 
+				 list = new ArrayList<ProductVO>();
+				 
+				 while(rs.next()) {
+					 product = new ProductVO();
+					 
+					 product.setProduct_num(rs.getInt("product_num"));
+					 product.setProduct_name(rs.getString("product_name"));
+					 product.setImage(rs.getString("image"));
+					 product.setPrice(rs.getInt("price"));
+					 product.setCart_count(rs.getInt("cart_count"));
+					 
+					 list.add(product);
+					 
+				 }
+			 }catch(Exception e) {
+				 throw new Exception(e);
+			 }finally {
+				 DBUtil.getConnection();
+			 }
+			 return list;
+		 }
 		 
 		 
 	}

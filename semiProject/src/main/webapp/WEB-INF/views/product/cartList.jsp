@@ -17,13 +17,19 @@
 			<th>판매가</th>
 			<th>수량</th>
 		</tr>
+		
+		
+		<c:forEach var="product" items="${product}">
 		<tr>
-			<td>1</td>
-			<td>사진 신발</td>
-			<td>신발</td>
-			<td>40,000</td>
-			<td>2</td>
+			<td>${product.product_num}</td>
+			<td>${product.image}</td>
+			<td>${product.product_name}</td>
+			<td>${product.price}</td>
+			<td>${product.cart_count}</td>
 		</tr>
+		</c:forEach>
+		
+		
 		<tr>
 			<td>총가격</td>
 			<td>180,000</td>

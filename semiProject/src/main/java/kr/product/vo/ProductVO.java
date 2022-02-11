@@ -12,6 +12,15 @@ public class ProductVO {
 	private String content;
 	private Date reg_date;
 	
+	////////////////////////////////////////////
+	private int cart_count;
+	public int getCart_count() {
+		return cart_count;
+	}
+	public void setCart_count(int cart_count) {
+		this.cart_count = cart_count;
+	}
+	////////////////////////////////////////////
 	
 	public int getProduct_num() {
 		return product_num;
