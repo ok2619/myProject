@@ -314,7 +314,43 @@ public class ProductDAO {
 				 DBUtil.executeClose(null, pstmt, conn);
 			 }
 		 }
+		 //재고 마이너스
 		 
+		 public void StockAll(Integer product_num,Integer cart_count) throws Exception{
+			 Connection conn = null;
+			 PreparedStatement pstmt = null;
+			 PreparedStatement pstmt2 = null;
+			 ResultSet rs = null;
+			 String sql = null;
+			 int s_num = 0; //구매하기전 재고
+			
+			 try {
+				 conn = DBUtil.getConnection();
+				 
+				 conn.setAutoCommit(false); //오토해제
+				 
+				 sql = "select stock from qproduct where product_num=?";
+				 pstmt = conn.prepareStatement(sql);
+				 rs = pstmt.executeQuery();
+				 if(rs.next()) {
+					 s_num = rs.getInt(1);
+					}
+				 
+				 sql = "update qproduct set stock = stock-? where product_num=?";
+				 pstmt2 = conn.prepareStatement(sql);
+				 pstmt2.setInt(1, cart_count);
+				 pstmt2.setInt(2, product_num);
+				 pstmt2.executeUpdate();
+				 
+				 conn.commit(); //한번에 커밋
+			 }catch(Exception e) {
+				 conn.rollback(); // 실패시 롤백
+				 throw new Exception(e);
+			 }finally {
+				 DBUtil.executeClose(null, pstmt, conn);
+				 DBUtil.executeClose(null, pstmt2, conn);
+			 }
+		 }
 		 
 		 
 		 

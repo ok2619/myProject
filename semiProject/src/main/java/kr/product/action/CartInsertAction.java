@@ -23,11 +23,7 @@ public class CartInsertAction implements Action{
 		int cart_count = Integer.parseInt(request.getParameter("cart_count"));
 		ProductDAO dao = ProductDAO.getInstance();
 		dao.cartInsert(product_num,user_number,cart_count);
-		
-		System.out.println(product_num+"1");
-		System.out.println(user_number+"1");
-		System.out.println(cart_count+"1");
-		
+
 		return "/WEB-INF/views/product/cartInsert.jsp";
 	}
 

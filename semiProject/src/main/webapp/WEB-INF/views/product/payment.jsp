@@ -16,7 +16,7 @@ IMP.request_pay({
     pay_method: "kakaopay", // 지불 수단
     merchant_uid: 'merchant_' + new Date().getTime(), //가맹점에서 구별할 수 있는 고유한id
     name: "book", // 상품명
-    amount: 2929, // 가격
+    amount: 1, // 가격
     buyer_email: "test@gmail.com",
     buyer_name: "tester", // 구매자 이름
     buyer_tel: "010-132-132", // 구매자 연락처  
@@ -28,6 +28,7 @@ IMP.request_pay({
   }, function(rsp) {
 	    if ( rsp.success ) {
 	        alert('결제성공');
+	        location.href= "stockMinus.do";
 	    } else {
       alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
     }
