@@ -26,11 +26,11 @@
 				timeout:30000,
 				success:function(param){
 					if(param.result == 'agreement'){
-						$('#message_passwd').text('비밀번호가 일치합니다');
+						$('#message_passwd').css('color','blue').text('비밀번호가 일치합니다');
 						pass = 1;
 					}else if(param.result == 'disagreement'){
 						pass = 0;
-						$('#message_passwd').text('비밀번호가 불일치합니다');
+						$('#message_passwd').css('color','red').text('비밀번호가 불일치합니다');
 						$('#cpasswd').val('').focus();
 					}else{
 						alert('비밀번호 확인 오류');
@@ -60,10 +60,10 @@
 				success:function(param){
 					if(param.result == 'idNotFound'){
 						idChecked = 1;
-						$('#message_id').css('color','#000000').text('등록 가능 ID');
+						$('#message_id').css('color','blue').text('사용 가능한 ID 입니다');
 					}else if(param.result == 'idDuplicated'){
 						idChecked = 0;
-						$('#message_id').css('color','red').text('중복된 ID');
+						$('#message_id').css('color','red').text('이미 사용 중인 ID 입니다');
 						$('#id').val('').focus();
 					}else{
 						idChecked = 0;
