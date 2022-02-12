@@ -5,10 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+
 <script type="text/javascript">
 	$(function(){
 		let idChecked = 0;
@@ -157,8 +158,8 @@
 </script>
 </head>
 <body>
-<div class="page-main">
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<div class="page-main">
 	<h3 class="align-center common_title">회원가입</h3>		
 	<form id="signUp_form" action="signUp.do" method="post" class="form-inline">
 	

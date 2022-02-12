@@ -23,7 +23,7 @@
 	
 	<div>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-		<div class="container-fluid">
+		<!-- <div class="container-fluid">
 			<div class="container">
 				<h3>3개 컬럼</h3>
 				<div class="row">
@@ -33,7 +33,7 @@
 					<div class="col-md-3"><a href="#">ect</a></div>
 				</div>
 			</div>
-		</div>
+		</div> -->
     </div>
     
     <!--//////////////////////////////////////////////////////////////////////////////////-->
