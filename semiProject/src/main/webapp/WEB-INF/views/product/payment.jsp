@@ -18,7 +18,7 @@ IMP.request_pay({
     amount: 2500000, // 가격
     buyer_email: "test@gmail.com",
     buyer_name: "tester", // 구매자 이름
-    buyer_tel: "010-132-132", // 구매자 연락처 
+    buyer_tel: "010-132-132", // 구매자 연락처  
     buyer_addr: "서울특별시",// 구매자 주소지
     buyer_postcode: "01181", // 구매자 우편번호
     m_redirect_url : 'https://example.com/mobile/complete', // 모바일 결제시 사용할 url
