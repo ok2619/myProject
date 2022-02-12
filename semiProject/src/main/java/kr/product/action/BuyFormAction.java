@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
+import kr.product.dao.ProductDAO;
+import kr.product.vo.ProductVO;
 
 public class BuyFormAction implements Action{
 
@@ -17,7 +19,14 @@ public class BuyFormAction implements Action{
 			return "redirect:/member/loginForm.do";
 		}
 		int product_num = Integer.parseInt(request.getParameter("product_num"));
-		System.out.println(product_num);
+		int cart_count = Integer.parseInt(request.getParameter("cart_count"));
+		
+		session.setAttribute("cart_count",cart_count);
+		
+		ProductDAO dao = ProductDAO.getInstance();
+		ProductVO product = dao.getProduct(product_num);
+		
+		request.setAttribute("product", product);
 		
 		return "/WEB-INF/views/product/buyForm.jsp";
 	}

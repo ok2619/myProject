@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.board.dao.BoardDAO;
+import kr.board.vo.BoardReplyVO;
 import kr.board.vo.BoardVO;
 import kr.util.DBUtil;
 import kr.util.StringUtil;
@@ -334,6 +335,34 @@ public class BoardDAO {
 
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	//댓글 등록
+	public void insertReplyBoard(BoardReplyVO boardReply)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			//커넥션풀로부터 커넥션 할당
+			conn = DBUtil.getConnection();
+			//SQL문
+			sql = "INSERT INTO qboard_reply (re_num,re_content,re_ip,user_num,board_num) "
+				+ "VALUSE (qreply_seq.nextval,?,?,?,?)";
+			//PreparedStatement객체 생성
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, boardReply.getRe_content());
+			pstmt.setString(2, boardReply.getRe_ip());
+			pstmt.setInt(3, boardReply.getUser_num());
+			pstmt.setInt(4, boardReply.getBoard_num());
+			//SQL실행
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	
+	}
 
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	//댓글 갯수

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,14 +16,16 @@
 </style>
 </head>
 <body>
+<form action="payment.do" method="post">
 <div class="main2">
 <h2>주문 / 결제</h2>
 <h4>수령자 정보</h4></br>
-
+<input type="hidden" id="product_name" name="product_name" value="${product.product_name}">
+<input type="hidden" id="price" name="price" value="${product.price}">
 <label for="name" class="control-label">수령자</label>
-<input type="text" placeholder="수령자 입력"></br>
+<input type="text" id="name" name="name" placeholder="수령자 입력"></br>
 <label for="phone" class="control-label">전화번호</label>
-<input type="text" placeholder="전화번호 입력"></br>
+<input type="text" id="phone" name="phone" placeholder="전화번호 입력"></br>
 <label for="zipcode" class="control-label">우편번호</label>
 <input type="text" id="zipcode" name="zipcode" placeholder="우편번호">
 <button type="button" onclick="sample2_execDaumPostcode()" class="btn btn-default btn-xs">우편번호 〉</button></br>
@@ -38,20 +41,24 @@
       		<img src="../upload/NO.png" alt="no">
     	</a>
 	</div>
-  모델명 : </br>
-  상품종류 : </br>
-  수량 : </br>
-  총금액 : </br>
+  모델명 : ${product.product_name}</br>
+  상품종류 : ${product.sort}</br>
+  수량 : ${cart_count}</br>
+  총금액 : ${cart_count * product.price}</br>
+  
   <hr class="mt-2 mb-3"/>
 </div>
 </div>
 
-
 <div id="btn-1">
 	<button type="button" class="btn btn-secondary btn-lg" style="background-color:black; color:white">계좌이체</button>
-	<button type="button" class="btn btn-secondary btn-lg" onclick="location.href='${pageContext.request.contextPath}/product/payment.do'" style="background-color:black; color:white">카드결제</button>
+	<input type="submit" class="btn btn-secondary btn-lg" 
+				onclick="location.href='${pageContext.request.contextPath}/product/payment.do'" 
+										style="background-color:black; color:white" value="카드결제">
+	<input type="button" class="btn btn-secondary btn-lg" value="임시버튼"
+				onclick="location.href='${pageContext.request.contextPath}/product/payment.do'">
 </div>
-
+</form>
 
 
 
