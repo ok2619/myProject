@@ -9,6 +9,13 @@
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script> 
+  function submit2(frm) { 
+    frm.action='buyForm.do?product_num=${product.product_num}'; 
+    frm.submit(); 
+    return true; 
+  } 
+</script> 
 <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
  	<style>
       table {
@@ -51,7 +58,8 @@
           <input type="hidden" id="product_num" name="product_num" value="${product.product_num}">
           개수 : <input type="number" id="cart_count" value="1" name="cart_count" min="1" required></br>
           <c:if test="${product.stock > 0}">
-          <input type="button" value="구매" onclick="location.href='buyForm.do?product_num=${product.product_num}'">
+          <input type='button' value='구매' onclick='return submit2(this.form);'> 
+          <%-- <input type="button" value="구매" onclick="location.href='buyForm.do?product_num=${product.product_num}'"> --%>
           </c:if>
           <c:if test="${product.stock <= 0 }">
           <span>품절</span>	

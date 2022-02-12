@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,10 +39,11 @@
       		<img src="../upload/NO.png" alt="no">
     	</a>
 	</div>
-  모델명 : </br>
-  상품종류 : </br>
-  수량 : </br>
-  총금액 : </br>
+  모델명 : ${product.product_name}</br>
+  상품종류 : ${product.product_name}</br>
+  수량 : ${cart_count}</br>
+  총금액 : ${cart_count * product.price}</br>
+  
   <hr class="mt-2 mb-3"/>
 </div>
 </div>
