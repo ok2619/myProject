@@ -15,7 +15,25 @@
 		let pass = 0;
 
 //ㅡㅡㅡㅡㅡ비밀번호 확인ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-		$('#passwd_check').click(function(){
+		
+		//[비밀번호]와 [비밀번호 확인] 일치 여부 체크(방법1)
+		$('#cpasswd').keyup(function(){
+			if($('#passwd').val()==$('#cpasswd').val()){
+				$('#message_passwd').css('color','blue').text('비밀번호가 일치합니다');
+			}else{
+				$('#message_passwd').css('color','red').text('비밀번호가 불일치합니다');
+				
+			}
+		});
+		
+		//[비밀번호 확인] 입력 후 다시 [비밀번호] 수정 시 [비밀번호 확인]에 입력한 내용을 초기화
+		$('#passwd').keyup(function(){ //비번 수정을 위해 입력시
+			$('#cpasswd').val(''); 	//내용 초기화
+			$('#message_passwd').text(''); //확인 문구 초기화
+		});
+		
+		//ㅡㅡㅡㅡㅡ비밀번호 확인(방법2)
+		/* $('#passwd_check').click(function(){
 			$.ajax({
 				url:'passwordCheck.do',
 				type:'post',
@@ -40,7 +58,7 @@
 					alert('네트워크 오류 발생');
 				}
 			});
-		});
+		}); */
 		
 //ㅡㅡㅡㅡㅡ아이디 중복 확인ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 		$('#id_check').click(function(){
@@ -168,7 +186,7 @@
 		<div class="form-group">
 			<input type="password" class="form-control" id="cpasswd" name="cpasswd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
 		</div>       				
-		<button type="button" id="passwd_check" class="btn btn-default btn-sm">확인</button>
+		<!-- <button type="button" id="passwd_check" class="btn btn-default btn-sm">확인</button> -->
 		<span id="message_passwd"></span>	
 		<p>   
 		
