@@ -49,9 +49,9 @@
           
           <form action="cartInsert.do" method="post">
           <input type="hidden" id="product_num" name="product_num" value="${product.product_num}">
-          개수 : <input type="number" id="cart_count" name="cart_count" min="1"></br>
+          개수 : <input type="number" id="cart_count" name="cart_count" min="1" required></br>
           <c:if test="${product.stock > 0 }">
-          <input type="button" value="구매">
+          <input type="button" value="구매" onclick="location.href='buyForm.do'">
           </c:if>
           <c:if test="${product.stock <= 0 }">
           <span>품절</span>	
