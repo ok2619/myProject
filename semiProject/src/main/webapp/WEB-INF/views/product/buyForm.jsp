@@ -49,8 +49,22 @@
 
 <div id="btn-1">
 	<button type="button" class="btn btn-secondary btn-lg" style="background-color:black; color:white">계좌이체</button>
-	<button type="button" class="btn btn-secondary btn-lg" style="background-color:black; color:white">카드결제</button>
+	<button type="button" class="btn btn-secondary btn-lg" onclick="location.href='${pageContext.request.contextPath}/product/payment.do'" style="background-color:black; color:white">카드결제</button>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- 우편번호 스크립트 시작 -->
 <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
