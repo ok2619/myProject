@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +15,8 @@ IMP.request_pay({
     pg: "kakaopay", // PG사 선택
     pay_method: "kakaopay", // 지불 수단
     merchant_uid: 'merchant_' + new Date().getTime(), //가맹점에서 구별할 수 있는 고유한id
-    name: "신발", // 상품명
-    amount: 2500000, // 가격
+    name: "book", // 상품명
+    amount: 2929, // 가격
     buyer_email: "test@gmail.com",
     buyer_name: "tester", // 구매자 이름
     buyer_tel: "010-132-132", // 구매자 연락처  
