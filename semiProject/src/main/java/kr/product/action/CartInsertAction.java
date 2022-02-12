@@ -15,6 +15,9 @@ public class CartInsertAction implements Action{
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		Integer user_number = (Integer)session.getAttribute("user_number");
+		if(user_number == null) {
+			return "redirect:/member/loginForm.do";
+		}
 		
 		int product_num = Integer.parseInt(request.getParameter("product_num"));
 		int cart_count = Integer.parseInt(request.getParameter("cart_count"));
