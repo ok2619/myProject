@@ -21,6 +21,7 @@
 		<li>제목 : ${board.title}</li>
 		<li>작성자 : ${board.id}</li>
 		<li>조회수 : ${board.hit}</li>
+		<li>작성일 : ${board.reg_date}</li>
 	</ul>
 	<hr size="1" width="100%" noshade="noshade">
 	<c:if test="${!empty board.filename}">
@@ -34,10 +35,9 @@
 	<hr size="1" width="100%" noshade="noshade">
 	<div class="align-right">
 		<c:if test="${!empty board.modify_date}">
-		최근 수정일 : ${board.modify_date}
+		최근 수정일 : ${board.modify_date}&nbsp;&nbsp;
 		</c:if>
-		작성일 : ${board.reg_date}
-		
+			
 		<%--로그인한 회원번호와 작성자 회원번호가 일치해야 수정,삭제 가능 --%>
 		<c:if test="${user_number == board.user_num}">
 		<input type="button" value="수정" 
@@ -55,7 +55,7 @@
 		</script>		
 		</c:if>
 		<%--수정/삭제 기능 끝 --%>		
-		<input type="button"  class="btn btn-default btn-sm margin_left" value="목록" onclick="location.href='list.do'">
+		<input type="button"  class="btn btn-default btn-sm" value="목록" onclick="location.href='list.do'">
 	</div>
 </div>
 <div class="blank_50"></div>
