@@ -22,6 +22,8 @@
 <h4>수령자 정보</h4></br>
 <input type="hidden" id="product_name" name="product_name" value="${product.product_name}">
 <input type="hidden" id="price" name="price" value="${product.price}">
+<input type="hidden" id="product_num" name="product_num" value="${product.product_num}">
+<input type="hidden" id="cart_count" name="cart_count" value="${cart_count}">
 <label for="name" class="control-label">수령자</label>
 <input type="text" id="name" name="name" placeholder="수령자 입력"></br>
 <label for="phone" class="control-label">전화번호</label>
@@ -45,7 +47,6 @@
   상품종류 : ${product.sort}</br>
   수량 : ${cart_count}</br>
   총금액 : ${cart_count * product.price}</br>
-  
   <hr class="mt-2 mb-3"/>
 </div>
 </div>

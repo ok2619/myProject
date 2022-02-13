@@ -12,12 +12,17 @@ public class StockMinusAction implements Action{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		Integer cart_count = (Integer)session.getAttribute("cart_count");
-		Integer product_num = (Integer)session.getAttribute("product_num");
 
+		HttpSession session = request.getSession();
+		int product_num = (Integer)session.getAttribute("product_num");
+		int cart_count = (Integer)session.getAttribute("cart_count");
+		
+		System.out.println(cart_count);
+		System.out.println(product_num);
+		
+		
 		ProductDAO dao = ProductDAO.getInstance();
-		dao.StockAll(product_num,cart_count);
+		dao.StockAll(cart_count);
 		
 		return "/WEB-INF/views/product/stockMinus.jsp";
 	}

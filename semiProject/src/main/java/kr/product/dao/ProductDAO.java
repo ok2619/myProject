@@ -316,7 +316,7 @@ public class ProductDAO {
 		 }
 		 //재고 마이너스
 		 
-		 public void StockAll(Integer product_num,Integer cart_count) throws Exception{
+		 public void StockAll(int cart_count) throws Exception{
 			 Connection conn = null;
 			 PreparedStatement pstmt = null;
 			 PreparedStatement pstmt2 = null;
@@ -329,8 +329,9 @@ public class ProductDAO {
 				 
 				 conn.setAutoCommit(false); //오토해제
 				 
-				 sql = "select stock from qproduct where product_num=?";
+				 sql = "select stock from qproduct where product_num='123'";
 				 pstmt = conn.prepareStatement(sql);
+				 pstmt.setInt(1, s_num);
 				 rs = pstmt.executeQuery();
 				 if(rs.next()) {
 					 s_num = rs.getInt(1);
@@ -339,7 +340,6 @@ public class ProductDAO {
 				 sql = "update qproduct set stock = stock-? where product_num=?";
 				 pstmt2 = conn.prepareStatement(sql);
 				 pstmt2.setInt(1, cart_count);
-				 pstmt2.setInt(2, product_num);
 				 pstmt2.executeUpdate();
 				 
 				 conn.commit(); //한번에 커밋
