@@ -44,7 +44,8 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">my page</a>
 						<ul class="dropdown-menu">
 							<li><a href="${pageContext.request.contextPath}/member/modifyUserForm.do">개인정보수정</a></li>
-							<li><a href="#">주문내역</a></li>
+							<li><a href="${pageContext.request.contextPath}/member/orderList.do">주문내역</a></li>
+							
 							<li><a href="#">내가쓴글</a></li>
 						</ul>
 					</li>

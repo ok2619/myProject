@@ -392,7 +392,6 @@ public class MemberDAO {
 				DBUtil.executeClose(null, pstmt, conn);
 			}
 		}
-
 }
 
 
