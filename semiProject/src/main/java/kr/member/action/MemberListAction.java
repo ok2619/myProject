@@ -15,8 +15,6 @@ public class MemberListAction implements Action{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-	
 		
 		//관리자로 로그인한 경우
 		String pageNum = request.getParameter("pageNum");

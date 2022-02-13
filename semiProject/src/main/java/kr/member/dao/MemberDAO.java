@@ -258,9 +258,8 @@ public class MemberDAO {
 				
 				if(keyword != null && !"".equals(keyword)) {
 				//검색글 처리
-				if(keyfield.equals("1")) sub_sql = "WHERE id LIKE ?";
-					else if(keyfield.equals("2")) sub_sql = "WHERE name LIKE";
-					else if(keyfield.equals("3")) sub_sql = "WHERE email LIKE";
+				if(keyfield.equals("1")) sub_sql = "WHERE m.id LIKE ?";
+					else if(keyfield.equals("2")) sub_sql = "WHERE d.name LIKE";
 				}
 
 				//전체 또는 검색 레코드 갯수
@@ -284,6 +283,7 @@ public class MemberDAO {
 				}
 				return count;
 			}
+		
 		//회원 목록
 		public List<MemberVO> getListMemberByAdmin(int startRow, int endRow,String keyfield, String keyword)throws Exception{
 			Connection conn = null;
@@ -299,9 +299,8 @@ public class MemberDAO {
 				conn = DBUtil.getConnection();
 				
 				if(keyword != null && !"".equals(keyword)) {
-				if(keyfield.equals("1")) sub_sql = "WHERE id LIKE ?";
-					else if(keyfield.equals("2")) sub_sql = "WHERE name LIKE ?";
-					else if(keyfield.equals("3")) sub_sql = "WHERE email LIKE ?";
+				if(keyfield.equals("1")) sub_sql = "WHERE m.id LIKE ?";
+					else if(keyfield.equals("2")) sub_sql = "WHERE d.name LIKE ?";
 				}
 
 			//SQL문 작성

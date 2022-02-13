@@ -66,13 +66,13 @@
 			<th>가입일</th>
 			<th>등급</th>  
 		</tr>
-		<c:forEach var="member" items="${list }">
+		<c:forEach var="member" items="${list}">
 		<tr>
 			<td>
 				<c:if test="${member.auth > 0}">
-				<a href="detailUserForm.do?user_num=${member.user_num}">${member.id }</a>
+				<a href="detailUserForm.do?user_num=${member.user_num}">${member.id}</a>
 				</c:if>
-				<c:if test="${member.auth == 0}">${member.id }</c:if>
+				<c:if test="${member.auth == 0}">${member.id}</c:if>
 			</td>
 			<td>${member.name}</td>
 			<td>${member.address1}</td>
@@ -92,18 +92,16 @@
 	<p>
 	
 	<!-- 검색창 -->
-		<form id="search_review" action="list.do" method="get">
+		<form id="search_review" action="memberList.do" method="get">
 			<ul class="search_review">
 				<li>
 					<select name="keyfield">
-						<option value="1">제목</option>
-						<option value="2">아이디</option>
-						<option value="3">내용</option>
+						<option value="1">ID</option>
+						<option value="2">이름</option>
 					</select>
 				</li>
 				<li>
-					<input type="search" size="16" name="keyword" id="keyword" 
-													value="${param.keyword}">
+					<input type="search" size="16" name="keyword" id="keyword">
 				</li>
 				<li>
 					<input type="submit" value="검색" class="btn btn-default btn-sm">
