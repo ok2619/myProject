@@ -16,6 +16,8 @@
 </style>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<div class="page-main">
 	<table class="table">
 		<tr>
 			<th>번호</th>
@@ -55,5 +57,6 @@
 	<div id="btn-1">
 	<button type="button" class="btn btn-secondary btn-lg" style="background-color:black; color:white">총 ${totalPrice}원 결제</button>
 	</div>
+</div>
 </body>
 </html>
