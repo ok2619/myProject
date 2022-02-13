@@ -44,25 +44,21 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">my page</a>
 						<ul class="dropdown-menu">
 							<li><a href="${pageContext.request.contextPath}/member/modifyUserForm.do">개인정보수정</a></li>
-
-							<li><a href="#">주문내역</a></li>
 							<li><a href="${pageContext.request.contextPath}/board/myReview.do">내가쓴글</a></li>
-							<li><a href="${pageContext.request.contextPath}/member/orderList.do">주문내역</a></li>
-							
-							<li><a href="#">내가쓴글</a></li>
+							<li><a href="${pageContext.request.contextPath}/member/orderList.do">주문내역</a></li>							
+						</ul>
+						</li>
+						</c:if>
+						<%-- 관리자(로그인) --%>
+						<c:if test="${!empty user_number && user_auth == 3}">
+							<li><a href="${pageContext.request.contextPath}/member/memberList.do">회원관리</a></li>
+							<li><a href="${pageContext.request.contextPath}/product/productWriteForm.do">상품등록</a></li>
+							<li><a href="${pageContext.request.contextPath}/member/logout.do">logout</a></li>
+						</c:if>
+						<%-- 비회원,회원,관리자 공통메뉴 --%>					
+						<li><a href="${pageContext.request.contextPath}/board/list.do">review</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/productList.do">상품목록</a></li>
 					</ul>
-					</li>
-					</c:if>
-					<%-- 관리자(로그인) --%>
-					<c:if test="${!empty user_number && user_auth == 3}">
-						<li><a href="${pageContext.request.contextPath}/member/memberList.do">회원관리</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/productWriteForm.do">상품등록</a></li>
-						<li><a href="${pageContext.request.contextPath}/member/logout.do">logout</a></li>
-					</c:if>
-					<%-- 비회원,회원,관리자 공통메뉴 --%>					
-					<li><a href="${pageContext.request.contextPath}/board/list.do">review</a></li>
-					<li><a href="${pageContext.request.contextPath}/product/productList.do">상품목록</a></li>
-				</ul>
 								
 				<!-- 서치창 (보류) -->
 				<!-- <form class="navbar-form pull-right" role="search">
