@@ -34,7 +34,8 @@
 	<h3 class="align-center common_title"><a href="list.do">상품 후기</a></h3>
 		
 	<c:if test="${count == 0 }">
-	<table>
+	<table class="table table-hover">
+	  <thead>
 		<tr>
 			<th>글번호</th>
 			<th>상품정보</th>
@@ -42,19 +43,23 @@
 			<th>작성자</th>
 			<th>작성일</th>
 			<th>조회</th>
-		</tr>		
+		</tr>
+	  </thead>
+	  <tbody>			
 		<tr>
 			<td colspan="6" class="align-center">			
 			<p>
 			표시할 게시물이 없습니다.		
 			<p>
 			</td>				
-		</tr>			
+		</tr>
+	  </tbody>			
 	</table>	
 	</c:if>
 	
 	<c:if test="${count > 0 }">
-	<table>
+	<table class="table table-hover">
+	  <thead>
 		<tr>
 			<th>번호</th>
 			<th>상품정보</th>
@@ -63,12 +68,14 @@
 			<th>작성일</th>
 			<th>조회</th>
 		</tr>
+	  </thead>
+	  <tbody>	
 		<c:forEach var="board" items="${list}">
 		<tr>
 			<td>${board.board_num}</td>			
 			<td>
 			<c:if test="${!empty board.filename}">
-			<div class="align-center">
+			<div>
 				<img src="${pageContext.request.contextPath}/upload/${board.filename}" class="list-img">
 			</div>
 			</c:if>
@@ -79,6 +86,7 @@
 			<td>${board.hit}</td>
 		</tr>
 		</c:forEach>
+	  </tbody>
 	</table>
 	</c:if>
 	<p>
@@ -117,11 +125,11 @@
 	<!-- 글쓰기버튼 끝-->
 	
 	<p class="clear"></p>
-	<p>
+	<div class="blank_50"></div>	
 	<div class="align-center">
 		${pagingHtml}
 	</div>	
-	
+	<div class="blank_50"></div>	
 </div>
 </body>
 </html>

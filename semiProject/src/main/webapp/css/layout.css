@@ -25,6 +25,13 @@
 .align-right{
 	text-align:right;
 }
+.blank_50{
+	margin-bottom:50px;
+}
+.blank_100{
+	margin-bottom:100px;
+}
+
 /*메인*/
 a:link{
 	text-decoration:none;
@@ -131,16 +138,16 @@ input[id="address1"],input[id="address2"]{
 	margin-bottom:10px;
 	margin-top:20px; /*추가*/
 }
-table{
+/* table{
 	width:100%;
 	border:1px solid #000;
 	border-collapse:collapse;
 	margin-top:5px;
-}
-table td, table th{
+} */
+/* table td, table th{
 	border:1px solid #000;
 	padding:5px;
-}
+} */
 /*추가: 글쓰기 버튼*/
 div#write_btn{
 	float:right;
@@ -152,6 +159,7 @@ div#write_btn{
 /*목록 이미지 크기 설정*/
 .list-img{
 	max-width:60px;
+	margin: 0 auto;
 }
 
 /*서치폼*/
