@@ -55,7 +55,7 @@
 		</script>		
 		</c:if>
 		<%--수정/삭제 기능 끝 --%>		
-		<input type="button"  class="btn btn-default btn-sm left_margin" value="목록" onclick="location.href='list.do'">
+		<input type="button"  class="btn btn-default btn-sm margin_left" value="목록" onclick="location.href='list.do'">
 	</div>
 </div>
 <div class="blank_50"></div>

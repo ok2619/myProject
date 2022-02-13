@@ -91,8 +91,6 @@
 	</c:if>
 	<p>
 	
-	<!-- <p class="clear"></p> -->
-	
 	<!-- 검색창 -->
 		<form id="search_review" action="list.do" method="get">
 			<ul class="search_review">

@@ -34,30 +34,30 @@
 					<%-- 비회원(로그아웃) --%>
 					<c:if test="${empty user_number}">
 					<li><a href="${pageContext.request.contextPath}/member/loginForm.do">login</a></li>
-					<li><a href="${pageContext.request.contextPath}/member/signUpForm.do">join</a></li>
+					<li><a href="${pageContext.request.contextPath}/member/signUpForm.do">join</a></li>					
 					</c:if>
 					<%-- 회원(로그인) --%>
 					<c:if test="${!empty user_number && user_auth == 2}">
 					<li><a href="${pageContext.request.contextPath}/member/logout.do">logout</a></li>
-					<li><a href="${pageContext.request.contextPath}/product/cartList.do">장바구니</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">my page</a>
 						<ul class="dropdown-menu">
 							<li><a href="${pageContext.request.contextPath}/member/modifyUserForm.do">개인정보수정</a></li>
-							<li><a href="${pageContext.request.contextPath}/board/myReview.do">내가쓴글</a></li>
-							<li><a href="${pageContext.request.contextPath}/member/orderList.do">주문내역</a></li>							
+							<li><a href="${pageContext.request.contextPath}/member/orderList.do">주문내역</a></li>									
+							<li><a href="${pageContext.request.contextPath}/board/myReview.do">내가쓴글</a></li>					
 						</ul>
-						</li>
-						</c:if>
-						<%-- 관리자(로그인) --%>
-						<c:if test="${!empty user_number && user_auth == 3}">
-							<li><a href="${pageContext.request.contextPath}/member/memberList.do">회원관리</a></li>
-							<li><a href="${pageContext.request.contextPath}/product/productWriteForm.do">상품등록</a></li>
-							<li><a href="${pageContext.request.contextPath}/member/logout.do">logout</a></li>
-						</c:if>
-						<%-- 비회원,회원,관리자 공통메뉴 --%>					
-						<li><a href="${pageContext.request.contextPath}/board/list.do">review</a></li>
+					</li>
+					</c:if>
+					<%-- 관리자(로그인) --%>
+					<c:if test="${!empty user_number && user_auth == 3}">
+						<li><a href="${pageContext.request.contextPath}/member/memberList.do">회원관리</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/productWriteForm.do">상품등록</a></li>							
 						<li><a href="${pageContext.request.contextPath}/product/productList.do">상품목록</a></li>
+						<li><a href="${pageContext.request.contextPath}/member/logout.do">logout</a></li>
+					</c:if>
+					<%-- 비회원,회원,관리자 공통메뉴 --%>								
+					<li><a href="${pageContext.request.contextPath}/product/cartList.do">cart</a></li>			
+					<li><a href="${pageContext.request.contextPath}/board/list.do">review</a></li>
 					</ul>
 								
 				<!-- 서치창 (보류) -->

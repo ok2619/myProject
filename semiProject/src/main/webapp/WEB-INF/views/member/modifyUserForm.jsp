@@ -52,8 +52,7 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <div class="page-main">
 	<h3 class="align-center common_title">회원정보 수정</h3>
-		<form action="modifyUser.do" method="post" id="modify_form" class="form-inline">
-		
+		<form action="modifyUser.do" method="post" id="modify_form" class="form-inline">	
 			<div class="form-group">
 				<label for="id" class="control-label">아이디</label>
 			</div>
@@ -104,14 +103,14 @@
 			
 		<div class="blank_50"></div>
 		<div class="align-center">
-			 	<input type="submit" value="수정" class="btn btn-info">
-				<button type="button" class="btn btn-default" onclick="location.href='${pageContext.request.contextPath}/member/modifyPasswordForm.do'">비밀번호 변경</button>				
-				<input type="button" value="회원탈퇴" class="btn" onclick="location.href='${pageContext.request.contextPath}/member/deleteUserForm.do'">
-			</div>
-
+		 	<input type="submit" value="수정" class="btn btn-info">
+			<button type="button" class="btn btn-default" onclick="location.href='${pageContext.request.contextPath}/member/modifyPasswordForm.do'">비밀번호 변경</button>				
+			<input type="button" value="회원탈퇴" class="btn" onclick="location.href='${pageContext.request.contextPath}/member/deleteUserForm.do'">
+		</div>
 		</form>		
 </div>
 <div class="blank_100"></div>	
+
 <!-- 우편번호 스크립트 시작 -->
 <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
 <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">

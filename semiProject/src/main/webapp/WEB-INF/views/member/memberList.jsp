@@ -23,10 +23,11 @@
 </script>
 </head>
 <body>
-<div class="page-main">
-	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2 class="align-center common_title">회원목록(관리자 전용)</h2>
-	<form id="search_form" action="memberList.do" method="get">
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<div class="page-main">
+	<h4 class="align-center common_title">회원목록(관리자 전용)</h4>
+	
+	<!-- <form id="search_form" action="memberList.do" method="get">
 		<ul class="search">
 			<li>
 				<select name="keyfield">
@@ -42,22 +43,22 @@
 				<input type="submit" value="찾기">
 			</li>
 		</ul>
-	</form>
-	<div class="list-space align-right">
+	</form> -->
+	
+	<%-- <div class="list-space align-right">
 		<input type="button" value="목록" onclick="location.href='memberList.do'">
 		<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
-	</div>
+	</div> --%>
+	
 	<c:if test="${count==0 }">
 	<div class="result-display">
 		표시할 내용이 없습니다.
-	</div>
-		<div class="result-display">
-		표시할 내용이 없습니다.
-	</div>
+	</div>		
 	</c:if>
+	
 	<c:if test="${count > 0 }">
-	<table>
-		<tr>
+	<table class="table table-hover">
+		<tr class="active">
 			<th>ID</th>
 			<th>이름</th>
 			<th>주소</th>
@@ -73,10 +74,10 @@
 				</c:if>
 				<c:if test="${member.auth == 0}">${member.id }</c:if>
 			</td>
-			<td>${member.name }</td>
-			<td>${member.address1 }</td>
-			<td>${member.phone }</td>
-			<td>${member.reg_date }</td>
+			<td>${member.name}</td>
+			<td>${member.address1}</td>
+			<td>${member.phone}</td>
+			<td>${member.reg_date}</td>
 			<td>
 			<c:if test="${member.auth == 0}">탈퇴</c:if>
 			<c:if test="${member.auth == 1}">정지</c:if>
@@ -86,10 +87,39 @@
 		</tr>
 		</c:forEach>
 	</table>
+	</c:if>
+	
+	<p>
+	
+	<!-- 검색창 -->
+		<form id="search_review" action="list.do" method="get">
+			<ul class="search_review">
+				<li>
+					<select name="keyfield">
+						<option value="1">제목</option>
+						<option value="2">아이디</option>
+						<option value="3">내용</option>
+					</select>
+				</li>
+				<li>
+					<input type="search" size="16" name="keyword" id="keyword" 
+													value="${param.keyword}">
+				</li>
+				<li>
+					<input type="submit" value="검색" class="btn btn-default btn-sm">
+				</li>
+			</ul>
+		</form>
+	<!-- 검색창 끝 -->
+	
+	<!-- <input type="button"  class="btn btn-default btn-sm margin_left" value="목록" onclick="location.href='memberList.do'">
+	 -->
+	<p class="clear"></p>
+	<div class="blank_50"></div>	
 	<div class="align-center">
 		${pagingHtml}
-	</div>
-	</c:if>
+	</div>	
+	<div class="blank_50"></div>	
 </div>
 </body>
 </html>

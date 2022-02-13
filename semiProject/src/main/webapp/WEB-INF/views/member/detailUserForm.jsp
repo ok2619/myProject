@@ -47,7 +47,8 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2 class="align-center common_title">${member.id}의 정보 수정(관리자 전용)</h2>
+<div class="page-main">
+	<h4 class="align-center common_title">${member.id}의 정보 수정(관리자 전용)</h4>
 	<form action="detailUser.do" method="post" id="detail_form" class="form-inline">
 		<input type="hidden" name="user_num" value="${member.user_num}">
 			<div class="form-group">
@@ -103,13 +104,17 @@
 				<input type="text" name="address2" id="address2" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="${member.address2}">
 			</div>
 			<p><p>
+
+		<div class="blank_50"></div>			
 		<div class="align-center">
-			<input type="submit" value="수정" class="btn btn-primary">
-			<input type="button" value="목록" class="btn btn-info" onclick="location.href='memberList.do'">
+			<input type="submit" value="수정" class="btn btn-info">
+			<input type="button" value="목록" class="btn btn-default margin_left" onclick="location.href='memberList.do'">
 		</div>
 	</form>
+</div>	
+<div class="blank_100"></div>	
 	
-		<!-- 우편번호 스크립트 시작 -->
+<!-- 우편번호 스크립트 시작 -->
 <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
 <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
 <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
@@ -207,6 +212,6 @@
     }
 </script>
 <!-- 우편번호 스크립트 끝 -->
-</div>
+
 </body>
 </html>
