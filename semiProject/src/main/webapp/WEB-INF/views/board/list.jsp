@@ -60,7 +60,7 @@
 	<c:if test="${count > 0 }">
 	<table class="table table-hover">
 	  <thead>
-		<tr>
+		<tr class="active">
 			<th>번호</th>
 			<th>상품정보</th>
 			<th>제목</th>
@@ -94,9 +94,8 @@
 	<!-- <p class="clear"></p> -->
 	
 	<!-- 검색창 -->
-	<div id="review_search">
-		<form id="review_search" action="list.do" method="get">
-			<ul class="review_search">
+		<form id="search_review" action="list.do" method="get">
+			<ul class="search_review">
 				<li>
 					<select name="keyfield">
 						<option value="1">제목</option>
@@ -113,7 +112,6 @@
 				</li>
 			</ul>
 		</form>
-	</div>
 	<!-- 검색창 끝 -->
 	
 	<!-- 글쓰기버튼 -->

@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>	
 </head>
 <body>
 	<!-- 상단 고정 네비게이션 시작 -->
@@ -82,17 +82,16 @@
 		</a>
 	</div>
 	<%-- 카테고리 메뉴 --%>
-	  <div class="align-center blank common_title menu_font">   
+	<div class="align-center blank common_title menu_font">   
 		<div class="col-md-offset-4 col-md-1"><a href="#"><h4>&nbsp;&nbsp;OUTER</h4></a></div>
 		<div class="col-md-1"><a href="#"><h4>TOP</h4></a></div>
 		<div class="col-md-1"><a href="#"><h4>BOTTOM</h4></a></div>
 		<div class="col-md-1"><a href="#"><h4>ECT</h4></a></div>
 		<div class="col-md-offset-4"></div>				
-	  </div>
-
+	</div>
 </body>
 </html>
-<!-- header 끝 -->
+
 
 
 

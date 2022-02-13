@@ -129,7 +129,9 @@ input[id="address1"],input[id="address2"]{
 .login_btn{ /*추가*/
 	margin:0 -100px 0 160px;
 }
-
+.left_margin{
+	margin-left:20px;
+}
 
 
 
@@ -163,39 +165,10 @@ div#write_btn{
 }
 
 /*서치폼*/
+/*default 서치창 설정*/
 form#search_form{
 	border:none;	
 }
-/*리뷰페이지 서치창 설정-좌측 하단 정렬*/
-form#review_search{
-	border:none;	
-	float:left;
-	width:40%;
-	margin: 0 0 0 -80px;
-	
-}
-/* div#review_search{
-	border:none;
-	float:left;
-	width:30%;
-	background-color:#fad9a7;
-} */
-ul.review_search{
-	width:300px;
-	list-style:none;
-	padding:0;
-	margin:0;	
-	/* background-color:#c4b8a5; */
-	float:left;
-}
-ul.review_search li{
-	margin:0;
-	padding:0;
-	display:inline;
-}
-
-
-/*기존 서치창 설정*/
 ul.search{
 	width:300px;
 	list-style:none;
@@ -206,7 +179,32 @@ ul.search li{
 	margin:0 0 9px 0;
 	padding:0;
 	display:inline;
+} 
+
+
+/*review 페이지 서치창 설정-좌측 하단 정렬(board/list,myReview.jsp)*/
+form#search_review{
+	border:none;	
+	float:left;
+	width:40%;
+	margin: 0 0 0 -80px;
+	
 }
+ul.search_review{
+	width:300px;
+	list-style:none;
+	padding:0;
+	margin:0;	
+	/* background-color:#c4b8a5; */
+	float:left;
+}
+ul.search_review li{
+	margin:0;
+	padding:0;
+	display:inline;
+}
+
+
 
 
 
@@ -286,11 +284,4 @@ form#mre_form{
     font-weight: normal;
     font-style: normal;
 }
-
-
-
-
-
-
-
 
