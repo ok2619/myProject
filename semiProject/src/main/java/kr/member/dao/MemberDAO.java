@@ -6,8 +6,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.board.vo.BoardVO;
 import kr.member.vo.MemberVO;
 import kr.util.DBUtil;
+import kr.util.StringUtil;
 
 public class MemberDAO {
 	
@@ -16,7 +18,7 @@ public class MemberDAO {
 		return instance;
 	}
 	private MemberDAO() {}
-	
+	//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ		
 	//회원가입
 	public void insertMember(MemberVO member)throws Exception{
 		Connection conn = null;
@@ -98,7 +100,7 @@ public class MemberDAO {
 		return member;
 	}
 
-//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ		
+	
 	//회원상세정보
 	public MemberVO getMember(int user_num)throws Exception{
 		Connection conn=null;
@@ -145,7 +147,7 @@ public class MemberDAO {
 		
 		return member; 
 	}
-//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ	
+	
 	//회원정보수정
 	public void updateMember(MemberVO member)throws Exception{
 		Connection conn = null;
@@ -198,8 +200,7 @@ public class MemberDAO {
 			DBUtil.executeClose(null, pstmt, conn);
 		}
 	}
-	
-	
+		
 	//회원탈퇴(회원정보 삭제)
 	public void deleteMember(int user_num)throws Exception{
 		Connection conn = null;
@@ -242,7 +243,8 @@ public class MemberDAO {
 		}
 	 }
 	
-	//관리자
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ		
+	//[관리자]
 	//총 회원 수
 		public int getMemberCountByAdmin(String keyfield, String keyword)throws Exception{
 			Connection conn = null;
@@ -393,6 +395,13 @@ public class MemberDAO {
 			}
 		}
 
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ			
+		
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ			
+		
+		
+		
+		
 }
 
 

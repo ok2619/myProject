@@ -45,7 +45,7 @@
 						<ul class="dropdown-menu">
 							<li><a href="${pageContext.request.contextPath}/member/modifyUserForm.do">개인정보수정</a></li>
 							<li><a href="#">주문내역</a></li>
-							<li><a href="#">내가쓴글</a></li>
+							<li><a href="${pageContext.request.contextPath}/board/myReview.do">내가쓴글</a></li>
 						</ul>
 					</li>
 					</c:if>
