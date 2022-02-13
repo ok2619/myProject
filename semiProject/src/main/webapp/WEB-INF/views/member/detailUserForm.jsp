@@ -46,14 +46,14 @@
 </script>
 </head>
 <body>
-<div class="container">
-	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>${member.id}의 정보 수정(관리자 전용)</h2>
-	<form action="detailUser.do" method="post" method="detail_form">
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<h2 class="align-center common_title">${member.id}의 정보 수정(관리자 전용)</h2>
+	<form action="detailUser.do" method="post" id="detail_form" class="form-inline">
 		<input type="hidden" name="user_num" value="${member.user_num}">
-		<ul>
-			<li>
+			<div class="form-group">
 				<label>등급</label>
+			</div>
+			<div class="form-group" style="margin:-10px 0 10px 0;">	
 				<c:if test="${member.auth != 3}">
 				<input type="radio" name="auth" value="1" id="auth1" <c:if test="${member.auth == 1}">checked</c:if>>정지
 				<input type="radio" name="auth" value="2" id="auth2" <c:if test="${member.auth == 2}">checked</c:if>>일반
@@ -61,41 +61,54 @@
 				<c:if test="${member.auth == 3}">
 				<input type="radio" name="auth" value="3" id="auth3" checked>관리
 				</c:if>
-			</li>
-			<li>
-				<label for="name">이름</label>
-				<input type="text" name="name" id="name" value="${member.name}"
-				                                     maxlength="10">
-			</li>
-			<li>
-				<label for="phone">전화번호</label>
-				<input type="text" name="phone" id="phone" value="${member.phone}"
-				                                    maxlength="15">
-			</li>
-			<li>
-				<label for="zipcode">우편번호</label>
-				<input type="text" name="zipcode" id="zipcode" 
-				              value="${member.zipcode}" maxlength="5">
-				<input type="button" onclick="sample2_execDaumPostcode()"
-				                                   value="우편번호 찾기">              
-			</li>
-			<li>
-				<label for="address1">주소</label>
-				<input type="text" name="address1" id="address1" 
-				               value="${member.address1}" maxlength="30">
-			</li>
-			<li>
-				<label for="address2">나머지 주소</label>
-				<input type="text" name="address2" id="address2"
-				             value="${member.address2}" maxlength="30">
-			</li>
-		</ul>
+			</div>
+			<p>
+			<div class="form-group">
+				<label for="name" class="control-label">이름</label>
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" id="name" name="name" value="${member.name}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">						
+			</div>       		
+		 	<p>
+			
+			<div class="form-group">
+				<label for="phone" class="control-label">연락처</label>
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" id="phone" name="phone" value="${member.phone}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
+			</div>       		
+			 <p>
+			
+			<div class="form-group">
+				<label for="zipcode" class="control-label">우편번호</label>
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" id="zipcode" name="zipcode" value="${member.zipcode}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
+			</div>  
+			<button type="button" onclick="sample2_execDaumPostcode()" class="btn btn-default btn-xs">우편번호 〉</button>     		
+		 	<p>
+		 	
+			<div  class="form-group">
+				<label for="address1" class="control-label">주소</label>
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" id="address1" name="address1" value="${member.address1}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+			</div>
+			<p>
+			
+			<div  class="form-group">
+				<label for="address2" class="control-label">상세주소</label>
+			</div>
+			<div class="form-group">
+				<input type="text" name="address2" id="address2" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="${member.address2}">
+			</div>
+			<p><p>
 		<div class="align-center">
-			<input type="submit" value="수정">
-			<input type="button" value="목록" 
-			                         onclick="location.href='memberList.do'">
+			<input type="submit" value="수정" class="btn btn-primary">
+			<input type="button" value="목록" class="btn btn-info" onclick="location.href='memberList.do'">
 		</div>
-	</form>	
+	</form>
+	
 		<!-- 우편번호 스크립트 시작 -->
 <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
 <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
