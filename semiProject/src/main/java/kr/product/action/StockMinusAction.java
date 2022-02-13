@@ -22,7 +22,7 @@ public class StockMinusAction implements Action{
 		
 		
 		ProductDAO dao = ProductDAO.getInstance();
-		dao.StockAll(cart_count);
+		dao.StockAll(product_num,cart_count);
 		
 		return "/WEB-INF/views/product/stockMinus.jsp";
 	}
