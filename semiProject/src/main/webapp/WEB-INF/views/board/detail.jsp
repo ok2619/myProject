@@ -11,8 +11,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board-reply.js"></script>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <div class="page-main">
-	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<h3 class="align-center common_title"><a href="list.do">상품 후기</a></h3>
 	<ul>
 		<li>글번호 : ${board.board_num}</li>
