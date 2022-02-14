@@ -210,7 +210,7 @@ $(function(){
 				}else if(param.result == 'wrongAccess'){
 					alert('타인의 글을 수정할 수 없습니다.');
 				}else{
-					alert('수정시 오류 발생!');
+					alert('수정시 오류 발생');
 				}
 			},
 			error:function(){
@@ -236,7 +236,7 @@ $(function(){
 				if(param.result == 'logout'){
 					alert('로그인후 삭제 가능합니다.');
 				}else if(param.result == 'success'){
-					alert('삭제 완료!');
+					alert('댓글이 삭제되었습니다');
 					selectData(1);
 				}else if(param.result == 'wrongAccess'){
 					alert('타인의 글을 삭제할 수 없습니다.');
