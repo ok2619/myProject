@@ -24,7 +24,8 @@
 				return false;
 			}			
 		});		
-		//첨부 이미지 미리보기
+		
+		//첨부 사진 미리보기
 		$("#filename").change(
 			function(){
 				if (this.files && this.files[0]){
@@ -34,7 +35,16 @@
 					}
 					reader.readAsDataURL(this.files[0]);
 				}
+				$('#photo_delete').show(); 
 			});		
+		
+		//이미지 첨부 취소 (파일삭제 버튼 클릭)
+		$('#delete_btn').click(function(){			
+			$('.select_img img').attr('src',''); 
+			$('#filename').val('');
+			$('#photo_delete').hide();
+		});		
+		
 	});
 </script>
 </head>
@@ -58,9 +68,17 @@
 			<td rowspan="2"><textarea rows="5" cols="30" name="b_content" id="b_content" class="form-control"></textarea></td>
 		</tr>
 		<tr>
-			<td class="align-center">
+			<td>
+			<div class="form-group"> 
+			
+				<div id="photo_delete" style="display:none;" class="col-xs-4">
+				<input type="button" value="파일 삭제" id="delete_btn">
+				</div>
+				<div class="col-xs-8">
 				<input type="file" name="filename" id="filename" 
-				accept="image/gif,image/png,image/jpeg" class="margin_left">
+				accept="image/gif,image/png,image/jpeg">		
+				</div>
+			</div>			
 			</td>
 		</tr>
 		</table>	
