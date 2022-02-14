@@ -11,13 +11,46 @@
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<!-- <script type="text/javascript">
+$(function(){
+	$('#write_form2').submit(function(){
+		if($('#name').val().trim()==''){
+			alert('수령자를 입력하세요!');
+			$('#name').val('').focus();
+			return false;
+		}
+		if($('#phone').val().trim()==''){
+			alert('전화번호를 입력하세요!');
+			$('#phone').val('').focus();
+			return false;
+		}
+		if($('#zipcode').val().trim()==''){
+			alert('우편번호를 입력하세요!');
+			$('#zipcode').val('').focus();
+			return false;
+		}
+		if($('#address1').val().trim()==''){
+			alert('주소를 입력하세요!');
+			$('#address1').val('').focus();
+			return false;
+		}
+		if($('#address2').val().trim()==''){
+			alert('상세주소 입력하세요!');
+			$('#address2').val('').focus();
+			return false;
+		}
+	});
+});
+</script> 
+............................안먹힘 -->
 <style>
 	#btn-1{width:300px;margin:auto;}
 	.main2{width:900px;margin:0 auto;}
 </style>
+
 </head>
 <body>
-<form action="payment.do" method="post">
+<form id="write_form2" action="payment.do" method="post">
 <div class="main2">
 <h2>주문 / 결제</h2>
 <h4>수령자 정보</h4></br>
@@ -63,18 +96,6 @@
 
 
 </form>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- 우편번호 스크립트 시작 -->
