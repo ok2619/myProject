@@ -11,35 +11,19 @@
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script> 
   function submit2(frm) { 
-    frm.action='buyForm.do?product_num=${product.product_num}'; 
+    frm.action='buyForm.do?product_num=${product.product_num}'; /* 해당 주소로 이동 */
     frm.submit(); 
     return true; 
   } 
 </script> 
 <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
  	<style>
-      table {
-      	height: 900px;
-        width: 1200px;
-        border: 1px solid #444444;
-      }
-      th, td {
-	    border: 1px solid #444444;
-	    padding: 10px;
-  			}
-  		thead{
-  			width:1000px;
-  			height:500px;
-  		}
-  		tbody{
-  			height:400px;
-  		}
-  		thead .first{
-  			width:50%;
-  		}
-  		thead .second{
-  			width:50%;
-  		}
+      table {height: 900px;width: 1200px;border: 1px solid #444444;}
+      th, td {border: 1px solid #444444;padding: 10px;}
+  		thead{width:1000px;height:500px;}
+  		tbody{height:400px;}
+  		thead .first{width:50%;}
+  		thead .second{width:50%;}
     </style>
 </head>
 <body>
@@ -58,8 +42,7 @@
           <input type="hidden" id="product_num" name="product_num" value="${product.product_num}">
           개수 : <input type="number" id="cart_count" value="1" name="cart_count" min="1" required></br>
           <c:if test="${product.stock > 0}">
-          <input type='button' value='구매' onclick='return submit2(this.form);'> 
-          <%-- <input type="button" value="구매" onclick="location.href='buyForm.do?product_num=${product.product_num}'"> --%>
+          <input type='button' value='구매' onclick='return submit2(this.form);'> <!-- 한개의 form에 두 공간에 데이터를 보내야 하기 때문에 자바스크립트 활용 -->
           </c:if>
           <c:if test="${product.stock <= 0 }">
           <span>품절</span>	

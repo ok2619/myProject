@@ -20,10 +20,10 @@
 <div class="main2">
 <h2>주문 / 결제</h2>
 <h4>수령자 정보</h4></br>
-<input type="hidden" id="product_name" name="product_name" value="${product.product_name}">
-<input type="hidden" id="price" name="price" value="${product.price}">
-<input type="hidden" id="product_num" name="product_num" value="${product.product_num}">
-<input type="hidden" id="cart_count" name="cart_count" value="${cart_count}">
+<input type="hidden" id="product_name" name="product_name" value="${product.product_name}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
+<input type="hidden" id="price" name="price" value="${product.price}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
+<input type="hidden" id="product_num" name="product_num" value="${product.product_num}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
+<input type="hidden" id="cart_count" name="cart_count" value="${cart_count}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
 <label for="name" class="control-label">수령자</label>
 <input type="text" id="name" name="name" placeholder="수령자 입력"></br>
 <label for="phone" class="control-label">전화번호</label>
@@ -56,8 +56,8 @@
 	<input type="submit" class="btn btn-secondary btn-lg" 
 				onclick="location.href='${pageContext.request.contextPath}/product/payment.do'" 
 										style="background-color:black; color:white" value="카드결제">
-	<input type="button" class="btn btn-secondary btn-lg" value="임시버튼"
-				onclick="location.href='${pageContext.request.contextPath}/product/payment.do'">
+	<%-- <input type="button" class="btn btn-secondary btn-lg" value="임시버튼"
+				onclick="location.href='${pageContext.request.contextPath}/product/payment.do'"> --%>
 </div>
 </form>
 
