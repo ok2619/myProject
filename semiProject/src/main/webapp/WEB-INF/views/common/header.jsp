@@ -39,6 +39,7 @@
 					<%-- 회원(로그인) --%>
 					<c:if test="${!empty user_number && user_auth == 2}">
 					<li><a href="${pageContext.request.contextPath}/member/logout.do">logout</a></li>
+					<li><a href="${pageContext.request.contextPath}/product/productList.do">상품목록</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">my page</a>
 						<ul class="dropdown-menu">

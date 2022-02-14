@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-결제완료
+구매내역 업로드 확인
 </body>
 </html>
