@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>myPage | 내가 쓴 글</title>
+<title>myPage | 게시물 관리</title>
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
@@ -31,7 +31,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="page-main">
-	<h3 class="align-center common_title"><a href="myReview.do">내가 쓴 글</a></h3>
+	<h3 class="align-center common_title"><a href="myReview.do">MY BOARD</a></h3>
 		
 	<c:if test="${count == 0 }">
 	<table class="table table-hover">
