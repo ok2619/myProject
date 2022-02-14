@@ -135,6 +135,9 @@ input[id="address1"],input[id="address2"]{
 .float_left{
 	float:left;
 }
+.go_left{
+	margin-left:-50px;
+}
 
 
 /*목록*/
