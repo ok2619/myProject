@@ -19,7 +19,6 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
 <c:forEach var="product" items="${list}">
-
 <div class="all">
 	<div class="row2">
   		<div class="col-sm-4 col-md-2" style="width:300px;">
@@ -29,7 +28,7 @@
 				     	<h3>${product.product_name}</h3>
 				        	<p><fmt:formatNumber value="${product.price}" pattern="#,###" /></p>				        	
 				        	<p>
-				        	<a href="#" class="btn btn-primary" role="button">상품보기</a> 
+				        	<a href="${pageContext.request.contextPath}/product/productDetail.do?product_num=${product.product_num}" class="btn btn-primary" role="button">상품보기</a> 
 				        	<a href="#" class="btn btn-default" role="button">장바구니</a>
 				        	</p>
 				     </div>

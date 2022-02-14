@@ -57,21 +57,19 @@ vertical-align: middle;
           						min="0" max="10" required></span></br>
           
           <c:if test="${product.stock > 0}">
-          <input type='button' value='구매' onclick='return submit2(this.form);'> <!-- 한개의 form에 두 공간에 데이터를 보내야 하기 때문에 자바스크립트 활용 -->
+          <input type='button' class="btn btn-default btn-sm" value='구매' onclick='return submit2(this.form);'> <!-- 한개의 form에 두 공간에 데이터를 보내야 하기 때문에 자바스크립트 활용 -->
           </c:if>
           <c:if test="${product.stock <= 0 }">
           <p style="font-size:3em">품절</p>	
           </c:if>
           <input type="submit" class="btn btn-default btn-sm" value="장바구니담기">
           
-          
-          
-          
           <c:if test="${!empty user_number && user_auth == 3}">
           <input type="button" class="btn btn-default btn-sm" value="상품수정" onclick="location.href='productUpdateForm.do?product_num=${product.product_num}'">
           <input type="button" class="btn btn-default btn-sm" value="상품삭제" onclick="location.href='productDelete.do?product_num=${product.product_num}'">
           </c:if>
           </form>
+          
           </th>
         </tr>       
       </thead>

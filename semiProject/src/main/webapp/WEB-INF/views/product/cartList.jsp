@@ -13,6 +13,7 @@
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <style>
     #btn-1{width:300px;margin:auto;}
+    #w1{width:500px;margin:auto;}
 </style>
 </head>
 <body>
@@ -55,11 +56,19 @@
 		</tr>
 	</table>
 	
+	<c:choose>
+	<c:when test="${totalPrice <= 0}">
+	<div id="w1">
+		<p style="font-size:2em;">장바구니에 담은 물건이 없습니다.</p>
+	</div>
+	</c:when>
+	<c:when test="${totalPrice > 0}">
 	<div id="btn-1">
 	<button type="button" class="btn btn-secondary btn-lg" style="background-color:black; color:white"
 	onclick="location.href='${pageContext.request.contextPath}/product/cartBuyForm.do'">총 <fmt:formatNumber value="${totalPrice}" pattern="#,###" />원 결제</button>				
 	</div>
-	
+	</c:when>
+	</c:choose>
 </div>
 
 </body>
