@@ -65,7 +65,7 @@
 		<span class="re-title">댓글 달기</span>
 		<form id="re_form">
 			<input type="hidden" name="board_num" value="${board.board_num}" id="board_num">
-			<textarea rows="5" cols="50" name="re_content" id="re_content" class="rep-content" 
+			<textarea rows="5" cols="50" name="re_content" id="re_content" class="rep-content" placeholder="댓글을 입력하세요."
 			<c:if test="${empty user_number}">disabled="disabled"</c:if>
 			><c:if test="${empty user_number}">댓글작성을 위해 로그인이 필요합니다.</c:if></textarea>
 		<c:if test="${!empty user_number}">

@@ -10,6 +10,7 @@ import kr.board.dao.BoardDAO;
 import kr.board.vo.BoardReplyVO;
 import kr.board.vo.BoardVO;
 import kr.util.DBUtil;
+import kr.util.DurationFromNow;
 import kr.util.StringUtil;
 
 public class BoardDAO {
@@ -344,8 +345,7 @@ public class BoardDAO {
 			//커넥션풀로부터 커넥션 할당
 			conn = DBUtil.getConnection();
 			//SQL문
-			sql = "INSERT INTO qboard_reply (re_num,re_content,re_ip,user_num,board_num) "
-				+ "VALUSE (qreply_seq.nextval,?,?,?,?)";
+			sql = "INSERT INTO qboard_reply (re_num,re_content,re_ip,user_num,board_num) VALUSE (qreply_seq.nextval,?,?,?,?)";
 			//PreparedStatement객체 생성
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, boardReply.getRe_content());
@@ -366,8 +366,123 @@ public class BoardDAO {
 
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	//댓글 갯수
-	//댓글 목록
-	//댓글 상세
+	 public int getReplyBoardCount(int board_num)throws Exception{
+		 Connection conn = null;
+		 PreparedStatement pstmt = null;
+		 ResultSet rs = null;
+		 String sql = null;
+		 int count = 0;
+		 
+		 try {
+			 //커넥션 할당
+			 conn = DBUtil.getConnection();
+			 //SQL문
+			 sql = "SELECT COUNT(*) FROM qboard_reply b JOIN qmember m USING(user_num) WHERE b.board_num=?";
+			 
+			 //PreparedStatement 객체 생성
+			 pstmt = conn.prepareStatement(sql);
+			 pstmt.setInt(1, board_num);
+			 
+			 //SQL문 결과행 ResultSet에 담음
+			 rs = pstmt.executeQuery();
+			 if(rs.next()) {
+				 count = rs.getInt(1);
+			 }
+		 }catch(Exception e) {
+			 throw new Exception(e);
+		 }finally {
+			 //자원정리
+			 DBUtil.executeClose(rs, pstmt, conn);
+		 }
+		 
+		 return count;
+	 }
+	 //댓글 목록
+	 public List<BoardReplyVO> getListReplyBoard(int startRow, int endRow, int board_num) throws Exception{
+		 Connection conn = null;
+		 PreparedStatement pstmt = null;
+		 ResultSet rs = null;
+		 List<BoardReplyVO> list = null;
+		 String sql = null;
+		 
+		 try {
+			 //커넥션 할당
+			 conn = DBUtil.getConnection();
+			 //SQL문 작성
+			 sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
+			 	+ "(SELECT b.re_num, TO_CHAR(b.re_date,'YYYY-MM-DD HH24:MI:SS') re_date,"
+			 	+ "TO_CHAR(b.re_modifydate,'YYYY-MM-DD HH24:MI:SS') re_modifydate,"
+			 	+ "b.re_content,b.board_num,mem_num,m.id FROM qboard_reply b "
+			 	+ "JOIN qmember m USING(user_num) WHERE b.board_num=? "
+			 	+ "ORDER BY b.re_num DESC)a) "
+			 	+ "WHERE rnum >= ? AND rnum <= ?";
+			 
+			 //PreparedStatement 객체 생성
+			 pstmt = conn.prepareStatement(sql);
+			 pstmt.setInt(1, board_num);
+			 pstmt.setInt(2, startRow);
+			 pstmt.setInt(3, endRow);
+			 
+			 //SQL 결과행 ResultSet에 담음
+			 rs = pstmt.executeQuery();
+			 list = new ArrayList<BoardReplyVO>();
+			 while(rs.next()) {
+				 BoardReplyVO reply = new BoardReplyVO();
+				 reply.setRe_num(rs.getInt("re_num"));
+				 //날짜 -> 1분전, 1시간전, 1일전 형식의 문자열로 변환
+				 reply.setRe_date(DurationFromNow.getTimeDiffLabel(rs.getString("re_date")));
+				 if(rs.getString("re_modifydate")!=null) {
+					 reply.setRe_modifydate(DurationFromNow.getTimeDiffLabel(rs.getString("re_modifydate")));
+				 }
+				 reply.setRe_content(StringUtil.useBrNoHtml(rs.getString("re_content")));
+				 reply.setBoard_num(rs.getInt("board_num"));
+				 reply.setUser_num(rs.getInt("user_num"));
+				 reply.setId(rs.getString("id"));
+				 
+				 list.add(reply);
+			 }
+			 
+		 }catch(Exception e) {
+			 throw new Exception(e);
+		 }finally {
+			 //자원정리
+			 DBUtil.executeClose(rs, pstmt, conn);
+		 }
+		 return list;
+	 }
+	 //댓글 상세
+	 public BoardReplyVO getReplyBoard(int re_num)throws Exception{
+		 Connection conn = null;
+		 PreparedStatement pstmt = null;
+		 ResultSet rs = null;
+		 BoardReplyVO reply = null;
+		 String sql = null;
+		 
+		 try {
+			 //커넥션을 할당
+			 conn = DBUtil.getConnection();
+			 //SQL문 작성
+			 sql = "SELECT * FROM qboard_reply r JOIN qmember USING(user_num) WHERE re_num = ?";
+			 //PreparedStament 객체 생성
+			 pstmt = conn.prepareStatement(sql);
+			 pstmt.setInt(1, re_num);
+			 //SQL문을 실행해서 결과행을 ResultSet에 담음
+			 rs = pstmt.executeQuery();
+			 if(rs.next()) {
+				 reply = new BoardReplyVO();
+				 reply.setRe_num(rs.getInt("re_num"));
+				 reply.setBoard_num(rs.getInt("board_num"));
+				 reply.setUser_num(rs.getInt("user_num"));
+				 reply.setId(rs.getString("id"));
+			 }
+		 }catch(Exception e) {
+			 throw new Exception(e);
+		 }finally{
+			 //자원정리
+			 DBUtil.executeClose(rs, pstmt, conn);
+		 }
+		 return reply;
+	 }
 	//댓글 수정
 	//댓글 삭제
 	
