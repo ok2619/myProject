@@ -412,7 +412,7 @@ public class BoardDAO {
 			 sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
 			 	+ "(SELECT b.re_num, TO_CHAR(b.re_date,'YYYY-MM-DD HH24:MI:SS') re_date,"
 			 	+ "TO_CHAR(b.re_modifydate,'YYYY-MM-DD HH24:MI:SS') re_modifydate,"
-			 	+ "b.re_content,b.board_num,mem_num,m.id FROM qboard_reply b "
+			 	+ "b.re_content,b.board_num,user_num,m.id FROM qboard_reply b "
 			 	+ "JOIN qmember m USING(user_num) WHERE b.board_num=? "
 			 	+ "ORDER BY b.re_num DESC)a) "
 			 	+ "WHERE rnum >= ? AND rnum <= ?";
