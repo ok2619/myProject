@@ -27,7 +27,7 @@ public class paymentAction implements Action{
 		String address2 = request.getParameter("address2");
 		
 		int product_num = Integer.parseInt(request.getParameter("product_num"));
-		int cart_count = Integer.parseInt(request.getParameter("cart_count"));
+		/* int cart_count = Integer.parseInt(request.getParameter("cart_count")); */
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("product_name", product_name); //상품명
@@ -39,8 +39,9 @@ public class paymentAction implements Action{
 		session.setAttribute("address2", address2);
 		
 		session.setAttribute("product_num", product_num);
-		session.setAttribute("cart_count", cart_count); //구매수량
-		
+		/*
+		 * session.setAttribute("cart_count", cart_count); //구매수량
+		 */		
 		//자바로 저장한 세션값을 자바스크립트에서 불러오려면
 		
 		

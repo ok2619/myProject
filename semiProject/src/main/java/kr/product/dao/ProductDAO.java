@@ -281,7 +281,6 @@ public class ProductDAO {
 					 product.setSort(rs.getString("sort"));
 					 product.setImage(rs.getString("image"));
 					 product.setPrice(rs.getInt("price"));
-					 product.setStock(rs.getInt("stock"));
 					 product.setCart_count(rs.getInt("cart_count"));
 					 
 					 list.add(product);
