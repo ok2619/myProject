@@ -13,6 +13,7 @@
 <style>
 .all{width:900px;margin:0 auto;}
 .row2{width:33%;float:left;}
+
 </style>
 </head>
 <body>
@@ -23,7 +24,7 @@
 	<div class="row2">
   		<div class="col-sm-4 col-md-2" style="width:300px;">
    			<div class="thumbnail">
-        		<img src="../upload/${product.image}" alt="no">
+        		<img src="../upload/${product.image}">
 				     <div class="caption">
 				     	<h3>${product.product_name}</h3>
 				        	<p><fmt:formatNumber value="${product.price}" pattern="#,###" /></p>				        	
