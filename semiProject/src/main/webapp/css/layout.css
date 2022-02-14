@@ -132,6 +132,12 @@ input[id="address1"],input[id="address2"]{
 .margin_left{
 	margin-left:20px;
 }
+.margin_left_30{
+	margin-left:30px;
+}
+.margin_left_40{
+	margin-left:40px;
+}
 .float_left{
 	float:left;
 }
@@ -172,6 +178,17 @@ div#write_btn{
 /* .img_preview{
 	max-width:60px;
 } */
+.sample_img{
+	max-width:123px;
+	margin-bottom:5px;
+	margin-top:-31px;
+	padding-top:0;
+	/* margin-left:12px; */
+	margin-left:30px;
+}
+.select_img{
+	margin-left:32px;
+}
 
 /*서치폼*/
 /*default 서치창 설정*/

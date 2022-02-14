@@ -26,7 +26,7 @@
 		});		
 		
 		//첨부 사진 미리보기
-		$("#filename").change(
+		$("#filename").change( //파일선택 버튼 누르고 이미지가 올라가면
 			function(){
 				if (this.files && this.files[0]){
 					var reader = new FileReader;
@@ -35,7 +35,8 @@
 					}
 					reader.readAsDataURL(this.files[0]);
 				}
-				$('#photo_delete').show(); 
+				$('#photo_delete').show();  //파일 삭제 버튼 나타내기
+				$('#sample_img').hide();							
 			});		
 		
 		//이미지 첨부 취소 (파일삭제 버튼 클릭)
@@ -43,6 +44,7 @@
 			$('.select_img img').attr('src',''); 
 			$('#filename').val('');
 			$('#photo_delete').hide();
+			$('#sample_img').show();
 		});		
 		
 	});
@@ -58,8 +60,11 @@
 			<td class="align-center"><label for="title">제목</label></td>
 			<td><input type="text" name="title" id="title" maxlength="50" class="form-control"><p></td>			
 			<td rowspan="2">
-				<div class="select_img margin_left">
+				<div class="select_img">
 					<img src="" />
+				</div>
+				<div id="sample_img">
+				<img src="${pageContext.request.contextPath}/upload/preview.JPG" class="sample_img">
 				</div>
 			</td>
 		</tr>
@@ -70,11 +75,11 @@
 		<tr>
 			<td>
 			<div class="form-group"> 
-			
+				<div class="margin_left" />
 				<div id="photo_delete" style="display:none;" class="col-xs-4">
 				<input type="button" value="파일 삭제" id="delete_btn">
 				</div>
-				<div class="col-xs-8">
+				<div class="col-xs-7">
 				<input type="file" name="filename" id="filename" 
 				accept="image/gif,image/png,image/jpeg">		
 				</div>
