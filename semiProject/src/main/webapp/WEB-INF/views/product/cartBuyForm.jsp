@@ -42,7 +42,7 @@
 <!--/////////////////////////////////////////////////////////////  -->
 <c:forEach var="product" items="${product}">
 <input type="hidden" id="product_name" name="product_name" value="${product.product_name}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
-<input type="hidden" id="price" name="price" value="${product.price}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
+<%-- <input type="hidden" id="price" name="price" value="${product.price}"><!-- 세션에 저장하기 위해 히든으로 넘김 --> --%>
 <input type="hidden" id="product_num" name="product_num" value="${product.product_num}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
 <%-- <input type="hidden" id="cart_count" name="cart_count" value="${cart_count}"><!-- 세션에 저장하기 위해 히든으로 넘김 --> --%>
 <div class="row">
@@ -62,9 +62,9 @@
 </c:forEach>
 
 <!--/////////////////////////////////////////////////////////////  -->
-
-
 </div>
+
+<input type="hidden" id="price" name="price" value="${totalPrice}">
 
 <span style = "font-size:5em">총 결제 금액 : <fmt:formatNumber value="${totalPrice}" pattern="#,###" />원</span>
 	
