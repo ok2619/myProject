@@ -450,6 +450,7 @@ public class BoardDAO {
 		 }
 		 return list;
 	 }
+	 
 	 //댓글 상세
 	 public BoardReplyVO getReplyBoard(int re_num)throws Exception{
 		 Connection conn = null;

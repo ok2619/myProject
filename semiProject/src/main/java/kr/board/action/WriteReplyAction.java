@@ -24,6 +24,7 @@ public class WriteReplyAction implements Action{
 		Integer user_num = (Integer)session.getAttribute("user_number");
 		if(user_num == null) {//로그인 안됨
 			mapAjax.put("result", "logout");
+			
 		}else {//로그인 됨
 			//전송된 데이터 인코딩 처리
 			request.setCharacterEncoding("utf-8");

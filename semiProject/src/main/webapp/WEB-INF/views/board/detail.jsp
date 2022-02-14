@@ -57,12 +57,12 @@
 		<%--수정/삭제 기능 끝 --%>		
 		<input type="button"  class="btn btn-default btn-sm" value="목록" onclick="location.href='list.do'">
 	</div>
-</div>
+
 <div class="blank_50"></div>
-<!-- 댓글 시작 -->
+
 	<!-- 댓글 시작 -->
 	<div id="reply_div">
-		<span class="re-title">댓글 달기</span>
+		<span class="re-title">댓글</span>
 		<form id="re_form">
 			<input type="hidden" name="board_num" value="${board.board_num}" id="board_num">
 			<textarea rows="5" cols="50" name="re_content" id="re_content" class="rep-content" placeholder="댓글을 입력하세요."
@@ -85,6 +85,8 @@
 	</div>
 	<!-- 댓글 목록 출력 끝 -->
 <!-- 댓글 끝 -->
+
+</div>
 </body>
 </html>
 
