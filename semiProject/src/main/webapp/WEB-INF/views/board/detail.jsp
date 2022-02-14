@@ -64,12 +64,11 @@
 	<div id="reply_div">
 		<span class="re-title">댓글 달기</span>
 		<form id="re_form">
-			<input type="hidden" name="board_num" value="${board.board_num}"
-			                                                id="board_num">
+			<input type="hidden" name="board_num" value="${board.board_num}" id="board_num">
 			<textarea rows="5" cols="50" name="re_content" id="re_content" class="rep-content" 
-			<c:if test="${empty user_num}">disabled="disabled"</c:if>
-			><c:if test="${empty user_num}">댓글작성을 위해 로그인이 필요합니다.</c:if></textarea>
-		<c:if test="${!empty user_num}">
+			<c:if test="${empty user_number}">disabled="disabled"</c:if>
+			><c:if test="${empty user_number}">댓글작성을 위해 로그인이 필요합니다.</c:if></textarea>
+		<c:if test="${!empty user_number}">
 		<div id="re_first">
 			<span class="letter-count">300/300</span>
 		</div>
