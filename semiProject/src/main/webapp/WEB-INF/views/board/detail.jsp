@@ -57,23 +57,24 @@
 		<%--수정/삭제 기능 끝 --%>		
 		<input type="button"  class="btn btn-default btn-sm" value="목록" onclick="location.href='list.do'">
 	</div>
+<!-- <div class="blank_50"></div> -->
 
-<div class="blank_50"></div>
-
-	<!-- 댓글 시작 -->
+<!-- 댓글 시작 -->
 	<div id="reply_div">
 		<span class="re-title">댓글</span>
 		<form id="re_form">
 			<input type="hidden" name="board_num" value="${board.board_num}" id="board_num">
-			<textarea rows="5" cols="50" name="re_content" id="re_content" class="rep-content" placeholder="댓글을 입력하세요."
+			<textarea rows="3" cols="50" name="re_content" id="re_content" class="rep-content form-control" placeholder="댓글을 입력하세요."
 			<c:if test="${empty user_number}">disabled="disabled"</c:if>
-			><c:if test="${empty user_number}">댓글작성을 위해 로그인이 필요합니다.</c:if></textarea>
+			><c:if test="${empty user_number}">회원에게만 댓글 작성 권한이 있습니다.</c:if></textarea>
 		<c:if test="${!empty user_number}">
+		
+		<div id="re_second" > <!-- class="align-right" -->
+			<input type="submit" value="전송"  class="btn btn-default btn-sm">
+		</div>
+		<div class="clear"></div>
 		<div id="re_first">
 			<span class="letter-count">300/300</span>
-		</div>
-		<div id="re_second" class="align-right">
-			<input type="submit" value="전송">
 		</div>
 		</c:if>
 		</form>
@@ -85,7 +86,7 @@
 	</div>
 	<!-- 댓글 목록 출력 끝 -->
 <!-- 댓글 끝 -->
-
+<div class="blank_50"></div>
 </div>
 </body>
 </html>

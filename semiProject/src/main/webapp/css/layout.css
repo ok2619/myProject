@@ -67,6 +67,7 @@ div.blank{
 /*페이지별 타이틀 상하 여백*/
 .common_title{ /*추가*/
 	margin:140px auto 60px;
+	font-family: 'KOTRA_GOTHIC';
 }
 /*float clear 설정*/
 .clear{clear:both;}
@@ -256,7 +257,8 @@ ul.search_review li{
 div#reply_div{
 	padding:5px 10px 40px 10px;
 	margin-top:10px;
-	background-color:#eeeeee;
+	background-color:#f5f5f5;
+	height:140px;
 }
 form#re_form{
 	width:650px;
@@ -266,30 +268,45 @@ span.re-title{
 	color:#000;
 	font-size:12pt;
 	line-height:200%;
+	/* background-color:pink; */
+	float:left;
+	width:8%;
+	margin-top:40px;
+	margin-left:10px;
+	text-align:center;
+	font-family: 'KOTRA_GOTHIC';
 }
 span.letter-count{
 	font-size:10pt;
 	color:#999;
 }
 textarea.rep-content{
-	width:90%;
-	height:50px;
-	margin:10px 10px;
+	width:105%;
+	height:65px;
+	margin:-40px 0 0 -100px;float:left;
 }
 div#re_first, div#mre_first{
-	float:left;
-	width:70%;
-	padding-left:15px;
-	margin-bottom:10px;
+	
+	margin-left:-95px;
+	margin-bottom:10px;margin-top:0;
 }
 div#re_second, div#mre_second{
 	float:left;
-	width:19%;
-	margin-bottom:10px;
+	width:3%;
+	margin-bottom:10px;float:left;/* background-color:pink; */
+	margin-left:20px;font-family: 'KOTRA_GOTHIC';font-size:11pt;
+	
 }
 div#loading{
 	width:100px;
-	margin:0 auto;
+	height:50px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	display:flex;
+	align-items:center;
+	justify-content:center;
 }
 div.paging-button{
 	text-align:right;
@@ -303,7 +320,12 @@ form#mre_form{
 }
 
 
-
+@font-face {
+    font-family: 'KOTRA_GOTHIC';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/KOTRA_GOTHIC.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 @font-face {
     font-family: 'YUniverse-B';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_yuniverse@1.0/YUniverse-B.woff2') format('woff2');
