@@ -38,9 +38,13 @@
           상품종류 : ${product.sort}</br>
           판매가 : ${product.price}</br>
           
+          
           <form action="cartInsert.do" method="post">
           <input type="hidden" id="product_num" name="product_num" value="${product.product_num}">
-          개수 : <input type="number" id="cart_count" value="1" name="cart_count" min="1" required></br>
+          
+          개수 : <input type="number" id="cart_count" value="1" name="cart_count" 
+          						min="0" max="10" required></br>
+          
           <c:if test="${product.stock > 0}">
           <input type='button' value='구매' onclick='return submit2(this.form);'> <!-- 한개의 form에 두 공간에 데이터를 보내야 하기 때문에 자바스크립트 활용 -->
           </c:if>

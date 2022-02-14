@@ -62,7 +62,16 @@
 			
 			<td>${product.sort}</td>
 			<td>${product.price}</td>
+			
+			<c:choose>
+			<c:when test="${product.stock <= 0}">
+			<td>품절</td>
+			</c:when>
+			<c:when test="${product.stock > 0}">
 			<td>${product.stock}</td>
+			</c:when>
+			</c:choose>
+			
 			<td>${product.reg_date}</td>
 			
 		</tr>	

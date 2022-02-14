@@ -51,14 +51,16 @@
 </div>
 </div>
 
+
 <div id="btn-1">
-	<button type="button" class="btn btn-secondary btn-lg" style="background-color:black; color:white">계좌이체</button>
+	<button type="button" class="btn btn-secondary btn-lg" 
+									style="background-color:black; color:white">계좌이체</button>
 	<input type="submit" class="btn btn-secondary btn-lg" 
 				onclick="location.href='${pageContext.request.contextPath}/product/payment.do'" 
 										style="background-color:black; color:white" value="카드결제">
-	<%-- <input type="button" class="btn btn-secondary btn-lg" value="임시버튼"
-				onclick="location.href='${pageContext.request.contextPath}/product/payment.do'"> --%>
 </div>
+
+
 </form>
 
 

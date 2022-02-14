@@ -186,7 +186,7 @@ public class ProductDAO {
 					if(product.getImage()!=null) {
 						sub_sql = ",image=?";
 					}
-					sql ="update qproduct set product_name=?,price=?,sort=?,stock=?,content=?,reg_date=SYSDATE"   
+					sql ="update qproduct set product_name=?,price=?,sort=?,stock=?,content=?,reg_date=SYSDATE "   
 							+ sub_sql + "WHERE product_num=?";
 					
 					pstmt = conn.prepareStatement(sql); 

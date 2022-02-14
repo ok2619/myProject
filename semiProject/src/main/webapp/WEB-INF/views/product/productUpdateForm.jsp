@@ -28,7 +28,7 @@
             <label for="price">가격</label>
                 <input type="text" class="form-control" value="${product.price}" name="price" id="price" placeholder="가격" style="width:100px">
                <label for="stock">개수</label>
-                <input type="text" class="form-control" value="${product.stock}" name="stock" id="stock" placeholder="개수" style="width:100px">
+                <input type="number" class="form-control" value="${product.stock}" name="stock" id="stock" placeholder="개수" style="width:100px" min="0">
             </div>
             <div class="form-group">
                 <label for="content">내용</label>
