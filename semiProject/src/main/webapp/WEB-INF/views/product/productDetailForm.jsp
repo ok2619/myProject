@@ -24,45 +24,61 @@
   		tbody{height:400px;}
   		thead .first{width:50%;}
   		thead .second{width:50%;}
+  		span {
+display: table-cell;
+padding-left: 10px;
+text-align: left;
+vertical-align: middle;
+}
     </style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+
  <table style="padding-top:100px">
+
       <thead>
+      
+       
         <tr>
           <th class="first"><img src="../upload/${product.image}" height="400" width="400" style="padding-top:70px;padding-left:30px"></th>
           <th class="second">
-          제품정보</br>
-          상품명 : ${product.product_name}</br>
-          상품종류 : ${product.sort}</br>
-          판매가 : ${product.price}</br>
+          <span>제품정보</span></br>
+          <span>상품명 : ${product.product_name}</span></br>
+          <span>상품종류 : ${product.sort}</span></br>
+          <span>판매가 : ${product.price}</span></br>
           
           
           <form action="cartInsert.do" method="post">
           <input type="hidden" id="product_num" name="product_num" value="${product.product_num}">
           
-          개수 : <input type="number" id="cart_count" value="1" name="cart_count" 
-          						min="0" max="10" required></br>
+          <span>개수 : <input type="number" id="cart_count" value="1" name="cart_count" 
+          						min="0" max="10" required></span></br>
           
           <c:if test="${product.stock > 0}">
           <input type='button' value='구매' onclick='return submit2(this.form);'> <!-- 한개의 form에 두 공간에 데이터를 보내야 하기 때문에 자바스크립트 활용 -->
           </c:if>
           <c:if test="${product.stock <= 0 }">
-          <span>품절</span>	
+          <p style="font-size:3em">품절</p>	
           </c:if>
-          <input type="submit" value="장바구니담기"><br>
-          </form>
+          <input type="submit" class="btn btn-default btn-sm" value="장바구니담기">
+          
           
           
           
           <c:if test="${!empty user_number && user_auth == 3}">
-          <input type="button" value="상품수정" onclick="location.href='productUpdateForm.do?product_num=${product.product_num}'">
-          <input type="button" value="상품삭제" onclick="location.href='productDelete.do?product_num=${product.product_num}'">
+          <input type="button" class="btn btn-default btn-sm" value="상품수정" onclick="location.href='productUpdateForm.do?product_num=${product.product_num}'">
+          <input type="button" class="btn btn-default btn-sm" value="상품삭제" onclick="location.href='productDelete.do?product_num=${product.product_num}'">
           </c:if>
+          </form>
           </th>
-        </tr>
+        </tr>       
       </thead>
+      
+      
+
+      
+      
       <tbody>
         <tr>
           <td colspan="2">상세정보상세정보상세정보상세정보상세정보상세정보상세정보상세정보상세정보</td>
