@@ -8,37 +8,73 @@
 <title>글수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script> 
-
+<script type="text/javascript">
+	//유효성 체크
+	$(function(){		
+		//첨부 사진 미리보기
+		$("#filename").change( //파일선택 버튼 누르고 이미지가 올라가면
+			function(){
+				if (this.files && this.files[0]){
+					var reader = new FileReader;
+					reader.onload = function(data){
+						$(".select_img img").attr("src", data.target.result).width(100);
+					}
+					reader.readAsDataURL(this.files[0]);
+				}					
+				 $('#file_detail').hide();
+			});		
+		
+		//이미지 첨부 취소 (파일삭제 버튼 클릭)
+		$('#delete_btn').click(function(){			
+			$('.select_img img').attr('src',''); 
+			$('#filename').val('');
+			$('#photo_delete').hide();			
+		});		
+		
+		
+	});
+</script>
 </head>
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2 class="common_title">게시판 글수정</h2>
+	<h3 class="align-center common_title">게시판 글수정</h3>
 	<form id="update_form" action="update.do" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="board_num" value="${board.board_num}"> <!-- update.do에 데이터 보낼때 board_num도 함께 보냄!! -->
-		<ul>
-			<li>
-				<label for="title">제목</label>
-				<input type="text" name="title" id="title" value="${board.title}" maxlength="50">
-			</li>		
-			<li>
-				<label for="b_content">내용</label>
-				<textarea rows="5" cols="30" name="b_content" id="b_content">${board.b_content}</textarea>
-			</li>
-			<li>
-				<label for="filename">파일</label>
+		<input type="hidden" name="board_num" value="${board.board_num}"> 
+		
+		<table class="go_left">
+		<tr>
+			<td class="align-center"><label for="title">제목</label></td>
+			<td><input type="text" name="title" id="title" value="${board.title}" maxlength="50" class="form-control"><p></td>			
+			<td rowspan="2">
+				<div class="select_img">
+					<img src="" />
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td rowspan="2" class="align-center"><label for="b_content">내용</label></td>
+			<td rowspan="2"><textarea rows="5" cols="30" name="b_content" id="b_content" class="form-control">${board.b_content}</textarea></td>
+		</tr>
+		<tr>
+			<td>
+			<div class="form-group"> 
+				<div class="margin_left" />
+				<div id="photo_delete" class="col-xs-4">
+				<input type="button" value="파일 삭제" id="delete_btn">
+				</div>
+				<div class="col-xs-7">
 				<input type="file" name="filename" id="filename" 
-						accept="image/gif,image/png,image/jpeg"> 
-				<c:if test="${!empty board.filename}">
-				<br>
-				<span id="file_detail">
-					(${board.filename})파일이 등록되어 있습니다. 
-					다시 파일을 업로드하면 기존 파일은 삭제됩니다. <%--ajax로 삭제처리 한다! --%>
-					<input type="button" value="파일삭제" id="file_del">
-				</span>
-<script type="text/javascript">
+				accept="image/gif,image/png,image/jpeg"><span id="file_detail">${board.filename}</span> 		
+				</div>
+			</div>			
+			</td>
+		</tr>
+		</table>				
+<c:if test="${!empty board.filename}">			
+ <script type="text/javascript">
 	$(function(){
-		$('#file_del').click(function(){
+		$('#delete_btn').click(function(){
 			let choice = confirm('삭제하시겠습니까?');
 			if(choice){ //true일 경우 ajax 통신한다.
 				$.ajax({
@@ -67,14 +103,23 @@
 		});
 		
 	});
-</script> 
-				</c:if>
-			</li>	
-		</ul>
-		<div class="align-center">
-			<input type="submit" value="수정">
-			<input type="button" value="목록" onclick="location.href='list.do'">
-		</div>
+</script>  
+</c:if>
+		<div class="form-group"> 
+		<div class="col-sm-offset-3 col-sm-9"> 
+		</div> 
+		</div> 
+		
+		<div class="form-group"> 
+			<div class="col-sm-offset-3 col-sm-2"> 
+				<button type="submit" class="btn btn-info">수정</button> 
+			</div> 
+			<div class="col-sm-7">
+				<button type="button" class="btn" onclick="location.href='list.do'">			
+				취소
+				</button> 
+			</div> 
+		</div>		
 	</form>
 </div>
 </body>
