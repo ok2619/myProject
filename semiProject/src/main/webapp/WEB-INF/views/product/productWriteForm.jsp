@@ -47,6 +47,8 @@ $(function(){
 </script>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<div class="page-main">
 <div class="col-md-12">
     <div class="col-md-4">
         <form id="write_form" action="productWrite.do" method="post" enctype="multipart/form-data">
@@ -71,11 +73,12 @@ $(function(){
             <div class="form-group">
 				  <input type="file" class="form-control" name="image" id="image" accept="image/gif,image/png,image/jpeg">
 			</div>
-            <input type="submit" value="등록">
-            <input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/product/productListForm.jsp'">
+            <input type="submit" class="btn btn-default btn-sm" value="등록">
+            <input type="button" class="btn btn-default btn-sm" value="목록" onclick="location.href='${pageContext.request.contextPath}/product/productList.do'">
         </form>
         
     </div>
+</div>
 </div>
 </body>
 </html>

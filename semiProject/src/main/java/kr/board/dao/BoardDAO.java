@@ -345,7 +345,7 @@ public class BoardDAO {
 			//커넥션풀로부터 커넥션 할당
 			conn = DBUtil.getConnection();
 			//SQL문
-			sql = "INSERT INTO qboard_reply (re_num,re_content,re_ip,user_num,board_num) VALUSE (qreply_seq.nextval,?,?,?,?)";
+			sql = "INSERT INTO qboard_reply (re_num,re_content,re_ip,user_num,board_num) values (qreply_seq.nextval,?,?,?,?)";
 			//PreparedStatement객체 생성
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, boardReply.getRe_content());
