@@ -53,7 +53,6 @@
 </div>
 </div>
 
-
 <div id="btn-1">
 	<button type="button" class="btn btn-secondary btn-lg" 
 									style="background-color:black; color:white">계좌이체</button>
