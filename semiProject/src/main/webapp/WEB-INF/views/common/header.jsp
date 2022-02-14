@@ -57,7 +57,7 @@
 						<li><a href="${pageContext.request.contextPath}/member/logout.do">logout</a></li>
 					</c:if>
 					<%-- 비회원,회원,관리자 공통메뉴 --%>								
-					<li><a href="${pageContext.request.contextPath}/product/cartList.do">cart</a></li>			
+					<li><a href="${pageContext.request.contextPath}/product/cartList.do?uesr_number=${user_number}">cart</a></li>			
 					<li><a href="${pageContext.request.contextPath}/board/list.do">review</a></li>
 					</ul>
 								

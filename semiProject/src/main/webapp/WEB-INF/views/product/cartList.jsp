@@ -17,6 +17,8 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+
+
 	<div class="page-main">
 	<table class="table">
 		<tr>
@@ -27,9 +29,7 @@
 			<th>판매가</th>
 			<th>수량</th>
 			<th></th>
-		</tr>
-		
-		
+		</tr>			
 		<c:set var="totalPrice" value="0"/>
 		<c:set var="totalCount" value="0"/>
 		<c:forEach var="product" items="${product}">
@@ -55,8 +55,11 @@
 		</tr>
 	</table>
 	<div id="btn-1">
-	<button type="button" class="btn btn-secondary btn-lg" style="background-color:black; color:white">총 ${totalPrice}원 결제</button>
+	<button type="button" class="btn btn-secondary btn-lg" style="background-color:black; color:white"
+	onclick="location.href='${pageContext.request.contextPath}/product/cartBuyForm.do'">총 ${totalPrice}원 결제</button>				
 	</div>
+	
 </div>
+
 </body>
 </html>
