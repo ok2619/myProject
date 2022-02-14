@@ -257,9 +257,9 @@ public class MemberDAO {
 				conn = DBUtil.getConnection();
 				
 				if(keyword != null && !"".equals(keyword)) {
-				//검색글 처리
-				if(keyfield.equals("1")) sub_sql = "WHERE m.id LIKE ?";
-					else if(keyfield.equals("2")) sub_sql = "WHERE d.name LIKE";
+					//검색글 처리
+					if(keyfield.equals("1")) sub_sql = "WHERE m.id LIKE ?";
+					else if(keyfield.equals("2")) sub_sql = "WHERE d.name LIKE ?";
 				}
 
 				//전체 또는 검색 레코드 갯수
