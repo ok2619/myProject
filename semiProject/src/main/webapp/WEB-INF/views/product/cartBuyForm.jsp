@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +42,7 @@
 <!--/////////////////////////////////////////////////////////////  -->
 <c:forEach var="product" items="${product}">
 <input type="hidden" id="product_name" name="product_name" value="${product.product_name}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
-<input type="hidden" id="price" name="price" value="${product.price}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
+<%-- <input type="hidden" id="price" name="price" value="${product.price}"><!-- 세션에 저장하기 위해 히든으로 넘김 --> --%>
 <input type="hidden" id="product_num" name="product_num" value="${product.product_num}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
 <%-- <input type="hidden" id="cart_count" name="cart_count" value="${cart_count}"><!-- 세션에 저장하기 위해 히든으로 넘김 --> --%>
 <div class="row">
@@ -53,30 +54,26 @@
   모델명 : ${product.product_name}</br>
   상품종류 : ${product.sort}</br>
   수량 : ${product.cart_count}</br>
-  총금액 : ${product.cart_count * product.price}</br>
+  총금액 : <fmt:formatNumber value="${product.cart_count * product.price}" pattern="#,###" /></br>
+  
   <hr class="mt-2 mb-3"/>
 </div>
 <c:set var="totalPrice" value="${totalPrice + (product.price * product.cart_count)}"/>
 </c:forEach>
 
 <!--/////////////////////////////////////////////////////////////  -->
-
-
 </div>
 
-<span style = "font-size:5em">총 결제 금액 : ${totalPrice}원</span>
+<input type="hidden" id="price" name="price" value="${totalPrice}">
+
+<span style = "font-size:5em">총 결제 금액 : <fmt:formatNumber value="${totalPrice}" pattern="#,###" />원</span>
 	
 <div id="btn-1">
 	<button type="button" class="btn btn-secondary btn-lg" style="background-color:black; color:white">계좌이체</button>
 	<input type="submit" class="btn btn-secondary btn-lg" 
 				onclick="location.href='${pageContext.request.contextPath}/product/payment.do'" 
 										style="background-color:black; color:white" value="카드결제">
-										
-	
-										
-										
-	<%-- <input type="button" class="btn btn-secondary btn-lg" value="임시버튼"
-				onclick="location.href='${pageContext.request.contextPath}/product/payment.do'"> --%>
+
 </div>
 	
 </form>

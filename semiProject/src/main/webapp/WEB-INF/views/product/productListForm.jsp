@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,7 +51,6 @@
 		</tr>
 		<c:forEach var="product" items="${list}">
 		<tr>
-			<%-- <td>${product.product_name}</td> --%>
 			<td><a href="productDetail.do?product_num=${product.product_num}">${product.product_name}</a></td>
 			<c:choose>
 			<c:when test="${product.image == null}">
@@ -61,8 +62,9 @@
 			</c:choose>
 			
 			<td>${product.sort}</td>
-			<td>${product.price}</td>
+			<td><fmt:formatNumber value="${product.price}" pattern="#,###" /></td>
 			
+
 			<c:choose>
 			<c:when test="${product.stock <= 0}">
 			<td>품절</td>
