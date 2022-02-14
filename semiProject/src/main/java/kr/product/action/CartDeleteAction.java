@@ -18,10 +18,10 @@ public class CartDeleteAction implements Action{
 			return "redirect:/member/loginForm.do";
 		}
 		
-		int product_num = Integer.parseInt(request.getParameter("product_num"));
+		int cart_num = Integer.parseInt(request.getParameter("cart_num"));
 		ProductDAO dao = ProductDAO.getInstance();
 		
-		dao.cartDelete(product_num);
+		dao.cartDelete(cart_num);
 		
 		return "/WEB-INF/views/product/cartDelete.jsp";
 		

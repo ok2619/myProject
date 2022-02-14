@@ -21,7 +21,6 @@ public class CartListAction implements Action{
 		ProductDAO dao = ProductDAO.getInstance();
 		List<ProductVO> product = dao.cartList(user_number);
 		
-		
 		request.setAttribute("product", product);
 
 		return "/WEB-INF/views/product/cartList.jsp";

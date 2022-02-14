@@ -264,7 +264,7 @@ public class ProductDAO {
 			 
 			 try {
 				 conn = DBUtil.getConnection();
-				 sql = "select a.*,b.cart_count from qproduct a, qcart b "
+				 sql = "select a.*,b.cart_count,b.cart_num from qproduct a, qcart b "
 				 		+ "where a.product_num = b.product_num and b.product_num = ANY(select product_num from qcart where user_num = ?)"
 				 		+ "order by a.product_num";
 				 pstmt = conn.prepareStatement(sql);
@@ -282,6 +282,7 @@ public class ProductDAO {
 					 product.setImage(rs.getString("image"));
 					 product.setPrice(rs.getInt("price"));
 					 product.setCart_count(rs.getInt("cart_count"));
+					 product.setCart_num(rs.getInt("cart_num"));
 					 
 					 list.add(product);
 					 
@@ -295,16 +296,16 @@ public class ProductDAO {
 		 }
 		 
 		 //카트삭제
-		 public void cartDelete(int product_num) throws Exception{
+		 public void cartDelete(int cart_num) throws Exception{
 			 Connection conn = null;
 			 PreparedStatement pstmt = null;
 			 String sql = null;
 			 
 			 try {
 				conn = DBUtil.getConnection();
-				sql = "delete from qcart where product_num = ?";
+				sql = "delete from qcart where cart_num = ?";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, product_num);
+				pstmt.setInt(1, cart_num);
 				pstmt.executeUpdate();
 				
 				

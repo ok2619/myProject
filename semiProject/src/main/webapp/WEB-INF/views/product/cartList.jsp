@@ -41,7 +41,7 @@
 			<td>${product.sort}</td>
 			<td><fmt:formatNumber value="${product.price}" pattern="#,###" /></td>
 			<td>${product.cart_count}</td>
-			<td><input type="button" value="삭제" onclick="location.href='cartDelete.do?product_num=${product.product_num}'">
+			<td><input type="button" value="삭제" onclick="location.href='cartDelete.do?cart_num=${product.cart_num}'">
 		</tr>
 		<c:set var="totalPrice" value="${totalPrice + product.price * product.cart_count}"/>
 		<c:set var="totalCount" value="${totalCount + product.cart_count}"/>
