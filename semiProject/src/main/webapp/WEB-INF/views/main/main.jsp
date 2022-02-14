@@ -28,8 +28,8 @@
 				     	<h3>${product.product_name}</h3>
 				        	<p><fmt:formatNumber value="${product.price}" pattern="#,###" /></p>				        	
 				        	<p>
-				        	<a href="${pageContext.request.contextPath}/product/productDetail.do?product_num=${product.product_num}" class="btn btn-primary" role="button">상품보기</a> 
-				        	<a href="#" class="btn btn-default" role="button">장바구니</a>
+				        	<a href="${pageContext.request.contextPath}/product/productDetail.do?product_num=${product.product_num}" class="btn btn-primary" role="button">상품보기</a>
+							<a href="${pageContext.request.contextPath}/product/mainCart.do?product_num=${product.product_num}" class="btn btn-default" role="button">장바구니</a>
 				        	</p>
 				     </div>
     			</div>
