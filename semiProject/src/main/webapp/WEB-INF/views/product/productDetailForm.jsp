@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +47,7 @@ vertical-align: middle;
           <span>제품정보</span></br>
           <span>상품명 : ${product.product_name}</span></br>
           <span>상품종류 : ${product.sort}</span></br>
-          <span>판매가 : ${product.price}</span></br>
+          <span>판매가 : <fmt:formatNumber value="${product.price}" pattern="#,###" /></span></br>
           
           
           <form action="cartInsert.do" method="post">

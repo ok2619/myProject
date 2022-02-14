@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +47,8 @@
   모델명 : ${product.product_name}</br>
   상품종류 : ${product.sort}</br>
   수량 : ${cart_count}</br>
-  총금액 : ${cart_count * product.price}</br>
+  총금액 : <fmt:formatNumber value="${cart_count * product.price}" pattern="#,###" /></br>
+  
   <hr class="mt-2 mb-3"/>
 </div>
 </div>

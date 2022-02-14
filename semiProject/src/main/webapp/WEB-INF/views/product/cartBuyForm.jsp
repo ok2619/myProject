@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,7 +54,8 @@
   모델명 : ${product.product_name}</br>
   상품종류 : ${product.sort}</br>
   수량 : ${product.cart_count}</br>
-  총금액 : ${product.cart_count * product.price}</br>
+  총금액 : <fmt:formatNumber value="${product.cart_count * product.price}" pattern="#,###" /></br>
+  
   <hr class="mt-2 mb-3"/>
 </div>
 <c:set var="totalPrice" value="${totalPrice + (product.price * product.cart_count)}"/>
@@ -64,7 +66,7 @@
 
 </div>
 
-<span style = "font-size:5em">총 결제 금액 : ${totalPrice}원</span>
+<span style = "font-size:5em">총 결제 금액 : <fmt:formatNumber value="${totalPrice}" pattern="#,###" />원</span>
 	
 <div id="btn-1">
 	<button type="button" class="btn btn-secondary btn-lg" style="background-color:black; color:white">계좌이체</button>
