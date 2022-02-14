@@ -133,6 +133,9 @@ input[id="address1"],input[id="address2"]{
 .margin_left{
 	margin-left:20px;
 }
+.margin_right{
+	margin-right:20px;
+}
 .margin_left_30{
 	margin-left:30px;
 }
@@ -145,7 +148,9 @@ input[id="address1"],input[id="address2"]{
 .go_left{
 	margin-left:-50px;
 }
-
+.go_left_update{
+	margin-left:-80px;
+}
 
 /*목록*/
 .list-space{
@@ -317,6 +322,11 @@ div#output{
 form#mre_form{
 	border:none;
 	margin:5px;
+}
+/*글수정*/
+textarea.update_content{
+	width:350px;
+	height:40px;
 }
 
 

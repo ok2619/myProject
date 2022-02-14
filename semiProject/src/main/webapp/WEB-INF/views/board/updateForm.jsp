@@ -42,34 +42,36 @@
 	<form id="update_form" action="update.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="board_num" value="${board.board_num}"> 
 		
-		<table class="go_left">
-		<tr>
-			<td class="align-center"><label for="title">제목</label></td>
-			<td><input type="text" name="title" id="title" value="${board.title}" maxlength="50" class="form-control"><p></td>			
-			<td rowspan="2">
-				<div class="select_img">
-					<img src="" />
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td rowspan="2" class="align-center"><label for="b_content">내용</label></td>
-			<td rowspan="2"><textarea rows="5" cols="30" name="b_content" id="b_content" class="form-control">${board.b_content}</textarea></td>
-		</tr>
-		<tr>
-			<td>
-			<div class="form-group"> 
-				<div class="margin_left" />
-				<div id="photo_delete" class="col-xs-4">
-				<input type="button" value="파일 삭제" id="delete_btn">
-				</div>
-				<div class="col-xs-7">
-				<input type="file" name="filename" id="filename" 
-				accept="image/gif,image/png,image/jpeg"><span id="file_detail">${board.filename}</span> 		
-				</div>
-			</div>			
-			</td>
-		</tr>
+		<table class="go_left_update">
+			<tr>
+				<td class="align-center"><label for="title">제목</label></td>
+				<td><input type="text" name="title" id="title" value="${board.title}" maxlength="50" class="form-control"><p></td>			
+			</tr>
+			<tr>
+				<td class="align-center"><label for="b_content">내용</label></td>
+				<td><textarea rows="5" cols="30" name="b_content" id="b_content" class="update_content form-control">${board.b_content}</textarea></td>
+			</tr>
+			
+			<tr>
+				<td>
+					<div class="select_img margin_right">
+							<img src="" />
+					</div>
+				</td>
+				<td>	<p>
+					<div class="form-group"> 											
+						<div id="photo_delete" class="col-xs-3">
+						<input type="button" value="파일 삭제" id="delete_btn">
+						</div>
+						
+						<div class="col-xs-9">
+						<input type="file" name="filename" id="filename" 
+						accept="image/gif,image/png,image/jpeg"><span id="file_detail">${board.filename}</span> 				
+						</div>					
+							
+					</div>	
+				</td>
+			</tr>
 		</table>				
 <c:if test="${!empty board.filename}">			
  <script type="text/javascript">
