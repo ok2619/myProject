@@ -25,7 +25,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="page-main">
-	<h4 class="align-center common_title">회원관리</h4>
+	<h3 class="align-center common_title">회원관리</h3>
 	
 	<!-- <form id="search_form" action="memberList.do" method="get">
 		<ul class="search">
