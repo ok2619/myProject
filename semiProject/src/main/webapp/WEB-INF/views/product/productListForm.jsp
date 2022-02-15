@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>관리자 | 상품 목록</title>
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
@@ -26,22 +26,24 @@
 		<c:if test="${count > 0}">
 		<table class="table">
 			<tr>
+				<th>상품 번호</th>
 				<th>상품명</th>
 				<th>사진</th>
-				<th>상품종류</th>
+				<th>상품 종류</th>
 				<th>가격</th>
 				<th>재고</th>
 				<th>등록일</th>
 			</tr>
 			<c:forEach var="product" items="${list}">
 			<tr>
-				<td><a href="productDetail.do?product_num=${product.product_num}">${product.product_name}</a></td>
+				<td>${product.product_num}</td>
+				<td><a href="productUpdateForm.do?product_num=${product.product_num}">${product.product_name}</a></td>
 				<c:choose>
 				<c:when test="${product.image == null}">
 				<td><img src="../upload/NO.png" class="list-img"></td>
 				</c:when>
 				<c:when test="${product.image != null}">
-				<td><img src="../upload/${product.image}" height="100" width="100" ></td>
+				<td><a href="productDetail.do?product_num=${product.product_num}"><img src="../upload/${product.image}" height="100" width="100" ></a></td>
 				</c:when>
 				</c:choose>
 				

@@ -305,6 +305,9 @@ form#mre_form{
 .blank_100{
 	margin-bottom:100px;
 }
+.blank_200{
+	margin-bottom:200px;
+}
 .margin_left_10{
 	margin-left:10px;
 }
@@ -325,6 +328,9 @@ form#mre_form{
 }
 .go_left{
 	margin-left:-50px;
+}
+.go_right{
+	margin-left:85px;
 }
 .go_left_update{
 	margin-left:-80px;
