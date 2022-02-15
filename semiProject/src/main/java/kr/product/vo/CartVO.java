@@ -4,8 +4,15 @@ public class CartVO {
 	private int cart_num;
 	private int product_num;
 	private int user_num;
-	private int cart_count;
+	private int cart_count;	
+	private int sub_total; //dao-장바구니 목록에서 연산
 	
+	public int getSub_total() {
+		return sub_total;
+	}
+	public void setSub_total(int sub_total) {
+		this.sub_total = sub_total;
+	}
 	public int getCart_num() {
 		return cart_num;
 	}

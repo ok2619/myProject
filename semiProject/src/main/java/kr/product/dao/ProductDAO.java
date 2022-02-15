@@ -227,6 +227,7 @@ public class ProductDAO {
 			 }
 		 }
 		 
+//ㅡㅡㅡㅡ[카트]ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ	
 		 
 		 //카트담기
 		 public void cartInsert(int product_num,int user_number,int cart_count) throws Exception{
