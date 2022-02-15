@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품등록</title>
+<title>관리자 | 상품등록</title>
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
@@ -49,7 +49,8 @@ $(function(){
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="page-main">
-<div class="col-md-12">
+	<h3 class="align-center common_title">상품 등록</h3>
+<div class="col-md-12 go_right" style="margin-top:-50px">
     <div class="col-md-4">
         <form id="write_form" action="productWrite.do" method="post" enctype="multipart/form-data">
             <div class="form-group">
@@ -63,6 +64,8 @@ $(function(){
             <div class="form-group">
             <label for="price">가격</label>
                 <input type="text" class="form-control" name="price" id="price" placeholder="가격" style="width:100px">
+              </div> 
+              <div class="form-group">
                <label for="stock">개수</label>
                 <input type="text" class="form-control" name="stock" id="stock" placeholder="개수" style="width:100px">
             </div>
@@ -73,9 +76,20 @@ $(function(){
             <div class="form-group">
 				  <input type="file" class="form-control" name="image" id="image" accept="image/gif,image/png,image/jpeg">
 			</div>
-            <input type="submit" class="btn btn-default btn-sm" value="등록">
-            <input type="button" class="btn btn-default btn-sm" value="목록" onclick="location.href='${pageContext.request.contextPath}/product/productList.do'">
-        </form>
+			
+			<div class="form-group"> 
+						<div class="col-sm-offset-3 col-sm-9"> 
+						</div> 
+					</div> 
+					<div class="blank_50"></div>	
+					
+			<!-- 버튼 -->
+			<div class="align-center margin_right_10">
+			<input type="submit" class="btn btn-info" value="등록">
+            <input type="button" class="btn" value="목록" onclick="location.href='${pageContext.request.contextPath}/product/productList.do'">
+    		</div>
+			<!-- 버튼 끝-->			
+             </form>
         
     </div>
 </div>

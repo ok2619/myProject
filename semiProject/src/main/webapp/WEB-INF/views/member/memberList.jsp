@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원목록</title>
+<title>관리자 | 회원관리</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
@@ -25,7 +25,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="page-main">
-	<h4 class="align-center common_title">회원목록(관리자 전용)</h4>
+	<h4 class="align-center common_title">회원관리</h4>
 	
 	<!-- <form id="search_form" action="memberList.do" method="get">
 		<ul class="search">
@@ -74,7 +74,7 @@
 				</c:if>
 				<c:if test="${member.auth == 0}">${member.id}</c:if>
 			</td>
-			<td>${member.name}</td>
+			<td><a href="detailUserForm.do?user_num=${member.user_num}">${member.name}</a></td>
 			<td>${member.address1}</td>
 			<td>${member.phone}</td>
 			<td>${member.reg_date}</td>
