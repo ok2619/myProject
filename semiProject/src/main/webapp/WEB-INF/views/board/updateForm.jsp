@@ -17,7 +17,7 @@
 				if (this.files && this.files[0]){
 					var reader = new FileReader;
 					reader.onload = function(data){
-						$(".select_img img").attr("src", data.target.result).width(100);
+						$(".select_img_update img").attr("src", data.target.result).width(100);
 					}
 					reader.readAsDataURL(this.files[0]);
 				}					
@@ -26,7 +26,7 @@
 		
 		//이미지 첨부 취소 (파일삭제 버튼 클릭)
 		$('#delete_btn').click(function(){			
-			$('.select_img img').attr('src',''); 
+			$('.select_img_update img').attr('src',''); 
 			$('#filename').val('');
 			$('#photo_delete').hide();			
 		});		
@@ -38,11 +38,11 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h3 class="align-center common_title">게시판 글수정</h3>
+	<h3 class="align-center common_title">상품 후기</h3>
 	<form id="update_form" action="update.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="board_num" value="${board.board_num}"> 
 		
-		<table class="go_left_update">
+		<table class="go_left">
 			<tr>
 				<td class="align-center"><label for="title">제목</label></td>
 				<td><input type="text" name="title" id="title" value="${board.title}" maxlength="50" class="form-control"><p></td>			
@@ -54,17 +54,19 @@
 			
 			<tr>
 				<td>
-					<div class="select_img margin_right">
+					
+				</td>
+				<td><p>
+					<div class="select_img_update margin_right">
 							<img src="" />
 					</div>
-				</td>
-				<td>	<p>
+					<p>
 					<div class="form-group"> 											
-						<div id="photo_delete" class="col-xs-3">
+						<div id="photo_delete" class="float_left"><!--  class="col-xs-3" -->
 						<input type="button" value="파일 삭제" id="delete_btn">
 						</div>
 						
-						<div class="col-xs-9">
+						<div class="float_left margin_left_10"><!--  class="col-xs-9" -->
 						<input type="file" name="filename" id="filename" 
 						accept="image/gif,image/png,image/jpeg"><span id="file_detail">${board.filename}</span> 				
 						</div>					
@@ -112,6 +114,8 @@
 		</div> 
 		</div> 
 		
+		<div class="blank_50"></div>
+		
 		<div class="form-group"> 
 			<div class="col-sm-offset-3 col-sm-2"> 
 				<button type="submit" class="btn btn-info">수정</button> 
@@ -124,5 +128,6 @@
 		</div>		
 	</form>
 </div>
+<div class="blank_100"></div>
 </body>
 </html>

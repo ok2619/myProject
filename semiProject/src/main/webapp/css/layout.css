@@ -25,12 +25,6 @@
 .align-right{
 	text-align:right;
 }
-.blank_50{
-	margin-bottom:50px;
-}
-.blank_100{
-	margin-bottom:100px;
-}
 
 /*메인*/
 a:link{
@@ -69,8 +63,7 @@ div.blank{
 	margin:140px auto 60px;
 	font-family: 'KOTRA_GOTHIC';
 }
-/*float clear 설정*/
-.clear{clear:both;}
+
 
 .common_title a:visited { 
   color: black;
@@ -130,29 +123,9 @@ input[id="address1"],input[id="address2"]{
 .login_btn{ /*추가*/
 	margin:0 -100px 0 160px;
 }
-.margin_left{
-	margin-left:20px;
-}
-.margin_right{
-	margin-right:20px;
-}
-.margin_left_30{
-	margin-left:30px;
-}
-.margin_left_40{
-	margin-left:40px;
-}
-.float_left{
-	float:left;
-}
-.go_left{
-	margin-left:-50px;
-}
-.go_left_update{
-	margin-left:-80px;
-}
 
-/*목록*/
+
+/*상품후기 게시판*/
 .list-space{
 	margin-bottom:10px;
 	margin-top:20px; /*추가*/
@@ -195,6 +168,11 @@ div#write_btn{
 .select_img{
 	margin-left:32px;
 }
+/*글작성,글수정*/
+textarea.update_content{
+	width:300px;
+	height:40px;
+}
 
 /*서치폼*/
 /*default 서치창 설정*/
@@ -212,7 +190,6 @@ ul.search li{
 	padding:0;
 	display:inline;
 } 
-
 
 /*review 페이지 서치창 설정-좌측 하단 정렬(board/list,myReview.jsp)*/
 form#search_review{
@@ -236,10 +213,6 @@ ul.search_review li{
 	display:inline;
 }
 
-
-
-
-
 /*My Page*/
 .mypage-div{
 	width:48%;
@@ -253,7 +226,6 @@ ul.search_review li{
 	/*사각형의 모서리 둥근 정도를 지정하는 속성인 데 50%를 지정하면 완전한 원이 됨*/
 	border-radius:50%;
 }
-
 
 /*글상세*/
 .detail-img{
@@ -323,13 +295,45 @@ form#mre_form{
 	border:none;
 	margin:5px;
 }
-/*글수정*/
-textarea.update_content{
-	width:350px;
-	height:40px;
+
+
+
+/*여백 및 정렬 옵션*/
+.blank_50{
+	margin-bottom:50px;
 }
+.blank_100{
+	margin-bottom:100px;
+}
+.margin_left_10{
+	margin-left:10px;
+}
+.margin_left{
+	margin-left:20px;
+}
+.margin_right{
+	margin-right:20px;
+}
+.margin_left_30{
+	margin-left:30px;
+}
+.margin_left_40{
+	margin-left:40px;
+}
+.float_left{
+	float:left;
+}
+.go_left{
+	margin-left:-50px;
+}
+.go_left_update{
+	margin-left:-80px;
+}
+/*float clear 설정*/
+.clear{clear:both;}
 
 
+/*폰트설정*/
 @font-face {
     font-family: 'KOTRA_GOTHIC';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/KOTRA_GOTHIC.woff') format('woff');
