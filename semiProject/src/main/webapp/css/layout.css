@@ -262,16 +262,28 @@ textarea.rep-content{
 	height:65px;
 	margin:-40px 0 0 -100px;float:left;
 }
-div#re_first, div#mre_first{
+textarea.textarea.rep-contents{
+	width:105%;
+	height:65px;
+	margin:-40px 0 0 -100px;float:left;
+}
+div#re_first{
 	
 	margin-left:-95px;
 	margin-bottom:10px;margin-top:0;
 }
+
+div.div#mre_first{
+	
+	margin-left:-50px;
+	margin-bottom:10px;margin-top:0;
+}
+
 div.div#re_second, div.div#mre_second{
 	float:left;
 	width:3%;
 	margin-bottom:10px;float:left;/* background-color:pink; */
-	margin-left:20px;font-family: 'KOTRA_GOTHIC';font-size:11pt;
+	margin-left:20px;font-family: 'KOTRA_GOTHIC';font-size:10pt;
 	
 }
 div#loading{
