@@ -24,7 +24,8 @@ create table qproduct(
     product_num number not null, 
     stock number(9) not null, 
     product_name varchar2(100) not null,
-    sort varchar2(20) not null, 
+    sort varchar2(20) not null,
+    sort_num number(1) not null,
     price number(10) not null, 
     image varchar2(100) not null,
     content clob,
@@ -32,6 +33,15 @@ create table qproduct(
     constraint qproduct_pk primary key (product_num)
  );
 create sequence qproduct_seq;
+
+ create table qsort(
+ 	product_num number not null,
+ 	sort_num number(1) default 4 not null, /*카테고리:0outer,1top,2bottom,3etc,4미분류*/
+ 	sort_name varchar2(20) not null,
+ 	constraint qsort primary key (sort_num),
+ 	constraint qsort_fk foreign key (product_num) references qproduct (product_num)
+ );
+ create sequence qsort_seq;
  
  create table qcart(
     cart_num number not null,

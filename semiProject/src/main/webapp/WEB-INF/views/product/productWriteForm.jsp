@@ -17,9 +17,8 @@ $(function(){
 			$('#product_name').val('').focus();
 			return false;
 		}
-		if($('#sort').val().trim()==''){
-			alert('상품종류 입력하세요!');
-			$('#sort').val('').focus();
+		if($('#sort option:selected').val()=='--선택--'){
+			alert('상품종류를 선택하세요!');
 			return false;
 		}
 		if($('#price').val().trim()==''){
@@ -58,8 +57,14 @@ $(function(){
                 <input type="text" class="form-control" name="product_name" id="product_name" placeholder="상품명을 입력하세요">
             </div>
              <div class="form-group">
-                <label for="sort">상품종류</label>
-                <input type="text" class="form-control" name="sort" id="sort" placeholder="상품종류를 입력하세요">
+             	<label for="sort">상품종류</label>
+                <select name="sort" class="form-select">
+               	  <option value='미선택' selected disabled>--선택--</option>
+               	  <option value='outer'>outer</option>
+               	  <option value='top'>top</option>
+               	  <option value='bottom'>bottom</option>
+               	  <option value='etc'>etc</option>
+                </select>
             </div>
             <div class="form-group">
             <label for="price">가격</label>
@@ -70,10 +75,11 @@ $(function(){
                 <input type="text" class="form-control" name="stock" id="stock" placeholder="개수" style="width:100px">
             </div>
             <div class="form-group">
-                <label for="content">내용</label>
+                <label for="content">상품상세설명</label>
                 <textarea class="form-control" name="content" id="content" placeholder="내용을 입력하세요"></textarea>
             </div> 
             <div class="form-group">
+            	  <label for="file">상품이미지 등록</label>
 				  <input type="file" class="form-control" name="image" id="image" accept="image/gif,image/png,image/jpeg">
 			</div>
 			
