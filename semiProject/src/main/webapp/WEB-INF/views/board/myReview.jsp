@@ -80,7 +80,7 @@
 			</div>
 			</c:if>
 			</td>
-			<td><a href="detail.do?board_num=${board.board_num}">${board.title}</a></td>
+			<td><a href="myReviewDetail.do?board_num=${board.board_num}">${board.title}</a></td>
 			<td>${board.id}</td>
 			<td>${board.reg_date}</td>
 			<td>${board.hit}</td>
@@ -115,11 +115,11 @@
 	<!-- 검색창 끝 -->
 	
 	<!-- 글쓰기버튼 -->
-	<p>
+	<%-- <p>
 	<div class="align-right" id="write_btn">
 		<input type="button" value="글쓰기" onclick="location.href='writeForm.do'" class="btn btn-info"
 		<c:if test="${empty user_number}">disabled="disabled"</c:if>> <!-- 로그인 안된상태-> 글쓰기버튼 비활성화 -->		
-	</div>
+	</div> --%>
 	<!-- 글쓰기버튼 끝-->
 	
 	<p class="clear"></p>
