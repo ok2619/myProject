@@ -35,8 +35,8 @@ vertical-align: middle;
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-
- <table style="padding-top:100px">
+<div class="page-main">
+ <table style="padding-top:100px" class="go_left">
 
       <thead>
       
@@ -84,5 +84,6 @@ vertical-align: middle;
         </tr>
       </tbody>
     </table>
+    </div>
 </body>
 </html>
