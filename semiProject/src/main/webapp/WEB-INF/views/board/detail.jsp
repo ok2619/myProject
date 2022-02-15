@@ -70,7 +70,7 @@
 		<c:if test="${!empty user_number}">
 		
 		<div id="re_second" > <!-- class="align-right" -->
-			<input type="submit" value="전송"  class="btn btn-default btn-sm">
+			<input type="submit" value="전송"  class="btn btn-default btn-sm margin_left_10">
 		</div>
 		<div class="clear"></div>
 		<div id="re_first">
@@ -79,6 +79,7 @@
 		</c:if>
 		</form>
 	</div>
+	<p>
 	<!-- 댓글 목록 출력 시작 -->
 	<div id="output"></div>
 	<div class="paging-button" style="display:none;">

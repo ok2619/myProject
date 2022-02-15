@@ -257,6 +257,7 @@ span.letter-count{
 	font-size:10pt;
 	color:#999;
 }
+
 textarea.rep-content{
 	width:105%;
 	height:65px;
@@ -264,8 +265,8 @@ textarea.rep-content{
 }
 textarea.textarea.rep-contents{
 	width:105%;
-	height:65px;
-	margin:-40px 0 0 -100px;float:left;
+	height:45px;
+	margin:-100px 0 0 -300px;float:left;
 }
 div#re_first{
 	
@@ -307,7 +308,18 @@ form.form#mre_form{
 	border:none;
 	margin:5px;
 }
-
+span.modify_letter{
+	font-size:7pt;
+	color:#000;
+}
+p.user_font{
+	font-size:11pt;
+	color:#000;
+}
+p.content_font{
+	font-size:10pt;
+	color:#000;
+}
 
 
 /*여백 및 정렬 옵션*/
@@ -343,6 +355,10 @@ form.form#mre_form{
 }
 .go_left{
 	margin-left:-50px;
+}
+.go_left_70{
+	margin-left:-75px;
+	margin-top:-2px;
 }
 .go_right{
 	margin-left:85px;
