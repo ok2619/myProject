@@ -33,10 +33,17 @@ public class MainAction implements Action{
 				          Integer.parseInt(pageNum),count,10,20,"productList.do");
 		
 		List<ProductVO> list = null;
+		String pageSort = request.getParameter("page");
+		if(pageSort == null) {
 		if(count > 0) {
 			list = dao.getListBoard(page.getStartCount(), page.getEndCount(), 
 					                                     keyfield, keyword);
+			}
+		}else if(pageSort != null) {
+			list = dao.getListBoard2(page.getStartCount(), page.getEndCount(), 
+                    keyfield, keyword,pageSort);
 		}
+		
 		
 		request.setAttribute("count", count);
 		request.setAttribute("list", list);

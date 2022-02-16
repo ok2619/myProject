@@ -83,10 +83,10 @@
 	</div>
 	<%-- 카테고리 메뉴 --%>
 	<div class="align-center blank common_title menu_font">   
-		<div class="col-md-offset-4 col-md-1"><a href="#"><h4>&nbsp;&nbsp;OUTER</h4></a></div>
-		<div class="col-md-1"><a href="#"><h4>TOP</h4></a></div>
-		<div class="col-md-1"><a href="#"><h4>BOTTOM</h4></a></div>
-		<div class="col-md-1"><a href="#"><h4>ECT</h4></a></div>
+		<div class="col-md-offset-4 col-md-1"><a href="${pageContext.request.contextPath}/main/main.do?page=outer"><h4>&nbsp;&nbsp;OUTER</h4></a></div>
+		<div class="col-md-1"><a href="${pageContext.request.contextPath}/main/main.do?page=top"><h4>TOP</h4></a></div>
+		<div class="col-md-1"><a href="${pageContext.request.contextPath}/main/main.do?page=bottom"><h4>BOTTOM</h4></a></div>
+		<div class="col-md-1"><a href="${pageContext.request.contextPath}/main/main.do?page=etc"><h4>etc</h4></a></div>
 		<div class="col-md-offset-4"></div>				
 	</div>
 </body>
