@@ -93,7 +93,8 @@
 		</div>
 		<p>
 		
-		<div class="align-center">
+		<div class="blank_50"></div>
+		<div class="align-center go_left">
 			<input type="submit" class="btn btn-info" value="변경">
 			<input type="button" class="btn btn-defualt"value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
