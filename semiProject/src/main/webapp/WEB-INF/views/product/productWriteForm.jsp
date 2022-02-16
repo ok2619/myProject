@@ -17,7 +17,7 @@ $(function(){
 			$('#product_name').val('').focus();
 			return false;
 		}
-		if($('#sort option:selected').val()=='--선택--'){
+		if($('sort').value==''){
 			alert('상품종류를 선택하세요!');
 			return false;
 		}
@@ -59,7 +59,7 @@ $(function(){
              <div class="form-group">
              	<label for="sort">상품종류</label>
                 <select name="sort" class="form-select">
-               	  <option value='미선택' selected disabled>--선택--</option>
+               	  <option value='' selected disabled>--선택--</option>
                	  <option value='outer'>outer</option>
                	  <option value='top'>top</option>
                	  <option value='bottom'>bottom</option>
