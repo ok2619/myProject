@@ -137,59 +137,59 @@ public class ProductDAO {
 			 }
 			 return list;
 		 }
-		 //////////////////////////////////////////삭제
+		 //////////////////////////////////////////카테고리 리스트
 		 public List<ProductVO> getListBoard2(int startRow, int endRow, 
-                 String keyfield, String keyword,String pageSort)throws Exception{
-Connection conn = null;
-PreparedStatement pstmt = null;
-ResultSet rs = null;
-List<ProductVO> list = null;
-String sql = null;
-String sub_sql = "";
-int cnt = 0;
+				 			String keyfield, String keyword,String pageSort)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<ProductVO> list = null;
+			String sql = null;
+			String sub_sql = "";
+			int cnt = 0;
 
-try {
-conn = DBUtil.getConnection();
+			try {
+			conn = DBUtil.getConnection();
+			
+			if(keyword != null && !"".equals(keyword)) {
+				 if(keyfield.equals("1")) sub_sql = "WHERE product_name LIKE ?";
+				 else if(keyfield.equals("2")) sub_sql = "WHERE sort LIKE ?";
+			}
+			
+			sql = "select * from (select rownum rn,product_num ,product_name,sort, stock, price,image,reg_date from "
+					+ "(select * from qproduct " 
+					+ "WHERE sort LIKE ?" + " order by product_num desc)) where rn between ? and ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+				pstmt.setString(++cnt, "%"+pageSort+"%");
+			pstmt.setInt(++cnt, startRow);
+			pstmt.setInt(++cnt, endRow);
 
-if(keyword != null && !"".equals(keyword)) {
-	 if(keyfield.equals("1")) sub_sql = "WHERE product_name LIKE ?";
-	 else if(keyfield.equals("2")) sub_sql = "WHERE sort LIKE ?";
-}
-
-sql = "select * from (select rownum rn,product_num ,product_name,sort, stock, price,image,reg_date from "
-		+ "(select * from qproduct " 
-		+ "WHERE sort LIKE ?" + " order by product_num desc)) where rn between ? and ?";
-
-pstmt = conn.prepareStatement(sql);
-
-	 pstmt.setString(++cnt, "%"+pageSort+"%");
-pstmt.setInt(++cnt, startRow);
-pstmt.setInt(++cnt, endRow);
-
-rs = pstmt.executeQuery();
-list = new ArrayList<ProductVO>();
-while(rs.next()) {
-	 ProductVO product = new ProductVO();
-	 product.setProduct_num(rs.getInt("product_num"));
-	 product.setImage(rs.getString("image"));
-	 product.setProduct_name(rs.getString("Product_name"));
-	 product.setSort(rs.getString("sort"));
-	 product.setPrice(rs.getInt("price"));
-	 product.setStock(rs.getInt("stock"));
-	 product.setReg_date(rs.getDate("reg_date"));
-	 
-	 list.add(product);
-}
-
-}catch(Exception e) {
-throw new Exception(e);
-}finally {
-//자원정리
-DBUtil.executeClose(rs, pstmt, conn);
-}
-return list;
-}
-		 //////////////////////////////////////////삭제
+			rs = pstmt.executeQuery();
+			list = new ArrayList<ProductVO>();
+			while(rs.next()) {
+				 ProductVO product = new ProductVO();
+				 product.setProduct_num(rs.getInt("product_num"));
+				 product.setImage(rs.getString("image"));
+				 product.setProduct_name(rs.getString("Product_name"));
+				 product.setSort(rs.getString("sort"));
+				 product.setPrice(rs.getInt("price"));
+				 product.setStock(rs.getInt("stock"));
+				 product.setReg_date(rs.getDate("reg_date"));
+				 
+				 list.add(product);
+			}
+			
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				//자원정리
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+				return list;
+			}
+		 //////////////////////////////////////////카ㅔ고리리스트
 		
 		 //상품상세보기
 		 public ProductVO getProduct(int product_num) throws Exception{
