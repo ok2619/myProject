@@ -35,15 +35,15 @@
 		<c:set var="totalCount" value="0"/>
 		<c:forEach var="product" items="${product}">
 		<tr>
-			<td>${product.product_num}</td>
-			<td><img src="../upload/${product.image}" height="100" width="100"></td>
-			<td>${product.product_name}</td>
-			<td>${product.sort}</td>
-			<td><fmt:formatNumber value="${product.price}" pattern="#,###" /></td>
+			<td>${product.cart_num}</td>
+			<td><img src="../upload/${product.product.image}" height="100" width="100"></td>
+			<td>${product.product.product_name}</td>
+			<td>${product.product.sort}</td>
+			<td><fmt:formatNumber value="${product.product.price}" pattern="#,###" /></td>
 			<td>${product.cart_count}</td>
 			<td><input type="button" value="삭제" onclick="location.href='cartDelete.do?cart_num=${product.cart_num}'">
 		</tr>
-		<c:set var="totalPrice" value="${totalPrice + product.price * product.cart_count}"/>
+		<c:set var="totalPrice" value="${totalPrice + product.product.price * product.product.cart_count}"/>
 		<c:set var="totalCount" value="${totalCount + product.cart_count}"/>
 		</c:forEach>
 		

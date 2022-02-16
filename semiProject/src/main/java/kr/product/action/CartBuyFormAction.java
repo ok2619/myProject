@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
 import kr.product.dao.ProductDAO;
+import kr.product.vo.CartVO;
 import kr.product.vo.ProductVO;
 
 public class CartBuyFormAction implements Action{
@@ -19,7 +20,7 @@ public class CartBuyFormAction implements Action{
 		Integer user_number = (Integer)session.getAttribute("user_number");
 		
 		ProductDAO dao = ProductDAO.getInstance();
-		List<ProductVO> product = dao.cartList(user_number);
+		List<CartVO> product = dao.cartList(user_number);
 		
 		
 		request.setAttribute("product", product);

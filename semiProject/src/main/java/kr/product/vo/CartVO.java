@@ -6,7 +6,15 @@ public class CartVO {
 	private int user_num;
 	private int cart_count;	
 	private int sub_total; //dao-장바구니 목록에서 연산
+
+	private ProductVO product;
 	
+	public ProductVO getProduct() {
+		return product;
+	}
+	public void setProduct(ProductVO product) {
+		this.product = product;
+	}
 	public int getSub_total() {
 		return sub_total;
 	}

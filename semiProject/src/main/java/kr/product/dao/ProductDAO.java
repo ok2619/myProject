@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.product.vo.CartVO;
 import kr.product.vo.ProductVO;
 import kr.util.DBUtil;
 
@@ -230,7 +231,7 @@ public class ProductDAO {
 //ㅡㅡㅡㅡ[카트]ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ	
 		 
 		 //카트담기
-		 public void cartInsert(int product_num,int user_number,int cart_count) throws Exception{
+		 public void cartInsert(CartVO cart) throws Exception{
 			 Connection conn = null;
 			 PreparedStatement pstmt = null;
 			 ResultSet rs = null;
@@ -240,9 +241,9 @@ public class ProductDAO {
 				 conn = DBUtil.getConnection();
 				 sql = "insert into qcart(cart_num,product_num,user_num,cart_count) values (qcart_seq.nextval,?,?,?)";
 				 pstmt = conn.prepareStatement(sql);
-				 pstmt.setInt(1, product_num);
-				 pstmt.setInt(2, user_number);
-				 pstmt.setInt(3, cart_count);
+				 pstmt.setInt(1, cart.getProduct_num());
+				 pstmt.setInt(2, cart.getUser_num());
+				 pstmt.setInt(3, cart.getCart_count());
 				 pstmt.executeUpdate();
 				 
 			 }catch(Exception e) {
@@ -255,28 +256,32 @@ public class ProductDAO {
 		 //카트 리스트
 		 //카트에서 회원번호에 해당하는 컬럼을 모두 구한다음에
 		 //프로덕트에서 모든컬럼 조회
-		 public List<ProductVO> cartList(int user_number) throws Exception{
+		 public List<CartVO> cartList(int user_number) throws Exception{
 			 Connection conn = null;
 			 PreparedStatement pstmt = null;
 			 ResultSet rs = null;
 			 String sql = null;
-			 ProductVO product = null;
-			 List<ProductVO> list = null;
+			 List<CartVO> list = null;
 			 
 			 try {
 				 conn = DBUtil.getConnection();
-				 sql = "select a.*,b.cart_count,b.cart_num from qproduct a, qcart b "
-				 		+ "where a.product_num = b.product_num and b.product_num = ANY(select product_num from qcart where user_num = ?)"
-				 		+ "order by a.product_num";
+				 sql = "SELECT * FROM qcart c JOIN qproduct i "
+				 		+ "ON c.product_num = i.product_num WHERE c.user_num = ? "
+				 		+ "ORDER BY i.product_num ASC";
 				 pstmt = conn.prepareStatement(sql);
 				 pstmt.setInt(1, user_number);
 				 rs= pstmt.executeQuery();
 				 
-				 list = new ArrayList<ProductVO>();
+				 list = new ArrayList<CartVO>();
 				 
 				 while(rs.next()) {
-					 product = new ProductVO();
+					CartVO cart = new CartVO();
+					cart.setCart_num(rs.getInt("cart_num"));
+					cart.setProduct_num(rs.getInt("product_num"));
+					cart.setCart_count(rs.getInt("cart_count"));
+					cart.setUser_num(rs.getInt("user_num"));
 					 
+					 ProductVO product = new ProductVO();
 					 product.setProduct_num(rs.getInt("product_num"));
 					 product.setProduct_name(rs.getString("product_name"));
 					 product.setSort(rs.getString("sort"));
@@ -285,7 +290,12 @@ public class ProductDAO {
 					 product.setCart_count(rs.getInt("cart_count"));
 					 product.setCart_num(rs.getInt("cart_num"));
 					 
-					 list.add(product);
+					 cart.setProduct(product);
+						
+						//sub total 연산하기
+					 cart.setSub_total(cart.getCart_count()*product.getPrice());
+						
+					 list.add(cart);			
 					 
 				 }
 			 }catch(Exception e) {
@@ -295,6 +305,69 @@ public class ProductDAO {
 			 }
 			 return list;
 		 }
+		 
+		 public CartVO getCart(CartVO cart)throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				CartVO cartSaved = null;
+				String sql = null;
+				
+				try {
+					//커넥션풀로부터 커넥션을 할당
+					conn = DBUtil.getConnection();
+					//SQL문 작성
+					sql = "SELECT * FROM qcart WHERE product_num = ? AND user_num = ?";
+					//PreparedStatement 객체 생성
+					pstmt = conn.prepareStatement(sql);
+					//?에 데이터 바인딩
+					pstmt.setInt(1, cart.getProduct_num());
+					pstmt.setInt(2, cart.getUser_num());
+					//SQL문을 실행해서 결과행을 ResultSet에 담음
+					rs = pstmt.executeQuery();
+					
+					if(rs.next()) {
+						cartSaved = new CartVO();
+						cartSaved.setCart_num(rs.getInt("cart_num"));
+						cartSaved.setProduct_num(rs.getInt("product_num"));
+						cartSaved.setCart_count(rs.getInt("cart_count"));
+					}
+					
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					//자원정리
+					DBUtil.executeClose(rs, pstmt, conn);
+				}
+				return cartSaved;
+			}
+		//장바구니 수정
+			//장바구니 회원번호별 수정
+			public void updateCartByItem_num(CartVO cart)throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				String sql = null;
+				
+				try {
+					//커넥션풀로부터 커넥션 할당
+					conn = DBUtil.getConnection();
+					//SQL문 작성
+					sql = "UPDATE qcart SET cart_count=? WHERE product_num=? AND user_num=?";
+					//PreparedStatement 객체 생성
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, cart.getCart_count());
+					pstmt.setInt(2, cart.getProduct_num());
+					pstmt.setInt(3, cart.getUser_num());
+					//SQL문 실행
+					pstmt.executeUpdate();
+					
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					//자원정리
+					DBUtil.executeClose(null, pstmt, conn);
+				}
+			}
 		 
 		 //카트삭제
 		 public void cartDelete(int cart_num) throws Exception{
