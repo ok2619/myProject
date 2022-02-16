@@ -41,7 +41,7 @@
 
 <!--/////////////////////////////////////////////////////////////  -->
 <c:forEach var="product" items="${product}">
-<input type="hidden" id="product_name" name="product_name" value="${product.product_name}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
+<input type="hidden" id="product_name" name="product_name" value="${product.product.product_name}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
 <%-- <input type="hidden" id="price" name="price" value="${product.price}"><!-- 세션에 저장하기 위해 히든으로 넘김 --> --%>
 <input type="hidden" id="product_num" name="product_num" value="${product.product_num}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
 <%-- <input type="hidden" id="cart_count" name="cart_count" value="${cart_count}"><!-- 세션에 저장하기 위해 히든으로 넘김 --> --%>
@@ -51,14 +51,14 @@
       		<img src="../upload/NO.png" alt="no">
     	</a>
 	</div>
-  모델명 : ${product.product_name}</br>
-  상품종류 : ${product.sort}</br>
+  모델명 : ${product.product.product_name}</br>
+  상품종류 : ${product.product.sort}</br>
   수량 : ${product.cart_count}</br>
-  총금액 : <fmt:formatNumber value="${product.cart_count * product.price}" pattern="#,###" /></br>
+  총금액 : <fmt:formatNumber value="${product.cart_count * product.product.price}" pattern="#,###" /></br>
   
   <hr class="mt-2 mb-3"/>
 </div>
-<c:set var="totalPrice" value="${totalPrice + (product.price * product.cart_count)}"/>
+<c:set var="totalPrice" value="${totalPrice + (product.product.price * product.cart_count)}"/>
 </c:forEach>
 
 <!--/////////////////////////////////////////////////////////////  -->
