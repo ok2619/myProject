@@ -15,7 +15,7 @@ public class ProductDAO {
 	public static ProductDAO getInstance() {
 		return instance;
 	}
-	private ProductDAO() {}
+	private ProductDAO() {} 
 	
 	public void insertProduct(ProductVO product) throws Exception {
 		// TODO Auto-generated method stub

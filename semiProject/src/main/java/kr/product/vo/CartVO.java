@@ -3,7 +3,7 @@ package kr.product.vo;
 public class CartVO {
 	private int cart_num;
 	private int product_num;
-	private int user_num;
+	private int user_num;  
 	private int cart_count;	
 	private int sub_total; //dao-장바구니 목록에서 연산
 

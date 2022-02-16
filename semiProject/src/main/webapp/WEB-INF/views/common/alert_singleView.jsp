@@ -3,4 +3,4 @@
 <script type="text/javascript">
 	alert('${notice_msg}');
 	location.href='${notice_url}';
-</script>
+</script> 

@@ -13,7 +13,7 @@
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <style>
     #btn-1{width:300px;margin:auto;}
-    #w1{width:500px;margin:auto;}
+    #w1{width:500px;margin:auto;} 
 </style>
 </head>
 <body>

@@ -21,7 +21,7 @@ public class CartInsertAction implements Action{
 		}
 		
 
-		
+		 
 		CartVO cart = new CartVO();
 		cart.setProduct_num(Integer.parseInt(request.getParameter("product_num")));
 		cart.setCart_count(Integer.parseInt(request.getParameter("cart_count")));

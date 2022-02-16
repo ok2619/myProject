@@ -9,7 +9,7 @@ public class ProductVO {
 	private int price;
 	private int stock;
 	private String image;
-	private String content;
+	private String content; 
 	private Date reg_date;
 	////////////////////////////////////////////
 	private int cart_num;
