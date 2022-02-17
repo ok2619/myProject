@@ -19,7 +19,7 @@
 </script> 
 <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
  	<style>
-      table {height: 900px;width: 1200px;border: 1px solid #444444;}
+      table {height: 1000px;width: 1200px;}
       th, td {border: 1px solid #444444;padding: 10px;}
   		thead{width:1000px;height:500px;}
   		tbody{height:400px;}
@@ -37,25 +37,26 @@ vertical-align: middle;
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <div class="page-main">
  <table style="padding-top:100px" class="go_left">
-
       <thead>
-      
-       
         <tr>
-          <th class="first"><img src="../upload/${product.image}" height="400" width="400" style="padding-top:70px;padding-left:30px"></th>
+          <th class="first">
+          <div style="text-align : center;">
+          <img src="../upload/${product.image}" height="400" width="400" style="padding-left:30px;">
+          </div>
+         
           <th class="second">
-          <span>제품정보</span></br>
+          <span style="font-size:19px; padding-bottom:20px;">제품정보</span></br>
           <span>상품명 : ${product.product_name}</span></br>
           <span>상품종류 : ${product.sort}</span></br>
-          <span>판매가 : <fmt:formatNumber value="${product.price}" pattern="#,###" /></span></br>
+          <span>판매가 : <fmt:formatNumber value="${product.price}" pattern="#,###" /> 원</span></br>
           
-          
-          <form action="cartInsert.do" method="post">
+          <div class="align-left">
+          <form action="cartInsert.do" method="post" style="padding:0; margin:auto;">
           <input type="hidden" id="product_num" name="product_num" value="${product.product_num}">
           
           <span>개수 : <input type="number" id="cart_count" value="1" name="cart_count" 
           						min="0" max="10" required></span></br>
-          
+          <div style="padding:15px 0px 0px 9px;">
           <c:if test="${product.stock > 0}">
           <input type='button' class="btn btn-default btn-sm" value='구매' onclick='return submit2(this.form);'> <!-- 한개의 form에 두 공간에 데이터를 보내야 하기 때문에 자바스크립트 활용 -->
           </c:if>
@@ -68,19 +69,18 @@ vertical-align: middle;
           <input type="button" class="btn btn-default btn-sm" value="상품수정" onclick="location.href='productUpdateForm.do?product_num=${product.product_num}'">
           <input type="button" class="btn btn-default btn-sm" value="상품삭제" onclick="location.href='productDelete.do?product_num=${product.product_num}'">
           </c:if>
+          </div>
           </form>
-          
+          </div>
           </th>
         </tr>       
       </thead>
-      
-      
-
-      
-      
       <tbody>
+      	<tr style="height:50px;">
+      		<th colspan="2" style="padding:0px 0px 0px 15px;">제품상세정보</th>
+      	</tr>
         <tr>
-          <td colspan="2">상세정보상세정보상세정보상세정보상세정보상세정보상세정보상세정보상세정보</td>
+          	<td colspan="2" style="padding:0px 0px 15px 15px; font-size:15px;">${product.content}</td>
         </tr>
       </tbody>
     </table>

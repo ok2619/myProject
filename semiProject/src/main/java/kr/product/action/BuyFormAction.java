@@ -23,7 +23,10 @@ public class BuyFormAction implements Action{
 		int product_num = Integer.parseInt(request.getParameter("product_num"));
 		int cart_count = Integer.parseInt(request.getParameter("cart_count"));
 		
+		/////////////////////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////////////////////
 		session.setAttribute("cart_count",cart_count);
+
 		
 		ProductDAO dao = ProductDAO.getInstance();
 		ProductVO product = dao.getProduct(product_num);

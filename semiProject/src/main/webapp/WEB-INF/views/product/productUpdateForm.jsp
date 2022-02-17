@@ -61,7 +61,7 @@ $(function(){
 					<div class="form-group">
 		             	<label for="sort">상품종류</label>
 		                <select name="sort" class="form-select" >
-		               	  <option value="${product.sort}" selected disabled>${product.sort}</option>
+		               	  <option value="${product.sort}">${product.sort}</option>
 		               	  <option value='outer'>outer</option>
 		               	  <option value='top'>top</option>
 		               	  <option value='bottom'>bottom</option>
@@ -83,6 +83,10 @@ $(function(){
 					</div> 
 					<div class="form-group">
 						<input type="file" class="form-control"name="image" id="image" accept="image/gif,image/png,image/jpeg">
+						<br>
+						<span id="image">
+							(${product.image})파일이 등록되어 있습니다. 
+						</span>
 					</div>
 					
 					<div class="form-group"> 
@@ -94,7 +98,7 @@ $(function(){
 					<!-- 버튼 -->
 					<div class="align-center">
 						<input type="submit" value="수정" class="btn btn-info">		            
-			            <input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/product/productListForm.do'" class="btn">
+			            <input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/product/productList.do'" class="btn">
 			            <input type="button" value="삭제" onclick="location.href='productDelete.do?product_num=${product.product_num}'" class="btn">
 					</div>
 					<!-- 버튼 끝-->												            					

@@ -147,24 +147,16 @@ public class ProductDAO {
 			ResultSet rs = null;
 			List<ProductVO> list = null;
 			String sql = null;
-			String sub_sql = "";
 			int cnt = 0;
-
 			try {
-			conn = DBUtil.getConnection();
-			
-			if(keyword != null && !"".equals(keyword)) {
-				 if(keyfield.equals("1")) sub_sql = "WHERE product_name LIKE ?";
-				 else if(keyfield.equals("2")) sub_sql = "WHERE sort LIKE ?";
-			}
+			conn = DBUtil.getConnection();		
 			
 			sql = "select * from (select rownum rn,product_num ,product_name,sort, stock, price,image,reg_date from "
 					+ "(select * from qproduct " 
 					+ "WHERE sort LIKE ?" + " order by product_num desc)) where rn between ? and ?";
-			
-			pstmt = conn.prepareStatement(sql);
-			
-				pstmt.setString(++cnt, "%"+pageSort+"%");
+
+			pstmt = conn.prepareStatement(sql);	
+			pstmt.setString(++cnt, "%"+pageSort+"%");
 			pstmt.setInt(++cnt, startRow);
 			pstmt.setInt(++cnt, endRow);
 
@@ -191,7 +183,7 @@ public class ProductDAO {
 			}
 				return list;
 			}
-		 //////////////////////////////////////////카ㅔ고리리스트
+		 //////////////////////////////////////////카테고리리스트
 		
 		 //상품상세보기
 		 public ProductVO getProduct(int product_num) throws Exception{

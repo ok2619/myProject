@@ -22,7 +22,7 @@ public class ProductUpdateAction implements Action{
 		String image = multi.getFilesystemName("image");
 		
 		ProductDAO dao = ProductDAO.getInstance();
-		ProductVO db_product = dao.getProduct(product_num);
+		ProductVO db_product = dao.getProduct(product_num);			
 		
 		ProductVO product = new ProductVO();
 		product.setProduct_num(product_num);

@@ -11,7 +11,7 @@
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 $(function(){
 	$('#write_form2').submit(function(){
 		if($('#name').val().trim()==''){
@@ -42,7 +42,6 @@ $(function(){
 	});
 });
 </script> 
-............................안먹힘 -->
 <style>
 	#btn-1{width:300px;margin:auto;}
 	.main2{width:900px;margin:0 auto;}
@@ -89,9 +88,8 @@ $(function(){
 <div id="btn-1">
 	<button type="button" class="btn btn-secondary btn-lg" 
 									style="background-color:black; color:white">계좌이체</button>
-	<input type="submit" class="btn btn-secondary btn-lg" 
-				onclick="location.href='${pageContext.request.contextPath}/product/payment.do'" 
-										style="background-color:black; color:white" value="카드결제">
+	<input type="submit" class="btn btn-secondary btn-lg" 				 
+										style="background-color:black; color:white" value="카드결제">									
 </div>
 
 
