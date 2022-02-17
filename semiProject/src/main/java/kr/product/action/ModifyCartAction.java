@@ -44,7 +44,7 @@ public class ModifyCartAction implements Action {
 				CartVO cart = new CartVO();
 				cart.setCart_num(Integer.parseInt(request.getParameter("cart_num")));
 				cart.setCart_count(cart_count);
-				proDao.updateCartByItem_num(cart);							
+				proDao.updateCart(cart);							
 				mapAjax.put("result", "success");				
 			}			
 		}

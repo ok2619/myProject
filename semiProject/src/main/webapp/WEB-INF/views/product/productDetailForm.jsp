@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
  	<style>
       table {height: 1000px;width: 1200px;}
-      th, td {border: 1px solid #444444;padding: 10px;}
+      th, td {padding: 10px;}
   		thead{width:1000px;height:500px;}
   		tbody{height:400px;}
   		thead .first{width:50%;}
@@ -35,20 +35,20 @@ vertical-align: middle;
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-<div class="page-main">
- <table style="padding-top:100px" class="go_left">
+<div class="page-main2">
+ <table style="padding-top:100px" class="go_left_120">
       <thead>
         <tr>
           <th class="first">
           <div style="text-align : center;">
-          <img src="../upload/${product.image}" height="400" width="400" style="padding-left:30px;">
+          <img src="../upload/${product.image}" height="400" width="400">
           </div>
          
           <th class="second">
-          <span style="font-size:19px; padding-bottom:20px;">제품정보</span></br>
-          <span>상품명 : ${product.product_name}</span></br>
-          <span>상품종류 : ${product.sort}</span></br>
-          <span>판매가 : <fmt:formatNumber value="${product.price}" pattern="#,###" /> 원</span></br>
+	          <span style="font-size:19px; padding-bottom:20px;">제품정보</span></br>
+	          <span>상품명 : ${product.product_name}</span></br>
+	          <span>상품종류 : ${product.sort}</span></br>
+	          <span>판매가 : <fmt:formatNumber value="${product.price}" pattern="#,###" /> 원</span></br>
           
           <div class="align-left">
           <form action="cartInsert.do" method="post" style="padding:0; margin:auto;">
@@ -76,11 +76,11 @@ vertical-align: middle;
         </tr>       
       </thead>
       <tbody>
-      	<tr style="height:50px;">
-      		<th colspan="2" style="padding:0px 0px 0px 15px;">제품상세정보</th>
+      	<tr style="height:50px; border-top: 1px solid black; ">
+      		<th colspan="2">제품상세정보</th>
       	</tr>
         <tr>
-          	<td colspan="2" style="padding:0px 0px 15px 15px; font-size:15px;">${product.content}</td>
+          	<td colspan="2" style="font-size:15px;">${product.content}</td>
         </tr>
       </tbody>
     </table>

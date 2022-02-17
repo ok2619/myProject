@@ -4,6 +4,11 @@
 	width:900px;
 	margin:0 auto;
 }
+.page-main2{
+	width:900px;
+	
+	margin:0 auto;
+}
 .result-display{
 	width:400px;
 	height:200px;
@@ -366,8 +371,15 @@ p.content_font{
 .go_left{
 	margin-left:-50px;
 }
+.center30{
+	text-align : center;
+}
 .go_left_70{
 	margin-left:-75px;
+	margin-top:-2px;
+}
+.go_left_120{
+	margin-left:-120px;
 	margin-top:-2px;
 }
 .go_right{
