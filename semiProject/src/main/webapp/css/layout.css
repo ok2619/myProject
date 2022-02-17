@@ -320,9 +320,18 @@ p.content_font{
 	font-size:10pt;
 	color:#000;
 }
-
+.view_font{
+	font-size:9pt;
+	color:#000;
+}
 
 /*여백 및 정렬 옵션*/
+.blank_20{
+	margin-bottom:20px;
+}
+.blank_30{
+	margin-bottom:30px;
+}
 .blank_50{
 	margin-bottom:50px;
 }
