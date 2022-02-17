@@ -47,6 +47,7 @@
 			$('#sample_img').show();
 		});		
 		
+
 	});
 </script>
 </head>
@@ -55,7 +56,7 @@
 <div class="page-main">
 	<h3 class="align-center common_title"><a href="list.do">상품 후기</a></h3>	
 	<form id="write_form" action="write.do" method="post" enctype="multipart/form-data">	
-		<table class="go_left_update">
+		<table class="go_left_update" border="1">
 		<tr>
 			<td class="align-center"><label for="title">제목</label></td>
 			<td><input type="text" name="title" id="title" maxlength="50" class="form-control"><p></td>			
@@ -71,7 +72,9 @@
 		</tr>
 		<tr>
 			<td rowspan="2" class="align-center"><label for="b_content">내용</label></td>
-			<td rowspan="2"><textarea rows="5" cols="30" name="b_content" id="b_content" class="update_content form-control"></textarea></td>
+			<td rowspan="2">
+			<textarea rows="5" cols="30" name="b_content" id="b_content" class="update_content form-control" placeholder="10자 이상 입력해주세요"></textarea>
+			</td>
 		</tr>
 		<tr>
 			<td>
@@ -87,6 +90,7 @@
 			</div>			
 			</td>
 		</tr>
+		
 		</table>	
 		
 		<div class="form-group"> 
@@ -109,32 +113,7 @@
 	</form>
 </div>
 	
-	<!-- <ul>
-			<li>
-				<label for="title">제목</label>
-				<input type="text" name="title" id="title" maxlength="50">
-			</li>		
-			<li>
-				<label for="b_content">내용</label>
-				<textarea rows="5" cols="30" name="b_content" id="b_content"></textarea>
-			</li>
-			<li>
-				<label for="filename">사진</label>
-				<div class="uploadDiv">
-					<input type="file" name="filename" id="filename" 
-							accept="image/gif,image/png,image/jpeg"> 파일선택 버튼
-					이미지 미리보기 영역
-					<div class="select_img">
-						<img src="" />
-					</div>
-				</div>					
-				
-			</li>	 
-		</ul>
-		<div class="align-center">
-			<input type="submit" value="등록">
-			<input type="button" value="취소" onclick="location.href='list.do'">
-		</div> -->
+	
 			
 </body>
 </html>
