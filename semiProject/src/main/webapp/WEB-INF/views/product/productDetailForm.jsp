@@ -39,10 +39,10 @@ vertical-align: middle;
  <table style="padding-top:100px" class="go_left">
 
       <thead>
-      
-       
         <tr>
-          <th class="first"><img src="../upload/${product.image}" height="400" width="400" style="padding-top:70px;padding-left:30px"></th>
+          <th class="first">
+          <img src="../upload/${product.image}" height="400" width="400" style="padding-top:70px;padding-left:30px">
+          </th>
           <th class="second">
           <span>제품정보</span></br>
           <span>상품명 : ${product.product_name}</span></br>
@@ -73,14 +73,9 @@ vertical-align: middle;
           </th>
         </tr>       
       </thead>
-      
-      
-
-      
-      
       <tbody>
         <tr>
-          <td colspan="2">상세정보상세정보상세정보상세정보상세정보상세정보상세정보상세정보상세정보</td>
+          <td colspan="2">${product.content}</td>
         </tr>
       </tbody>
     </table>
