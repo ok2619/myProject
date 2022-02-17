@@ -27,7 +27,7 @@
         		<img src="../upload/${product.image}">
 				     <div class="caption">
 				     	<h3>${product.product_name}</h3>
-				        	<p><fmt:formatNumber value="${product.price}" pattern="#,###" /></p>				        	
+				        	<p><fmt:formatNumber value="${product.price}" pattern="#,###" /> 원</p>				        	
 				        	<p>
 				        	<a href="${pageContext.request.contextPath}/product/productDetail.do?product_num=${product.product_num}" class="btn btn-primary" role="button">상품보기</a>
 							<a href="#" class="btn btn-default" role="button">구매하기</a>
