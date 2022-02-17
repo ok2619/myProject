@@ -70,14 +70,14 @@ $(function(){
 <div class="page-main">
 	<%-- <form id="cart_order" method="post" 
 	action="${pageContext.request.contextPath}/order/orderForm.do">  --%>
-	<table class="table">
+	<table class="table" >
 		<tr>
 			<th>번호</th>
 			<th>이미지</th>
 			<th>상품정보</th>			
 			<th>판매가</th>
 			<th>수량</th>
-			<!-- <th>합계</th> -->
+			<th>합계</th>
 		</tr>			
 		<c:set var="totalPrice" value="0"/>
 		<c:set var="totalCount" value="0"/>
@@ -95,33 +95,33 @@ $(function(){
 					value="${product.product.cart_count}" class="quantity-width">
 				<input type="button" value="변경" data-cartnum="${product.cart_num}" data-itemnum="${product.product_num}" class="cart-modify">
 			</td>			
-
-			<td>${product.product.sort}</td>
-			<td><fmt:formatNumber value="${product.product.price}" pattern="#,###" /> 원</td>
-			<td>${product.cart_count}</td>
+			
+			<td><fmt:formatNumber value="${product.product.price}" pattern="#,###" /> 원</td>			
 			<td>			
 			<%-- <fmt:formatNumber value="${product.sub_total}"/>원
 					<br> --%>		
 			<input type="button" value="삭제" onclick="location.href='cartDelete.do?cart_num=${product.cart_num}'">
 			</td>
 		</tr>
-		<c:set var="totalPrice" value="${totalPrice + product.product.price * product.product.cart_count}"/> 
+		<c:set var="ship" value="3000"/>
+		<c:set var="Price" value="${Price+product.product.price * product.product.cart_count}"/> 
+		<c:set var="totalPrice" value="${Price + ship}"/> 
 		<c:set var="totalCount" value="${totalCount + product.cart_count}"/>
 		</c:forEach>
 		
 		<tr>				
-			<td>총가격</td>
-
+			<td>총 상품금액</td>
 			<td>
-			<fmt:formatNumber value="${totalPrice}" pattern="#,###" />
-		<%-- 	<fmt:formatNumber value="${all_total}"/>원 --%>
+			<fmt:formatNumber value="${Price}" pattern="#,###" />원
 			</td>
 
-			<td><fmt:formatNumber value="${totalPrice}" pattern="#,###" /> 원</td>
+			<td>배송비 : <fmt:formatNumber value="${ship}" pattern="#,###" /> 원</td>
 
 			<td></td>
-			<td>총개수</td>
-			<td><c:out value="${totalCount}"/></td> 			
+			
+			<td>총 수량 : <c:out value="${totalCount}"/></td>
+			<td></td> 		
+				
 		</tr>
 	</table>
 	<!-- </form> -->
