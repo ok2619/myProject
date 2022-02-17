@@ -102,9 +102,19 @@ $(function(){
 			<input type="button" value="삭제" onclick="location.href='cartDelete.do?cart_num=${product.cart_num}'">
 			</td>
 		</tr>
-		<c:set var="ship" value="3000"/>
+									
 		<c:set var="Price" value="${Price+product.product.price * product.product.cart_count}"/> 
+		
+		<c:if test="${Price < 150000}">
+		<c:set var="ship" value="3000"/>
 		<c:set var="totalPrice" value="${Price + ship}"/> 
+		</c:if>
+		
+		<c:if test="${Price >= 150000}">
+		<c:set var="ship" value="0"/>
+		<c:set var="totalPrice" value="${Price}"/> 
+		</c:if>	
+		
 		<c:set var="totalCount" value="${totalCount + product.cart_count}"/>
 		</c:forEach>
 		
@@ -113,14 +123,10 @@ $(function(){
 			<td>
 			<fmt:formatNumber value="${Price}" pattern="#,###" />원
 			</td>
-
 			<td>배송비 : <fmt:formatNumber value="${ship}" pattern="#,###" /> 원</td>
-
-			<td></td>
-			
+			<td></td>			
 			<td>총 수량 : <c:out value="${totalCount}"/></td>
-			<td></td> 		
-				
+			<td></td> 						
 		</tr>
 	</table>
 	<!-- </form> -->
