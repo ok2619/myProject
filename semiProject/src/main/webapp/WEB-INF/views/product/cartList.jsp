@@ -84,7 +84,7 @@ $(function(){
 		<c:forEach var="product" items="${product}">
 		<tr>
 			<%-- <td>${product.cart_num}</td> --%>			
-			<td><img src="../upload/${product.product.image}" height="100" width="100"></td>
+			<td><img src="../upload/${product.product.image}" height="85" width="85"></td>
 			<td>${product.product.product_name}</td>
 
 			<!-- 판매가 -->

@@ -335,6 +335,13 @@ span.cart_text{
 	color:#cc2512; 
 	font-family: 'Jeju Gothic', sans-serif;
 }
+
+.quantity-width{
+	width:40px;
+	margin-bottom:3px;
+	border:none;
+}
+
 /*여백 및 정렬 옵션*/
 .blank_20{
 	margin-bottom:20px;
@@ -394,6 +401,7 @@ span.cart_text{
 }
 /*float clear 설정*/
 .clear{clear:both;}
+
 
 
 /*폰트설정*/
