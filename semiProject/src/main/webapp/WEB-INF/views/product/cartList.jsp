@@ -39,7 +39,7 @@
 			<td><img src="../upload/${product.product.image}" height="100" width="100"></td>
 			<td>${product.product.product_name}</td>
 			<td>${product.product.sort}</td>
-			<td><fmt:formatNumber value="${product.product.price}" pattern="#,###" /></td>
+			<td><fmt:formatNumber value="${product.product.price}" pattern="#,###" /> 원</td>
 			<td>${product.cart_count}</td>
 			<td><input type="button" value="삭제" onclick="location.href='cartDelete.do?cart_num=${product.cart_num}'">
 		</tr>
@@ -49,7 +49,7 @@
 		
 		<tr>
 			<td>총가격</td>
-			<td><fmt:formatNumber value="${totalPrice}" pattern="#,###" /></td>
+			<td><fmt:formatNumber value="${totalPrice}" pattern="#,###" /> 원</td>
 			<td></td>
 			<td>총개수</td>
 			<td><c:out value="${totalCount}"/></td>
