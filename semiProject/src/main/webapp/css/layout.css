@@ -341,6 +341,12 @@ span.cart_text{
 	margin-bottom:3px;
 	border:none;
 }
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+
+   opacity: 1;
+
+}
 
 /*여백 및 정렬 옵션*/
 .blank_20{
