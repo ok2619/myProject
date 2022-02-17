@@ -22,12 +22,15 @@
 				alert('내용을 입력하세요');
 				$('#b_content').val('').focus();
 				return false;
-			}			
+			}		
+			if($('#b_content').val().length < 10){
+				 alert("10자 이상 입력해주세요");		
+				return false;
+			}				
 		});		
 		
 		//첨부 사진 미리보기
-		$("#filename").change( //파일선택 버튼 누르고 이미지가 올라가면
-			function(){
+		$("#filename").change(function(){//파일선택 버튼 누르고 이미지가 올라가면
 				if (this.files && this.files[0]){
 					var reader = new FileReader;
 					reader.onload = function(data){
@@ -45,10 +48,10 @@
 			$('#filename').val('');
 			$('#photo_delete').hide();
 			$('#sample_img').show();
-		});		
-		
-
+		});			
+				
 	});
+	
 </script>
 </head>
 <body>
