@@ -58,7 +58,6 @@ $(function(){
 
 }); 
 
-
 </script>
  <style>
     #btn-1{width:300px;margin:auto;}
@@ -95,8 +94,8 @@ $(function(){
 					value="${product.product.cart_count}" class="quantity-width">
 				<input type="button" value="변경" data-cartnum="${product.cart_num}" data-itemnum="${product.product_num}" class="cart-modify">
 			</td>			
-			
-			<td><fmt:formatNumber value="${product.product.price}" pattern="#,###" /> 원</td>			
+			<!-- 합계 -->
+			<td><fmt:formatNumber value="${product.product.price * product.product.cart_count}" pattern="#,###" /> 원</td>			
 			<td>			
 			<%-- <fmt:formatNumber value="${product.sub_total}"/>원
 					<br> --%>		
