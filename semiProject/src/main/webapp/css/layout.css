@@ -330,7 +330,11 @@ p.content_font{
 	font-size:9pt;
 	color:#000;
 }
-
+span.cart_text{
+	font-size:10pt;
+	color:#cc2512; 
+	font-family: 'Jeju Gothic', sans-serif;
+}
 /*여백 및 정렬 옵션*/
 .blank_20{
 	margin-bottom:20px;
@@ -393,6 +397,10 @@ p.content_font{
 
 
 /*폰트설정*/
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+.jejugothic * { 
+ font-family: 'Jeju Gothic', sans-serif;
+}
 @font-face {
     font-family: 'KOTRA_GOTHIC';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/KOTRA_GOTHIC.woff') format('woff');
