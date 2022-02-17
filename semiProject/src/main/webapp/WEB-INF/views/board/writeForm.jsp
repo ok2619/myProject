@@ -56,7 +56,7 @@
 <div class="page-main">
 	<h3 class="align-center common_title"><a href="list.do">상품 후기</a></h3>	
 	<form id="write_form" action="write.do" method="post" enctype="multipart/form-data">	
-		<table class="go_left_update" border="1">
+		<table class="go_left_update" >
 		<tr>
 			<td class="align-center"><label for="title">제목</label></td>
 			<td><input type="text" name="title" id="title" maxlength="50" class="form-control"><p></td>			
