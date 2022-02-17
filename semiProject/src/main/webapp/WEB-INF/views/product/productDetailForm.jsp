@@ -47,7 +47,7 @@ vertical-align: middle;
           <span>제품정보</span></br>
           <span>상품명 : ${product.product_name}</span></br>
           <span>상품종류 : ${product.sort}</span></br>
-          <span>판매가 : <fmt:formatNumber value="${product.price}" pattern="#,###" /></span></br>
+          <span>판매가 : <fmt:formatNumber value="${product.price}" pattern="#,###" /> 원</span></br>
           
           
           <form action="cartInsert.do" method="post">
