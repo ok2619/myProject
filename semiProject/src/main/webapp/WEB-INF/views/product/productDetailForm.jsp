@@ -76,8 +76,11 @@ vertical-align: middle;
         </tr>       
       </thead>
       <tbody>
+      	<tr style="height:50px;">
+      		<th colspan="2" style="padding:0px 0px 0px 15px;">제품상세정보</th>
+      	</tr>
         <tr>
-          	<td colspan="2">${product.content}</td>
+          	<td colspan="2" style="padding:0px 0px 15px 15px; font-size:15px;">${product.content}</td>
         </tr>
       </tbody>
     </table>
