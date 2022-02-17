@@ -12,7 +12,7 @@
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-/* 
+
 $(function(){
 	//장바구니 상품 주문 수량 변경
 	$('.cart-modify').on('click',function(){
@@ -57,7 +57,7 @@ $(function(){
 	}); //end of 수량변경
 
 }); 
- */
+
 
 </script>
  <style>
@@ -86,19 +86,18 @@ $(function(){
 			<td>${product.cart_num}</td>			
 			<td><img src="../upload/${product.product.image}" height="100" width="100"></td>
 			<td>${product.product.product_name}</td>
-<<<<<<< HEAD
+
 			<!-- 판매가 -->
 			<td><fmt:formatNumber value="${product.product.price}" pattern="#,###" /></td>
 			<!-- 수량 -->
-			<%-- <td>								
+			<td>								
 				<input type="number" name="cart_count" min="1" max="99999"
 					value="${product.product.cart_count}" class="quantity-width">
 				<input type="button" value="변경" data-cartnum="${product.cart_num}" data-itemnum="${product.product_num}" class="cart-modify">
-			</td>  --%>				
-=======
+			</td>			
+
 			<td>${product.product.sort}</td>
 			<td><fmt:formatNumber value="${product.product.price}" pattern="#,###" /> 원</td>
->>>>>>> branch 'main' of https://github.com/ok2619/myProject.git
 			<td>${product.cart_count}</td>
 			<td>			
 			<%-- <fmt:formatNumber value="${product.sub_total}"/>원
@@ -112,14 +111,14 @@ $(function(){
 		
 		<tr>				
 			<td>총가격</td>
-<<<<<<< HEAD
+
 			<td>
 			<fmt:formatNumber value="${totalPrice}" pattern="#,###" />
 		<%-- 	<fmt:formatNumber value="${all_total}"/>원 --%>
 			</td>
-=======
+
 			<td><fmt:formatNumber value="${totalPrice}" pattern="#,###" /> 원</td>
->>>>>>> branch 'main' of https://github.com/ok2619/myProject.git
+
 			<td></td>
 			<td>총개수</td>
 			<td><c:out value="${totalCount}"/></td> 			

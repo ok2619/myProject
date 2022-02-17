@@ -391,6 +391,31 @@ public class ProductDAO {
 			}
 		 
 		//장바구니 수정
+		 public void updateCart(CartVO cart)throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				String sql = null;
+				
+				try {
+					//커넥션풀로부터 커넥션 할당
+					conn = DBUtil.getConnection();
+					//SQL문 작성
+					sql = "UPDATE qcart SET cart_count=? WHERE cart_num=?";
+					//PreparedStatement 객체 생성
+					pstmt = conn.prepareStatement(sql);
+					//?에 데이터 바인딩
+					pstmt.setInt(1, cart.getCart_count());
+					pstmt.setInt(2, cart.getCart_num());
+					//SQL문 실행
+					pstmt.executeUpdate();
+					
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					//자원정리
+					pstmt.executeUpdate();
+				}
+			}
 		//장바구니 회원번호별 수정
 		public void updateCartByItem_num(CartVO cart)throws Exception{
 			Connection conn = null;
