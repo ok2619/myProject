@@ -17,8 +17,10 @@ public class ProductDAO {
 	}
 	private ProductDAO() {} 
 	
+	
+	//상품등록
 	public void insertProduct(ProductVO product) throws Exception {
-		// TODO Auto-generated method stub
+		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
@@ -337,7 +339,7 @@ public class ProductDAO {
 					 
 					 cart.setProduct(product);
 						
-						//sub total 연산하기
+					//sub total 연산하기
 					 cart.setSub_total(cart.getCart_count()*product.getPrice());
 						
 					 list.add(cart);			
@@ -351,6 +353,7 @@ public class ProductDAO {
 			 return list;
 		 }
 		 
+		//장바구니 상세
 		 public CartVO getCart(CartVO cart)throws Exception{
 				Connection conn = null;
 				PreparedStatement pstmt = null;
@@ -386,33 +389,34 @@ public class ProductDAO {
 				}
 				return cartSaved;
 			}
+		 
 		//장바구니 수정
-			//장바구니 회원번호별 수정
-			public void updateCartByItem_num(CartVO cart)throws Exception{
-				Connection conn = null;
-				PreparedStatement pstmt = null;
-				String sql = null;
+		//장바구니 회원번호별 수정
+		public void updateCartByItem_num(CartVO cart)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String sql = null;
+			
+			try {
+				//커넥션풀로부터 커넥션 할당
+				conn = DBUtil.getConnection();
+				//SQL문 작성
+				sql = "UPDATE qcart SET cart_count=? WHERE product_num=? AND user_num=?";
+				//PreparedStatement 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, cart.getCart_count());
+				pstmt.setInt(2, cart.getProduct_num());
+				pstmt.setInt(3, cart.getUser_num());
+				//SQL문 실행
+				pstmt.executeUpdate();
 				
-				try {
-					//커넥션풀로부터 커넥션 할당
-					conn = DBUtil.getConnection();
-					//SQL문 작성
-					sql = "UPDATE qcart SET cart_count=? WHERE product_num=? AND user_num=?";
-					//PreparedStatement 객체 생성
-					pstmt = conn.prepareStatement(sql);
-					pstmt.setInt(1, cart.getCart_count());
-					pstmt.setInt(2, cart.getProduct_num());
-					pstmt.setInt(3, cart.getUser_num());
-					//SQL문 실행
-					pstmt.executeUpdate();
-					
-				}catch(Exception e) {
-					throw new Exception(e);
-				}finally {
-					//자원정리
-					DBUtil.executeClose(null, pstmt, conn);
-				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				//자원정리
+				DBUtil.executeClose(null, pstmt, conn);
 			}
+		}
 		 
 		 //카트삭제
 		 public void cartDelete(int cart_num) throws Exception{
@@ -458,61 +462,26 @@ public class ProductDAO {
 				 DBUtil.executeClose(null, pstmt, conn);
 			 }
 		 }
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
+		//회원번호별 총 구입액
+		/*
+		 * public int getTotal(int user_num)throws Exception{ Connection conn = null;
+		 * PreparedStatement pstmt = null; ResultSet rs = null; String sql = null; int
+		 * total =0;
+		 * 
+		 * try { //커넥션풀로부터 커넥션 할당 conn = DBUtil.getConnection(); //SQL문 작성
+		 * sql="SELECT SUM(sub_total) FROM " +
+		 * "(SELECT c.user_num, c.cart_count * i.price as sub_total " +
+		 * "FROM qcart c JOIN qproduct i ON c.product_num = i.product_num) " +
+		 * "WHERE user_num=?"; //PreparedStatement 객체 생성 pstmt =
+		 * conn.prepareStatement(sql); //?에 데이터 바인딩 pstmt.setInt(1, user_num); //SQL문
+		 * 실행해 결과행을 ResultSet에 담음 rs = pstmt.executeQuery();
+		 * 
+		 * if(rs.next()) { total = rs.getInt(1); //컬럼인덱스 }
+		 * 
+		 * }catch(Exception e) { throw new Exception(e); }finally {
+		 * DBUtil.executeClose(rs, pstmt, conn); } return total; }
+		 */
+
 		 
 	}
 

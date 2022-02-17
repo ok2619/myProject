@@ -56,9 +56,9 @@
 </script>
 </head>
 <body>
-<div class="page-main">
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2 class="align-center common_title">비밀번호수정</h2>
+<div class="page-main">
+	<h3 class="align-center common_title">비밀번호 변경</h3>
 	<form action="modifyPassword.do" method="post" id="password_form" class="form-inline">
 		<div class="form-group">
 			<label for="id">아이디</label>
@@ -69,7 +69,7 @@
     	<p>
     	
     	<div class="form-group">
-    		<label for="origin_passwd">현재비밀번호</label>
+    		<label for="origin_passwd">현재 비밀번호</label>
     	</div>
     	<div class="form-group">
     		<input type="password" class="form-control" id="origin_passwd" name="origin_passwd" placeholder="password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
@@ -77,7 +77,7 @@
     	<p>
     	
     	<div class="form-group">
-    		<label for="passwd">새비밀번호</label>
+    		<label for="passwd">새 비밀번호</label>
     	</div>
     	<div class="form-group">
     		<input type="password" class="form-control" id="passwd" name="passwd" placeholder="new password"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
@@ -85,7 +85,7 @@
     	<p>
     	
     	<div class="form-group">
-    		<label for="cpasswd">새비밀번호 확인</label>
+    		<label for="cpasswd">새 비밀번호 확인</label>
     	</div>
     	<div class="form-group">
     		<input type="password" class="form-control" id="cpasswd" name="cpasswd" placeholder="confirm new password"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
@@ -95,8 +95,8 @@
 		
 		<div class="blank_50"></div>
 		<div class="align-center go_left">
-			<input type="submit" class="btn btn-info" value="변경">
-			<input type="button" class="btn btn-defualt"value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+			<input type="submit" class="btn btn-info" value="확인">
+			<input type="button" class="btn btn-defualt"value="취소" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
 		
 	</form>
