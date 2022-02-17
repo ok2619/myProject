@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
  	<style>
       table {height: 1000px;width: 1200px;}
-      th, td {border: 1px solid #444444;padding: 10px;}
+      th, td {border: none; padding: 10px;}
   		thead{width:1000px;height:500px;}
   		tbody{height:400px;}
   		thead .first{width:50%;}
@@ -40,8 +40,8 @@ vertical-align: middle;
       <thead>
         <tr>
           <th class="first">
-          <div style="text-align : center;">
-          <img src="../upload/${product.image}" height="400" width="400" style="padding-left:30px;">
+          <div style="text-align : left;">
+          <img src="../upload/${product.image}" height="400" width="400">
           </div>
          
           <th class="second">
@@ -77,10 +77,10 @@ vertical-align: middle;
       </thead>
       <tbody>
       	<tr style="height:50px;">
-      		<th colspan="2" style="padding:0px 0px 0px 15px;">제품상세정보</th>
+      		<th colspan="2">제품상세정보</th>
       	</tr>
         <tr>
-          	<td colspan="2" style="padding:0px 0px 15px 15px; font-size:15px;">${product.content}</td>
+          	<td colspan="2" style="font-size:15px;">${product.content}</td>
         </tr>
       </tbody>
     </table>

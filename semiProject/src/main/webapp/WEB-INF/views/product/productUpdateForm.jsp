@@ -36,11 +36,6 @@ $(function(){
 			$('#content').val('').focus();
 			return false;
 		}
-		if($('#image').val().trim()==''){
-			alert('상품이미지 입력하세요!');
-			$('#image').val('').focus();
-			return false;
-		}
 	});
 });
 </script>
