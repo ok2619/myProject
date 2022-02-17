@@ -13,6 +13,20 @@ public class BoardVO {
 	private String ip; //ip주소
 	private int user_num; //회원번호(작성자)
 	private String id; //회원아이디 ->qboard 테이블엔 없지만 qmember 테이블과 조인해서 id정보 보여주기 위해 담는다
+	
+	
+	///////////////////
+	private int good;
+	
+	
+	public int getGood() {
+		return good;
+	}
+	public void setGood(int good) {
+		this.good = good;
+	}
+	
+	/////////////////
 	public int getBoard_num() {
 		return board_num;
 	}

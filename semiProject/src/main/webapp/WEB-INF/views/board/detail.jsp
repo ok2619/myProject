@@ -11,6 +11,7 @@
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board-reply.js"></script>
+
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -58,6 +59,11 @@
 		</c:if>
 		<%--수정/삭제 기능 끝 --%>		
 		<input type="button"  class="btn btn-default btn-sm" value="목록" onclick="location.href='list.do'">
+		<form action="like.do" method="post">
+		<input type="hidden" id="board_num" name="board_num" value="${board.board_num}">
+		<input type="submit"  id="like_btn" class="btn btn-default btn-sm" value="추천">
+		<span id="like_count">${board.good}</span>
+		</form>
 	</div>
  <div class="blank_30"></div> 
 

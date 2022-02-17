@@ -67,6 +67,7 @@
 			<th>작성자</th>
 			<th>작성일</th>
 			<th>조회</th>
+			<th>추천</th>
 		</tr>
 	  </thead>
 	  <tbody>	
@@ -84,6 +85,7 @@
 			<td>${board.id}</td>
 			<td>${board.reg_date}</td>
 			<td>${board.hit}</td>
+			<td>${board.good}</td>
 		</tr>
 		</c:forEach>
 	  </tbody>
@@ -110,6 +112,8 @@
 				</li>
 			</ul>
 		</form>
+		<input type="button" value="추천순으로 보기" class="btn btn-default btn-sm"
+											onclick="location.href='list.do?order=desc'">
 	<!-- 검색창 끝 -->
 	
 	<!-- 글쓰기버튼 -->

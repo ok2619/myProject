@@ -146,6 +146,7 @@ public class BoardDAO {
 				board.setReg_date(rs.getDate("reg_date"));
 				board.setId(rs.getString("id"));
 				board.setFilename(rs.getString("filename"));
+				board.setGood(rs.getInt("good"));
 				
 				//VO를 ArrayList에 등록(저장해줘야함)
 				list.add(board);
@@ -191,6 +192,7 @@ public class BoardDAO {
 				board.setFilename(rs.getString("filename"));
 				board.setUser_num(rs.getInt("user_num"));
 				board.setId(rs.getString("id"));
+				board.setGood(rs.getInt("good"));
 			}
 		}catch(Exception e) {
 			throw new Exception(e);
@@ -604,4 +606,90 @@ public class BoardDAO {
 				}
 				return list;
 			}
+	//좋아요
+	public void goodUp(int board_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "update qboard set good = good+1 where board_num = ?";
+			pstmt = conn.prepareStatement(sql); 
+			pstmt.setInt(1, board_num);
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
+	//좋아요 자바빈
+	public BoardVO goodsearch(int board_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		BoardVO board = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "select good from qboard where board_num = ?";
+			pstmt = conn.prepareStatement(sql);
+			 pstmt.setInt(1, board_num);
+			 //SQL문을 실행해서 결과행을 ResultSet에 담음
+			 rs = pstmt.executeQuery();
+			 if(rs.next()) {
+				 board = new BoardVO();
+				 board.setGood(rs.getInt("good"));
+			 }
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+		return board;		
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -20,7 +20,6 @@ public class DetailAction implements Action{
 		
 		//조회수증가
 		dao.updateReadcount(board_num);
-		
 		BoardVO board = dao.getBoard(board_num);
 		
 		//HTML태그를 허용하지 않음
