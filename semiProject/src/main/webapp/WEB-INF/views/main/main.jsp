@@ -30,7 +30,7 @@
 				        	<p><fmt:formatNumber value="${product.price}" pattern="#,###" /> 원</p>				        	
 				        	<p>
 				        	<a href="${pageContext.request.contextPath}/product/productDetail.do?product_num=${product.product_num}" class="btn btn-primary" role="button">상품보기</a>
-							<a href="#" class="btn btn-default" role="button">구매하기</a>
+							<a href="${pageContext.request.contextPath}/product/buyForm.do?product_num=${product.product_num}&cart_count=1" class="btn btn-default" role="button">구매하기</a>
 				        	</p>
 				     </div>
     			</div>
