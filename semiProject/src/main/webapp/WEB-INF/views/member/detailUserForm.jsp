@@ -7,11 +7,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial_scale=1.0">
 <title>회원정보수정(관리자 전용)</title>
-<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function(){
 		//이벤트 연결
