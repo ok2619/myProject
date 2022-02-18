@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <title>관리자 | 상품등록</title>
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	$('#write_form').submit(function(){
