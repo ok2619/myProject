@@ -11,74 +11,6 @@
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/board-reply.js"></script>
-
-<script type="text/javascript">
-	$(function(){ // 게시물을 조회했을때 ajax
-		var status; //noFav or yesFav
-		function selectData(board_num){ //77라인 초기값 세팅
-		   $.ajax({
-		      type:'post',
-		      data:{board_num:board_num}, //초기값 세팅에서 매개변수로 받아서 el 안씀
-		      url:'getFav.do', //LikecountAction
-		      dataType:'json',
-		      cache:false,
-		      timeout:30000,
-		      success:function(data){
-		         if(data.result=='success'){
-		            displayFav(data);
-		         }else{
-		            alert('좋아요 읽기 오류');
-		         }
-		      },
-		      error:function(){
-		         alert('네트워크 오류');
-		      }
-		   });
-		}
-
-			$('#output_fav').click(function(){ //좋아요를 클릭했을때 실행되는 ajax
-				$.ajax({
-					url:'like.do',
-					type:'post',
-					data:{board_num:${board.board_num}},
-					dataType:'json',
-					cache:false,
-					timeout:30000,
-					success:function(data){
-						if(data.result=='logout'){
-				               alert('로그인 후 좋아요를 눌러주세요!');
-				            }else if(data.result=='success'){ //추천하트 표시
-				            	displayFav(data);
-				            }else{
-				               alert('등록시 오류 발생!');
-				            }
-					},
-					error:function(){
-						alert('네트워크 오류 발생');
-					}
-				});
-			});
-			//좋아요 표시
-		   function displayFav(data){
-		      status = data.status;
-		      var count = data.count;
-		      var output;
-		      if(status=='noFav'){
-		         output = '../image/heart1.png';
-		      }else{
-		         output = '../image/heart2.png';
-		      }         
-		      //문서 객체에 추가
-		      $('#output_fav').attr('src',output); //id가 output_fav인 태그 src에 output 저장
-		      $('#output_fcount').text(count); //id가 output_fcount인 태그 text에 count(좋아요 총 개수)저장
-		   }
-			//초기값 셋팅
-			selectData(${board.board_num});
-			
-	});
-</script>
-
-
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -124,36 +56,15 @@
 			};
 		</script>		
 		</c:if>
-		
-		
-		
-		
-		
-		
-		
-		
 		<%--수정/삭제 기능 끝 --%>		
 		<input type="button"  class="btn btn-default btn-sm" value="목록" onclick="location.href='list.do'">
-		
-		<!-- 좋아요 기능 시작-->
-		<img id="output_fav" src="../image/heart1.png">
-      	<span id="output_fcount"></span>
-		<!-- 좋아요 기능 끝-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		<%--추천버튼 시작 --%>
+		<form action="like.do" method="post">
+		<input type="hidden" id="board_num" name="board_num" value="${board.board_num}">
+		<input type="submit"  id="like_btn" class="btn btn-default btn-sm" value="추천">
+		<span id="like_count">${board.good}</span>
+		</form>
+		<%--추천버튼 끝 --%>
 	</div>
  <div class="blank_30"></div> 
 
@@ -189,7 +100,6 @@
 </div>
 </body>
 </html>
-
 
 
 
