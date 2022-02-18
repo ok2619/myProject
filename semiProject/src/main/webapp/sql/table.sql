@@ -98,3 +98,16 @@ create table qboard_reply(
  constraint qreply_fk2 foreign key (user_num) references qmember (user_num)
 );
 create sequence qreply_seq;
+
+/*좋아요*/
+create table qboard_fav(
+  fav_num number not null,
+  fav_date date default sysdate not null,
+  board_num number not null,
+  user_num number not null,
+  constraint fav_pk primary key (fav_num),
+  constraint fav_fk1 foreign key (board_num) references qboard (board_num),
+  constraint fav_fk2 foreign key (user_num) references qmember (user_num)    
+);
+
+create sequence qfav_seq;
