@@ -2,18 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- header 시작 -->
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial_scale=1.0">
-<title>header</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
-<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
-<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../js/bootstrap.min.js"></script>	
-</head>
-<body>
 	<!-- 상단 고정 네비게이션 시작 -->
 	<div class="navbar navbar-fixed-top">
 		<div class="container">
@@ -89,8 +77,6 @@
 		<div class="col-md-1"><a href="${pageContext.request.contextPath}/main/main.do?page=etc"><h4>etc</h4></a></div>
 		<div class="col-md-offset-4"></div>				
 	</div>
-</body>
-</html>
 
 
 
