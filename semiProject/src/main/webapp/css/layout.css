@@ -218,6 +218,10 @@ ul.search_review li{
 	display:inline;
 }
 
+#output_fav{
+	cursor:pointer;
+}
+
 /*My Page*/
 .mypage-div{
 	width:48%;
