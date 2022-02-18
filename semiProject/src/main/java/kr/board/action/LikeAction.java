@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.codehaus.jackson.map.ObjectMapper;
-import org.json.simple.JSONObject;
 
 import kr.board.dao.BoardDAO;
 import kr.board.vo.BoardFavVO;
@@ -17,7 +16,7 @@ import kr.board.vo.BoardVO;
 import kr.controller.Action;
 
 public class LikeAction implements Action{
-
+ 
 	@Override 
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Map<String,Object> mapAjax = new HashMap<String,Object>();
