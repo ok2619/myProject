@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.codehaus.jackson.map.ObjectMapper;
-import org.json.simple.JSONObject;
 
 import kr.board.dao.BoardDAO;
 import kr.board.vo.BoardFavVO;

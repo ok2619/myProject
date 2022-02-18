@@ -332,7 +332,7 @@ span.modify_letter{
 	font-size:7pt;
 	color:#000;
 }
-p.user_font{
+.user_font{
 	font-size:11pt;
 	color:#000;
 }
@@ -346,9 +346,8 @@ p.content_font{
 	color:#000;
 }
 span.cart_text{
-	font-size:10pt;
+	font-size:9pt;
 	color:#cc2512; 
-	font-family: 'Jeju Gothic', sans-serif;
 }
 
 .quantity-width{
