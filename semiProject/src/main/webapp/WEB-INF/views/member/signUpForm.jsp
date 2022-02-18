@@ -122,10 +122,10 @@
 				$('#cpasswd').val('').focus();
 				return false;
 			}
-			if(pass==0){
+			/* if(pass==0){
 				alert('비밀번호 확인 필수!');
 				return false;
-			}
+			} */
 			if($('#name').val().trim()==''){
 				alert('이름을 입력하세요');
 				$('#name').val('').focus();
