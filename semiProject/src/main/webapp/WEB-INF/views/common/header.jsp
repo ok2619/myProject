@@ -62,9 +62,8 @@
 		</div>
 	</div>
 	<!-- 상단 고정 네비게이션 끝 -->
-	
 	<%-- 사이트 로고 이미지 --%>
-	<div class="align-center">
+	<div class="align-center" >
 		<a href="${pageContext.request.contextPath}/main/main.do">
 		<img src="${pageContext.request.contextPath}/upload/logo.png" id="logo" >
 		</a>
