@@ -407,9 +407,30 @@ input[type=number]::-webkit-outer-spin-button {
 }
 /*float clear 설정*/
 .clear{clear:both;}
+.cart-in{
+	width:30px;
+	
+}
+.font1{
+	 font-family: 'Jeju Gothic', sans-serif;
+}
+.font2{
+	 font-family: 'KOTRA_GOTHIC';
+}
+.font3{
+	 font-family: 'YUniverse-B';
+}
 
-
-
+.btn_a{
+	/* background-color:pink;  */ 
+	margin-left:20px;
+}
+.btn_b{
+	/* background-color:yellow;  */
+	float:left;
+}
+.all{width:900px;margin:0 auto;}
+.row2{width:33%;float:left;}
 /*폰트설정*/
 @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 .jejugothic * { 

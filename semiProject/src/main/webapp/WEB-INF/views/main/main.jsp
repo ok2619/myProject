@@ -8,29 +8,65 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial_scale=1.0">
 <title>abc shop</title>
-<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
-<script type="text/javascript" src="../js/bootstrap.min.js"></script>
-<style>
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+<!-- <style>
 .all{width:900px;margin:0 auto;}
 .row2{width:33%;float:left;}
-
-</style>
+</style> -->
+<script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 </head>
 <body>
+<script type="text/javascript">
+ $(function(){
+	$('.cart-in').on('click',function(){
+		$.ajax({
+			url:'../product/cartIn.do',
+			type:'post', 
+			data:{product_num:$(this).attr('data-num')},
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(param){
+				if(param.result == 'logout'){
+					alert('로그인 후 사용하세요!');
+				}else if(param.result == 'noQuantity'){
+					alert('상품의 수량이 부족합니다.');
+					location.href='main.do';
+				}else if(param.result == 'success'){
+					alert('장바구니에 담겼습니다.');
+					location.href='main.do';
+				}else if(param.result == 'success2'){
+					alert('장바구니에 담겼습니다.');
+					location.href='main.do';
+				}else{
+					alert('장바구니 담기 오류 발생');
+				}
+			},
+			error:function(){
+				alert('네크워크 오류 발생');
+			}
+		});
+	});
+}); 
+  
+</script>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-
 <c:forEach var="product" items="${list}">
 <div class="all">
 	<div class="row2">
   		<div class="col-sm-4 col-md-2" style="width:300px;">
    			<div class="thumbnail">
-        		<img src="../upload/${product.image}">
+        		<a href="${pageContext.request.contextPath}/product/productDetail.do?product_num=${product.product_num}"><img src="../upload/${product.image}"></a>
 				     <div class="caption">
-				     	<h3>${product.product_name}</h3>
-				        	<p><fmt:formatNumber value="${product.price}" pattern="#,###" /> 원</p>				        	
+				     	<h4 class="font2"><a href="${pageContext.request.contextPath}/product/productDetail.do?product_num=${product.product_num}">${product.product_name}</a></h4>
+				        	<p><fmt:formatNumber value="${product.price}" pattern="#,###" />원</p>				        	
 				        	<p>
-				        	<a href="${pageContext.request.contextPath}/product/productDetail.do?product_num=${product.product_num}" class="btn btn-primary" role="button">상품보기</a>
-							<a href="${pageContext.request.contextPath}/product/buyForm.do?product_num=${product.product_num}&cart_count=1" class="btn btn-default" role="button">구매하기</a>
+				        	<%-- <a href="${pageContext.request.contextPath}/product/productDetail.do?product_num=${product.product_num}" class="btn btn-info btn-sm" role="button">상품보기</a>		 --%>		        	
+				        	<a href="${pageContext.request.contextPath}/product/buyForm.do?product_num=${product.product_num}&cart_count=1" class="btn btn-default btn-sm btn_a" role="button">구매하기</a>
+				        	<a href="#"><img src="../upload/cart.png" class="cart-in btn_b" data-num="${product.product_num}"></a>
+				        	<%-- <input type="button" value="장바구니" class="cart-in" data-num="${product.product_num}">  --%>							
 				        	</p>
 				     </div>
     			</div>
@@ -38,8 +74,5 @@
 		</div>
 	</div> 
 </c:forEach>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </body>
 </html>

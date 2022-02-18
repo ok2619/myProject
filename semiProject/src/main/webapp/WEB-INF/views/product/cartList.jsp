@@ -88,7 +88,7 @@ $(function(){
 			<td>${product.product.product_name}</td>
 
 			<!-- 판매가 -->
-			<td><fmt:formatNumber value="${product.product.price}" pattern="#,###" /></td>
+			<td><fmt:formatNumber value="${product.product.price}" pattern="#,###" />원</td>
 			<!-- 수량 -->
 			<td>								
 				<input type="number" name="cart_count" min="1" max="99999"
@@ -96,7 +96,7 @@ $(function(){
 				<input type="button" value="변경" data-cartnum="${product.cart_num}" data-itemnum="${product.product_num}" class="btn btn-default btn-sm cart-modify">
 			</td>			
 			<!-- 합계 -->
-			<td><fmt:formatNumber value="${product.product.price * product.product.cart_count}" pattern="#,###" /> 원</td>			
+			<td><b><fmt:formatNumber value="${product.product.price * product.product.cart_count}" pattern="#,###" />원</b></td>			
 			<td>			
 			<%-- <fmt:formatNumber value="${product.sub_total}"/>원
 					<br> --%>		
@@ -131,7 +131,7 @@ $(function(){
 	<tr>
 	<td><br><fmt:formatNumber value="${Price}" pattern="#,###" />원</td>
 	<td><br>+ <fmt:formatNumber value="${ship}" pattern="#,###" /> 원</td>
-	<td><br><fmt:formatNumber value="${totalPrice}" pattern="#,###" />원</td>
+	<td><br><b><fmt:formatNumber value="${totalPrice}" pattern="#,###" />원</b></td>
 	</tr>
 	</table>	
 	<hr size="1" width="100%" noshade="noshade">

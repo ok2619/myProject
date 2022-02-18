@@ -52,24 +52,24 @@ vertical-align: middle;
           
           <div class="align-left">
           <form action="cartInsert.do" method="post" style="padding:0; margin:auto;">
-          <input type="hidden" id="product_num" name="product_num" value="${product.product_num}">
-          
-          <span>개수 : <input type="number" id="cart_count" value="1" name="cart_count" 
-          						min="0" max="10" required></span></br>
-          <div style="padding:15px 0px 0px 9px;">
-          <c:if test="${product.stock > 0}">
-          <input type='button' class="btn btn-default btn-sm" value='구매' onclick='return submit2(this.form);'> <!-- 한개의 form에 두 공간에 데이터를 보내야 하기 때문에 자바스크립트 활용 -->
-          </c:if>
-          <c:if test="${product.stock <= 0 }">
-          <p style="font-size:3em">품절</p>	
-          </c:if>
-          <input type="submit" class="btn btn-default btn-sm" value="장바구니담기">
-          
-          <c:if test="${!empty user_number && user_auth == 3}">
-          <input type="button" class="btn btn-default btn-sm" value="상품수정" onclick="location.href='productUpdateForm.do?product_num=${product.product_num}'">
-          <input type="button" class="btn btn-default btn-sm" value="상품삭제" onclick="location.href='productDelete.do?product_num=${product.product_num}'">
-          </c:if>
-          </div>
+	          <input type="hidden" id="product_num" name="product_num" value="${product.product_num}">
+	          
+	          <span>개수 : <input type="number" id="cart_count" value="1" name="cart_count" 
+	          						min="0" max="10" required></span></br>
+	          <div style="padding:15px 0px 0px 9px;">
+	          <c:if test="${product.stock > 0}">
+	          <input type='button' class="btn btn-default btn-sm" value='구매' onclick='return submit2(this.form);'> <!-- 한개의 form에 두 공간에 데이터를 보내야 하기 때문에 자바스크립트 활용 -->
+	          </c:if>
+	          <c:if test="${product.stock <= 0 }">
+	          <p style="font-size:3em">품절</p>	
+	          </c:if>
+	          <input type="submit" class="btn btn-default btn-sm" value="장바구니담기">
+	          
+	          <c:if test="${!empty user_number && user_auth == 3}">
+	          <input type="button" class="btn btn-default btn-sm" value="상품수정" onclick="location.href='productUpdateForm.do?product_num=${product.product_num}'">
+	          <input type="button" class="btn btn-default btn-sm" value="상품삭제" onclick="location.href='productDelete.do?product_num=${product.product_num}'">
+	          </c:if>
+	          </div>
           </form>
           </div>
           </th>
