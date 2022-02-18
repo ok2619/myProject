@@ -142,11 +142,11 @@ $(function(){
 	<hr size="1" width="100%" noshade="noshade">
 	<div class="blank_50"></div>
 	<c:choose>
-	<c:when test="${totalPrice <= 0}">
+	<%-- <c:when test="${totalPrice <= 0}">
 	<div id="w1">
 		<p style="font-size:2em;">장바구니에 담은 물건이 없습니다.</p>
 	</div>
-	</c:when>
+	</c:when> --%>
 	<c:when test="${totalPrice > 0}">
 	<div id="btn-1">
 	<button type="button" class="btn btn-secondary go_right" style="background-color:black; color:white"
