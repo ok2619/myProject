@@ -209,6 +209,7 @@ ul.search_review li{
 	padding:0;
 	display:inline;
 }
+
 /*추가: 글쓰기 버튼*/
 div#write_btn{
 	float:right;
@@ -217,6 +218,10 @@ div#write_btn{
 	padding-top:10px;
 	height:5%;
 }
+#output_fav{
+	cursor:pointer;
+}
+
 #like_btn_list{
 	margin-top:10px;
 	float:left; 
@@ -441,6 +446,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .all{width:900px;margin:0 auto;}
 .row2{width:33%;float:left;}
+
 /*폰트설정*/
 @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 .jejugothic * { 
