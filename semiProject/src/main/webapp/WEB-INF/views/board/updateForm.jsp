@@ -7,7 +7,9 @@
 <meta charset="UTF-8">
 <title>글수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script> 
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	//유효성 체크
 	$(function(){		
