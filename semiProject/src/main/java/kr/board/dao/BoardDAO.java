@@ -124,7 +124,7 @@ public class BoardDAO {
 				else if (keyfield.equals("3"))
 					sub_sql = "WHERE b.b_content LIKE ?";
 			}
-
+ 
 			// SQL문 작성
 			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
 					+ "(SELECT * FROM qboard b JOIN qmember m USING(user_num) " + sub_sql

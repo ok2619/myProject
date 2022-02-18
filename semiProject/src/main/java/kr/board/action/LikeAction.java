@@ -18,7 +18,7 @@ import kr.controller.Action;
 
 public class LikeAction implements Action{
 
-	@Override
+	@Override 
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Map<String,Object> mapAjax = new HashMap<String,Object>();
 

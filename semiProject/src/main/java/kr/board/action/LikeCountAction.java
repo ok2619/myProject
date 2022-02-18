@@ -21,7 +21,7 @@ public class LikeCountAction implements Action{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Map<String,Object> mapAjax = new HashMap<String,Object>();
-
+ 
 		request.setCharacterEncoding("utf-8");
 		int board_num = Integer.parseInt(request.getParameter("board_num"));
 

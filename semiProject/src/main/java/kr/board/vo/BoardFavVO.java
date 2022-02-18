@@ -7,7 +7,7 @@ public class BoardFavVO {
 	private int board_num;
 	private int user_num;
 	private Date fav_date;
-	public int getFav_num() {
+	public int getFav_num() { 
 		return fav_num;
 	}
 	public void setFav_num(int fav_num) {
