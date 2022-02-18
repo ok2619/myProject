@@ -465,28 +465,7 @@ public class ProductDAO {
 		 }
 		 
 		 
-		 //재고 마이너스
-		 //재고 마이너스 값 조정ㅇ
-		 public void StockAll(int product_num,int cart_count) throws Exception{
-			 Connection conn = null;
-			 PreparedStatement pstmt = null;
-			 String sql = null;
-			
-			 try {
-				 conn = DBUtil.getConnection();				
-				 
-				 sql = "update qproduct set stock = stock-? where product_num=?";
-				 pstmt = conn.prepareStatement(sql);
-				 pstmt.setInt(1, cart_count);
-				 pstmt.setInt(2, product_num);
-				 pstmt.executeUpdate();
-				 
-			 }catch(Exception e) {
-				 throw new Exception(e);
-			 }finally {
-				 DBUtil.executeClose(null, pstmt, conn);
-			 }
-		 }
+		
 		//회원번호별 총 구입액
 		/*
 		 * public int getTotal(int user_num)throws Exception{ Connection conn = null;

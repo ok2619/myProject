@@ -30,7 +30,7 @@ IMP.request_pay({
   }, function(rsp) {
 	    if ( rsp.success ) {
 	        alert('결제성공');
-	        location.href= "stockMinus.do"; /* 결제 완료시 재고 마이너스 함수 호출 */
+	        /* location.href= ""; */ /* 결제 완료시 재고 마이너스 함수 호출 */
 	    } else {
       alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
     }
