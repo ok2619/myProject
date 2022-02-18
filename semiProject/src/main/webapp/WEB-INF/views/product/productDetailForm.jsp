@@ -83,6 +83,7 @@ vertical-align: middle;
         <tr>
           	<td colspan="2" style="font-size:15px;">${product.content}</td>
         </tr>
+        
       </tbody>
     </table>
     </div>
