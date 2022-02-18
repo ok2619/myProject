@@ -94,27 +94,27 @@
 	<p>
 	
 	<!-- 검색창 -->
-		<form id="search_review" action="list.do" method="get">
-			<ul class="search_review">
-				<li>
-					<select name="keyfield">
-						<option value="1">제목</option>
-						<option value="2">아이디</option>
-						<option value="3">내용</option>
-					</select>
-				</li>
-				<li>
-					<input type="search" size="16" name="keyword" id="keyword" 
-													value="${param.keyword}">
-				</li>
-				<li>
-					<input type="submit" value="검색" class="btn btn-default btn-sm">
-				</li>
-			</ul>
-		</form>
-		<input type="button" value="추천순으로 보기" class="btn btn-default btn-sm"
-											onclick="location.href='list.do?order=desc'">
+	<form id="search_review" action="list.do" method="get">
+		<ul class="search_review">
+			<li>
+				<select name="keyfield">
+					<option value="1">제목</option>
+					<option value="2">아이디</option>
+					<option value="3">내용</option>
+				</select>
+			</li>
+			<li>
+				<input type="search" size="16" name="keyword" id="keyword" 
+												value="${param.keyword}">
+			</li>
+			<li>
+				<input type="submit" value="검색" class="btn btn-default btn-sm">
+			</li>
+		</ul>
+	</form>
 	<!-- 검색창 끝 -->
+	<input type="button" value="추천순으로 보기" class="btn btn-default btn-sm" id="like_btn" 
+											onclick="location.href='list.do?order=desc'">
 	
 	<!-- 글쓰기버튼 -->
 	<p>
