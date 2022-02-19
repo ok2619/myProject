@@ -6,7 +6,7 @@ public class OrderVO {
 	private int order_num; //주문 번호
 	private int user_num; //구매자 회원번호
 	private String product_name; //주문 상품명 (이름변경:item_name->product_name)
-	private int order_total; //총 구매 금액
+	private int order_total; //총 구매 금액 (productDAO의 getTotalByMem_num()으로 구할수있다.)
 	private int payment; //지불 방식 1.통장입금, 2.카드결제
 	private int shipping; //배송 상태 1.배송대기, 2.배송준비중, 3.배송중, 4.배송완료, 5.주문취소
 	private Date reg_date; //주문 날짜
