@@ -3,6 +3,7 @@ package kr.order.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import kr.order.dao.OrderDAO;
@@ -140,6 +141,212 @@ public class OrderDAO {
 	
 	//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	//관리자-전체 글 갯수/검색글 갯수
+		public int getOrderCount(String keyfield, String keyword)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			String sub_sql = "";
+			int count = 0;
+			
+			try {
+				//커넥션풀로부터 커넥션을 할당
+				conn = DBUtil.getConnection();
+				
+				if(keyword != null && !"".equals(keyword)) {
+					if(keyfield.equals("1")) sub_sql = "WHERE order_num = ?"; //주문번호
+					else if(keyfield.equals("2")) sub_sql = "WHERE id LIKE ?"; //구매자 아이디
+					else if(keyfield.equals("3")) sub_sql = "WHERE product_name LIKE ?"; //상품명
+				}
+				
+				sql = "SELECT COUNT(*) FROM qorder o JOIN qmember m "
+					+ "ON o.user_num = m.user_num " + sub_sql;
+				//PreparedStatement 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				//?에 데이터 바인딩
+				if(keyword != null && !"".equals(keyword)) {
+					if(keyfield.equals("1")) {
+						pstmt.setString(1, keyword);
+					}else {
+						pstmt.setString(1, "%" + keyword + "%");
+					}
+				}
+				//SQL문을 실행해서 결과행을 ResultSet에 담음
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					count = rs.getInt(1);
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				//자원정리
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return count;
+		}
+		
+		//관리자-목록/검색글 목록
+		public List<OrderVO> getListOrder(int startRow, int endRow, 
+				                String keyfield, String keyword)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<OrderVO> list = null;
+			String sql = null;
+			String sub_sql = "";
+			int cnt = 0;
+			
+			try {
+				//커넥션풀로부터 커넥션을 할당
+				conn = DBUtil.getConnection();
+				
+				if(keyword != null && !"".equals(keyword)) {
+					if(keyfield.equals("1")) sub_sql = "WHERE order_num = ?";
+					else if(keyfield.equals("2")) sub_sql = "WHERE id LIKE ?";
+					else if(keyfield.equals("3")) sub_sql = "WHERE product_name LIKE ?";
+				}
+				
+				//SQL문 작성
+				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT * FROM "
+					+ "qorder o JOIN qmember m ON o.user_num = m.user_num " + sub_sql 
+					+ " ORDER BY order_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+				
+				//PreparedStatement 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				//?에 데이터 바인딩
+				if(keyword != null && !"".equals(keyword)) {
+					if(keyfield.equals("1")) {
+						pstmt.setString(++cnt, keyword);
+					}else {
+						pstmt.setString(++cnt, "%" + keyword + "%");
+					}
+				}
+				pstmt.setInt(++cnt, startRow);
+				pstmt.setInt(++cnt, endRow);
+				
+				//SQL문을 실행해서 결과행들을 ResultSet에 담음
+				rs = pstmt.executeQuery();
+				
+				list = new ArrayList<OrderVO>();
+				while(rs.next()) {
+					OrderVO order = new OrderVO();
+					order.setOrder_num(rs.getInt("order_num"));
+					order.setProduct_name(rs.getString("product_name"));
+					order.setOrder_total(rs.getInt("order_total"));
+					order.setShipping(rs.getInt("shipping"));
+					order.setReg_date(rs.getDate("reg_date"));
+					order.setId(rs.getString("id"));
+					
+					list.add(order);
+				}
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				//자원정리
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return list;
+		}
+		
+		//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+		//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+		
+		//사용자-전체 글 갯수/검새글 갯수
+		//사용자-목록/검색글 목록
+		//개별 상품 목록
+		public List<OrderDetailVO> getListOrderDetail(int order_num)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<OrderDetailVO> list = null;
+			String sql = null;
+			
+			try {
+				//커넥션풀로부터 커넥션을 할당
+				conn = DBUtil.getConnection();
+				//SQL문
+				sql = "SELECT * FROM qorder_detail WHERE order_num=? ORDER BY product_num DESC";
+				//PreparedStatement 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				//?에 데이터를 바인딩
+				pstmt.setInt(1, order_num);
+				
+				//SQL문을 실행해서 결과행들을 ResultSet에 담음
+				rs = pstmt.executeQuery();
+				
+				list = new ArrayList<OrderDetailVO>();
+				while(rs.next()) {
+					OrderDetailVO detail = new OrderDetailVO();
+					detail.setProduct_name(rs.getString("product_name"));
+					detail.setProduct_price(rs.getInt("product_price"));
+					detail.setProduct_total(rs.getInt("product_total"));
+					detail.setCart_count(rs.getInt("cart_count"));
+					
+					list.add(detail);
+				}
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				//자원정리
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return list;
+		}
+		//관리자/사용자 - 주문 상세
+		public OrderVO getOrder(int order_num)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			OrderVO order = null;
+			String sql = null;
+					
+			try {
+				//커넥션풀로부터 커넥션을 할당
+				conn = DBUtil.getConnection();
+							
+				//SQL문 작성
+				sql = "SELECT * FROM qorder WHERE order_num = ?";
+				
+				pstmt = conn.prepareStatement(sql);
+				//?에 데이터 바인딩
+				pstmt.setInt(1, order_num);
+							
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					order = new OrderVO();
+					order.setOrder_num(rs.getInt("order_num"));
+					order.setProduct_name(rs.getString("product_name"));
+					order.setOrder_total(rs.getInt("order_total"));
+					order.setPayment(rs.getInt("payment"));
+					order.setShipping(rs.getInt("shipping"));
+					order.setOrder_name(rs.getString("order_name"));
+					order.setOrder_post(rs.getString("order_post"));
+					order.setOrder_address1(rs.getString("order_address1"));
+					order.setOrder_address2(rs.getString("order_address2"));
+					order.setOrder_phone(rs.getString("order_phone"));					
+					order.setReg_date(rs.getDate("reg_date"));
+					order.setUser_num(rs.getInt("user_num"));
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				//자원정리
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return order;
+		}
+		//주문 수정
+		public void updateOrder(OrderVO order)throws Exception{
+			
+		}
+		//주문 삭제
+		public void deleteOrder(int order_num)throws Exception{
+			
+		}
 	
 	
 } 
