@@ -47,7 +47,7 @@ create sequence qcart_seq;
  create table qorder(
     order_num number not null,
     user_num number not null,
-    item_name varchar2(600) not null, --주문상품명
+    product_name varchar2(600) not null, --주문상품명(변경: item_name->product_name)
     order_total number(9) not null, --주문금액
     payment number(1) not null, --주문방식(1.계좌이체, 2.카드결제)
     shipping number default 1 not null, --배송상태(1.제품 준비중 2.제품 발송 3.배송완료)
