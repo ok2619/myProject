@@ -95,7 +95,7 @@ public class paymentAction implements Action{
 				request.setAttribute("accessUrl", 
 						              request.getContextPath()+"/main/main.do");
 				
-				return "/WEB-INF/views/product/payment.jsp";
+				return "/WEB-INF/views/common/notice.jsp";
 	}
 
 }

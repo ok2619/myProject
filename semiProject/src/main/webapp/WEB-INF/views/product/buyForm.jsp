@@ -49,7 +49,7 @@ $(function(){
 
 </head>
 <body>
-<form id="write_form2" action="payment.do" method="post">
+<form id="write_form2" action="paymentDirect.do" method="post">
 <div class="main2">
 <h2>주문 / 결제</h2>
 <h4>수령자 정보</h4></br>
@@ -57,8 +57,8 @@ $(function(){
 <input type="hidden" id="price" name="price" value="${product.price}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
 <input type="hidden" id="product_num" name="product_num" value="${product.product_num}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
 <input type="hidden" id="cart_count" name="cart_count" value="${cart_count}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
-<label for="name" class="control-label">수령자</label>
-<input type="text" id="name" name="name" placeholder="수령자 입력"></br>
+<label for="name" class="control-label">주문자명</label>
+<input type="text" id="order_name" name="order_name" placeholder="수령자 입력"></br>
 <label for="phone" class="control-label">전화번호</label>
 <input type="text" id="phone" name="phone" placeholder="전화번호 입력"></br>
 <label for="zipcode" class="control-label">우편번호</label>
