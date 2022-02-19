@@ -31,6 +31,7 @@
 			success:function(param){
 				if(param.result == 'logout'){
 					alert('로그인 후 사용하세요!');
+					location.href='main.do';
 				}else if(param.result == 'noQuantity'){
 					alert('상품의 수량이 부족합니다.');
 					location.href='main.do';
