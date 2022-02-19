@@ -52,16 +52,24 @@ create sequence qcart_seq;
     payment number(1) not null, --주문방식(1.계좌이체, 2.카드결제)
     shipping number default 1 not null, --배송상태(1.제품 준비중 2.제품 발송 3.배송완료)
     reg_date date default sysdate not null, --주문날짜
+    order_name varchar2(30) not null, --추가*
+    order_post varchar2(5) not null, --추가*
+    order_address1 varchar2(90) not null, --추가 *
+    order_address2 varchar2(90) not null, --추가*
+    order_phone varchar2(15) not null, --추가*
     constraint qorder_pk primary key (order_num),
     constraint qorder_fk foreign key (user_num) references qmember (user_num)
  );
 create sequence qorder_seq;
 
  create table qorder_detail(
- 	orderdetail_num number not null,
-    order_num number not null,
-    product_num number not null, 
-    item_quantity number(9) default 1 not null, --1.제품 준비중 2.제품 발송 3.배송완료
+ 	orderdetail_num number not null, --pk
+    order_num number not null, --fk
+    product_num number not null, -- fk
+    cart_count number(7) not null,--item_quantity에서 이름 변경
+    product_name varchar2(30) not null, --추가*
+ 	product_price number(8) not null, --추가*
+ 	product_total number(8) not null, --추가*
     constraint qorder_detail_pk primary key (orderdetail_num),
     constraint qorder_detail_fk1 foreign key (order_num) references qorder (order_num),
     constraint qorder_detail_fk2 foreign key (product_num) references qproduct (product_num)
