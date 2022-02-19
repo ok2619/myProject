@@ -5,7 +5,7 @@ import java.sql.Date;
 public class OrderVO {
 	private int order_num; //주문 번호
 	private int user_num; //구매자 회원번호
-	private String item_name; //주문 상품명
+	private String product_name; //주문 상품명 (이름변경:item_name->product_name)
 	private int order_total; //총 구매 금액
 	private int payment; //지불 방식 1.통장입금, 2.카드결제
 	private int shipping; //배송 상태 1.배송대기, 2.배송준비중, 3.배송중, 4.배송완료, 5.주문취소
@@ -18,8 +18,13 @@ public class OrderVO {
 	private String order_phone; //전화번호
 	//컬럼 외 추가
 	private String id;//구매자 아이디 (관리자-주문관리 페이지에서 id보기 위해)
-	
-		
+			
+	public String getProduct_name() {
+		return product_name;
+	}
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
 	public String getOrder_name() {
 		return order_name;
 	}
@@ -68,12 +73,7 @@ public class OrderVO {
 	public void setUser_num(int user_num) {
 		this.user_num = user_num;
 	}
-	public String getItem_name() {
-		return item_name;
-	}
-	public void setItem_name(String item_name) {
-		this.item_name = item_name;
-	}
+	
 	public int getOrder_total() {
 		return order_total;
 	}
