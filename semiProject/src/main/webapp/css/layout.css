@@ -53,6 +53,14 @@ a:visited{
 	text-decoration:none;
 	color:#000000;
 }
+#per{
+	margin-left:0px;
+}
+#img1{
+	float:right;
+	margin-right:135px;
+}
+
 /* a:hover{
 	text-decoration:underline;
 	color:#999999;
