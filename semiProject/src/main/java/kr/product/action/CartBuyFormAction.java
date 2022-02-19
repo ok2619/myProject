@@ -28,8 +28,8 @@ public class CartBuyFormAction implements Action{
 		 * List<CartVO> product = dao.cartList(user_number); //장바구니에서 구매 클릭시 장바구니 담긴 목록
 		 * 출력
 		 */		
-		OrderDAO orderdao = OrderDAO.getInstance();
-		int all_total = orderdao.getTotalByMem_num(user_number);
+		
+		int all_total = dao.getTotalByMem_num(user_number);
 		
 		if(all_total<=0) {
 			request.setAttribute("notice_msg", 
