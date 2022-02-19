@@ -1,11 +1,18 @@
 package kr.product.action;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
+import kr.order.dao.OrderDAO;
+import kr.order.vo.OrderDetailVO;
+import kr.order.vo.OrderVO;
 import kr.product.dao.ProductDAO;
+import kr.product.vo.CartVO;
 import kr.product.vo.ProductVO;
 
 public class paymentAction implements Action{
@@ -13,39 +20,82 @@ public class paymentAction implements Action{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		
-		//카카오페이 결제시 카카오톡문자로 결제메세지가 올때 해당 상품의 상품명,가격,종류 등이 출력되기 위해서
-		//세션으로 저장한 후 payment.jsp내부 자바스크립트 안에서 세션을 불러와야함
-		request.setCharacterEncoding("utf-8");
-				
-		String product_name = request.getParameter("product_name");
-		String price = request.getParameter("price");
-		String name = request.getParameter("name");
-		String phone = request.getParameter("phone");
-		String zipcode = request.getParameter("zipcode");
-		String address1 = request.getParameter("address1");
-		String address2 = request.getParameter("address2");
-		
-		int product_num = Integer.parseInt(request.getParameter("product_num"));
-		/* int cart_count = Integer.parseInt(request.getParameter("cart_count")); */
-		
 		HttpSession session = request.getSession();
-		session.setAttribute("product_name", product_name); //상품명
-		session.setAttribute("price", price); //상품명
-		session.setAttribute("name", name);
-		session.setAttribute("phone", phone);
-		session.setAttribute("zipcode", zipcode);
-		session.setAttribute("address1", address1);
-		session.setAttribute("address2", address2);
+		Integer user_number = (Integer)session.getAttribute("user_number");
+		if(user_number == null) {//로그인이 되어 있지 않은 경우
+			return "redirect:/member/loginForm.do";
+		}
 		
-		session.setAttribute("product_num", product_num);
-		/*
-		 * session.setAttribute("cart_count", cart_count); //구매수량
-		 */		
-		//자바로 저장한 세션값을 자바스크립트에서 불러오려면
+		//전송된 데이터 인코딩 처리
+				request.setCharacterEncoding("utf-8");
+				
+				ProductDAO dao = ProductDAO.getInstance();
+				int all_total = dao.getTotalByMem_num(user_number);
+				if(all_total<=0) {
+					request.setAttribute("notice_msg", 
+							        "정상적인 주문이 아니거나 상품의 수량이 부족합니다!");
+					request.setAttribute("notice_url", 
+							     request.getContextPath()+"/item/itemList.do");
+					return "/WEB-INF/views/common/alert_singleView.jsp";
+				}
+				
+				List<CartVO> cartList = dao.cartList(user_number);
 		
-		
-		return "/WEB-INF/views/product/payment.jsp";
+				//주문 상품의 대표 상품명 생성
+				String item_name;
+				if(cartList.size()==1) {
+					item_name = cartList.get(0).getProduct().getProduct_name();
+				}else {
+					item_name = cartList.get(0).getProduct().getProduct_name()+"외 " + (cartList.size()-1)+"건";
+				}
+				List<OrderDetailVO> orderDetailList = new ArrayList<OrderDetailVO>();
+				for(CartVO cart : cartList) {
+					ProductDAO itemDao = ProductDAO.getInstance();
+					ProductVO item = itemDao.getProduct(cart.getProduct_num());
+					
+					
+					
+					if(item.getStock() < cart.getCart_count()) {
+						//상품 재고 수량 부족
+						request.setAttribute("notice_msg", 
+								           "["+item.getProduct_name()+"]재고수량 부족으로 주문 불가");
+						request.setAttribute("notice_url", 
+								                    request.getContextPath()+"/cart/list.do");
+						return "/WEB-INF/views/common/alert_singleView.jsp";
+					}
+					
+					OrderDetailVO orderDetail = new OrderDetailVO();
+					orderDetail.setProduct_num(cart.getProduct_num());
+					orderDetail.setProduct_name(cart.getProduct().getProduct_name());
+					orderDetail.setProduct_price(cart.getProduct().getPrice());
+					orderDetail.setCart_count(cart.getCart_count());
+					orderDetail.setProduct_total(cart.getSub_total());
+					
+					orderDetailList.add(orderDetail);			
+				}
+				
+				//zorder에 저장할 데이터
+				OrderVO order = new OrderVO();
+				order.setProduct_name(item_name);
+				order.setOrder_total(all_total);
+				order.setOrder_name(request.getParameter("order_name"));
+				order.setOrder_post(request.getParameter("zipcode"));
+				order.setOrder_address1(request.getParameter("address1"));
+				order.setOrder_address2(request.getParameter("address2"));
+				order.setOrder_phone(request.getParameter("phone"));
+				order.setUser_num(user_number);
+				
+				//주문 정보를 테이블에 저장
+				OrderDAO orderDao = OrderDAO.getInstance();
+				orderDao.insertOrder(order, orderDetailList);
+				
+				//refresh 정보를 응답 헤더에 저장
+				response.addHeader("Refresh", "1;url=../main/main.do");
+				request.setAttribute("accessMsg", "주문 작성이 완료되었습니다.");
+				request.setAttribute("accessUrl", 
+						              request.getContextPath()+"/main/main.do");
+				
+				return "/WEB-INF/views/product/payment.jsp";
 	}
 
 }
