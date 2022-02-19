@@ -24,10 +24,6 @@ public class CartBuyFormAction implements Action{
 		}
 		
 		ProductDAO dao = ProductDAO.getInstance();
-		/*
-		 * List<CartVO> product = dao.cartList(user_number); //장바구니에서 구매 클릭시 장바구니 담긴 목록
-		 * 출력
-		 */		
 		
 		int all_total = dao.getTotalByMem_num(user_number);
 		
