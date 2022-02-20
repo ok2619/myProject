@@ -408,6 +408,9 @@ input[type=number]::-webkit-outer-spin-button {
 .margin_left_40{
 	margin-left:40px;
 }
+.margin_right_10{
+	margin-right:10px;
+}
 .float_left{
 	float:left;
 }

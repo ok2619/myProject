@@ -112,12 +112,12 @@
 		</p>
 		<!-- 좋아요 기능 시작-->		
 		<img id="output_fav" src="../image/heart1.png">
-      	<span id="output_fcount"></span>
+      	<span id="output_fcount" class="margin_right_10"></span>
       	<!-- 좋아요 기능 끝-->
 		<%--로그인한 회원번호와 작성자 회원번호가 일치해야 수정,삭제 가능 --%>
 		<c:if test="${user_number == board.user_num}">
 		<input type="button" value="수정" 
-		onclick="location.href='updateForm.do?board_num=${board.board_num}'" class="btn btn-default btn-sm margin_left_10">
+		onclick="location.href='updateForm.do?board_num=${board.board_num}'" class="btn btn-default btn-sm">
 		<input type="button" value="삭제" id="delete_btn" class="btn btn-sm">
 		<script type="text/javascript">
 			let delete_btn = document.getElementById('delete_btn');
