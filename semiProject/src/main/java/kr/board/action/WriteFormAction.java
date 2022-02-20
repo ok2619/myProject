@@ -21,7 +21,7 @@ public class WriteFormAction implements Action{
 		if(user_num==null){	
 			return "redirect:/member/loginForm.do";
 		}		
-		request.setAttribute("user_num", user_num);
+		
 		//로그인 된 경우
 		return "/WEB-INF/views/board/writeForm.jsp";
 	}
