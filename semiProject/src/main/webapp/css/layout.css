@@ -375,11 +375,17 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 /*여백 및 정렬 옵션*/
+.blank_10{
+	margin-bottom:10px;
+}
 .blank_20{
 	margin-bottom:20px;
 }
 .blank_30{
 	margin-bottom:30px;
+}
+.blank_40{
+	margin-bottom:40px;
 }
 .blank_50{
 	margin-bottom:50px;
@@ -414,11 +420,21 @@ input[type=number]::-webkit-outer-spin-button {
 .float_left{
 	float:left;
 }
+.float_right{
+	float:right;
+}
 .go_left{
 	margin-left:-50px;
 }
+.go_left2{
+	margin-left:-43px;
+	margin-top:23px;
+}
 .center30{
 	text-align : center;
+}
+.go_left_60{
+	margin-left:-60px;
 }
 .go_left_70{
 	margin-left:-75px;
@@ -430,6 +446,9 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .go_right{
 	margin-left:85px;
+}
+.go_right2{
+	margin-left:155px;
 }
 .go_left_update{
 	margin-left:-80px;

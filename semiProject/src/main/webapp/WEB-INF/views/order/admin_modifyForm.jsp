@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>구매정보수정</title>
+<title>주문정보수정</title>
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
@@ -46,19 +46,20 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <div class="page-main">	
-	<h3 class="align-center common_title">구매 정보 수정</h3>
+	<h3 class="align-center common_title">주문 정보 수정</h3>
 	<hr size="1" noshade="noshade" width="100%">
-	<h4>구매 내역</h4>
-	<table>
-		<tr>
-			<th>상품명</th>
-			<th>수량</th>
-			<th>상품가격</th>
-			<th>합계</th>
+	<h4 class="font3 blank_20"><b>[주문 상품 정보]</b></h4>
+	
+	<table class="table table-bordered">
+		<tr class="active font">
+			<th class="align-center">상품명</th>
+			<th class="align-center">수량</th>
+			<th class="align-center">상품가격</th>
+			<th class="align-center">합계</th>
 		</tr>
 		<c:forEach var="detail" items="${detailList}">
 		<tr>
-			<td>${detail.product_name}</td>
+			<td class="align-center">${detail.product_name}</td>
 			<td class="align-center"><fmt:formatNumber value="${detail.cart_count}"/></td>
 			<td class="align-center"><fmt:formatNumber value="${detail.product_price}"/>원</td>
 			<td class="align-center"><fmt:formatNumber value="${detail.product_total}"/>원</td>
@@ -66,72 +67,99 @@
 		</c:forEach>
 		<tr>
 			<td colspan="3" class="align-right"><b>총구매금액</b></td>
-			<td class="align-center"><fmt:formatNumber value="${order.order_total}"/>원</td>
+			<td class="align-center"><b><fmt:formatNumber value="${order.order_total}"/>원</b></td>
 		</tr>
 	</table>
-	<form action="modify.do" method="post" id="order_modify">
-		<input type="hidden" name="order_num" value="${order.order_num}">
-		<ul>
-			<li>
-				<label for="order_name">구매자</label>
+	<div class="blank_40"></div>
+	<h4 class="font3 blank_20"><b>[배송 및 주문 정보]</b></h4>
+	<div class="panel panel-default">
+		<form action="modify.do" method="post" id="order_modify" class="form-inline go_left2">
+			<input type="hidden" name="order_num" value="${order.order_num}">
+			
+			<div class="form-group">
+				<label for="order_name" class="control-label">구매자</label>
+			</div>
+			<div class="form-group">
 				<input type="text" name="order_name" id="order_name"
-				                 value="${order.order_name}" maxlength="10">
-			</li>
-			<li>
-				<label for="zipcode">우편번호</label>
+					                 value="${order.order_name}" maxlength="10" class="form-control">						
+			</div><p>
+			 
+			<div class="form-group">
+				<label for="zipcode" class="control-label">우편번호</label>
+			</div>
+			<div class="form-group">
 				<input type="text" name="order_post" id="zipcode"
-				       value="${order.order_post}" maxlength="5">
-				<input type="button" onclick="sample2_execDaumPostcode()"
-				                              value="우편번호 찾기">       
-			</li>
-			<li>
-				<label for="address1">주소</label>
+					       value="${order.order_post}" maxlength="5" class="form-control">
+					<!-- <input type="button" onclick="sample2_execDaumPostcode()"
+					                              value="우편번호">  -->  
+				<button type="button" onclick="sample2_execDaumPostcode()" class="btn btn-default btn-xs margin_left_10">우편번호 〉</button>  					
+			</div><p>	 
+			 
+			<div class="form-group">
+				<label for="address1" class="control-label">주소</label>
+			</div>
+			<div class="form-group">
 				<input type="text" name="order_address1" id="address1"
-				            value="${order.order_address1}" maxlength="30">
-			</li>
-			<li>
-				<label for="address2">상세 주소</label>
+					            value="${order.order_address1}" maxlength="30" class="form-control">  					
+			</div><p>
+			
+			<div class="form-group">
+				<label for="address2" class="control-label">상세 주소</label>
+			</div>
+			<div class="form-group">
 				<input type="text" name="order_address2" id="address2"
-				            value="${order.order_address2}" maxlength="30">
-			</li>
-			<li>
-				<label for="order_phone">전화번호</label>
+					            value="${order.order_address2}" maxlength="30" class="form-control">  					
+			</div><p>
+			
+			<div class="form-group">
+				<label for="order_phone" class="control-label">전화번호</label>
+			</div>
+			<div class="form-group">
 				<input type="text" name="order_phone" id="order_phone"
-				          value="${order.order_phone}" maxlength="15">
-			</li>
-			<li>
-				<label>결제수단</label>
+					          value="${order.order_phone}" maxlength="15" class="form-control"> 					
+			</div><p> 
+			<div class="form-group">
+				<label class="control-label">결제수단</label>
+			</div>
+			<div class="form-group">
 				<input type="radio" name="payment" id="payment1" value="1"
-				      <c:if test="${order.payment == 1}">checked</c:if>>통장입금
-				<input type="radio" name="payment" id="payment2" value="2"
-				      <c:if test="${order.payment == 2}">checked</c:if>>카드결제      
-			</li>
-			<li>
-				<label>배송상태</label>
+					      <c:if test="${order.payment == 1}">checked</c:if>>통장입금
+					      &nbsp;
+					<input type="radio" name="payment" id="payment2" value="2"
+					      <c:if test="${order.payment == 2}">checked</c:if>>카드결제       					
+			</div><p>
+				
+			<div class="form-group">
+				<label class="control-label">배송상태</label>
+			</div>
+			<div class="form-group">
 				<c:if test="${order.shipping != 5}">
-				<input type="radio" name="shipping" id="shipping1" value="1"
-				     <c:if test="${order.shipping == 1}">checked</c:if>>배송대기
-				<input type="radio" name="shipping" id="shipping2" value="2"
-				     <c:if test="${order.shipping == 2}">checked</c:if>>배송준비중
-				<input type="radio" name="shipping" id="shipping3" value="3"
-				     <c:if test="${order.shipping == 3}">checked</c:if>>배송중
-				<input type="radio" name="shipping" id="shipping4" value="4"
-				     <c:if test="${order.shipping == 4}">checked</c:if>>배송완료           
-				</c:if>
-				<input type="radio" name="shipping" id="shipping5" value="5"
-				     <c:if test="${order.shipping == 5}">checked</c:if>>주문취소
-			</li>			
-		</ul>
-		<div class="align-center">
-			<c:if test="${order.shipping != 5}">
-			<input type="submit" value="수정">
-			</c:if>
-			<input type="button" value="삭제"
-			 onclick="location.href='deleteOrder.do?order_num=${order.order_num}'">
-			<input type="button" value="홈으로"
-			  onclick="location.href='${pageContext.request.contextPath}/main/main.do'"> 
-		</div>
-	</form>
+					<input type="radio" name="shipping" id="shipping1" value="1"
+					     <c:if test="${order.shipping == 1}">checked</c:if>>배송대기&nbsp;
+					<input type="radio" name="shipping" id="shipping2" value="2"
+					     <c:if test="${order.shipping == 2}">checked</c:if>>배송준비중&nbsp;
+					<input type="radio" name="shipping" id="shipping3" value="3"
+					     <c:if test="${order.shipping == 3}">checked</c:if>>배송중&nbsp;
+					<input type="radio" name="shipping" id="shipping4" value="4"
+					     <c:if test="${order.shipping == 4}">checked</c:if>>배송완료&nbsp;           
+					</c:if>
+					<input type="radio" name="shipping" id="shipping5" value="5"
+					     <c:if test="${order.shipping == 5}">checked</c:if>>주문취소 					
+			</div><p> 	
+			
+			<div class="blank_40"></div>
+			<div class="float_right go_right2">
+				<c:if test="${order.shipping != 5}">
+				<input type="submit" value="수정" class="btn btn-info margin_left_40">
+				</c:if>				
+				<input type="button" value="주문 정보 삭제" class="btn btn-danger margin_left_10"
+				 onclick="location.href='deleteOrder.do?order_num=${order.order_num}'">
+				 <input type="button" value="취소" class="btn margin_left_10"
+				  onclick="location.href='list.do'">				
+			</div>		
+		</form>
+	</div>
+	
 <!-- 우편번호 스크립트 시작 -->
 <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
 <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
@@ -231,6 +259,7 @@
 </script>
 <!-- 우편번호 스크립트 끝 -->
 </div>
+<div class="blank_100"></div>
 </body>
 </html>
 
