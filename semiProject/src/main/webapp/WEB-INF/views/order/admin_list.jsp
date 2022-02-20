@@ -13,7 +13,7 @@
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		$('#search_form').on('submit',function(){
+		$('#search_review').on('submit',function(){
 			if($('#keyword').val().trim()==''){
 				alert('검색어를 입력하세요!');
 				$('#keyword').val('').focus();
@@ -32,29 +32,6 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <div class="page-main">	
 	<h3 class="align-center common_title">구매 목록</h3>
-	<form action="list.do" method="get" id="search_form">
-		<ul class="search">
-			<li>
-				<select name="keyfield" id="keyfield">
-					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>주문번호</option>
-					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>ID</option>
-					<option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>상품명</option>
-				</select>
-			</li>
-			<li>
-				<input type="search" size="16" name="keyword" id="keyword"
-				                                      value="${param.keyword}">
-			</li>
-			<li>
-				<input type="submit" value="검색">
-			</li>
-		</ul>
-	</form>
-	<div class="list-space align-right">
-	   <!--  <input type="button" value="목록" onclick="location.href='list.do'"> -->
-		<input type="button" value="홈으로" 
-		 onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
-	</div>
 	<c:if test="${count == 0}">
 	<div class="result-display">
 		표시할 주문 내역이 없습니다.
@@ -74,7 +51,7 @@
 		<tr>
 			<td><a href="modifyForm.do?order_num=${order.order_num}">${order.order_num}</a></td>
 			<td>${order.id}</td>
-			<td>${order.product_name}</td>
+			<td><a href="modifyForm.do?order_num=${order.order_num}">${order.product_name}</a></td>
 			<td><fmt:formatNumber value="${order.order_total}"/>원</td>
 			<td>${order.reg_date}</td>
 			<td>
@@ -87,11 +64,32 @@
 		</tr>
 		</c:forEach>
 	</table>
-	<div class="align-center">
-		${pagingHtml}
-	</div>
 	</c:if>
-</div>
+	<form action="list.do" method="get" id="search_review">
+		<ul class="search_review">
+			<li>
+				<select name="keyfield" id="keyfield">
+					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>주문번호</option>
+					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>ID</option>
+					<option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>상품명</option>
+				</select>
+			</li>
+			<li>
+				<input type="search" size="16" name="keyword" id="keyword"
+				                                      value="${param.keyword}">
+			</li>
+			<li>
+				<input type="submit" value="검색">
+			</li>
+		</ul>
+	</form>
+	<p class="clear"></p>
+		<div class="blank_50"></div>	
+		<div class="align-center">
+			${pagingHtml}
+		</div>	
+		<div class="blank_50"></div>	
+	</div>	
 </body>
 </html>
 

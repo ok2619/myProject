@@ -129,8 +129,7 @@
 				}
 			};
 		</script>		
-		</c:if>
-	
+		</c:if>	
 		<%--수정/삭제 기능 끝 --%>		
 		<input type="button"  class="btn btn-default btn-sm" value="목록" onclick="location.href='list.do'">
 
