@@ -133,11 +133,6 @@
 	
 		<%--수정/삭제 기능 끝 --%>		
 		<input type="button"  class="btn btn-default btn-sm" value="목록" onclick="location.href='list.do'">
-		
-		<!-- 좋아요 기능 시작-->
-		<!-- <img id="output_fav" src="../image/heart1.png">
-      	<span id="output_fcount"></span> -->
-		<!-- 좋아요 기능 끝-->
 
 	</div>
  <div class="blank_30"></div> 
