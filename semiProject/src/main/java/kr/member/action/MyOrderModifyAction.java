@@ -36,7 +36,7 @@ public class MyOrderModifyAction implements Action{
 		/*
 		 * return "/WEB-INF/views/common/ajax_view.jsp"; //ajax
 		 */	
-		return "/WEB-INF/views/member/OrderList.jsp"; 
+		return "/WEB-INF/views/member/orderList.jsp"; 
 	}
 	
 }
