@@ -40,7 +40,14 @@
 	      </c:choose>
 		  </td>
 	      <td>${order.reg_date}</td>
-	      <td><input type="button" value="주문취소"></td>
+	      <td>	 
+	      <c:choose>     
+	      <c:when test="${order.shipping == 5}">이미 취소된 상품</c:when>
+	      <c:when test="${order.shipping != 5}"><input type="button" value="주문취소" 
+	      onclick="location.href='${pageContext.request.contextPath}/member/myOrderModify.do?order_num=${order.order_num}'">
+	      </c:when>
+	      </c:choose>
+	      </td>
 	    </tr>
 	    </c:forEach>
 	  </tbody>

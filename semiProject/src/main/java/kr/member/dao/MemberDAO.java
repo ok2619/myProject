@@ -482,6 +482,25 @@ public class MemberDAO {
 			}
 			return list;
 		}
+		///////////주문취소
+		public void cencelMyOrder(int order_num) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String sql = null;
+			try {
+				conn = DBUtil.getConnection();
+				sql = "UPDATE qorder SET shipping='5' WHERE order_num = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, order_num);
 
+				pstmt.executeUpdate();
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(null, pstmt, conn);
+			}
+			
+		}
 }
 
