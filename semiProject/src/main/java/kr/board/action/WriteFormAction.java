@@ -1,5 +1,8 @@
 package kr.board.action;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -10,14 +13,15 @@ public class WriteFormAction implements Action{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 		// 글쓰기->회원제서비스
-		HttpSession session = request.getSession();
-		//회원번호(user_num)구하기. 세션저장명:"user_number"
+		HttpSession session = request.getSession();		
 		Integer user_num = (Integer)session.getAttribute("user_number"); 
 		//로그인 안 된 경우
 		if(user_num==null){	
 			return "redirect:/member/loginForm.do";
 		}		
+		request.setAttribute("user_num", user_num);
 		//로그인 된 경우
 		return "/WEB-INF/views/board/writeForm.jsp";
 	}

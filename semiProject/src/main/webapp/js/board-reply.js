@@ -6,7 +6,7 @@ $(function(){
 	//댓글 목록
 	function selectData(pageNum){
 		currentPage = pageNum;
-		
+
 		$.ajax({
 			type:'post',
 			data:{pageNum:pageNum,board_num:$('#board_num').val()},

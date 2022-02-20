@@ -161,7 +161,7 @@
 	<div id="output"></div>
 	<div class="paging-button" style="display:none;">
 		<input type="button" value="다음글 보기">
-	</div>
+	</div>	
 	<!-- 댓글 목록 출력 끝 -->
 <!-- 댓글 끝 -->
 <div class="blank_50"></div>

@@ -25,6 +25,12 @@
 				return false;			
 			}			
 		});		
+		 $('#write_btn').on('click',function(){
+			if(${empty user_number}){
+				alert('회원에게만 글쓰기 권한이 있습니다.');
+				location.href='loginForm.do';			
+			}			
+		});	
 	});
 </script>
 </head>
@@ -117,8 +123,8 @@
 	<!-- 글쓰기버튼 -->
 	<p>
 	<div class="align-right" id="write_btn">
-		<input type="button" value="글쓰기" onclick="location.href='writeForm.do'" class="btn btn-info"
-		<c:if test="${empty user_number}">disabled="disabled"</c:if>> <!-- 로그인 안된상태-> 글쓰기버튼 비활성화 -->		
+		<input type="button" value="글쓰기" onclick="location.href='writeForm.do'" class="btn btn-info" id="write_btn">
+		<%-- <c:if test="${empty user_number}">disabled="disabled"</c:if>> --%> <!-- 로그인 안된상태-> 글쓰기버튼 비활성화 :disabled="disabled" -->		
 	</div>
 	<!-- 글쓰기버튼 끝-->
 	

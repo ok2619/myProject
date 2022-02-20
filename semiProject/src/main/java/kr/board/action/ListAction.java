@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.board.dao.BoardDAO;
 import kr.board.vo.BoardVO;
@@ -13,7 +14,7 @@ import kr.util.PagingUtil;
 public class ListAction implements Action{
 
 	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {		
 		
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum == null) pageNum = "1";
