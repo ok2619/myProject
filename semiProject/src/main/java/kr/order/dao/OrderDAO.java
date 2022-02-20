@@ -422,7 +422,32 @@ public class OrderDAO {
 		}
 		//주문 수정
 		public void updateOrder(OrderVO order)throws Exception{
-			
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String sql = null;
+					
+			try {
+				conn = DBUtil.getConnection();
+				sql = "update qorder set order_name = ?,order_post=?,order_address1=?, "
+						+ "order_address2=?,order_phone=?,payment=?,shipping=? where order_num = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, order.getOrder_name());
+				pstmt.setString(2, order.getOrder_post());
+				pstmt.setString(3, order.getOrder_address1());
+				pstmt.setString(4, order.getOrder_address2());
+				pstmt.setString(5, order.getOrder_phone());
+				pstmt.setInt(6, order.getPayment());
+				pstmt.setInt(7, order.getShipping());
+				pstmt.setInt(8, order.getOrder_num());
+				
+				pstmt.executeUpdate();
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(null, pstmt, conn);
+				
+			}
 		}
 		//주문 삭제
 		public void deleteOrder(int order_num)throws Exception{

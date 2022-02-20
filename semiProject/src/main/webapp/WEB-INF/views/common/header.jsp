@@ -39,6 +39,7 @@
 					<%-- 관리자(로그인) --%>
 					<c:if test="${!empty user_number && user_auth == 3}">
 						<li><a href="${pageContext.request.contextPath}/member/memberList.do">회원관리</a></li>
+						<li><a href="${pageContext.request.contextPath}/order/list.do">주문관리</a></li>
 						<li><a href="${pageContext.request.contextPath}/product/productWriteForm.do">상품등록</a></li>							
 						<li><a href="${pageContext.request.contextPath}/product/productList.do">상품목록</a></li>
 						<li><a href="${pageContext.request.contextPath}/member/logout.do">logout</a></li>
