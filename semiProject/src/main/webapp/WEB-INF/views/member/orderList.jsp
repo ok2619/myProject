@@ -10,6 +10,33 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+
+
+<script type="text/javascript">
+/* $(function(){
+	$('#output_fav').click(function(){ //좋아요를 클릭했을때 실행되는 ajax
+		$.ajax({
+			url:'like.do',
+			type:'post',
+			data:{shipping:${order.shipping}},
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(data){
+				if(data.count=='cencel'){
+					$('#cencel_span').text('이미 취소된 상품');
+		            } else if(data.count=='nocencel'){
+		            $('#cencel_span').text('zz');
+		            }
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+			}
+		});
+	});	
+}); */
+</script>
+
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -41,12 +68,13 @@
 		  </td>
 	      <td>${order.reg_date}</td>
 	      <td>	 
-	      <c:choose>     
-	      <c:when test="${order.shipping == 5}">이미 취소된 상품</c:when>
-	      <c:when test="${order.shipping != 5}"><input type="button" value="주문취소" 
-	      onclick="location.href='${pageContext.request.contextPath}/member/myOrderModify.do?order_num=${order.order_num}'">
-	      </c:when>
-	      </c:choose>
+    	  <c:choose>
+			<c:when test="${order.shipping == 5}">이미 취소</c:when>
+			<c:when test="${order.shipping != 5}">
+			<input type="button" id="delete_btn" value="주문취소"
+			onclick="location.href='${pageContext.request.contextPath}/member/myOrderModify.do?order_num=${order.order_num}&shipping=${order.shipping}'">
+			</c:when>
+			</c:choose>
 	      </td>
 	    </tr>
 	    </c:forEach>

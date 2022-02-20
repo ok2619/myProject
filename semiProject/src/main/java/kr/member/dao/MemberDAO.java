@@ -483,7 +483,7 @@ public class MemberDAO {
 			return list;
 		}
 		///////////주문취소
-		public void cencelMyOrder(int order_num) throws Exception{
+		public String cencelMyOrder(int order_num) throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			String sql = null;
@@ -500,7 +500,7 @@ public class MemberDAO {
 			}finally {
 				DBUtil.executeClose(null, pstmt, conn);
 			}
-			
+			return "cencel";
 		}
 }
 
