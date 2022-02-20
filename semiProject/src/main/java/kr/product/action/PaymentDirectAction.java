@@ -21,9 +21,10 @@ public class PaymentDirectAction implements Action{
 		if(user_number == null) {//로그인이 되어 있지 않은 경우
 			return "redirect:/member/loginForm.do";
 		}
+		request.setCharacterEncoding("utf-8");
 		String product_name = request.getParameter("product_name");
 		int price = Integer.parseInt(request.getParameter("price"));
-		request.setCharacterEncoding("utf-8");
+		
 
 		OrderDetailVO orderDetail = new OrderDetailVO();
 		orderDetail.setProduct_num(Integer.parseInt(request.getParameter("product_num")));

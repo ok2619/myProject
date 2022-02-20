@@ -13,6 +13,7 @@ public class AdminModifyAction implements Action{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		
 		HttpSession session = request.getSession();
 		Integer user_number = (Integer)session.getAttribute("user_number");
 		if(user_number == null) {

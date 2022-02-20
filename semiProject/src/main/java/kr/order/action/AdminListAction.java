@@ -25,7 +25,7 @@ public class AdminListAction implements Action{
 		if(user_auth < 3) {//관리자로 로그인하지 않은 경우
 			return "/WEB-INF/views/common/notice.jsp";	
 		}
-		
+		request.setCharacterEncoding("utf-8");
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum == null) pageNum = "1";
 		
