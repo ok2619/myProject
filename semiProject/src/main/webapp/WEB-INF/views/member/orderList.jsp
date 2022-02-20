@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,19 +17,31 @@
 	<table class="table table-striped">
 	  <thead>
 	    <tr>
-	      <th scope="col">#</th>
-	      <th scope="col">First</th>
-	      <th scope="col">Last</th>
-	      <th scope="col">Handle</th>
+	      <th scope="col">주문번호</th>
+	      <th scope="col">상품명</th>
+	      <th scope="col">배송상태</th>
+	      <th scope="col">주문날짜</th>
 	    </tr>
 	  </thead>
 	  <tbody>
+	  <c:forEach var="order" items="${list}">
 	    <tr>
-	      <th scope="row">1</th>
-	      <td>Mark</td>
-	      <td>Otto</td>
-	      <td>@mdo</td>
+	      <th scope="row">${order.order_num}</th>
+	      <td>${order.product_name}</td>
+
+	      <td>
+	      <c:choose>
+	      <c:when test="${order.shipping == 1}">배송대기</c:when>
+	      <c:when test="${order.shipping == 2}">배송준비중</c:when>
+	      <c:when test="${order.shipping == 3}">배송중</c:when>
+	      <c:when test="${order.shipping == 4}">배송완료</c:when>
+	      <c:when test="${order.shipping == 5}">주문취소</c:when>
+	      </c:choose>
+		  </td>
+	      
+	      <td>${order.reg_date}</td>
 	    </tr>
+	    </c:forEach>
 	  </tbody>
 	</table>
 </div>	
