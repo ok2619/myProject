@@ -42,7 +42,7 @@
 	<c:if test="${count == 0 }">
 	<table class="table table-hover">
 	  <thead>
-		<tr>
+		<tr class="info font2">
 			<th>글번호</th>
 			<th>상품정보</th>
 			<th>제목</th>
@@ -55,7 +55,9 @@
 		<tr>
 			<td colspan="6" class="align-center">			
 			<p>
-			표시할 게시물이 없습니다.		
+			<div class="blank_20"></div>
+			표시할 게시물이 없습니다.	
+			<div class="blank_20"></div>	
 			<p>
 			</td>				
 		</tr>
@@ -66,7 +68,7 @@
 	<c:if test="${count > 0 }">
 	<table class="table table-hover">
 	  <thead>
-		<tr class="active font">
+		<tr class="active font2">
 			<th>번호</th>
 			<th>상품정보</th>
 			<th>제목</th>

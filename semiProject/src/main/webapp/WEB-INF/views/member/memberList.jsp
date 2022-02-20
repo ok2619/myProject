@@ -26,39 +26,35 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="page-main">
 	<h3 class="align-center common_title">회원관리</h3>
-	
-	<!-- <form id="search_form" action="memberList.do" method="get">
-		<ul class="search">
-			<li>
-				<select name="keyfield">
-					<option value="1">ID</option>
-					<option value="2">이름</option>
-					<option value="3">email</option>
-				</select>
-			</li>
-			<li>
-				<input type="search" size="16" name="keyword" id="keyword">
-			</li>
-			<li>
-				<input type="submit" value="찾기">
-			</li>
-		</ul>
-	</form> -->
-	
-	<%-- <div class="list-space align-right">
-		<input type="button" value="목록" onclick="location.href='memberList.do'">
-		<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
-	</div> --%>
-	
 	<c:if test="${count==0 }">
-	<div class="result-display">
-		표시할 내용이 없습니다.
-	</div>		
+	<table class="table table-hover">
+	  <thead>
+		<tr class="info font2">
+			<th>ID</th>
+			<th>이름</th>
+			<th>주소</th>
+			<th>전화번호</th>
+			<th>가입일</th>
+			<th>등급</th>  
+		</tr>
+	  </thead>
+	  <tbody>			
+		<tr>
+			<td colspan="6" class="align-center">			
+			<p>
+			<div class="blank_20"></div>
+			표시할 회원이 없습니다.
+			<div class="blank_20"></div>		
+			<p>
+			</td>				
+		</tr>
+	  </tbody>
+	  </table>				
 	</c:if>
 	
 	<c:if test="${count > 0 }">
 	<table class="table table-hover">
-		<tr class="active">
+		<tr class="info font2">
 			<th>ID</th>
 			<th>이름</th>
 			<th>주소</th>

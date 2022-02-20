@@ -21,7 +21,7 @@
 		<c:if test="${count == 0}">
 			<table class="table table-hover">
 			  	<thead>
-					<tr>
+					<tr class="info font2">
 						<th>상품 번호</th>
 						<th>상품명</th>
 						<th>사진</th>
@@ -44,7 +44,7 @@
 		</c:if>
 		<c:if test="${count > 0}">
 			<table class="table">
-				<tr>
+				<tr class="info font2">
 					<th>상품 번호</th>
 					<th>상품명</th>
 					<th>사진</th>
@@ -96,7 +96,7 @@
 					                                   value="${param.keyword}">
 				</li>
 				<li>
-					<input type="submit" value="검색">
+					<input type="submit" value="검색" class="btn btn-default btn-sm">
 				</li>
 			</ul>
 		</form>
