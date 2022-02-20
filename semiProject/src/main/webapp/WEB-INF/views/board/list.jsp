@@ -66,7 +66,7 @@
 	<c:if test="${count > 0 }">
 	<table class="table table-hover">
 	  <thead>
-		<tr class="active">
+		<tr class="active font">
 			<th>번호</th>
 			<th>상품정보</th>
 			<th>제목</th>
@@ -82,7 +82,7 @@
 			<td>
 			<c:if test="${!empty board.filename}">
 			<div>
-				<img src="${pageContext.request.contextPath}/upload/${board.filename}" class="list-img">
+				<img src="${pageContext.request.contextPath}/upload/${board.filename}" class="list-img font">
 			</div>
 			</c:if>
 			</td>

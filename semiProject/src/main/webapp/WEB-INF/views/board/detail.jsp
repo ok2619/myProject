@@ -85,9 +85,9 @@
 <div class="page-main">
 	<h3 class="align-center common_title"><a href="list.do">상품 후기</a></h3>
 	<ul>		
-		<li>제목 : ${board.title}</li>
-		<li>작성자 : ${board.id}</li>		
-		<li>작성일 : ${board.reg_date}</li>
+		<li><p class="font">제목 : ${board.title}</p></li>
+		<li><p class="font">작성자 : ${board.id}</p></li>		
+		<li><p class="font">작성일 : ${board.reg_date}</p></li>
 	</ul>
 	<hr size="1" width="100%" noshade="noshade">
 	<c:if test="${!empty board.filename}">
@@ -96,7 +96,7 @@
 	<!-- </div> -->
 	</c:if>
 	<div class="blank_20"></div>
-	<p>
+	<p class="font">
 		${board.b_content}
 	</p>
 	<div class="blank_20"></div>
@@ -104,14 +104,20 @@
 	<hr size="1" width="100%" noshade="noshade">
 	
 	<div class="align-right view_font">
-	<p class="float_left view_font">조회수 : ${board.hit}</p>
+	<p class="float_left view_font2">조회수 : ${board.hit}</p>
+		<p class="float_left view_font2 margin_left_10">
 		<c:if test="${!empty board.modify_date}">
-		최근 수정일 : ${board.modify_date}&nbsp;&nbsp;
-		</c:if>			
+		| &nbsp;최근 수정일 : ${board.modify_date}&nbsp;&nbsp;
+		</c:if>	
+		</p>
+		<!-- 좋아요 기능 시작-->		
+		<img id="output_fav" src="../image/heart1.png">
+      	<span id="output_fcount"></span>
+      	<!-- 좋아요 기능 끝-->
 		<%--로그인한 회원번호와 작성자 회원번호가 일치해야 수정,삭제 가능 --%>
 		<c:if test="${user_number == board.user_num}">
 		<input type="button" value="수정" 
-		onclick="location.href='updateForm.do?board_num=${board.board_num}'" class="btn btn-default btn-sm">
+		onclick="location.href='updateForm.do?board_num=${board.board_num}'" class="btn btn-default btn-sm margin_left_10">
 		<input type="button" value="삭제" id="delete_btn" class="btn btn-sm">
 		<script type="text/javascript">
 			let delete_btn = document.getElementById('delete_btn');
@@ -129,8 +135,8 @@
 		<input type="button"  class="btn btn-default btn-sm" value="목록" onclick="location.href='list.do'">
 		
 		<!-- 좋아요 기능 시작-->
-		<img id="output_fav" src="../image/heart1.png">
-      	<span id="output_fcount"></span>
+		<!-- <img id="output_fav" src="../image/heart1.png">
+      	<span id="output_fcount"></span> -->
 		<!-- 좋아요 기능 끝-->
 
 	</div>

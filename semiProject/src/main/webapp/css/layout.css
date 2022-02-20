@@ -353,6 +353,10 @@ p.content_font{
 	font-size:9pt;
 	color:#000;
 }
+.view_font2{
+	font-size:9pt;
+	color:#8c8c8c;
+}
 span.cart_text{
 	font-size:9pt;
 	color:#cc2512; 
@@ -430,8 +434,12 @@ input[type=number]::-webkit-outer-spin-button {
 /*float clear 설정*/
 .clear{clear:both;}
 .cart-in{
-	width:30px;
-	
+	width:30px;	
+}
+
+
+.font{
+	 font-family: 'Noto Sans KR', sans-serif;
 }
 .font1{
 	 font-family: 'Jeju Gothic', sans-serif;
@@ -455,6 +463,11 @@ input[type=number]::-webkit-outer-spin-button {
 .row2{width:33%;float:left;}
 
 /*폰트설정*/
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}
 @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 .jejugothic * { 
  font-family: 'Jeju Gothic', sans-serif;
