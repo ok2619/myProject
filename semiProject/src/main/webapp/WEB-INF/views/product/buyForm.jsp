@@ -7,10 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>구매</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script type="text/javascript" src="../js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+<script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	$('#write_form2').submit(function(){
@@ -49,26 +49,74 @@ $(function(){
 
 </head>
 <body>
-<form id="write_form2" action="paymentDirect.do" method="post">
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<form id="write_form2" action="paymentDirect.do" method="post" class="form-inline">
 <div class="main2">
 <h2>주문 / 결제</h2>
 <h4>수령자 정보</h4></br>
-<input type="hidden" id="product_name" name="product_name" value="${product.product_name}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
-<input type="hidden" id="price" name="price" value="${product.price}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
-<input type="hidden" id="product_num" name="product_num" value="${product.product_num}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
-<input type="hidden" id="cart_count" name="cart_count" value="${cart_count}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
-<input type="hidden" id="payment" name="payment" value="2">
-<label for="name" class="control-label">주문자명</label>
-<input type="text" id="order_name" name="order_name" placeholder="수령자 입력"></br>
-<label for="phone" class="control-label">전화번호</label>
-<input type="text" id="phone" name="phone" placeholder="전화번호 입력"></br>
-<label for="zipcode" class="control-label">우편번호</label>
-<input type="text" id="zipcode" name="zipcode" placeholder="우편번호">
-<button type="button" onclick="sample2_execDaumPostcode()" class="btn btn-default btn-xs">우편번호 〉</button></br>
-<label for="address1" class="control-label"></label>
-<input type="text" id="address1" name="address1" placeholder="주소 입력"><br>
-<label for="address2" class="control-label"></label>
-<input type="text" id="address2" name="address2" placeholder="상세주소 입력"><br>
+	<input type="hidden" id="product_name" name="product_name" value="${product.product_name}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
+	<input type="hidden" id="price" name="price" value="${product.price}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
+	<input type="hidden" id="product_num" name="product_num" value="${product.product_num}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
+	<input type="hidden" id="cart_count" name="cart_count" value="${cart_count}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->	
+	<input type="hidden" id="payment" name="payment" value="2">
+	
+	<div class="form-group">
+		<label for="name" class="control-label">주문자명</label>
+	</div>
+	<div class="form-group">
+		<input type="text" name="order_name" id="order_name"
+			               maxlength="10" class="form-control" placeholder="수령자 입력">			
+	</div><p>
+	 
+	<div class="form-group">
+		<label for="phone" class="control-label">전화번호</label>
+	</div>
+	<div class="form-group">
+		<input type="text" name="phone" id="phone"
+			           maxlength="15" class="form-control"> 					
+	</div><p> 
+	 
+	<div class="form-group">
+		<label for="zipcode" class="control-label">우편번호</label>
+	</div>
+	<div class="form-group">
+		<input type="text" name="zipcode" id="zipcode"
+			       maxlength="5" class="form-control">		
+		<button type="button" onclick="sample2_execDaumPostcode()" class="btn btn-default btn-xs margin_left_10">우편번호 〉</button>  					
+	</div><p>	 
+	 
+	<div class="form-group">
+		<label for="address1" class="control-label">주소</label>
+	</div>
+	<div class="form-group">
+		<input type="text" name="address1" id="address1"
+			             maxlength="30" class="form-control">  					
+	</div><p>
+	
+	<div class="form-group">
+		<label for="address2" class="control-label">상세 주소</label>
+	</div>
+	<div class="form-group">
+		<input type="text" name="address2" id="address2"
+			            maxlength="30" class="form-control">  					
+	</div><p>
+	
+	
+	
+	
+	<!-- 
+	
+	<label for="name" class="control-label">주문자명</label>
+	<input type="text" id="order_name" name="order_name" placeholder="수령자 입력" class="form-control"></br>
+	<label for="phone" class="control-label">전화번호</label>
+	<input type="text" id="phone" name="phone" placeholder="전화번호 입력" class="form-control"></br>
+	<label for="zipcode" class="control-label">우편번호</label>
+	<input type="text" id="zipcode" name="zipcode" placeholder="우편번호" class="form-control">
+	<button type="button" onclick="sample2_execDaumPostcode()" class="btn btn-default btn-xs">우편번호 〉</button></br>
+	<label for="address1" class="control-label"></label>
+	<input type="text" id="address1" name="address1" placeholder="주소 입력" class="form-control"><br>
+	<label for="address2" class="control-label"></label>
+	<input type="text" id="address2" name="address2" placeholder="상세주소 입력" class="form-control"><br> -->
 
 <hr class="mt-2 mb-3"/>
 <div class="row">

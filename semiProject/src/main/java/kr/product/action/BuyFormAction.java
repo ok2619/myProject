@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
+import kr.order.dao.OrderDAO;
+import kr.order.vo.OrderVO;
 import kr.product.dao.ProductDAO;
 import kr.product.vo.ProductVO;
 

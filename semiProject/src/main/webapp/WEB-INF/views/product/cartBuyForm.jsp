@@ -17,23 +17,52 @@
 </style>
 </head>
 <body>
-<form action="payment.do" method="post">
-
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<form action="payment.do" method="post" class="form-inline">
 <div class="main2">
 <h2>주문 / 결제</h2>
 <h4>수령자 정보</h4></br>
 
-<label for="name" class="control-label">주문자명</label>
-<input type="text" id="order_name" name="order_name" placeholder="수령자 입력"></br>
-<label for="phone" class="control-label">전화번호</label>
-<input type="text" id="phone" name="phone" placeholder="전화번호 입력"></br>
-<label for="zipcode" class="control-label">우편번호</label>
-<input type="text" id="zipcode" name="zipcode" placeholder="우편번호">
-<button type="button" onclick="sample2_execDaumPostcode()" class="btn btn-default btn-xs">우편번호 〉</button></br>
-<label for="address1" class="control-label"></label>
-<input type="text" id="address1" name="address1" placeholder="주소 입력"><br>
-<label for="address2" class="control-label"></label>
-<input type="text" id="address2" name="address2" placeholder="상세주소 입력"><br>
+<div class="form-group">
+		<label for="name" class="control-label">주문자명</label>
+	</div>
+	<div class="form-group">
+		<input type="text" name="order_name" id="order_name"
+			               maxlength="10" class="form-control" placeholder="수령자 입력">			
+	</div><p>
+	 
+	<div class="form-group">
+		<label for="phone" class="control-label">전화번호</label>
+	</div>
+	<div class="form-group">
+		<input type="text" name="phone" id="phone"
+			           maxlength="15" class="form-control"> 					
+	</div><p> 
+	 
+	<div class="form-group">
+		<label for="zipcode" class="control-label">우편번호</label>
+	</div>
+	<div class="form-group">
+		<input type="text" name="zipcode" id="zipcode"
+			       maxlength="5" class="form-control">		
+		<button type="button" onclick="sample2_execDaumPostcode()" class="btn btn-default btn-xs margin_left_10">우편번호 〉</button>  					
+	</div><p>	 
+	 
+	<div class="form-group">
+		<label for="address1" class="control-label">주소</label>
+	</div>
+	<div class="form-group">
+		<input type="text" name="address1" id="address1"
+			             maxlength="30" class="form-control">  					
+	</div><p>
+	
+	<div class="form-group">
+		<label for="address2" class="control-label">상세 주소</label>
+	</div>
+	<div class="form-group">
+		<input type="text" name="address2" id="address2"
+			            maxlength="30" class="form-control">  					
+	</div><p>
 
 <hr class="mt-2 mb-3"/>
 
@@ -58,7 +87,7 @@
 <!--/////////////////////////////////////////////////////////////  -->
 </div>
 
-<span style = "font-size:5em">총 결제 금액 : <fmt:formatNumber value="${all_total}"/>원</span>
+<h4 class="font2">총 결제 금액 : <fmt:formatNumber value="${all_total}"/>원</h4>
 	
 <div id="btn-1">
 	<button type="button" class="btn btn-secondary btn-lg" style="background-color:black; color:white">계좌이체</button>
@@ -69,17 +98,6 @@
 </div>
 	
 </form>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
