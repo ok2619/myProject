@@ -21,6 +21,7 @@
 	      <th scope="col">상품명</th>
 	      <th scope="col">배송상태</th>
 	      <th scope="col">주문날짜</th>
+	      <th></th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -38,8 +39,8 @@
 	      <c:when test="${order.shipping == 5}">주문취소</c:when>
 	      </c:choose>
 		  </td>
-	      
 	      <td>${order.reg_date}</td>
+	      <td><input type="button" value="주문취소"></td>
 	    </tr>
 	    </c:forEach>
 	  </tbody>
