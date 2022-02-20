@@ -24,7 +24,7 @@ public class PaymentDirectAction implements Action{
 		request.setCharacterEncoding("utf-8");
 		String product_name = request.getParameter("product_name");
 		int price = Integer.parseInt(request.getParameter("price"));
-		
+		int payment = Integer.parseInt(request.getParameter("payment"));
 
 		OrderDetailVO orderDetail = new OrderDetailVO();
 		orderDetail.setProduct_num(Integer.parseInt(request.getParameter("product_num")));
@@ -42,7 +42,7 @@ public class PaymentDirectAction implements Action{
 		order.setOrder_address2(request.getParameter("address2"));
 		order.setOrder_phone(request.getParameter("phone"));
 		order.setUser_num(user_number);
-		
+		order.setPayment(payment);
 		
 		ProductDAO itemDao = ProductDAO.getInstance();
 		ProductVO item = itemDao.getProduct(Integer.parseInt(request.getParameter("product_num")));

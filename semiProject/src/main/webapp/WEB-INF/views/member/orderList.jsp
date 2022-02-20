@@ -69,11 +69,12 @@
 	      <td>${order.reg_date}</td>
 	      <td>	 
     	  <c:choose>
-			<c:when test="${order.shipping == 5}">이미 취소</c:when>
-			<c:when test="${order.shipping != 5}">
+			<c:when test="${order.shipping == 5}">취소상태</c:when>
+			<c:when test="${order.shipping == 1}">
 			<input type="button" id="delete_btn" value="주문취소"
 			onclick="location.href='${pageContext.request.contextPath}/member/myOrderModify.do?order_num=${order.order_num}&shipping=${order.shipping}'">
 			</c:when>
+			<c:otherwise>취소불가</c:otherwise>
 			</c:choose>
 	      </td>
 	    </tr>
