@@ -33,37 +33,57 @@
 <div class="page-main">	
 	<h3 class="align-center common_title">구매 목록</h3>
 	<c:if test="${count == 0}">
-	<div class="result-display">
-		표시할 주문 내역이 없습니다.
-	</div>
+		<table class="table table-hover">
+		  <thead>
+			<tr>
+		 		<th>주문번호</th>
+				<th>구매자ID</th>
+				<th>상품명</th>
+				<th>총구매금액</th>
+				<th>주문날짜</th>
+				<th>배송상태</th>
+			</tr>
+		 	</thead>
+		    <tbody>			
+			  <tr>
+				<td colspan="6" class="align-center">			
+				<p>
+				<div class="blank_20"></div>
+				표시할 주문내역이 없습니다.	
+				<div class="blank_20"></div>	
+				<p>
+				</td>				
+			 </tr>
+		  </tbody>			
+		</table>
 	</c:if>
 	<c:if test="${count > 0}">
-	<table class="table">
-		<tr>
-			<th>주문번호</th>
-			<th>구매자ID</th>
-			<th>상품명</th>
-			<th>총구매금액</th>
-			<th>주문날짜</th>
-			<th>배송상태</th>
-		</tr>
-		<c:forEach var="order" items="${list}">
-		<tr>
-			<td><a href="modifyForm.do?order_num=${order.order_num}">${order.order_num}</a></td>
-			<td>${order.id}</td>
-			<td><a href="modifyForm.do?order_num=${order.order_num}">${order.product_name}</a></td>
-			<td><fmt:formatNumber value="${order.order_total}"/>원</td>
-			<td>${order.reg_date}</td>
-			<td>
-				<c:if test="${order.shipping == 1}">배송대기</c:if>
-				<c:if test="${order.shipping == 2}">배송준비중</c:if>
-				<c:if test="${order.shipping == 3}">배송중</c:if>
-				<c:if test="${order.shipping == 4}">배송완료</c:if>
-				<c:if test="${order.shipping == 5}">주문취소</c:if>
-			</td>
-		</tr>
-		</c:forEach>
-	</table>
+		<table class="table">
+			<tr>
+				<th>주문번호</th>
+				<th>구매자ID</th>
+				<th>상품명</th>
+				<th>총구매금액</th>
+				<th>주문날짜</th>
+				<th>배송상태</th>
+			</tr>
+			<c:forEach var="order" items="${list}">
+			<tr>
+				<td><a href="modifyForm.do?order_num=${order.order_num}">${order.order_num}</a></td>
+				<td>${order.id}</td>
+				<td><a href="modifyForm.do?order_num=${order.order_num}">${order.product_name}</a></td>
+				<td><fmt:formatNumber value="${order.order_total}"/>원</td>
+				<td>${order.reg_date}</td>
+				<td>
+					<c:if test="${order.shipping == 1}">배송대기</c:if>
+					<c:if test="${order.shipping == 2}">배송준비중</c:if>
+					<c:if test="${order.shipping == 3}">배송중</c:if>
+					<c:if test="${order.shipping == 4}">배송완료</c:if>
+					<c:if test="${order.shipping == 5}">주문취소</c:if>
+				</td>
+			</tr>
+			</c:forEach>
+		</table>
 	</c:if>
 	<form action="list.do" method="get" id="search_review">
 		<ul class="search_review">

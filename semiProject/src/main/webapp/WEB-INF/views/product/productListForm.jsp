@@ -19,68 +19,87 @@
 	<div class="page-main">	
 	<h3 class="align-center common_title">상품 목록</h3>
 		<c:if test="${count == 0}">
-		<div class="result-display">
-			표시할 게시물이 없습니다.
-		</div>	
+			<table class="table table-hover">
+			  	<thead>
+					<tr>
+						<th>상품 번호</th>
+						<th>상품명</th>
+						<th>사진</th>
+						<th>상품 종류</th>
+						<th>가격</th>
+						<th>재고</th>
+						<th>등록일</th>
+					</tr>
+			 	 </thead>
+			 	 <tbody>			
+					<tr>
+						<td colspan="7" class="align-center">			
+						<p><div class="blank_20"></div>
+						표시할 상품이 없습니다.		
+						<p><div class="blank_20"></div>
+						</td>				
+					</tr>
+				  </tbody>			
+			</table>
 		</c:if>
 		<c:if test="${count > 0}">
-		<table class="table">
-			<tr>
-				<th>상품 번호</th>
-				<th>상품명</th>
-				<th>사진</th>
-				<th>상품 종류</th>
-				<th>가격</th>
-				<th>재고</th>
-				<th>등록일</th>
-			</tr>
-			<c:forEach var="product" items="${list}">
-			<tr>
-				<td>${product.product_num}</td>
-				<td><a href="productUpdateForm.do?product_num=${product.product_num}">${product.product_name}</a></td>
-				<c:choose>
-				<c:when test="${product.image == null}">
-				<td><img src="../upload/NO.png" class="list-img"></td>
-				</c:when>
-				<c:when test="${product.image != null}">
-				<td><a href="productDetail.do?product_num=${product.product_num}"><img src="../upload/${product.image}" height="100" width="100" ></a></td>
-				</c:when>
-				</c:choose>
-				
-				<td>${product.sort}</td>
-				<td><fmt:formatNumber value="${product.price}" pattern="#,###" /></td>
+			<table class="table">
+				<tr>
+					<th>상품 번호</th>
+					<th>상품명</th>
+					<th>사진</th>
+					<th>상품 종류</th>
+					<th>가격</th>
+					<th>재고</th>
+					<th>등록일</th>
+				</tr>
+				<c:forEach var="product" items="${list}">
+				<tr>
+					<td>${product.product_num}</td>
+					<td><a href="productUpdateForm.do?product_num=${product.product_num}">${product.product_name}</a></td>
+					<c:choose>
+					<c:when test="${product.image == null}">
+					<td><img src="../upload/NO.png" class="list-img"></td>
+					</c:when>
+					<c:when test="${product.image != null}">
+					<td><a href="productDetail.do?product_num=${product.product_num}"><img src="../upload/${product.image}" height="100" width="100" ></a></td>
+					</c:when>
+					</c:choose>
 					
-				<c:choose>
-				<c:when test="${product.stock <= 0}">
-				<td>품절</td>
-				</c:when>
-				<c:when test="${product.stock > 0}">
-				<td>${product.stock}</td>
-				</c:when>
-				</c:choose>				
-				<td>${product.reg_date}</td>				
-			</tr>	
-			</c:forEach>
-		</table>
+					<td>${product.sort}</td>
+					<td><fmt:formatNumber value="${product.price}" pattern="#,###" /></td>
+						
+					<c:choose>
+					<c:when test="${product.stock <= 0}">
+					<td>품절</td>
+					</c:when>
+					<c:when test="${product.stock > 0}">
+					<td>${product.stock}</td>
+					</c:when>
+					</c:choose>				
+					<td>${product.reg_date}</td>				
+				</tr>	
+				</c:forEach>
+			</table>
 		</c:if>
-			<!-- 검색창 시작 -->
-			<form id="search_review" action="productList.do" method="get">
-				<ul class="search_review">
-					<li>
-						<select name="keyfield">
-							<option value="1">상품명</option>
-							<option value="2">상풍종류</option>
-						</select>
-					</li>
-					<li>
-						<input type="search" size="16" name="keyword" id="keyword"
-						                                   value="${param.keyword}">
-					</li>
-					<li>
-						<input type="submit" value="검색">
-					</li>
-				</ul>
-			</form>
+		<!-- 검색창 시작 -->
+		<form id="search_review" action="productList.do" method="get">
+			<ul class="search_review">
+				<li>
+					<select name="keyfield">
+						<option value="1">상품명</option>
+						<option value="2">상풍종류</option>
+					</select>
+				</li>
+				<li>
+					<input type="search" size="16" name="keyword" id="keyword"
+					                                   value="${param.keyword}">
+				</li>
+				<li>
+					<input type="submit" value="검색">
+				</li>
+			</ul>
+		</form>
 		<!-- 검색창 끝 -->
 		<p class="clear"></p>
 		<div class="blank_50"></div>	
