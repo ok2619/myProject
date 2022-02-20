@@ -65,7 +65,7 @@
 				        	<p><fmt:formatNumber value="${product.price}" pattern="#,###" />원</p>				        	
 				        	<p>	        	
 				        		<c:if test="${product.stock > 0 }">		        	
-				        	<a href="${pageContext.request.contextPath}/product/buyForm.do?product_num=${product.product_num}&cart_count=1" class="btn btn-default btn-sm btn_a" role="button">구매하기</a>
+				        	<a href="${pageContext.request.contextPath}/product/buyForm.do?product_num=${product.product_num}&cart_count=1" id="per" class="btn btn-default btn-sm btn_a" role="button">구매하기</a>
 				        	</c:if>
 				        	<c:if test="${product.stock <= 0 }">
 				        	<span>품절</span>
