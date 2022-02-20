@@ -21,11 +21,11 @@
 				잘못된 접속입니다.
 			</c:if>
 			<p>
-			<c:if test="${!emtpy accessUrl}">
+			<c:if test="${!empty accessUrl}">
 				<input type="button" value="이동" 
 				              onclick="location.href='${accessUrl}'">
 			</c:if>
-			<c:if test="${emtpy accessUrl}">
+			<c:if test="${empty accessUrl}">
 				<input type="button" value="홈으로" 
 			onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 			</c:if>

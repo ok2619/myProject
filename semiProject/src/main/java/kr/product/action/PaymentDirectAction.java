@@ -22,18 +22,12 @@ public class PaymentDirectAction implements Action{
 		String product_name = request.getParameter("product_name");
 		int price = Integer.parseInt(request.getParameter("price"));
 		request.setCharacterEncoding("utf-8");
-		
-		
-		
-		
-		
-		
-		
+
 		OrderDetailVO orderDetail = new OrderDetailVO();
 		orderDetail.setProduct_num(Integer.parseInt(request.getParameter("product_num")));
 		orderDetail.setProduct_name(product_name);
 		orderDetail.setProduct_price(price);
-		orderDetail.setCart_count(1);
+		orderDetail.setCart_count(Integer.parseInt(request.getParameter("cart_count")));
 		orderDetail.setProduct_total(price);
 		
 		OrderVO order = new OrderVO();
