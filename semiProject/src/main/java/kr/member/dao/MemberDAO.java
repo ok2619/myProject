@@ -6,8 +6,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.board.vo.BoardVO;
 import kr.member.vo.MemberVO;
+import kr.order.vo.OrderVO;
 import kr.util.DBUtil;
+import kr.util.StringUtil;
 
 public class MemberDAO {
 	
@@ -394,7 +397,110 @@ public class MemberDAO {
 
 
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ			
-		
+		//레코드 수
+		//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+		// 총 레코드 수(검색 레코드 수)
+		public int getOrderCount(int user_num) throws Exception {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			int count = 0;
 
+			try {
+				conn = DBUtil.getConnection();
+				sql = "SELECT COUNT(*) FROM qboard b JOIN qmember m USING(user_num) where user_num = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, user_num);
+
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					count = rs.getInt(1);
+				}
+			} catch (Exception e) {
+				throw new Exception(e);
+			} finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return count;
+		}
+		
+		//내 주문 목록 보기
+		public List<OrderVO> getMyOrder(int startRow, int endRow, String keyfield, String keyword, int user_number)
+				throws Exception {
+
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<OrderVO> list = null;
+			String sql = null;
+			int cnt = 0;
+
+			try {
+				// 커넥션풀로부터 커넥션을 할당
+				conn = DBUtil.getConnection();
+
+				// SQL문 작성
+				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
+						+ "(SELECT * FROM qorder b JOIN qmember m "
+						+ "USING(user_num) where user_num = ? "
+						+ "ORDER BY b.order_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+
+				// preparedStatement 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				// sub_sql의 ?에 데이터 매핑위해 조건체크 (new)
+				if (keyword != null && !"".equals(keyword)) {
+					pstmt.setString(++cnt, "%" + keyword + "%");
+				}
+
+				// ?에 데이터 바인딩
+				pstmt.setInt(++cnt, user_number);
+				pstmt.setInt(++cnt, startRow);
+				pstmt.setInt(++cnt, endRow);
+
+				// SQL문을 테이블에 반영해 결과행들을 ResultSet에 담음
+				rs = pstmt.executeQuery();
+				// ArrayList 객체 생성
+				list = new ArrayList<OrderVO>();
+				// 반복문을 이용해 반복, 자바빈을 생성하고 정보를 저장
+				while (rs.next()) {
+					// 하나의 레코드 정보를 담기 위해 BoardVO 객체(자바빈)를 생성
+					OrderVO order = new OrderVO();
+					order.setOrder_num(rs.getInt("order_num"));
+					order.setProduct_name(rs.getString("product_name"));
+					order.setShipping(rs.getInt("shipping"));
+					order.setReg_date(rs.getDate("reg_date"));
+					
+
+					// VO를 ArrayList에 등록(저장해줘야함)
+					list.add(order);
+				}
+			} catch (Exception e) {
+				throw new Exception(e);
+			} finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return list;
+		}
+		///////////주문취소
+		public void cencelMyOrder(int order_num) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String sql = null;
+			try {
+				conn = DBUtil.getConnection();
+				sql = "UPDATE qorder SET shipping='5' WHERE order_num = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, order_num);
+
+				pstmt.executeUpdate();
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(null, pstmt, conn);
+			}
+			
+		}
 }
 

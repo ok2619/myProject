@@ -64,7 +64,12 @@
 				     	<h4 class="font2"><a href="${pageContext.request.contextPath}/product/productDetail.do?product_num=${product.product_num}">${product.product_name}</a></h4>
 				        	<p><fmt:formatNumber value="${product.price}" pattern="#,###" />원</p>				        	
 				        	<p>	        	
-				        		<a href="${pageContext.request.contextPath}/product/buyForm.do?product_num=${product.product_num}&cart_count=1" id="per" class="btn btn-default btn-sm btn_a" role="button">구매하기</a>
+				        		<c:if test="${product.stock > 0 }">		        	
+				        	<a href="${pageContext.request.contextPath}/product/buyForm.do?product_num=${product.product_num}&cart_count=1" class="btn btn-default btn-sm btn_a" role="button">구매하기</a>
+				        	</c:if>
+				        	<c:if test="${product.stock <= 0 }">
+				        	<span>품절</span>
+				        	</c:if>
 				        		<a href="#"><img src="../upload/cart.png" class="cart-in btn_b" id="img1" data-num="${product.product_num}"></a>				        								
 				        	</p>
 				     </div>

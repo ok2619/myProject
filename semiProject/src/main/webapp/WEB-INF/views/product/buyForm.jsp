@@ -78,7 +78,7 @@ $(function(){
 	</div>
   모델명 : ${product.product_name}</br>
   상품종류 : ${product.sort}</br>
-  수량 : ${cart_count}</br>
+  수량 : <fmt:formatNumber value="${cart_count}"/></br>
   총금액 : <fmt:formatNumber value="${cart_count * product.price}" pattern="#,###" /></br>
   
   <hr class="mt-2 mb-3"/>

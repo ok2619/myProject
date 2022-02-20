@@ -117,11 +117,12 @@
 		</ul>
 	</form>
 	<!-- 검색창 끝 -->
-	<input type="button" value="추천순으로 보기" class="btn btn-default btn-sm" id="like_btn_list" 
-											onclick="location.href='list.do?order=desc'">
-	
+	<form action="list.do" method="post">
+<!-- 	<input type="submit" value="추천순으로 보기" class="btn btn-default btn-sm" id="like_btn_list" 
+											onclick="location.href='list.do?order=desc'"> -->
+	</form>
 	<!-- 글쓰기버튼 -->
-	<p>
+	<p> 
 	<div class="align-right" id="write_btn">
 		<input type="button" value="글쓰기" onclick="location.href='writeForm.do'" class="btn btn-info" id="write_btn">
 		<%-- <c:if test="${empty user_number}">disabled="disabled"</c:if>> --%> <!-- 로그인 안된상태-> 글쓰기버튼 비활성화 :disabled="disabled" -->		

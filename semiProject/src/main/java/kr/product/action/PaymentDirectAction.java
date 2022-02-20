@@ -8,6 +8,8 @@ import kr.controller.Action;
 import kr.order.dao.OrderDAO;
 import kr.order.vo.OrderDetailVO;
 import kr.order.vo.OrderVO;
+import kr.product.dao.ProductDAO;
+import kr.product.vo.ProductVO;
 
 public class PaymentDirectAction implements Action{
 
@@ -22,18 +24,12 @@ public class PaymentDirectAction implements Action{
 		String product_name = request.getParameter("product_name");
 		int price = Integer.parseInt(request.getParameter("price"));
 		request.setCharacterEncoding("utf-8");
-		
-		
-		
-		
-		
-		
-		
+
 		OrderDetailVO orderDetail = new OrderDetailVO();
 		orderDetail.setProduct_num(Integer.parseInt(request.getParameter("product_num")));
 		orderDetail.setProduct_name(product_name);
 		orderDetail.setProduct_price(price);
-		orderDetail.setCart_count(1);
+		orderDetail.setCart_count(Integer.parseInt(request.getParameter("cart_count")));
 		orderDetail.setProduct_total(price);
 		
 		OrderVO order = new OrderVO();
@@ -47,10 +43,22 @@ public class PaymentDirectAction implements Action{
 		order.setUser_num(user_number);
 		
 		
+		ProductDAO itemDao = ProductDAO.getInstance();
+		ProductVO item = itemDao.getProduct(Integer.parseInt(request.getParameter("product_num")));
+		if(item.getStock() < Integer.parseInt(request.getParameter("cart_count"))) {
+			//상품 재고 수량 부족
+			request.setAttribute("notice_msg", 
+					       "[" + item.getProduct_name() + "]재고 수량 부족으로 주문 불가");
+			request.setAttribute("notice_url", 
+					             request.getContextPath()+"/product/cartList.do");
+			return "/WEB-INF/views/common/alert_singleView.jsp";
+		}
+		
 		
 		//주문 정보를 테이블에 저장
 		OrderDAO orderDao = OrderDAO.getInstance();
 		orderDao.insertOrder(order, orderDetail);
+		
 		
 		//refresh 정보를 응답 헤더에 저장
 		response.addHeader("Refresh", "1;url=../main/main.do");
@@ -61,4 +69,4 @@ public class PaymentDirectAction implements Action{
 		return "/WEB-INF/views/common/notice.jsp";
 	}
 
-}
+	}
