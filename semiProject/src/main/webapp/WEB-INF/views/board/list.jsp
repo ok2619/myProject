@@ -117,9 +117,10 @@
 		</ul>
 	</form>
 	<!-- 검색창 끝 -->
-	<input type="button" value="추천순으로 보기" class="btn btn-default btn-sm" id="like_btn_list" 
-											onclick="location.href='list.do?order=desc'">
-	
+	<form action="list.do" method="post">
+<!-- 	<input type="submit" value="추천순으로 보기" class="btn btn-default btn-sm" id="like_btn_list" 
+											onclick="location.href='list.do?order=desc'"> -->
+	</form>
 	<!-- 글쓰기버튼 -->
 	<p>
 	<div class="align-right" id="write_btn">
