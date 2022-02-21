@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
+import kr.member.dao.MemberDAO;
+import kr.member.vo.MemberVO;
 import kr.order.dao.OrderDAO;
 import kr.product.dao.ProductDAO;
 import kr.product.vo.CartVO;
@@ -37,24 +39,29 @@ public class CartBuyFormAction implements Action{
 		
 		
 		//장바구니에 담겨있는 상품 정보 호출
-				List<CartVO> cartList = dao.cartList(user_number);
-				for(CartVO cart : cartList) {
-					ProductDAO itemDao = ProductDAO.getInstance();
-					ProductVO item = itemDao.getProduct(cart.getProduct_num());
-					
-					
-					if(item.getStock() < cart.getCart_count()) {
-						//상품 재고 수량 부족
-						request.setAttribute("notice_msg", 
-								       "[" + item.getProduct_name() + "]재고 수량 부족으로 주문 불가");
-						request.setAttribute("notice_url", 
-								             request.getContextPath()+"/product/cartList.do");
-						return "/WEB-INF/views/common/alert_singleView.jsp";
-					}
-				}
+		List<CartVO> cartList = dao.cartList(user_number);
+		for(CartVO cart : cartList) {
+			ProductDAO itemDao = ProductDAO.getInstance();
+			ProductVO item = itemDao.getProduct(cart.getProduct_num());
+			
+			
+			if(item.getStock() < cart.getCart_count()) {
+				//상품 재고 수량 부족
+				request.setAttribute("notice_msg", 
+						       "[" + item.getProduct_name() + "]재고 수량 부족으로 주문 불가");
+				request.setAttribute("notice_url", 
+						             request.getContextPath()+"/product/cartList.do");
+				return "/WEB-INF/views/common/alert_singleView.jsp";
+			}
+		}
 				
-				request.setAttribute("list", cartList);
-				request.setAttribute("all_total", all_total);
+		MemberDAO memberDao = MemberDAO.getInstance();
+		MemberVO member =  memberDao.getMember(user_number);
+		
+		request.setAttribute("member", member);
+		
+		request.setAttribute("list", cartList);
+		request.setAttribute("all_total", all_total);
 		
 		return "/WEB-INF/views/product/cartBuyForm.jsp";
 	}
