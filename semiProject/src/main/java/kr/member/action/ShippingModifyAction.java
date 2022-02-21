@@ -32,6 +32,7 @@ public class ShippingModifyAction implements Action{
 		
 		request.setAttribute("order", order);
 		request.setAttribute("detailList", detailList);
+		
 		return "/WEB-INF/views/member/shippingModify.jsp";
 	}
 

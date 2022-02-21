@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <script type="text/javascript">
 	alert('회원상품정보를 수정했습니다.');
-	location.href='list.do'
+	location.href='orderList.do'
 </script>

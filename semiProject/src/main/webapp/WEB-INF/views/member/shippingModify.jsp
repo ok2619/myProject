@@ -73,7 +73,7 @@
 	<div class="blank_40"></div>
 	<h4 class="font3 blank_20"><b>[배송 및 주문 정보]</b></h4>
 	<div class="panel panel-default">
-		<form action="modify.do" method="post" id="order_modify" class="form-inline go_left2">
+		<form action="shippingUpdate.do" method="post" id="order_modify" class="form-inline go_left2">
 			<input type="hidden" name="order_num" value="${order.order_num}">
 			
 			<div class="form-group">
@@ -122,29 +122,23 @@
 				<label class="control-label">결제수단</label>
 			</div>
 			<div class="form-group">
-				<input type="radio" name="payment" id="payment1" value="1"
-					      <c:if test="${order.payment == 1}">checked</c:if>>통장입금
-					      &nbsp;
-					<input type="radio" name="payment" id="payment2" value="2"
-					      <c:if test="${order.payment == 2}">checked</c:if>>카드결제       					
+				<input type="hidden" id="payment" name="payment" value="${order.payment}">
+				<c:if test="${order.payment == 1}">통장입금</c:if>
+				<c:if test="${order.payment == 2}">카드결제</c:if>  					
 			</div><p>
 				
 			<div class="form-group">
 				<label class="control-label">배송상태</label>
 			</div>
 			<div class="form-group">
+			<input type="hidden" id="shipping" name="shipping" value="${order.shipping}">
 				<c:if test="${order.shipping != 5}">
-					<input type="radio" name="shipping" id="shipping1" value="1"
-					     <c:if test="${order.shipping == 1}">checked</c:if>>배송대기&nbsp;
-					<input type="radio" name="shipping" id="shipping2" value="2"
-					     <c:if test="${order.shipping == 2}">checked</c:if>>배송준비중&nbsp;
-					<input type="radio" name="shipping" id="shipping3" value="3"
-					     <c:if test="${order.shipping == 3}">checked</c:if>>배송중&nbsp;
-					<input type="radio" name="shipping" id="shipping4" value="4"
-					     <c:if test="${order.shipping == 4}">checked</c:if>>배송완료&nbsp;           
-					</c:if>
-					<input type="radio" name="shipping" id="shipping5" value="5"
-					     <c:if test="${order.shipping == 5}">checked</c:if>>주문취소 					
+					<c:if test="${order.shipping == 1}">배송대기</c:if>
+          			<c:if test="${order.shipping == 2}">배송준비중</c:if>
+          			<c:if test="${order.shipping == 3}">배송중</c:if>
+          			<c:if test="${order.shipping == 4}">배송완료</c:if>
+          			<c:if test="${order.shipping == 5}">주문취소</c:if>	
+				</c:if>				
 			</div><p> 	
 			
 			<div class="blank_40"></div>
@@ -152,8 +146,6 @@
 				<c:if test="${order.shipping != 5}">
 				<input type="submit" value="수정" class="btn btn-info margin_left_40">
 				</c:if>				
-				<input type="button" value="주문 정보 삭제" class="btn btn-danger margin_left_10"
-				 onclick="location.href='deleteOrder.do?order_num=${order.order_num}'">
 				 <input type="button" value="취소" class="btn margin_left_10"
 				  onclick="location.href='list.do'">				
 			</div>		
