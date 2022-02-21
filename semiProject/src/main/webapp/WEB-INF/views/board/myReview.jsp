@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>myPage | 게시물 관리</title>
+<title>ABCshop :: MY BOARD</title>
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>

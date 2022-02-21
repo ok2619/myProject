@@ -5,9 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글수정</title>
+<title>ABCshop :: MY BOARD</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script> 
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	//유효성 체크
 	$(function(){		
@@ -36,9 +38,9 @@
 </script>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <div class="page-main">
-	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h3 class="align-center common_title"><a href="myReview.do">MY BOARD</a></h3>
+	<a href="myReview.do"><h3 class="align-center common_title">MY BOARD</h3></a>
 	<form id="update_form" action="myReviewUpdate.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="board_num" value="${board.board_num}"> 
 		

@@ -92,7 +92,7 @@ public class paymentAction implements Action{
 				
 				//refresh 정보를 응답 헤더에 저장
 				response.addHeader("Refresh", "2;url=../main/main.do");
-				request.setAttribute("accessMsg", "주문 작성이 완료되었습니다.");
+				request.setAttribute("accessMsg", "주문이 정상적으로 접수되었습니다.<br>감사합니다.");
 				request.setAttribute("accessUrl", 
 						              request.getContextPath()+"/main/main.do");
 				

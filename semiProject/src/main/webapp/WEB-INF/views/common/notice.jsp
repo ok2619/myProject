@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>안내</title>
+<title>ABCshop :: 안내</title>
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
@@ -14,11 +14,12 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <div class="page-main">
-	<!-- <h2>안내</h2> -->
-	<!-- <div class="result-display"> -->
-		<div class="align-center">
+		<div class="align-center">		
+	<div class="panel panel-default blank_50">
 			<c:if test="${!empty accessMsg}">
+			<div class="blank_50"></div>
 				${accessMsg}
+			<div class="blank_50"></div>	
 			</c:if>
 			<c:if test="${empty accessMsg}">
 				잘못된 접속입니다.
@@ -34,7 +35,7 @@
 			</c:if>
 		</div>
 	</div>
-<!-- </div> -->
+</div> 
 </body>
 </html>
 

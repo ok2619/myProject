@@ -77,13 +77,11 @@
 			
 	});
 </script>
-
-
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <div class="page-main">
-	<h3 class="align-center common_title"><a href="list.do">상품 후기</a></h3>
+	<a href="list.do"><h3 class="align-center common_title">Review</h3></a>
 	<ul>		
 		<li><p class="font">제목 : ${board.title}</p></li>
 		<li><p class="font">작성자 : ${board.id}</p></li>		

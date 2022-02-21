@@ -40,7 +40,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <div class="page-main">
-	<h3 class="align-center common_title">상품 후기</h3>
+	<a href="list.do"><h3 class="align-center common_title">Review</h3></a>
 	<form id="update_form" action="update.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="board_num" value="${board.board_num}"> 
 		
