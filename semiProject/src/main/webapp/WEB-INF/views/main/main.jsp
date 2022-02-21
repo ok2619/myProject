@@ -57,7 +57,7 @@
 <c:forEach var="product" items="${list}">
 <div class="all">
 	<div class="row2">
-  		<div class="col-sm-4 col-md-2" style="width:300px;">
+  		<div class="col-sm-4 col-md-2" style="width:300px; height:600px;">
    			<div class="thumbnail">
         		<a href="${pageContext.request.contextPath}/product/productDetail.do?product_num=${product.product_num}"><img src="../upload/${product.image}"></a>
 				     <div class="caption">
