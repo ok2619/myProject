@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import kr.controller.Action;
 import kr.member.dao.MemberDAO;
 import kr.order.vo.OrderDetailVO;
+import kr.order.vo.OrderVO;
 
 public class MyOrderModifyAction implements Action{
 
@@ -23,9 +24,9 @@ public class MyOrderModifyAction implements Action{
 		if(user_number == null) {//로그인 되지 않은 경우
 			return "redirect:/member/loginForm.do";
 		}
-		int order_num = Integer.parseInt(request.getParameter("order_num"));
+		OrderVO order = new OrderVO();
 		MemberDAO dao = MemberDAO.getInstance();
-		dao.cencelMyOrder(order_num);
+		dao.cencelMyOrder(order);
 
 		//return "/WEB-INF/views/member/orderList.jsp"; 
 		return "redirect:/member/orderList.do";
