@@ -53,7 +53,7 @@
 </script>
 </head>
 <body>
-<div class="page-main">
+
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<h2 class="align-center common_title">회원탈퇴</h2>		
 		<form action="deleteUser.do" method="post" id="delete_form" class="form-inline">
@@ -88,6 +88,6 @@
 			</div>
 			
 		</form>
-	</div>
+
 </body>
 </html>
