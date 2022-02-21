@@ -58,7 +58,7 @@ $(function(){
 	<input type="hidden" id="price" name="price" value="${product.price}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
 	<input type="hidden" id="product_num" name="product_num" value="${product.product_num}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
 	<input type="hidden" id="cart_count" name="cart_count" value="${cart_count}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->	
-	<input type="hidden" id="payment" name="payment" value="2">
+	<!-- <input type="hidden" id="payment" name="payment" value="2"> -->
 	
 	<div class="form-group">
 		<label for="name" class="control-label">주문자명</label>
@@ -133,12 +133,23 @@ $(function(){
   <hr class="mt-2 mb-3"/>
 </div>
 </div>
+<div class="form-group">
+	<label class="control-label">결제수단</label>
+</div>
+<div class="form-group">
+	<input type="radio" name="payment" id="payment1" value="1">계좌이체
+      &nbsp;
+<input type="radio" name="payment" id="payment2" value="2">카드결제       					
+</div><p>
 
-<div id="btn-1">
-	<button type="button" class="btn btn-secondary btn-lg" 
+	<!-- <button type="button" class="btn btn-secondary btn-lg" 
 									style="background-color:black; color:white">계좌이체</button>
 	<input type="submit" class="btn btn-secondary btn-lg" 				 
-										style="background-color:black; color:white" value="카드결제">									
+										style="background-color:black; color:white" value="카드결제"> -->	
+						
+<div class="blank_50"></div>
+<div id="btn-1" class="align-center go_right">
+<input type="submit" class="btn btrbtn-lg" value="결제하기">
 </div>
 
 

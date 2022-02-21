@@ -23,11 +23,11 @@ public class BuyFormAction implements Action{
 		if(user_number == null) {
 			return "redirect:/member/loginForm.do";
 		}
+		
 		request.setCharacterEncoding("utf-8");
 		int product_num = Integer.parseInt(request.getParameter("product_num"));
 		int cart_count = Integer.parseInt(request.getParameter("cart_count"));
-		
-		/////////////////////////////////////////////////////////////////////
+			
 		/////////////////////////////////////////////////////////////////////
 		session.setAttribute("cart_count",cart_count);
 
