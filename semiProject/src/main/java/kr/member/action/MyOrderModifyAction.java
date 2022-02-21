@@ -26,17 +26,7 @@ public class MyOrderModifyAction implements Action{
 		int order_num = Integer.parseInt(request.getParameter("order_num"));
 		MemberDAO dao = MemberDAO.getInstance();
 		dao.cencelMyOrder(order_num);
-		/*
-		 * Map<String,String> mapAjax = new HashMap<String,String>(); int shipping =
-		 * Integer.parseInt(request.getParameter("shipping"));
-		 * 
-		 * if(shipping != 5) { mapAjax.put("count", dao.cencelMyOrder(order_num)); }
-		 * else if(shipping == 5){ mapAjax.put("count", "nocencel"); }
-		 */
-		
-		/*
-		 * return "/WEB-INF/views/common/ajax_view.jsp"; //ajax
-		 */	
+
 		return "/WEB-INF/views/member/orderList.jsp"; 
 	}
 	
