@@ -8,6 +8,7 @@ import java.util.List;
 
 import kr.board.vo.BoardVO;
 import kr.member.vo.MemberVO;
+import kr.order.vo.OrderDetailVO;
 import kr.order.vo.OrderVO;
 import kr.util.DBUtil;
 import kr.util.StringUtil;
@@ -489,6 +490,7 @@ public class MemberDAO {
 			String sql = null;
 			try {
 				conn = DBUtil.getConnection();
+				
 				sql = "UPDATE qorder SET shipping='5' WHERE order_num = ?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, order_num);

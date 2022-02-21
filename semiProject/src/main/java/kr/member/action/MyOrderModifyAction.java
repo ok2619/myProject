@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
 import kr.member.dao.MemberDAO;
+import kr.order.vo.OrderDetailVO;
 
 public class MyOrderModifyAction implements Action{
 
