@@ -24,7 +24,14 @@ public class MyOrderModifyAction implements Action{
 		if(user_number == null) {//로그인 되지 않은 경우
 			return "redirect:/member/loginForm.do";
 		}
+		
+		int order_num = Integer.parseInt(request.getParameter("order_num"));
+		int shipping = Integer.parseInt(request.getParameter("shipping"));
+		
 		OrderVO order = new OrderVO();
+		order.setOrder_num(order_num);
+		order.setShipping(shipping);
+		
 		MemberDAO dao = MemberDAO.getInstance();
 		dao.cencelMyOrder(order);
 

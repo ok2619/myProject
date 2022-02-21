@@ -507,6 +507,7 @@ public class MemberDAO {
 						list = new ArrayList<OrderDetailVO>();
 						while(rs.next()) {
 							OrderDetailVO detail = new OrderDetailVO();
+							detail.setProduct_num(rs.getInt("product_num"));
 							detail.setProduct_name(rs.getString("product_name"));
 							detail.setProduct_price(rs.getInt("product_price"));
 							detail.setProduct_total(rs.getInt("product_total"));
@@ -528,16 +529,16 @@ public class MemberDAO {
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			PreparedStatement pstmt2 = null;
-			PreparedStatement pstmt3 = null;
 			String sql = null;
 			try {
 				conn = DBUtil.getConnection();
 				
 				conn.setAutoCommit(false);
 				
-				sql = "UPDATE qorder SET shipping='5' WHERE order_num = ?";
+				sql = "UPDATE qorder SET shipping=? WHERE order_num = ?";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, order.getOrder_num());
+				pstmt.setInt(1, order.getShipping());
+				pstmt.setInt(2, order.getOrder_num());
 
 				pstmt.executeUpdate();
 				
@@ -547,7 +548,7 @@ public class MemberDAO {
 					List<OrderDetailVO> detailList = getListOrderDetail(order.getOrder_num());
 					
 					//sql문 작성
-					sql = "UPDATE qproduct SET quantity = quantity + ? WHERE product_num = ?";
+					sql = "UPDATE qproduct SET stock = stock + ? WHERE product_num = ?";
 					//PreparedStatement 객체 생성
 					pstmt2 = conn.prepareStatement(sql);
 					for(int i = 0; i<detailList.size(); i++) {
@@ -564,18 +565,11 @@ public class MemberDAO {
 					pstmt2.executeBatch();
 				}//end of if
 				
-				sql = "DELETE qorder_detail WHERE order_num = ?";
-				pstmt3 = conn.prepareStatement(sql);
-				pstmt3.setInt(1, order.getOrder_num());
-
-				pstmt3.executeUpdate();
-				
 				conn.commit();
 			}catch(Exception e) {
 				conn.rollback();
 				throw new Exception(e);
 			}finally {
-				DBUtil.executeClose(null, pstmt3, null);
 				DBUtil.executeClose(null, pstmt2, null);
 				DBUtil.executeClose(null, pstmt, conn);
 			}
