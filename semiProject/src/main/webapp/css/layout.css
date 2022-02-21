@@ -450,6 +450,9 @@ input[type=number]::-webkit-outer-spin-button {
 .go_right2{
 	margin-left:155px;
 }
+.go_right3{
+	margin-left:165px;
+}
 .go_left_update{
 	margin-left:-80px;
 }
@@ -457,6 +460,9 @@ input[type=number]::-webkit-outer-spin-button {
 .clear{clear:both;}
 .cart-in{
 	width:30px;	
+}
+.margin_auto{
+	margin: 30px auto;
 }
 
 

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리뷰게시판 메인(글목록)</title>
+<title>ABCshop :: Review</title>
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
@@ -37,7 +37,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="page-main">
-	<h3 class="align-center common_title"><a href="list.do">상품 후기</a></h3>
+	<h3 class="align-center common_title"><a href="list.do">Review</a></h3>
 		
 	<c:if test="${count == 0 }">
 	<table class="table table-hover">

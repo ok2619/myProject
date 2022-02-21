@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>장바구니</title>
+<title>ABCshop :: Cart</title>
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
@@ -64,30 +64,31 @@ $(function(){
 }); 
 
 </script>
- <style>
-    #btn-1{width:300px;margin:auto;}
+<!--   <style>
+    #btn-1{margin:auto;} /*  width:300px; */
     #w1{width:500px;margin:auto;} 
-</style> 
+</style>  -->
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <div class="page-main">
+	<h3 class="align-center common_title">Cart</h3>		
 	<%-- <form id="cart_order" method="post" 
 	action="${pageContext.request.contextPath}/order/orderForm.do">  --%>
 	<table class="table">
-		<tr>
+		<tr class="align-center">
 			<!-- <th>번호</th> -->
-			<th>이미지</th>
-			<th>상품정보</th>			
-			<th>판매가</th>
-			<th>수량</th>
-			<th>합계</th>
-			<th>&nbsp;</th>
+			<td>이미지</td>
+			<td>상품정보</td>			
+			<td>판매가</td>
+			<td>수량</td>
+			<td>합계</td>
+			<td>선택</td>
 		</tr>			
 		<c:set var="totalPrice" value="0"/>
 		<c:set var="totalCount" value="0"/>
 		<c:forEach var="product" items="${product}">
-		<tr>
+		<tr class="align-center">
 			<%-- <td>${product.cart_num}</td> --%>			
 			<td><img src="../upload/${product.product.image}" height="85" width="85"></td>
 			<td>${product.product.product_name}</td>
@@ -97,15 +98,15 @@ $(function(){
 			<!-- 수량 -->
 			<td>								
 				<input type="number" name="cart_count" min="1" max="99999"
-					value="${product.product.cart_count}" class="quantity-width">
-				<input type="button" value="변경" data-cartnum="${product.cart_num}" data-itemnum="${product.product_num}" class="btn btn-default btn-sm cart-modify">
+					value="${product.product.cart_count}" class="quantity-width"><br>
+				<input type="button" value="변경" data-cartnum="${product.cart_num}" data-itemnum="${product.product_num}" class="btn btn-default btn-xs cart-modify">
 			</td>			
 			<!-- 합계 -->
 			<td><b><fmt:formatNumber value="${product.product.price * product.product.cart_count}" pattern="#,###" />원</b></td>			
 			<td>			
 			<%-- <fmt:formatNumber value="${product.sub_total}"/>원
 					<br> --%>		
-			<input type="button" value="삭제" onclick="location.href='cartDelete.do?cart_num=${product.cart_num}'" class="btn btn-sm">
+			<input type="button" value="삭제" onclick="location.href='cartDelete.do?cart_num=${product.cart_num}'" class="btn btn-default btn-sm">
 			</td>
 		</tr>
 									
@@ -148,17 +149,19 @@ $(function(){
 	</div>
 	</c:when> --%>
 	<c:when test="${totalPrice > 0}">
-	<div id="btn-1">
-	<button type="button" class="btn btn-secondary go_right" style="background-color:black; color:white"
-	onclick="location.href='${pageContext.request.contextPath}/product/cartBuyForm.do'">전체상품주문</button>
-	<%-- <button type="button" class="btn btn-secondary btn-lg" style="background-color:black; color:white"
-	onclick="location.href='${pageContext.request.contextPath}/product/cartBuyForm.do'">총 <fmt:formatNumber value="${totalPrice}" pattern="#,###" />원 결제</button> --%>				
+	<div class="align-center go_right3">	
+	<button type="button" class="btn float_left align-center go_right3" style="background-color:black; color:white"
+	onclick="location.href='${pageContext.request.contextPath}/product/cartBuyForm.do'">전체상품주문</button>	
+	<button type="button" class="btn btn-default float_left margin_left align-center" 
+	onclick="location.href='${pageContext.request.contextPath}/main/main.do'">쇼팡계속하기</button>	
 	</div>
+	<div class="clear"></div>
+	<div class="blank_100"></div>
+	<%-- <button type="button" class="btn btn-secondary btn-lg" style="background-color:black; color:white"
+	onclick="location.href='${pageContext.request.contextPath}/product/cartBuyForm.do'">총 <fmt:formatNumber value="${totalPrice}" pattern="#,###" />원 결제</button> --%>					
 	</c:when>
 	</c:choose>
 	<!-- </form> -->
 </div>
-	<div class="blank_100"></div>
-
 </body>
 </html>
