@@ -17,30 +17,30 @@
 <%--로그인 화면 샘플 1 --%>	
 	<form action="login.do" method="post" class="form-horizontal" role="form"> 
 		<div class="form-group"> 
-			<label for="id" class="col-sm-3 control-label">아이디</label> 
+			<label for="id" class="col-sm-3 control-label font4">아이디</label> 
 			<div class="col-sm-9"> 
 				<input type="text" class="form-control" id="id" name="id" placeholder="id"> 
 			</div> 
 		</div> 
 		
 		<div class="form-group"> 
-			<label for="passwd" class="col-sm-3 control-label">비밀번호</label> 
+			<label for="passwd" class="col-sm-3 control-label font4">비밀번호</label> 
 			<div class="col-sm-9"> 
 				<input type="password" class="form-control" id="passwd" name="passwd" placeholder="Password"> 
 			</div> 
 		</div> 
-		
+		<div class="blank_30"></div> 
 		<div class="form-group"> 
 		<div class="col-sm-offset-3 col-sm-9"> 
 		</div> 
 		</div> 
 		
-		<div class="form-group"> 
+		<div class="form-group margin_left"> 
 			<div class="col-sm-offset-3 col-sm-2"> 
-				<button type="submit" class="btn btn-info">로그인</button> 
+				<button type="submit" class="btn btn-info font4 margin_left">로그인</button> 
 			</div> 
 			<div class="col-sm-7">
-				<button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/member/signUpForm.do'">			
+				<button type="button" class="btn font4 margin_left_10" onclick="location.href='${pageContext.request.contextPath}/member/signUpForm.do'">			
 				회원가입
 				</button> 
 			</div> 

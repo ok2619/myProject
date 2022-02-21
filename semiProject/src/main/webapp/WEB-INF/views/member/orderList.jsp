@@ -32,17 +32,17 @@
 	<table class="table table-striped">
 	  <thead>
 	    <tr>
-	      <th scope="col">주문번호</th>
-	      <th scope="col">상품명</th>
-	      <th scope="col">배송상태</th>
-	      <th scope="col">주문날짜</th>
+	      <th scope="col" class="align-center font4">주문번호</th>
+	      <th scope="col" class="align-center font4">상품명</th>
+	      <th scope="col" class="align-center font4">배송상태</th>
+	      <th scope="col" class="align-center font4">주문날짜</th>
 	      <th></th>
 	    </tr>
 	  </thead>
 	  <tbody>
 	  <c:forEach var="order" items="${list}">
-	    <tr>
-	      <th scope="row">${order.order_num}</th>
+	    <tr class="align-center font">
+	      <th scope="row" class="align-center font">${order.order_num}</th>
 	      <td>${order.product_name}</td>
 
 	      <td>

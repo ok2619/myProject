@@ -22,7 +22,9 @@
 					<%-- 비회원(로그아웃) --%>
 					<c:if test="${empty user_number}">
 					<li><a href="${pageContext.request.contextPath}/member/loginForm.do">login</a></li>
-					<li><a href="${pageContext.request.contextPath}/member/signUpForm.do">join</a></li>					
+					<li><a href="${pageContext.request.contextPath}/member/signUpForm.do">join</a></li>		
+					<li><a href="${pageContext.request.contextPath}/product/cartList.do?uesr_number=${user_number}">cart</a></li>			
+					<li><a href="${pageContext.request.contextPath}/board/list.do">review</a></li>			
 					</c:if>
 					<%-- 회원(로그인) --%>
 					<c:if test="${!empty user_number && user_auth == 2}">
@@ -35,6 +37,8 @@
 							<li><a href="${pageContext.request.contextPath}/board/myReview.do">게시물관리</a></li>					
 						</ul>
 					</li>
+					<li><a href="${pageContext.request.contextPath}/product/cartList.do?uesr_number=${user_number}">cart</a></li>			
+					<li><a href="${pageContext.request.contextPath}/board/list.do">review</a></li>
 					</c:if>
 					<%-- 관리자(로그인) --%>
 					<c:if test="${!empty user_number && user_auth == 3}">
@@ -45,8 +49,8 @@
 						<li><a href="${pageContext.request.contextPath}/member/logout.do">logout</a></li>
 					</c:if>
 					<%-- 비회원,회원,관리자 공통메뉴 --%>								
-					<li><a href="${pageContext.request.contextPath}/product/cartList.do?uesr_number=${user_number}">cart</a></li>			
-					<li><a href="${pageContext.request.contextPath}/board/list.do">review</a></li>
+					<%-- <li><a href="${pageContext.request.contextPath}/product/cartList.do?uesr_number=${user_number}">cart</a></li>			
+					<li><a href="${pageContext.request.contextPath}/board/list.do">review</a></li> --%>
 					</ul>
 								
 				<!-- 서치창 (보류) -->

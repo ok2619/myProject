@@ -61,7 +61,7 @@
    			<div class="thumbnail">
         		<a href="${pageContext.request.contextPath}/product/productDetail.do?product_num=${product.product_num}"><img src="../upload/${product.image}"></a>
 				     <div class="caption">
-				     	<h4 class="font2"><a href="${pageContext.request.contextPath}/product/productDetail.do?product_num=${product.product_num}">${product.product_name}</a></h4>
+				     	<h4 class="order_font"><a href="${pageContext.request.contextPath}/product/productDetail.do?product_num=${product.product_num}">${product.product_name}</a></h4>
 				        	<p><fmt:formatNumber value="${product.price}" pattern="#,###" />원</p>				        	
 				        	<p>	        	
 				        		<c:if test="${product.stock > 0 }">		        	

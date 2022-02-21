@@ -46,29 +46,29 @@ vertical-align: middle;
           </div>
          
           <th class="second">
-	          <span style="font-size:19px; padding-bottom:20px;">제품정보</span></br>
-	          <span>상품명 : ${product.product_name}</span></br>
-	          <span>상품종류 : ${product.sort}</span></br>
-	          <span>판매가 : <fmt:formatNumber value="${product.price}" pattern="#,###" /> 원</span></br>
+	          <span style="font-size:19px; padding-bottom:20px;" class="font4">제품정보</span></br>
+	          <span class="font4">상품명 : ${product.product_name}</span></br>
+	          <span class="font4">상품종류 : ${product.sort}</span></br>
+	          <span class="font4">판매가 : <fmt:formatNumber value="${product.price}" pattern="#,###" /> 원</span></br>
           
           <div class="align-left">
           <form action="cartInsert.do" method="post" style="padding:0; margin:auto;">
 	          <input type="hidden" id="product_num" name="product_num" value="${product.product_num}">
 	          
-	          <span>개수 : <input type="number" id="cart_count" value="1" name="cart_count" 
+	          <span class="font4">개수 : <input type="number" id="cart_count" value="1" name="cart_count" 
 	          						min="0" max="10" required></span></br>
 	          <div style="padding:15px 0px 0px 9px;">
 	          <c:if test="${product.stock > 0}">
-	          <input type='button' class="btn btn-default btn-sm" value='구매' onclick='return submit2(this.form);'> <!-- 한개의 form에 두 공간에 데이터를 보내야 하기 때문에 자바스크립트 활용 -->
+	          <input type='button' class="btn btn-default font4" value='구매' onclick='return submit2(this.form);'> <!-- 한개의 form에 두 공간에 데이터를 보내야 하기 때문에 자바스크립트 활용 -->
 	          </c:if>
 	          <c:if test="${product.stock <= 0 }">
 	          <p style="font-size:3em">품절</p>	
 	          </c:if>
-	          <input type="submit" class="btn btn-default btn-sm" value="장바구니담기">
+	          <input type="submit" class="btn btn-default font4 margin_left_10" value="장바구니담기">
 	          
 	          <c:if test="${!empty user_number && user_auth == 3}">
-	          <input type="button" class="btn btn-default btn-sm" value="상품수정" onclick="location.href='productUpdateForm.do?product_num=${product.product_num}'">
-	          <input type="button" class="btn btn-default btn-sm" value="상품삭제" onclick="location.href='productDelete.do?product_num=${product.product_num}'">
+	          <input type="button" class="btn btn-default btn-sm font4" value="상품수정" onclick="location.href='productUpdateForm.do?product_num=${product.product_num}'">
+	          <input type="button" class="btn btn-default btn-sm font4" value="상품삭제" onclick="location.href='productDelete.do?product_num=${product.product_num}'">
 	          </c:if>
 	          </div>
           </form>
@@ -78,7 +78,7 @@ vertical-align: middle;
       </thead>
       <tbody>
       	<tr style="height:50px; border-top: 1px solid black; ">
-      		<th colspan="2">제품상세정보</th>
+      		<th colspan="2" class="font4">제품상세정보</th>
       	</tr>
         <tr>
           	<td colspan="2" style="font-size:15px;">${product.content}</td>

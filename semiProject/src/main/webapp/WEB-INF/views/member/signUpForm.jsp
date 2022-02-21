@@ -164,7 +164,7 @@
 	<form id="signUp_form" action="signUp.do" method="post" class="form-inline">
 	
 		<div class="form-group">
-			<label for="ID" class="control-label">아이디</label>
+			<label for="ID" class="control-label font4">아이디</label>
 		</div>
 		<div class="form-group">
 			<input type="text" class="form-control" id="id" name="id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
@@ -174,7 +174,7 @@
 		 <p>	
 		 	
 		 <div class="form-group">
-			<label for="PASSWD" class="control-label">비밀번호</label> 
+			<label for="PASSWD" class="control-label font4">비밀번호</label> 
 		</div>
 		<div class="form-group">
 			<input type="password" class="form-control" id="passwd" name="passwd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
@@ -182,7 +182,7 @@
 		<p>		
 				
 		<div class="form-group">
-			<label for="CPASSWD" class="control-label">비밀번호 확인</label> 
+			<label for="CPASSWD" class="control-label font4">비밀번호 확인</label> 
 		</div>
 		<div class="form-group">
 			<input type="password" class="form-control" id="cpasswd" name="cpasswd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
@@ -192,7 +192,7 @@
 		<p>   
 		
 		<div class="form-group">
-			<label for="NAME" class="control-label">이름</label>
+			<label for="NAME" class="control-label font4">이름</label>
 		</div>
 		<div class="form-group">
 			<input type="text" class="form-control" id="name" name="name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">						
@@ -200,7 +200,7 @@
 		 <p>
 		 
 		 <div class="form-group">
-			<label for="phone" class="control-label">연락처</label>
+			<label for="phone" class="control-label font4">연락처</label>
 		</div>
 		<div class="form-group">
 			<input type="text" class="form-control" id="phone" name="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
@@ -208,7 +208,7 @@
 		 <p>
 		 
 		 <div class="form-group">
-			<label for="zipcode" class="control-label">주소</label>
+			<label for="zipcode" class="control-label font4">주소</label>
 		</div>
 		<div class="form-group">
 			<input type="text" class="form-control" id="zipcode" name="zipcode" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
@@ -232,7 +232,7 @@
 		</div>       		
 		<p><p><p>
 		<div class="align-center">
-			<input type="submit" class="btn btn-info btn-lg" value="&nbsp;&nbsp;&nbsp;회원가입&nbsp;&nbsp;&nbsp;" id="submit_btn"> <!-- &nbsp; :공백 -->
+			<input type="submit" class="btn btn-info btn-lg font4" value="&nbsp;&nbsp;&nbsp;회원가입&nbsp;&nbsp;&nbsp;" id="submit_btn"> <!-- &nbsp; :공백 -->
 		</div>  
 	</form>	
 

@@ -88,6 +88,7 @@ div.blank{
 .common_title{ /*추가*/
 	margin:140px auto 60px;
 	font-family: 'KOTRA_GOTHIC';
+	letter-spacing: 0.2em;
 }
 
 
@@ -390,6 +391,9 @@ input[type=number]::-webkit-outer-spin-button {
 .blank_50{
 	margin-bottom:50px;
 }
+.blank_70{
+	margin-bottom:70px;
+}
 .blank_100{
 	margin-bottom:100px;
 }
@@ -430,6 +434,7 @@ input[type=number]::-webkit-outer-spin-button {
 	margin-left:-43px;
 	margin-top:23px;
 }
+
 .center30{
 	text-align : center;
 }
@@ -444,6 +449,7 @@ input[type=number]::-webkit-outer-spin-button {
 	margin-left:-120px;
 	margin-top:-2px;
 }
+
 .go_right{
 	margin-left:85px;
 }
@@ -452,6 +458,9 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .go_right3{
 	margin-left:165px;
+}
+.go_right4{
+	margin-left:115px;
 }
 .go_left_update{
 	margin-left:-80px;
@@ -468,6 +477,22 @@ input[type=number]::-webkit-outer-spin-button {
 	color:red;
 }
 
+.buy_form{
+	margin-left:-230px;
+	margin-top:-48px;
+}
+.bg1{
+	background-color:#fafafa;
+}
+.input_color{
+	border:1px solid #dedede;
+}
+#order_btn{
+	width:200px;
+	height:40px;
+	background-color:black; color:white;
+}
+
 .font{
 	 font-family: 'Noto Sans KR', sans-serif;
 }
@@ -480,7 +505,13 @@ input[type=number]::-webkit-outer-spin-button {
 .font3{
 	 font-family: 'YUniverse-B';
 }
-
+.font4{
+	 font-family: 'NanumSquareRound';
+}
+.order_font{
+	 font-family: 'NanumSquareRound';
+	 font-size:12pt;
+}
 .btn_a{
 	/* background-color:pink;  */ 
 	margin-left:20px;
@@ -493,6 +524,12 @@ input[type=number]::-webkit-outer-spin-button {
 .row2{width:33%;float:left;}
 
 /*폰트설정*/
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 .notosanskr * { 

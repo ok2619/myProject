@@ -126,7 +126,7 @@ $(function(){
 		</c:forEach>
 	</table>
 	<hr>
-	<span class="cart_text"><b>*15만원 이상 구매시 무료배송</b></span>
+	<span class="cart_text"><b>* 15만원 이상 구매시 무료배송</b></span>
 	<p>
 	<table class="table align-center" >
 	<tr class="active">

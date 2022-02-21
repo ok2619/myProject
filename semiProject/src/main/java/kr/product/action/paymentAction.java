@@ -84,6 +84,7 @@ public class paymentAction implements Action{
 				order.setOrder_address2(request.getParameter("address2"));
 				order.setOrder_phone(request.getParameter("phone"));
 				order.setUser_num(user_number);
+				order.setPayment(Integer.parseInt(request.getParameter("payment")));
 				
 				//주문 정보를 테이블에 저장
 				OrderDAO orderDao = OrderDAO.getInstance();

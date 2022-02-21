@@ -7,23 +7,193 @@
 <head>
 <meta charset="UTF-8">
 <title>ABCshop :: Order</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script type="text/javascript" src="../js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
-<style>
-	#btn-1{width:300px;margin:auto;}
-	.main2{width:900px;margin:0 auto;}
-</style>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+<script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#write_form2').submit(function(){
+		if($('#order_name').val().trim()==''){
+			alert('수령자를 입력하세요!');
+			$('#order_name').val('').focus();
+			return false;
+		}
+		if($('#phone').val().trim()==''){
+			alert('전화번호를 입력하세요!');
+			$('#phone').val('').focus();
+			return false;
+		}
+		if($('#zipcode').val().trim()==''){
+			alert('우편번호를 입력하세요!');
+			$('#zipcode').val('').focus();
+			return false;
+		}
+		if($('#address1').val().trim()==''){
+			alert('주소를 입력하세요!');
+			$('#address1').val('').focus();
+			return false;
+		}
+		if($('#address2').val().trim()==''){
+			alert('상세주소 입력하세요!');
+			$('#address2').val('').focus();
+			return false;
+		}
+		if($('input[type=radio]:checked').length < 1){
+			alert('결제 수단을 선택하세요!');
+			return false;
+		}		
+		if($('input[type=radio]:checked').length < 1){
+			alert('결제 수단을 선택하세요!');
+			return false;
+		}
+	});
+});
+</script> 
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-<form action="payment.do" method="post" class="form-inline">
-<div class="main2">
-<h2>주문 / 결제</h2>
-<h4>수령자 정보</h4></br>
-
+<div class="page-main">
+	<h3 class="align-center common_title">order</h3>	
+	<div class="blank_20"></div>
+	<h4 class="order_font">주문 내역</h4>
+	<p>
+	<table class="table">
+		<tr class="align-center">
+			<!-- <th>번호</th> -->
+			<td>이미지</td>
+			<td>상품정보</td>			
+			<td>판매가</td>
+			<td>수량</td>
+			<td>합계</td>
+		</tr>			
+<c:forEach var="cart" items="${list}">
+		<c:set var="totalPrice" value="0"/>
+		<c:set var="totalCount" value="0"/>
+		<c:set var="Price"  value="${Price + cart.cart_count * cart.product.price}"/> 
+		
+		<c:if test="${Price < 150000}">
+		<c:set var="ship" value="3000"/>
+		<c:set var="totalPrice" value="${Price + ship}"/> 
+		</c:if>
+		
+		<c:if test="${Price >= 150000}">
+		<c:set var="ship" value="0"/>
+		<c:set var="totalPrice" value="${Price}"/> 
+		</c:if>			
+		<c:set var="totalCount" value="${totalCount + Price}"/>
+		
+		<tr class="align-center">
+			<td><img src="../upload/${cart.product.image}" height="85" width="85"></td>
+			<td>${cart.product.product_name}</td>
+			<td><fmt:formatNumber value="${cart.product.price}" pattern="#,###" />원</td>
+			<td>${cart.cart_count}</td>
+			<td><fmt:formatNumber value="${cart.product.price * cart.cart_count}" pattern="#,###" />원</td>			
+		</tr>		
+		</c:forEach>
+		<tr>
+		<td colspan="5" class="align-right bg1">
+		상품구매금액 <fmt:formatNumber value="${Price}" pattern="#,###" /> + 배송비 <fmt:formatNumber value="${ship}" pattern="#,###" /> = 합계 : <b><fmt:formatNumber value="${totalPrice}" pattern="#,###" />원</b>
+		</td>
+		</tr>
+		<tr>
+		<td colspan="5">
+		<span class="cart_text">* 상품의 옵션 및 수량 변경은 상품상세 또는 장바구니에서 가능합니다.</span>
+		</td>		
+		</tr>
+		<tr>
+		<td colspan="5">
+		</td>		
+		</tr>
+	</table>
+	
+	<p>
+	<div class="blank_50"></div>
+	<!-- <hr size="1" width="100%" noshade="noshade"> -->
+	
+	<h4 class="order_font">배송 정보</h4>
+	</div>	
+	<form action="payment.do" method="post" class="form-inline" id="write_form2">
+	<input type="hidden" id="product_name" name="product_name" value="${product.product_name}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
+	<input type="hidden" id="price" name="price" value="${product.price}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
+	<input type="hidden" id="product_num" name="product_num" value="${product.product_num}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->
+	<input type="hidden" id="cart_count" name="cart_count" value="${cart_count}"><!-- 세션에 저장하기 위해 히든으로 넘김 -->	
+	
+	<div class="page-main">
+		<table class="table buy_form">
+		<tr>
+			<td class="bg1">받으시는 분</td>
+			<td>
+				<input type="text" name="order_name" id="order_name" maxlength="10" value="${member.name}" class="input_color">
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="bg1">주소</td>
+			<td>
+			<input type="text" name="zipcode" id="zipcode"
+				       maxlength="5" value="${member.zipcode}" class="input_color">		
+			<button type="button" onclick="sample2_execDaumPostcode()" class="btn btn-default btn-xs margin_left_10">우편번호 〉</button><p>
+			<p>
+			<input type="text" name="address1" id="address1" maxlength="30" value="${member.address1}" class="input_color float_left">
+			<span class="view_font2 float_left margin_left_10"> 기본주소</span ><br>
+			<p>
+			<div class="clear"></div>
+			<p>	             
+			<input type="text" name="address2" id="address2" maxlength="30"  value="${member.address2}" class="input_color  float_left">
+			<span class="view_font2 float_left margin_left_10"> 나머지주소</span >
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="bg1">휴대전화</td>
+			<td>
+				<input type="text" name="phone" id="phone" maxlength="15" value="${member.phone}" class="input_color"> 
+			</td>
+		</tr>	
+		<tr>
+			<td class="bg1">결제 수단</td>
+			<td>
+				<input type="radio" name="payment" id="payment1" value="1">통장입금 &nbsp;
+				<input type="radio" name="payment" id="payment2" value="2">카드결제
+			</td>
+		</tr>
+		</table> 		
+	</div>
+	<div class="blank_100"></div>
+	<div class="buy_form">
+		<h4 class="order_font">결제 예정 금액</h4>	
+		<div class="page-main align-center">	
+			<table class="table">
+				<tr class="active">
+					<td>총 상품금액</td>
+					<td>총 배송비</td>
+					<td><b>최종결제금액</b></td>
+				</tr>
+				<tr>
+					<td><br><fmt:formatNumber value="${Price}" pattern="#,###" />원</td>
+					<td><br>+ <fmt:formatNumber value="${ship}" pattern="#,###" /> 원</td>
+					<td><br><b>= <fmt:formatNumber value="${totalPrice}" pattern="#,###" />원</b></td>
+				</tr>
+			</table>	
+		</div>												
+	</div>	
+	
+	<div class="blank_70"></div>	
+	<input type="submit" id="order_btn" class="btn align-center go_right4" value="결제하기" >		
+</form>	
+<!-- 	<div class=align-center">
 <div class="form-group">
+	<label class="control-label">결제수단</label>
+</div>
+<div class="form-group">
+	<input type="radio" name="payment" id="payment1" value="1">계좌이체
+      &nbsp;
+<input type="radio" name="payment" id="payment2" value="2">카드결제       					
+</div><p>
+	</div> -->
+
+	<%-- <div class="form-group">
 		<label for="name" class="control-label">주문자명</label>
 	</div>
 	<div class="form-group">
@@ -63,41 +233,17 @@
 		<input type="text" name="address2" id="address2"
 			            maxlength="30" class="form-control" value="${member.address2}">  					
 	</div><p>
-
-<hr class="mt-2 mb-3"/>
-
-<!--/////////////////////////////////////////////////////////////  -->
-<c:forEach var="cart" items="${list}">
-<div class="row">
-	<div class="col-xs-6 col-md-3">
-    	<a href="#" class="thumbnail">
-      		<img src="../upload/NO.png" alt="no">
-    	</a>
-	</div>
-  모델명 : ${cart.product.product_name}</br>
-  상품종류 : ${cart.product.sort}</br>
-  수량 : <fmt:formatNumber value="${cart.cart_count}"/></br>
-  총금액 : <fmt:formatNumber value="${cart.product.price * cart.cart_count}"/></br>
-  
+	 --%>
+  <!-- 
   <hr class="mt-2 mb-3"/>
 </div>
-<%-- <fmt:formatNumber value="${all_total}"/> --%>
-</c:forEach>
+</div> -->
 
-<!--/////////////////////////////////////////////////////////////  -->
-</div>
 
-<h4 class="font2">총 결제 금액 : <fmt:formatNumber value="${all_total}"/>원</h4>
-	
-<div id="btn-1">
-	<button type="button" class="btn btn-secondary btn-lg" style="background-color:black; color:white">계좌이체</button>
-	<input type="submit" class="btn btn-secondary btn-lg" 
-				onclick="location.href='${pageContext.request.contextPath}/product/payment.do'" 
-										style="background-color:black; color:white" value="카드결제">
-
-</div>
-	
-</form>
+	<!-- <button type="button" class="btn btn-secondary btn-lg" 
+									style="background-color:black; color:white">계좌이체</button>
+	<input type="submit" class="btn btn-secondary btn-lg" 				 
+										style="background-color:black; color:white" value="카드결제"> -->	
 
 
 
@@ -199,6 +345,6 @@
     }
 </script>
 <!-- 우편번호 스크립트 끝 -->
-
+<div class="blank_100"></div>	
 </body>
 </html>

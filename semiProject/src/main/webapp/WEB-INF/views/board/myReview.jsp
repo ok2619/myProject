@@ -31,7 +31,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="page-main">
-	<h3 class="align-center common_title"><a href="myReview.do">MY BOARD</a></h3>
+	<a href="myReview.do"><h3 class="align-center common_title">MY BOARD</h3></a>
 		
 	<c:if test="${count == 0 }">
 	<table class="table table-hover">

@@ -37,12 +37,12 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="page-main">
-	<h3 class="align-center common_title"><a href="list.do">Review</a></h3>
+	<a href="list.do"><h3 class="align-center common_title">Review</h3></a>
 		
 	<c:if test="${count == 0 }">
 	<table class="table table-hover">
 	  <thead>
-		<tr class="info font2">
+		<tr class="info  font4">
 			<th>글번호</th>
 			<th>상품정보</th>
 			<th>제목</th>
@@ -68,7 +68,7 @@
 	<c:if test="${count > 0 }">
 	<table class="table table-hover">
 	  <thead>
-		<tr class="active font2">
+		<tr class="active font4">
 			<th>번호</th>
 			<th>상품정보</th>
 			<th>제목</th>
@@ -88,7 +88,7 @@
 			</div>
 			</c:if>
 			</td>
-			<td><a href="detail.do?board_num=${board.board_num}">${board.title}</a></td>
+			<td class="font4"><a href="detail.do?board_num=${board.board_num}">${board.title}</a></td>
 			<td>${board.id}</td>
 			<td>${board.reg_date}</td>
 			<td>${board.hit}</td>

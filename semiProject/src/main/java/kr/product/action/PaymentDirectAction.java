@@ -15,16 +15,32 @@ public class PaymentDirectAction implements Action{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
+
 		HttpSession session = request.getSession();
 		Integer user_number = (Integer)session.getAttribute("user_number");
 		if(user_number == null) {//로그인이 되어 있지 않은 경우
 			return "redirect:/member/loginForm.do";
 		}
+		
+		//로그인이 되어 있는 경우
+		
+		//전송된 데이터 인코딩 처리
 		request.setCharacterEncoding("utf-8");
+		
 		String product_name = request.getParameter("product_name");
 		int price = Integer.parseInt(request.getParameter("price"));
-		int payment = Integer.parseInt(request.getParameter("payment"));
+		//int payment = Integer.parseInt(request.getParameter("payment"));
+		
+		ProductDAO itemDao = ProductDAO.getInstance();
+		ProductVO item = itemDao.getProduct(Integer.parseInt(request.getParameter("product_num")));
+		if(item.getStock() < Integer.parseInt(request.getParameter("cart_count"))) {
+			//상품 재고 수량 부족
+			request.setAttribute("notice_msg", 
+					       "[" + item.getProduct_name() + "]재고 수량 부족으로 주문 불가");
+			request.setAttribute("notice_url", 
+					             request.getContextPath()+"/product/cartList.do");
+			return "/WEB-INF/views/common/alert_singleView.jsp";
+		}
 
 		OrderDetailVO orderDetail = new OrderDetailVO();
 		orderDetail.setProduct_num(Integer.parseInt(request.getParameter("product_num")));
@@ -42,20 +58,10 @@ public class PaymentDirectAction implements Action{
 		order.setOrder_address2(request.getParameter("address2"));
 		order.setOrder_phone(request.getParameter("phone"));
 		order.setUser_num(user_number);
-		order.setPayment(payment);
-		
-		ProductDAO itemDao = ProductDAO.getInstance();
-		ProductVO item = itemDao.getProduct(Integer.parseInt(request.getParameter("product_num")));
-		if(item.getStock() < Integer.parseInt(request.getParameter("cart_count"))) {
-			//상품 재고 수량 부족
-			request.setAttribute("notice_msg", 
-					       "[" + item.getProduct_name() + "]재고 수량 부족으로 주문 불가");
-			request.setAttribute("notice_url", 
-					             request.getContextPath()+"/product/cartList.do");
-			return "/WEB-INF/views/common/alert_singleView.jsp";
-		}
+		order.setPayment(Integer.parseInt(request.getParameter("payment")));
 		
 		
+				
 		//주문 정보를 테이블에 저장
 		OrderDAO orderDao = OrderDAO.getInstance();
 		orderDao.insertOrder(order, orderDetail);
