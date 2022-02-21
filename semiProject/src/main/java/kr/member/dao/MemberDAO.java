@@ -483,23 +483,100 @@ public class MemberDAO {
 			}
 			return list;
 		}
+		//개별 상품 목록
+				public List<OrderDetailVO> getListOrderDetail(int order_num)throws Exception{
+					Connection conn = null;
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					List<OrderDetailVO> list = null;
+					String sql = null;
+					
+					try {
+						//커넥션풀로부터 커넥션을 할당
+						conn = DBUtil.getConnection();
+						//SQL문
+						sql = "SELECT * FROM qorder_detail WHERE order_num=? ORDER BY product_num DESC";
+						//PreparedStatement 객체 생성
+						pstmt = conn.prepareStatement(sql);
+						//?에 데이터를 바인딩
+						pstmt.setInt(1, order_num);
+						
+						//SQL문을 실행해서 결과행들을 ResultSet에 담음
+						rs = pstmt.executeQuery();
+						
+						list = new ArrayList<OrderDetailVO>();
+						while(rs.next()) {
+							OrderDetailVO detail = new OrderDetailVO();
+							detail.setProduct_name(rs.getString("product_name"));
+							detail.setProduct_price(rs.getInt("product_price"));
+							detail.setProduct_total(rs.getInt("product_total"));
+							detail.setCart_count(rs.getInt("cart_count"));
+							
+							list.add(detail);
+						}
+						
+					}catch(Exception e) {
+						throw new Exception(e);
+					}finally {
+						//자원정리
+						DBUtil.executeClose(rs, pstmt, conn);
+					}
+					return list;
+				}
 		///////////주문취소
-		public String cencelMyOrder(int order_num) throws Exception{
+		public String cencelMyOrder(OrderVO order) throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
+			PreparedStatement pstmt2 = null;
+			PreparedStatement pstmt3 = null;
 			String sql = null;
 			try {
 				conn = DBUtil.getConnection();
 				
+				conn.setAutoCommit(false);
+				
 				sql = "UPDATE qorder SET shipping='5' WHERE order_num = ?";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, order_num);
+				pstmt.setInt(1, order.getOrder_num());
 
 				pstmt.executeUpdate();
 				
+				//주문취소일 경우만 상품갯수 조정
+				if(order.getShipping() == 5) {
+					//주문번호에 해당하는 상품 정보 구하기
+					List<OrderDetailVO> detailList = getListOrderDetail(order.getOrder_num());
+					
+					//sql문 작성
+					sql = "UPDATE qproduct SET quantity = quantity + ? WHERE product_num = ?";
+					//PreparedStatement 객체 생성
+					pstmt2 = conn.prepareStatement(sql);
+					for(int i = 0; i<detailList.size(); i++) {
+						OrderDetailVO detail = detailList.get(i);
+						pstmt2.setInt(1, detail.getCart_count());
+						pstmt2.setInt(2, detail.getProduct_num());
+						pstmt2.addBatch();
+						
+						//계속 추가하면 outOfMemory 발생, 1000개 단위로 executeDatch()
+						if(i % 1000 == 0) {
+							pstmt2.executeBatch();
+						}
+					}//end of for
+					pstmt2.executeBatch();
+				}//end of if
+				
+				sql = "DELETE qorder_detail WHERE order_num = ?";
+				pstmt3 = conn.prepareStatement(sql);
+				pstmt3.setInt(1, order.getOrder_num());
+
+				pstmt3.executeUpdate();
+				
+				conn.commit();
 			}catch(Exception e) {
+				conn.rollback();
 				throw new Exception(e);
 			}finally {
+				DBUtil.executeClose(null, pstmt3, null);
+				DBUtil.executeClose(null, pstmt2, null);
 				DBUtil.executeClose(null, pstmt, conn);
 			}
 			return "cencel";
