@@ -61,6 +61,8 @@
 				<c:when test="${order.shipping != 5}">
 				<input type="button" id="delete_btn" value="주문취소" class="btn btn-danger btn-sm"
 				onclick="location.href='${pageContext.request.contextPath}/member/myOrderModify.do?order_num=${order.order_num}&shipping=${order.shipping}'">
+				<input type="button" id="delete_btn" value="배송정보수정" class="btn btn-danger btn-sm"
+				onclick="location.href='${pageContext.request.contextPath}/member/shippingModify.do?order_num=${order.order_num}&shipping=${order.shipping}'">
 				</c:when>
 				</c:choose>
 	      </td>
