@@ -471,7 +471,7 @@ public class MemberDAO {
 					order.setProduct_name(rs.getString("product_name"));
 					order.setShipping(rs.getInt("shipping"));
 					order.setReg_date(rs.getDate("reg_date"));
-					
+					order.setPayment(rs.getInt("payment"));
 
 					// VO를 ArrayList에 등록(저장해줘야함)
 					list.add(order);
