@@ -16,6 +16,14 @@
         $('.dropdown-toggle').dropdown()
     });
 </script>
+<script type="text/javascript">
+	$(function(){			
+		 $('#delete_btn').on('click',function(){
+			alert('주문취소 완료');
+			location.href='orderList.do';						
+		});	
+	});
+</script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -43,7 +51,7 @@
 	      <c:when test="${order.shipping == 2}">배송준비중</c:when>
 	      <c:when test="${order.shipping == 3}">배송중</c:when>
 	      <c:when test="${order.shipping == 4}">배송완료</c:when>
-	      <c:when test="${order.shipping == 5}">주문취소</c:when>
+	      <c:when test="${order.shipping == 5}"><p id="cancel_text">주문취소</p></c:when>
 	      </c:choose>
 		  </td>
 	      <td>${order.reg_date}</td>
@@ -51,7 +59,7 @@
     	  <c:choose>
 				<c:when test="${order.shipping == 5}"><span id="cencel_span"></span></c:when>
 				<c:when test="${order.shipping != 5}">
-				<input type="button" id="delete_btn" value="주문취소"
+				<input type="button" id="delete_btn" value="주문취소" class="btn btn-danger btn-sm"
 				onclick="location.href='${pageContext.request.contextPath}/member/myOrderModify.do?order_num=${order.order_num}&shipping=${order.shipping}'">
 				</c:when>
 				</c:choose>

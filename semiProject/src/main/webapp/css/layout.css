@@ -464,7 +464,9 @@ input[type=number]::-webkit-outer-spin-button {
 .margin_auto{
 	margin: 30px auto;
 }
-
+#cancel_text{
+	color:red;
+}
 
 .font{
 	 font-family: 'Noto Sans KR', sans-serif;

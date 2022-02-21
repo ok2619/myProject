@@ -27,7 +27,8 @@ public class MyOrderModifyAction implements Action{
 		MemberDAO dao = MemberDAO.getInstance();
 		dao.cencelMyOrder(order_num);
 
-		return "/WEB-INF/views/member/orderList.jsp"; 
+		//return "/WEB-INF/views/member/orderList.jsp"; 
+		return "redirect:/member/orderList.do";
 	}
 	
 }
