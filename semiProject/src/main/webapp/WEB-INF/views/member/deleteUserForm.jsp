@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial_scale=1.0">
-<title>회원탈퇴</title>
+<title>ABCshop::회원탈퇴</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
