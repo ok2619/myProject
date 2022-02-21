@@ -17,12 +17,12 @@
     });
 </script>
 <script type="text/javascript">
-	$(function(){			
+	/* $(function(){			
 		 $('#delete_btn').on('click',function(){
 			alert('주문취소 완료');
 			location.href='orderList.do';						
 		});	
-	});
+	}); */
 </script>
 </head>
 <body>
@@ -69,5 +69,6 @@
 	  </tbody>
 	</table>
 </div>	
+<div class="blank_50"></div>	
 </body>
 </html>
