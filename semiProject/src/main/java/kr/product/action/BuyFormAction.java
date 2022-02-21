@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
+import kr.member.dao.MemberDAO;
+import kr.member.vo.MemberVO;
 import kr.order.dao.OrderDAO;
 import kr.order.vo.OrderVO;
 import kr.product.dao.ProductDAO;
@@ -32,6 +34,11 @@ public class BuyFormAction implements Action{
 		
 		ProductDAO dao = ProductDAO.getInstance();
 		ProductVO product = dao.getProduct(product_num);
+		
+		MemberDAO memberDao = MemberDAO.getInstance();
+		MemberVO member =  memberDao.getMember(user_number);
+		
+		request.setAttribute("member", member);
 		
 		request.setAttribute("product", product);
 		

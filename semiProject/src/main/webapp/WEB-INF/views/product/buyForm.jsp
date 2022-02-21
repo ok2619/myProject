@@ -65,7 +65,7 @@ $(function(){
 	</div>
 	<div class="form-group">
 		<input type="text" name="order_name" id="order_name"
-			               maxlength="10" class="form-control" placeholder="수령자 입력">			
+			               maxlength="10" class="form-control" value="${member.name}">			
 	</div><p>
 	 
 	<div class="form-group">
@@ -73,7 +73,7 @@ $(function(){
 	</div>
 	<div class="form-group">
 		<input type="text" name="phone" id="phone"
-			           maxlength="15" class="form-control"> 					
+			           maxlength="15" class="form-control" value="${member.phone}"> 					
 	</div><p> 
 	 
 	<div class="form-group">
@@ -81,7 +81,7 @@ $(function(){
 	</div>
 	<div class="form-group">
 		<input type="text" name="zipcode" id="zipcode"
-			       maxlength="5" class="form-control">		
+			       maxlength="5" class="form-control" value="${member.zipcode}" >		
 		<button type="button" onclick="sample2_execDaumPostcode()" class="btn btn-default btn-xs margin_left_10">우편번호 〉</button>  					
 	</div><p>	 
 	 
@@ -90,7 +90,7 @@ $(function(){
 	</div>
 	<div class="form-group">
 		<input type="text" name="address1" id="address1"
-			             maxlength="30" class="form-control">  					
+			             maxlength="30" class="form-control" value="${member.address1}">  					
 	</div><p>
 	
 	<div class="form-group">
@@ -98,7 +98,7 @@ $(function(){
 	</div>
 	<div class="form-group">
 		<input type="text" name="address2" id="address2"
-			            maxlength="30" class="form-control">  					
+			            maxlength="30" class="form-control" value="${member.address2}">  					
 	</div><p>
 	
 	
