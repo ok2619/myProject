@@ -25,7 +25,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="page-main">
-	<h3 class="align-center common_title">회원관리</h3>
+	<h3 class="align-center common_title">회원 관리</h3>
 	<c:if test="${count==0 }">
 	<table class="table table-hover">
 	  <thead>

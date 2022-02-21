@@ -142,9 +142,9 @@
 			</div><p> 	
 			
 			<div class="blank_40"></div>
-			<div class="float_right go_right2">
+			<div class="go_right5 align-center">
 				<c:if test="${order.shipping != 5}">
-				<input type="submit" value="수정" class="btn btn-info margin_left_40">
+				<input type="submit" value="수정" class="btn btn-info margin_left">
 				</c:if>				
 				 <input type="button" value="취소" class="btn margin_left_10"
 				  onclick="location.href='list.do'">				

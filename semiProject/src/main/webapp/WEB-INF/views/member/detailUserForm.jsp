@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial_scale=1.0">
-<title>회원정보수정(관리자 전용)</title>
+<title>관리자 | 회원관리</title>
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
@@ -47,7 +47,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <div class="page-main">
-	<h4 class="align-center common_title">${member.id}의 정보 수정(관리자 전용)</h4>
+	<h3 class="align-center common_title">${member.id}님의 회원 정보</h3>
 	<form action="detailUser.do" method="post" id="detail_form" class="form-inline">
 		<input type="hidden" name="user_num" value="${member.user_num}">
 			<div class="form-group">
@@ -85,7 +85,7 @@
 			<div class="form-group">
 				<input type="text" class="form-control" id="zipcode" name="zipcode" value="${member.zipcode}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
 			</div>  
-			<button type="button" onclick="sample2_execDaumPostcode()" class="btn btn-default btn-xs">우편번호 〉</button>     		
+			<button type="button" onclick="sample2_execDaumPostcode()" class="btn btn-default btn-xs margin_left_10">우편번호 〉</button>     		
 		 	<p>
 		 	
 			<div  class="form-group">
@@ -105,7 +105,7 @@
 			<p><p>
 
 		<div class="blank_50"></div>			
-		<div class="align-center">
+		<div class="align-center go_left">
 			<input type="submit" value="수정" class="btn btn-info">
 			<input type="button" value="목록" class="btn btn-default margin_left" onclick="location.href='memberList.do'">
 		</div>
