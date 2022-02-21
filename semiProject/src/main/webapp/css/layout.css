@@ -202,14 +202,14 @@ form#search_review{
 	float:left;
 	width:40%;
 	margin: 0 0 0 -80px;
-	/* background-color:pink; */
+	/* background-color:pink;  */
 }
 ul.search_review{
 	width:300px;
 	list-style:none;
 	padding:0;
 	margin:0;	
-	/* background-color:#c4b8a5; */
+	/* background-color:#c4b8a5;  */
 	float:left;
 }
 ul.search_review li{
@@ -222,7 +222,7 @@ ul.search_review li{
 div#write_btn{
 	float:right;
 	width:30%;
-	/* background-color:#fad9a7; */
+	/* background-color:#fad9a7;  */
 	padding-top:10px;
 	height:5%;
 }
