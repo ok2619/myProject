@@ -57,9 +57,11 @@
 <c:forEach var="product" items="${list}">
 <div class="all">
 	<div class="row2">
-  		<div class="col-sm-4 col-md-2" style="width:300px; height:550px;">
-   			<div class="thumbnail">
-        		<a href="${pageContext.request.contextPath}/product/productDetail.do?product_num=${product.product_num}"><img src="../upload/${product.image}"></a>
+  		<div class="col-sm-4 col-md-2" style="width:300px; height:410px;">
+   			<div class="thumbnail" >
+        		<a href="${pageContext.request.contextPath}/product/productDetail.do?product_num=${product.product_num}">
+        		<img src="../upload/${product.image}" style="width:auto; height:230px;">
+        		</a>
 				     <div class="caption">
 				     	<h4 class="order_font"><a href="${pageContext.request.contextPath}/product/productDetail.do?product_num=${product.product_num}">${product.product_name}</a></h4>
 				        	<p><fmt:formatNumber value="${product.price}" pattern="#,###" />원</p>				        	

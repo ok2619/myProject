@@ -43,7 +43,7 @@
 		</c:if>
 		<c:if test="${count > 0}">
 			<table class="table">
-				<tr class="info font2">
+				<tr class="info font4">
 					<th>상품 번호</th>
 					<th>상품명</th>
 					<th>사진</th>
