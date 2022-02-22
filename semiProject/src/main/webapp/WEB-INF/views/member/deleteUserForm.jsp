@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ABCshop::회원탈퇴</title>
+<title>ABCshop :: 회원탈퇴</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
@@ -81,10 +81,10 @@
 	    		<span id="message_cpasswd"></span>
 			</div>
 			<p>
-			
-			<div class="align-center">
+			<div class="blank_50"></div>			
+			<div class="align-center go_left_60">
 				<input type="submit" class="btn btn-danger" value="회원탈퇴">
-				<input type="button" class="btn btn-defualt" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+				<input type="button" class="btn btn-defualt margin_left_10" value="취소" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 			</div>
 			
 		</form>
