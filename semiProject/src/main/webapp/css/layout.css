@@ -252,6 +252,10 @@ div#write_btn{
 	margin-left:32px;
 }
 /*글작성,글수정*/
+textarea.b_content{
+	width:320px;
+	height:130px;
+}
 textarea.update_content{
 	width:300px;
 	height:40px;

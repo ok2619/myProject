@@ -76,7 +76,7 @@
 		<tr>
 			<td rowspan="2" class="align-center"><label for="b_content">내용</label></td>
 			<td rowspan="2">
-			<textarea rows="5" cols="30" name="b_content" id="b_content" class="update_content form-control" placeholder="10자 이상 입력해주세요"></textarea>
+			<textarea rows="5" cols="30" name="b_content" id="b_content" class="b_content form-control" placeholder="10자 이상 입력해주세요"></textarea>
 			</td>
 		</tr>
 		<tr>
