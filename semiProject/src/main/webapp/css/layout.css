@@ -434,7 +434,9 @@ input[type=number]::-webkit-outer-spin-button {
 	margin-left:-43px;
 	margin-top:23px;
 }
-
+.go_left3{
+	margin-left:-30px;
+}
 .center30{
 	text-align : center;
 }

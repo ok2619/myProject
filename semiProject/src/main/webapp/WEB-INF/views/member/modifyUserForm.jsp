@@ -54,7 +54,7 @@
 	<h3 class="align-center common_title">회원정보 수정</h3>
 		<form action="modifyUser.do" method="post" id="modify_form" class="form-inline">	
 			<div class="form-group">
-				<label for="id" class="control-label">아이디</label>
+				<label for="id" class="control-label font4">아이디</label>
 			</div>
 			<div class="form-group">
 				<input type="text" class="form-control" id="id" name="id" value="${member.id}" aria-describedby="inputGroup-sizing-sm" aria-label="Disabled input example" disabled readonly>			
@@ -62,7 +62,7 @@
 			<p>
 			
 			<div class="form-group">
-				<label for="name" class="control-label">이름</label>
+				<label for="name" class="control-label font4">이름</label>
 			</div>
 			<div class="form-group">
 				<input type="text" class="form-control" id="name" name="name" value="${member.name}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">						
@@ -70,7 +70,7 @@
 		 	<p>
 			
 			<div class="form-group">
-				<label for="phone" class="control-label">연락처</label>
+				<label for="phone" class="control-label font4">연락처</label>
 			</div>
 			<div class="form-group">
 				<input type="text" class="form-control" id="phone" name="phone" value="${member.phone}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
@@ -78,7 +78,7 @@
 			 <p>
 			
 			<div class="form-group">
-				<label for="zipcode" class="control-label">우편번호</label>
+				<label for="zipcode" class="control-label font4">우편번호</label>
 			</div>
 			<div class="form-group">
 				<input type="text" class="form-control" id="zipcode" name="zipcode" value="${member.zipcode}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">			
@@ -87,7 +87,7 @@
 		 	<p>
 		 	
 			<div  class="form-group">
-				<label for="address1" class="control-label">주소</label>
+				<label for="address1" class="control-label font4">주소</label>
 			</div>
 			<div class="form-group">
 				<input type="text" class="form-control" id="address1" name="address1" value="${member.address1}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
@@ -95,17 +95,17 @@
 			<p>
 			
 			<div  class="form-group">
-				<label for="address2" class="control-label">상세주소</label>
+				<label for="address2" class="control-label font4">상세주소</label>
 			</div>
 			<div class="form-group">
 				<input type="text" name="address2" id="address2" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="${member.address2}">
 			</div>
 			
 		<div class="blank_50"></div>
-		<div class="align-center">
-		 	<input type="submit" value="수정" class="btn btn-info">
-			<button type="button" class="btn btn-default" onclick="location.href='${pageContext.request.contextPath}/member/modifyPasswordForm.do'">비밀번호 변경</button>				
-			<input type="button" value="회원탈퇴" class="btn" onclick="location.href='${pageContext.request.contextPath}/member/deleteUserForm.do'">
+		<div class="align-center go_left3">
+		 	<input type="submit" value="수정" class="btn btn-info font4">
+			<button type="button" class="btn btn-default margin_left_10 font4" onclick="location.href='${pageContext.request.contextPath}/member/modifyPasswordForm.do'">비밀번호 변경</button>				
+			<input type="button" value="회원탈퇴" class="btn  margin_left_10 font4" onclick="location.href='${pageContext.request.contextPath}/member/deleteUserForm.do'">
 		</div>
 		</form>		
 </div>

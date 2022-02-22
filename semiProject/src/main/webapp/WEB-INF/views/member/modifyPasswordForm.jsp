@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ABCshop::비밀번호 변경</title>
+<title>ABCshop :: 비밀번호 변경</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
@@ -61,7 +61,7 @@
 	<h3 class="align-center common_title">비밀번호 변경</h3>
 	<form action="modifyPassword.do" method="post" id="password_form" class="form-inline">
 		<div class="form-group">
-			<label for="id">아이디</label>
+			<label for="id" class="control-label font4">아이디</label>
 		</div>
 		<div class="form-group">
     		<input type="text" class="form-control" id="id" name="id" placeholder="id"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
@@ -69,7 +69,7 @@
     	<p>
     	
     	<div class="form-group">
-    		<label for="origin_passwd">현재 비밀번호</label>
+    		<label for="origin_passwd" class="control-label font4">현재 비밀번호</label>
     	</div>
     	<div class="form-group">
     		<input type="password" class="form-control" id="origin_passwd" name="origin_passwd" placeholder="password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
@@ -77,7 +77,7 @@
     	<p>
     	
     	<div class="form-group">
-    		<label for="passwd">새 비밀번호</label>
+    		<label for="passwd" class="control-label font4">새 비밀번호</label>
     	</div>
     	<div class="form-group">
     		<input type="password" class="form-control" id="passwd" name="passwd" placeholder="new password"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
@@ -85,7 +85,7 @@
     	<p>
     	
     	<div class="form-group">
-    		<label for="cpasswd">새 비밀번호 확인</label>
+    		<label for="cpasswd" class="control-label font4">새 비밀번호 확인</label>
     	</div>
     	<div class="form-group">
     		<input type="password" class="form-control" id="cpasswd" name="cpasswd" placeholder="confirm new password"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
@@ -94,9 +94,9 @@
 		<p>
 		
 		<div class="blank_50"></div>
-		<div class="align-center go_left">
-			<input type="submit" class="btn btn-info" value="확인">
-			<input type="button" class="btn btn-defualt"value="취소" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+		<div class="align-center go_left_70">
+			<input type="submit" class="btn btn-info font4" value="확인">
+			<input type="button" class="btn btn-defualt font4 margin_left_10"value="취소" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
 		
 	</form>
