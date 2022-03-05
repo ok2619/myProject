@@ -66,6 +66,7 @@
 				<th>총구매금액</th>
 				<th>주문날짜</th>
 				<th>배송상태</th>
+				<th>주문삭제</th>
 			</tr>
 			<c:forEach var="order" items="${list}">
 			<tr>
@@ -81,6 +82,8 @@
 					<c:if test="${order.shipping == 4}">배송완료</c:if>
 					<c:if test="${order.shipping == 5}">주문취소</c:if>
 				</td>
+				<td><input type="button" value="삭제" class="btn btn-sm"
+				 onclick="location.href='deleteOrder.do?order_num=${order.order_num}'"></td>
 			</tr>
 			</c:forEach>
 		</table>

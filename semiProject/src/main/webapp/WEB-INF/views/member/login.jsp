@@ -7,19 +7,24 @@
 	<html>
 	<head>
 	<meta charset="UTF-8">
-	<title>로그인 정보</title>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>		
+	<title>ABCshop :: 로그인</title>
+	<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+<script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>	
 	</head>
 	<body>
+		<jsp:include page="/WEB-INF/views/common/header.jsp"/>		
 	<div class="page-main">
-		<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-		<h2>회원 정보</h2>
-		<div class="result-display">
-			<div class="align-center">
-				회원님의 아이디가 정지되었습니다.
+		<div class="blank_100"></div> 
+		<div class="result-display">		
+			<div class="align-center"><div class="blank_30"></div> 
 				<p>
-				<input type="button" value="홈으로"
-				onclick="location.href='${pageContext.request.contextPath}/main/main.do'">		
+				정지된 아이디입니다.			
+				<p>
+				<div class="blank_30"></div> 
+				<input type="button" value="메인으로 이동" class="btn btn-default btn-sm"
+				onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 			</div>
 		</div>
 	</div>

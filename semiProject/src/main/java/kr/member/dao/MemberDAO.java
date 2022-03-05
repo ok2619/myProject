@@ -441,10 +441,10 @@ public class MemberDAO {
 				// 커넥션풀로부터 커넥션을 할당
 				conn = DBUtil.getConnection();
 
-				// SQL문 작성
+				// SQL문 작성 
 				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
 						+ "(SELECT * FROM qorder b JOIN qmember m "
-						+ "USING(user_num) where user_num = ? "
+						+ "USING(user_num) where user_num = ?"
 						+ "ORDER BY b.order_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
 
 				// preparedStatement 객체 생성

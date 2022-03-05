@@ -38,7 +38,7 @@ public class OrderListAction implements Action{
 		int count = dao.getOrderCount(user_number);
 				
 		//페이지 처리
-		PagingUtil page = new PagingUtil(keyfield,keyword,Integer.parseInt(pageNum),count,10,10,"myReview.do");
+		PagingUtil page = new PagingUtil(keyfield,keyword,Integer.parseInt(pageNum),count,10,10,"orderList.do");
 
 		List<OrderVO> list = null; 
 		if(count > 0) {

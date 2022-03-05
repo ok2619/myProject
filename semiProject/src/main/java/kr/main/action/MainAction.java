@@ -30,7 +30,7 @@ public class MainAction implements Action{
 		//페이지 처리
 		//keyfield,keyword,currentPage,count,rowCount,pageCount,url
 		PagingUtil page = new PagingUtil(keyfield,keyword,
-				          Integer.parseInt(pageNum),count,10,20,"productList.do");
+				          Integer.parseInt(pageNum),count,30,20,"productList.do");
 		
 		List<ProductVO> list = null;
 		String pageSort = request.getParameter("page");
